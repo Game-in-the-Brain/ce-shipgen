@@ -1,0 +1,104 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "MG2E_TABLES240501",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:30:26.676735"
+  },
+  "lifeSupportComponents": [
+    {
+      "componentName": "ADDITIONAL AIRLOCK",
+      "tons": 2.0,
+      "costCr": 100000
+    },
+    {
+      "componentName": "STATE ROOM",
+      "tons": 4.0,
+      "costCr": 500000
+    },
+    {
+      "componentName": "LOW BERTH",
+      "tons": 0.5,
+      "costCr": 50000,
+      "additionalTons": 0.1
+    },
+    {
+      "componentName": "EMERGENCY LOW BERTH",
+      "tons": 1.0,
+      "costCr": 1000000,
+      "additionalTons": 1.0
+    },
+    {
+      "componentName": "COMMON AREA",
+      "tons": 1.0,
+      "costCr": 100000
+    },
+    {
+      "componentName": "WORKSHOP",
+      "tons": 3.0,
+      "costCr": 450000
+    },
+    {
+      "componentName": "LABRATORY",
+      "tons": 4.0,
+      "costCr": 1000000
+    },
+    {
+      "componentName": "ACCELERATION BENCHES",
+      "tons": 1.0,
+      "costCr": 10000
+    },
+    {
+      "componentName": "ACCELERATION SEATS",
+      "tons": 0.5,
+      "costCr": 30000
+    },
+    {
+      "componentName": "CABIN SPACE",
+      "tons": 1.5,
+      "costCr": 75000
+    },
+    {
+      "componentName": "HIGH STATEROOM",
+      "tons": 6.0,
+      "costCr": 800000
+    },
+    {
+      "componentName": "LUXURY STATEROOM",
+      "tons": 10.0,
+      "costCr": 1500000
+    },
+    {
+      "componentName": "BRIG",
+      "tons": 4.0,
+      "costCr": 250000
+    },
+    {
+      "componentName": "BARRACKS",
+      "tons": 2.0,
+      "costCr": 50000
+    },
+    {
+      "componentName": "MULTI-ENVIRONMENT SPACE",
+      "tons": 0.05,
+      "costCr": 25000,
+      "additionalTons": 0.05
+    },
+    {
+      "componentName": "LIBRARY",
+      "tons": 4.0,
+      "costCr": 4000000
+    },
+    {
+      "componentName": "MEDICAL BAY",
+      "tons": 4.0,
+      "costCr": 2000000,
+      "additionalTons": 1.0
+    },
+    {
+      "componentName": "CARGO",
+      "tons": 1.0,
+      "costCr": 0
+    }
+  ]
+}

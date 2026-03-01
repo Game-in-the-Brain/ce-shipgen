@@ -1,0 +1,65 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:47.956000"
+  },
+  "vehicles": [
+    {
+      "vehicleName": "ATV",
+      "tons": "13",
+      "installationCostMCr": 2.6
+    },
+    {
+      "vehicleName": "Air/Raft",
+      "tons": "5",
+      "installationCostMCr": 1.0
+    },
+    {
+      "vehicleName": "Cutter",
+      "tons": "65",
+      "installationCostMCr": 13.0
+    },
+    {
+      "vehicleName": "Escape Pods",
+      "tons": "0.5 per passenger",
+      "installationCostMCr": "0.1 per passenger"
+    },
+    {
+      "vehicleName": "Life Boat",
+      "tons": "26",
+      "installationCostMCr": 5.2
+    },
+    {
+      "vehicleName": "Mining Drones",
+      "tons": "10",
+      "installationCostMCr": 2.0
+    },
+    {
+      "vehicleName": "Pinnace",
+      "tons": "52",
+      "installationCostMCr": 10.4
+    },
+    {
+      "vehicleName": "Probe Drones (5)",
+      "tons": "1",
+      "installationCostMCr": 0.2
+    },
+    {
+      "vehicleName": "Repair Drones",
+      "tons": "1% of ship\u2019s hull",
+      "installationCostMCr": "0.2 per ton"
+    },
+    {
+      "vehicleName": "Ship\u2019s Boat",
+      "tons": "39",
+      "installationCostMCr": 7.8
+    },
+    {
+      "vehicleName": "Shuttle",
+      "tons": "122.5",
+      "installationCostMCr": 24.5
+    }
+  ]
+}

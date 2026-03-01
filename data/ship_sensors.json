@@ -1,0 +1,50 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:14.462608"
+  },
+  "sensors": [
+    {
+      "sensorType": "Standard",
+      "techLevel": 8,
+      "dm": "\u20134",
+      "includes": "Radar, Lidar",
+      "tons": "Included in bridge",
+      "cost": "Included in bridge"
+    },
+    {
+      "sensorType": "Basic Civilian",
+      "techLevel": 9,
+      "dm": "\u20132",
+      "includes": "Radar, Lidar",
+      "tons": "1",
+      "cost": "Cr50,000"
+    },
+    {
+      "sensorType": "Basic Military",
+      "techLevel": 10,
+      "dm": 0,
+      "includes": "Radar, Lidar, Jammers",
+      "tons": "2",
+      "cost": "MCr1"
+    },
+    {
+      "sensorType": "Advanced",
+      "techLevel": 11,
+      "dm": 1,
+      "includes": "Radar, Lidar, Densitometer, Jammers",
+      "tons": "3",
+      "cost": "MCr2"
+    },
+    {
+      "sensorType": "Very Advanced",
+      "techLevel": 12,
+      "dm": 2,
+      "includes": "Radar, Lidar, Densitometer, Jammers, Neural Activity Sensor",
+      "tons": "5",
+      "cost": "MCr4"
+    }
+  ]
+}

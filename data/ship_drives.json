@@ -1,0 +1,370 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:14.461306"
+  },
+  "drives": [
+    {
+      "driveCode": "A",
+      "jumpDrive": {
+        "tons": 10,
+        "costMCr": 10
+      },
+      "maneuverDrive": {
+        "tons": 2,
+        "costMCr": 4
+      },
+      "powerPlant": {
+        "tons": 4,
+        "costMCr": 8
+      }
+    },
+    {
+      "driveCode": "B",
+      "jumpDrive": {
+        "tons": 15,
+        "costMCr": 20
+      },
+      "maneuverDrive": {
+        "tons": 3,
+        "costMCr": 8
+      },
+      "powerPlant": {
+        "tons": 7,
+        "costMCr": 16
+      }
+    },
+    {
+      "driveCode": "C",
+      "jumpDrive": {
+        "tons": 20,
+        "costMCr": 30
+      },
+      "maneuverDrive": {
+        "tons": 5,
+        "costMCr": 12
+      },
+      "powerPlant": {
+        "tons": 10,
+        "costMCr": 24
+      }
+    },
+    {
+      "driveCode": "D",
+      "jumpDrive": {
+        "tons": 25,
+        "costMCr": 40
+      },
+      "maneuverDrive": {
+        "tons": 7,
+        "costMCr": 16
+      },
+      "powerPlant": {
+        "tons": 13,
+        "costMCr": 32
+      }
+    },
+    {
+      "driveCode": "E",
+      "jumpDrive": {
+        "tons": 30,
+        "costMCr": 50
+      },
+      "maneuverDrive": {
+        "tons": 9,
+        "costMCr": 20
+      },
+      "powerPlant": {
+        "tons": 16,
+        "costMCr": 40
+      }
+    },
+    {
+      "driveCode": "F",
+      "jumpDrive": {
+        "tons": 35,
+        "costMCr": 60
+      },
+      "maneuverDrive": {
+        "tons": 11,
+        "costMCr": 24
+      },
+      "powerPlant": {
+        "tons": 19,
+        "costMCr": 48
+      }
+    },
+    {
+      "driveCode": "G",
+      "jumpDrive": {
+        "tons": 40,
+        "costMCr": 70
+      },
+      "maneuverDrive": {
+        "tons": 13,
+        "costMCr": 28
+      },
+      "powerPlant": {
+        "tons": 22,
+        "costMCr": 56
+      }
+    },
+    {
+      "driveCode": "H",
+      "jumpDrive": {
+        "tons": 45,
+        "costMCr": 80
+      },
+      "maneuverDrive": {
+        "tons": 15,
+        "costMCr": 32
+      },
+      "powerPlant": {
+        "tons": 25,
+        "costMCr": 64
+      }
+    },
+    {
+      "driveCode": "J",
+      "jumpDrive": {
+        "tons": 50,
+        "costMCr": 90
+      },
+      "maneuverDrive": {
+        "tons": 17,
+        "costMCr": 36
+      },
+      "powerPlant": {
+        "tons": 28,
+        "costMCr": 72
+      }
+    },
+    {
+      "driveCode": "K",
+      "jumpDrive": {
+        "tons": 55,
+        "costMCr": 100
+      },
+      "maneuverDrive": {
+        "tons": 19,
+        "costMCr": 40
+      },
+      "powerPlant": {
+        "tons": 31,
+        "costMCr": 80
+      }
+    },
+    {
+      "driveCode": "L",
+      "jumpDrive": {
+        "tons": 60,
+        "costMCr": 110
+      },
+      "maneuverDrive": {
+        "tons": 21,
+        "costMCr": 44
+      },
+      "powerPlant": {
+        "tons": 34,
+        "costMCr": 88
+      }
+    },
+    {
+      "driveCode": "M",
+      "jumpDrive": {
+        "tons": 65,
+        "costMCr": 120
+      },
+      "maneuverDrive": {
+        "tons": 23,
+        "costMCr": 48
+      },
+      "powerPlant": {
+        "tons": 37,
+        "costMCr": 96
+      }
+    },
+    {
+      "driveCode": "N",
+      "jumpDrive": {
+        "tons": 70,
+        "costMCr": 130
+      },
+      "maneuverDrive": {
+        "tons": 25,
+        "costMCr": 52
+      },
+      "powerPlant": {
+        "tons": 40,
+        "costMCr": 104
+      }
+    },
+    {
+      "driveCode": "P",
+      "jumpDrive": {
+        "tons": 75,
+        "costMCr": 140
+      },
+      "maneuverDrive": {
+        "tons": 27,
+        "costMCr": 56
+      },
+      "powerPlant": {
+        "tons": 43,
+        "costMCr": 112
+      }
+    },
+    {
+      "driveCode": "Q",
+      "jumpDrive": {
+        "tons": 80,
+        "costMCr": 150
+      },
+      "maneuverDrive": {
+        "tons": 29,
+        "costMCr": 60
+      },
+      "powerPlant": {
+        "tons": 46,
+        "costMCr": 120
+      }
+    },
+    {
+      "driveCode": "R",
+      "jumpDrive": {
+        "tons": 85,
+        "costMCr": 160
+      },
+      "maneuverDrive": {
+        "tons": 31,
+        "costMCr": 64
+      },
+      "powerPlant": {
+        "tons": 49,
+        "costMCr": 128
+      }
+    },
+    {
+      "driveCode": "S",
+      "jumpDrive": {
+        "tons": 90,
+        "costMCr": 170
+      },
+      "maneuverDrive": {
+        "tons": 33,
+        "costMCr": 68
+      },
+      "powerPlant": {
+        "tons": 52,
+        "costMCr": 136
+      }
+    },
+    {
+      "driveCode": "T",
+      "jumpDrive": {
+        "tons": 95,
+        "costMCr": 180
+      },
+      "maneuverDrive": {
+        "tons": 35,
+        "costMCr": 72
+      },
+      "powerPlant": {
+        "tons": 55,
+        "costMCr": 144
+      }
+    },
+    {
+      "driveCode": "U",
+      "jumpDrive": {
+        "tons": 100,
+        "costMCr": 190
+      },
+      "maneuverDrive": {
+        "tons": 37,
+        "costMCr": 76
+      },
+      "powerPlant": {
+        "tons": 58,
+        "costMCr": 152
+      }
+    },
+    {
+      "driveCode": "V",
+      "jumpDrive": {
+        "tons": 105,
+        "costMCr": 200
+      },
+      "maneuverDrive": {
+        "tons": 39,
+        "costMCr": 80
+      },
+      "powerPlant": {
+        "tons": 61,
+        "costMCr": 160
+      }
+    },
+    {
+      "driveCode": "W",
+      "jumpDrive": {
+        "tons": 110,
+        "costMCr": 210
+      },
+      "maneuverDrive": {
+        "tons": 41,
+        "costMCr": 84
+      },
+      "powerPlant": {
+        "tons": 64,
+        "costMCr": 168
+      }
+    },
+    {
+      "driveCode": "X",
+      "jumpDrive": {
+        "tons": 115,
+        "costMCr": 220
+      },
+      "maneuverDrive": {
+        "tons": 43,
+        "costMCr": 88
+      },
+      "powerPlant": {
+        "tons": 67,
+        "costMCr": 176
+      }
+    },
+    {
+      "driveCode": "Y",
+      "jumpDrive": {
+        "tons": 120,
+        "costMCr": 230
+      },
+      "maneuverDrive": {
+        "tons": 45,
+        "costMCr": 92
+      },
+      "powerPlant": {
+        "tons": 70,
+        "costMCr": 182
+      }
+    },
+    {
+      "driveCode": "Z",
+      "jumpDrive": {
+        "tons": 125,
+        "costMCr": 240
+      },
+      "maneuverDrive": {
+        "tons": 47,
+        "costMCr": 96
+      },
+      "powerPlant": {
+        "tons": 73,
+        "costMCr": 192
+      }
+    }
+  ]
+}

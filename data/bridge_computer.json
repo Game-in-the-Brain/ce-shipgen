@@ -1,0 +1,46 @@
+{
+  "metadata": {
+    "source": "Tables 00 (83,1)",
+    "version": "1.0"
+  },
+  "bridgeSizes": [
+    {
+      "shipSize": "10 tons"
+    },
+    {
+      "shipSize": "20 tons"
+    },
+    {
+      "shipSize": "40 tons"
+    },
+    {
+      "shipSize": "60 tons"
+    }
+  ],
+  "computers": [
+    {
+      "model": "Model 1",
+      "tl": 7,
+      "rating": 5,
+      "cost": "Cr30,000"
+    },
+    {
+      "model": "Model 2",
+      "tl": 9,
+      "rating": 10,
+      "cost": "Cr160,000"
+    },
+    {
+      "model": "Model 3",
+      "tl": 11,
+      "rating": 15,
+      "cost": "MCr2"
+    },
+    {
+      "model": "Model 4",
+      "tl": 12,
+      "rating": 20,
+      "cost": "MCr5"
+    }
+  ]
+}

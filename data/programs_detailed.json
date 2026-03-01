@@ -1,0 +1,331 @@
+{
+  "metadata": {
+    "source": "RAW SHIP TABLES AN8:AR54",
+    "version": "1.0",
+    "count": 46
+  },
+  "programs": [
+    {
+      "program": "Auto-Repair TL10",
+      "tl": 10,
+      "rating": 10,
+      "cost": "5 per repair attempt",
+      "notes": "Computer may attempt one repair per turn, or give a DM+1 to an attempt; at TL 12, can purchase an additional repair attempt (or DM+1) for twice the Rating and Cost."
+    },
+    {
+      "program": "Evade TL9",
+      "tl": 9,
+      "rating": 10,
+      "cost": "1000000",
+      "notes": "Imposes DM-1 on incoming fire; every two TLs higher, can purchase an addition DM-1, to a maximum of DM-3 at TL 13."
+    },
+    {
+      "program": "Evade TL11",
+      "tl": 11,
+      "rating": 15,
+      "cost": "2000000",
+      "notes": ""
+    },
+    {
+      "program": "Evade TL13",
+      "tl": 13,
+      "rating": 20,
+      "cost": "3000000",
+      "notes": ""
+    },
+    {
+      "program": "Automated Fire Control",
+      "tl": 9,
+      "rating": 5,
+      "cost": "2 per weapon",
+      "notes": "Ship\u2019s computer may fire one weapon; for each additional weapon, TL is increased by 1 (the ship can fire up to 2 weapons at TL 10, 3 at TL 11, and so on). The ship\u2019s computer may also sacrifice controlling a weapon to give a DM+1 from computer targeting on another attack, whether that weapon is controlled by the ship\u2019s computer or by an actual gunner. Maximum of five weapons may be controlled by this program."
+    },
+    {
+      "program": "J-1 Controls",
+      "tl": 9,
+      "rating": 5,
+      "cost": "100000",
+      "notes": "Governs Jump drives up to a given Jump number (Jn); TL is the same as the TL required for a given Jump number."
+    },
+    {
+      "program": "J-2 Controls",
+      "tl": 11,
+      "rating": 10,
+      "cost": "200000",
+      "notes": "Governs Jump drives up to a given Jump number (Jn); TL is the same as the TL required for a given Jump number."
+    },
+    {
+      "program": "J-3 Controls",
+      "tl": 12,
+      "rating": 15,
+      "cost": "300000",
+      "notes": "Governs Jump drives up to a given Jump number (Jn); TL is the same as the TL required for a given Jump number."
+    },
+    {
+      "program": "J-4 Controls",
+      "tl": 13,
+      "rating": 20,
+      "cost": "400000",
+      "notes": "Governs Jump drives up to a given Jump number (Jn); TL is the same as the TL required for a given Jump number."
+    },
+    {
+      "program": "J-5 Controls",
+      "tl": 14,
+      "rating": 25,
+      "cost": "500000",
+      "notes": "Governs Jump drives up to a given Jump number (Jn); TL is the same as the TL required for a given Jump number."
+    },
+    {
+      "program": "J-6 Controls",
+      "tl": 15,
+      "rating": 30,
+      "cost": "600000",
+      "notes": "Governs Jump drives up to a given Jump number (Jn); TL is the same as the TL required for a given Jump number."
+    },
+    {
+      "program": "Database TL 7",
+      "tl": 7,
+      "rating": 0,
+      "cost": "10000",
+      "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent."
+    },
+    {
+      "program": "Interface TL 7",
+      "tl": 7,
+      "rating": 0,
+      "cost": "Included",
+      "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task."
+    },
+    {
+      "program": "Security TL 7",
+      "tl": 7,
+      "rating": 0,
+      "cost": "Included",
+      "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM)."
+    },
+    {
+      "program": "Security TL 9",
+      "tl": 9,
+      "rating": 1,
+      "cost": "200",
+      "notes": "Difficult (\u20132 DM) difficulty"
+    },
+    {
+      "program": "Security TL 11",
+      "tl": 11,
+      "rating": 2,
+      "cost": "1000",
+      "notes": "Very Difficult (\u20134 DM) difficulty"
+    },
+    {
+      "program": "Security TL 12",
+      "tl": 12,
+      "rating": 3,
+      "cost": "20000",
+      "notes": "Formidable (\u20136 DM) difficulty"
+    },
+    {
+      "program": "Translator TL 9",
+      "tl": 9,
+      "rating": 0,
+      "cost": "50",
+      "notes": "Translators are specialized Expert systems that only have Language skills. Provides a near-real-time translation."
+    },
+    {
+      "program": "Translator TL 10",
+      "tl": 10,
+      "rating": 1,
+      "cost": "500",
+      "notes": "Works in real-time and has a much better understanding of the nuances of language."
+    },
+    {
+      "program": "Intrusion TL 10",
+      "tl": 10,
+      "rating": 1,
+      "cost": "1000",
+      "notes": "Intrusion programs aid hacking attempts, giving a bonus equal to their Rating. Intrusion software is often illegal."
+    },
+    {
+      "program": "Intrusion TL 11",
+      "tl": 11,
+      "rating": 2,
+      "cost": "10000",
+      "notes": "Intrusion programs aid hacking attempts, giving a bonus equal to their Rating. Intrusion software is often illegal."
+    },
+    {
+      "program": "Intrusion TL 13",
+      "tl": 13,
+      "rating": 3,
+      "cost": "100000",
+      "notes": "Intrusion programs aid hacking attempts, giving a bonus equal to their Rating. Intrusion software is often illegal."
+    },
+    {
+      "program": "Intrusion TL 15",
+      "tl": 15,
+      "rating": 4,
+      "cost": "nan",
+      "notes": "Intrusion programs aid hacking attempts, giving a bonus equal to their Rating. Intrusion software is often illegal."
+    },
+    {
+      "program": "Intelligent Interface TL 11",
+      "tl": 11,
+      "rating": 1,
+      "cost": "100",
+      "notes": "\u201cLow autonomous\u201d artificial intelligence allows voice control and displays data intelligently. Required for using Expert programs."
+    },
+    {
+      "program": "Intelligent Interface TL 13",
+      "tl": 13,
+      "rating": 2,
+      "cost": "1000",
+      "notes": "\u201cHigh autonomous\u201d artificial intelligence allows a primitive artificial intelligence to self-initiate and learn on its own."
+    },
+    {
+      "program": "Intelligent Interface TL 17",
+      "tl": 17,
+      "rating": 3,
+      "cost": "10000",
+      "notes": "True artificial intelligence capable of independent creative thought."
+    },
+    {
+      "program": "Expert TL 11",
+      "tl": null,
+      "rating": 0,
+      "cost": "1000",
+      "notes": "Expert programs mimic skills. A character using an expert system may make a skill check as if he had the skill at the program\u2019s Rating \u20131. Only Intelligence and Education-based checks can be attempted. If the character already has the skill at a higher level, then an Expert program grants a +1 DM instead."
+    },
+    {
+      "program": "Expert TL 12",
+      "tl": null,
+      "rating": 0,
+      "cost": "10000",
+      "notes": "Expert programs mimic skills. A character using an expert system may make a skill check as if he had the skill at the program\u2019s Rating \u20131. Only Intelligence and Education-based checks can be attempted. If the character already has the skill at a higher level, then an Expert program grants a +1 DM instead."
+    },
+    {
+      "program": "Expert TL 13",
+      "tl": null,
+      "rating": 0,
+      "cost": "100000",
+      "notes": "Expert programs mimic skills. A character using an expert system may make a skill check as if he had the skill at the program\u2019s Rating \u20131. Only Intelligence and Education-based checks can be attempted. If the character already has the skill at a higher level, then an Expert program grants a +1 DM instead."
+    },
+    {
+      "program": "Agent TL 11",
+      "tl": null,
+      "rating": 0,
+      "cost": "500",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Agent TL 12",
+      "tl": null,
+      "rating": 0,
+      "cost": "2000",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Agent TL 13",
+      "tl": null,
+      "rating": 0,
+      "cost": "100000",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Agent TL 14",
+      "tl": null,
+      "rating": 0,
+      "cost": "250000",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Intellect TL 12",
+      "tl": 12,
+      "rating": 1,
+      "cost": "2000",
+      "notes": "Intellects are improved agents, who can use Expert systems. For example, a robot doctor might be running Intellect/1 and Expert Medic/3, giving it a Medic skill of 2. An Intellect program can use a number of skills simultaneously equal to its Rating."
+    },
+    {
+      "program": "Intellect TL 13",
+      "tl": 13,
+      "rating": 2,
+      "cost": "50000",
+      "notes": "Intellects are improved agents, who can use Expert systems. For example, a robot doctor might be running Intellect/1 and Expert Medic/3, giving it a Medic skill of 2. An Intellect program can use a number of skills simultaneously equal to its Rating."
+    },
+    {
+      "program": "Intellect TL 14",
+      "tl": 14,
+      "rating": 3,
+      "cost": "nan",
+      "notes": "Intellects are improved agents, who can use Expert systems. For example, a robot doctor might be running Intellect/1 and Expert Medic/3, giving it a Medic skill of 2. An Intellect program can use a number of skills simultaneously equal to its Rating."
+    },
+    {
+      "program": "Expert TL 12",
+      "tl": 12,
+      "rating": 2,
+      "cost": "10000",
+      "notes": "Expert programs mimic skills. A character using an expert system may make a skill check as if he had the skill at the program\u2019s Rating \u20131. Only Intelligence and Education-based checks can be attempted. If the character already has the skill at a higher level, then an Expert program grants a +1 DM instead."
+    },
+    {
+      "program": "Expert TL 13",
+      "tl": 13,
+      "rating": 3,
+      "cost": "100000",
+      "notes": "Expert programs mimic skills. A character using an expert system may make a skill check as if he had the skill at the program\u2019s Rating \u20131. Only Intelligence and Education-based checks can be attempted. If the character already has the skill at a higher level, then an Expert program grants a +1 DM instead."
+    },
+    {
+      "program": "Agent TL 11",
+      "tl": 11,
+      "rating": 0,
+      "cost": "500",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Agent TL 12",
+      "tl": 12,
+      "rating": 1,
+      "cost": "2000",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Agent TL 13",
+      "tl": 13,
+      "rating": 2,
+      "cost": "100000",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Agent TL 14",
+      "tl": 14,
+      "rating": 3,
+      "cost": "250000",
+      "notes": "Agent programs have a Computer skill equal to their Rating, and can carry out tasks assigned to them with a modicum of intelligence. For example, an agent program might be commanded to hack into an enemy computer system and steal a particular data file. They are effectively specialized combinations of Computer Expert and Intellect programs."
+    },
+    {
+      "program": "Intellect TL 12",
+      "tl": 12,
+      "rating": 1,
+      "cost": "2000",
+      "notes": "Intellects are improved agents, who can use Expert systems. For example, a robot doctor might be running Intellect/1 and Expert Medic/3, giving it a Medic skill of 2. An Intellect program can use a number of skills simultaneously equal to its Rating."
+    },
+    {
+      "program": "Intellect TL 13",
+      "tl": 13,
+      "rating": 2,
+      "cost": "50000",
+      "notes": "Intellects are improved agents, who can use Expert systems. For example, a robot doctor might be running Intellect/1 and Expert Medic/3, giving it a Medic skill of 2. An Intellect program can use a number of skills simultaneously equal to its Rating."
+    },
+    {
+      "program": "Intellect TL 14",
+      "tl": 14,
+      "rating": 3,
+      "cost": "nan",
+      "notes": "Intellects are improved agents, who can use Expert systems. For example, a robot doctor might be running Intellect/1 and Expert Medic/3, giving it a Medic skill of 2. An Intellect program can use a number of skills simultaneously equal to its Rating."
+    },
+    {
+      "program": "Jump Course Tape",
+      "tl": 9,
+      "rating": 0,
+      "cost": "0.001xJn",
+      "notes": "Provides jump plot from one specific world to a specific destination system. Price based on number of parsecs between worlds; TL is the same as the TL required for a given Jump number needed to cover that Jump."
+    }
+  ]
+}

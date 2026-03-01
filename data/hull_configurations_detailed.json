@@ -1,0 +1,23 @@
+{
+  "metadata": {
+    "source": "RAW SHIP TABLES (7,28)",
+    "version": "1.0"
+  },
+  "configurations": [
+    {
+      "configuration": "Distributed",
+      "hullCostModifier": -0.1,
+      "notes": "Cannot mount fuel scoops. Atmospheric operations suffer -4 DM (failed checks inflict 2D6 damage)."
+    },
+    {
+      "configuration": "Standard",
+      "hullCostModifier": 0.0,
+      "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2. "
+    },
+    {
+      "configuration": "Streamlined",
+      "hullCostModifier": 0.1,
+      "notes": "No penalty in Atmosphere Operations. "
+    }
+  ]
+}

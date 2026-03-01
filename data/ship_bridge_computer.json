@@ -1,0 +1,42 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:41.463058"
+  },
+  "bridgeComputerSpecs": [
+    {
+      "shipSize": "200 tons or less",
+      "bridgeSize": "10 tons",
+      "computerModel": "Model 1",
+      "techLevel": 7,
+      "rating": 5,
+      "cost": "Cr30,000"
+    },
+    {
+      "shipSize": "300 tons \u2013 1000 tons",
+      "bridgeSize": "20 tons",
+      "computerModel": "Model 2",
+      "techLevel": 9,
+      "rating": 10,
+      "cost": "Cr160,000"
+    },
+    {
+      "shipSize": "1,100 \u2013 2000 tons",
+      "bridgeSize": "40 tons",
+      "computerModel": "Model 3",
+      "techLevel": 11,
+      "rating": 15,
+      "cost": "MCr2"
+    },
+    {
+      "shipSize": "More than 2,000 tons",
+      "bridgeSize": "60 tons",
+      "computerModel": "Model 4",
+      "techLevel": 12,
+      "rating": 20,
+      "cost": "MCr5"
+    }
+  ]
+}

@@ -1,0 +1,134 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheets": [
+      "RAW SHIP TABLES"
+    ],
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:31:00.864942"
+  },
+  "sampleShips": [
+    {
+      "shipName": "Sample 200-ton Free Trader",
+      "tonnage": 200,
+      "hullCode": "2",
+      "components": [
+        {
+          "component": "HULL CODE-2",
+          "quantity": null,
+          "notes": null
+        },
+        {
+          "component": "HULL CONFIGURATION: Standard, Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+          "quantity": null,
+          "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2. "
+        },
+        {
+          "component": "HULL ARMOR: Titanium Steel TL7+, Armor-2",
+          "quantity": 1,
+          "notes": "2"
+        },
+        {
+          "component": "HULL: OPTIONS-None",
+          "quantity": 0,
+          "notes": null
+        },
+        {
+          "component": "M-DRIVE TL9+ MODEL-A, Thrust-1",
+          "quantity": 1,
+          "notes": "1"
+        },
+        {
+          "component": "J-DRIVE TL9+ MODEL-A 20DT/jump Jump-1",
+          "quantity": 1,
+          "notes": "20DT/jump Jump-1"
+        },
+        {
+          "component": "FUSION PLANT MODEL-A 1DT of Fuel/Wk",
+          "quantity": 1,
+          "notes": "1DT of Fuel/Wk"
+        },
+        {
+          "component": "FUEL TANKS 24-Dtons Operate 4 Wks after jump",
+          "quantity": 24,
+          "notes": "Operate 4 Wks after jump"
+        },
+        {
+          "component": "CONTROLS-10-ton Bridge",
+          "quantity": 1,
+          "notes": null
+        },
+        {
+          "component": "COMPUTER-M1, R5 J-Spec Hardened 1-unit",
+          "quantity": 1,
+          "notes": null
+        },
+        {
+          "component": "LIFE SUPPORT : Staterooms 10-units",
+          "quantity": 10,
+          "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive."
+        },
+        {
+          "component": "LIFE SUPPORT : Low  Berths 20-units",
+          "quantity": 20,
+          "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton."
+        },
+        {
+          "component": "MODULES : Fuel Scoops 2-units",
+          "quantity": 2,
+          "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage."
+        },
+        {
+          "component": "MODULES : Fuel Processors 2-units",
+          "quantity": 2,
+          "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000."
+        },
+        {
+          "component": "WEAPONS : Turret, Tripple 2-units",
+          "quantity": 2,
+          "notes": "Holds 3 Turret Weapons"
+        },
+        {
+          "component": "WEAPONS : Missile Rack 4-units",
+          "quantity": 4,
+          "notes": "Launches 1 missile per turn. "
+        },
+        {
+          "component": "WEAPONS : Sand Caster 2-units",
+          "quantity": 2,
+          "notes": "Reduces Beam damage by 1d6, 1 Damage"
+        },
+        {
+          "component": "CARGO :  86-units",
+          "quantity": 86,
+          "notes": null
+        },
+        {
+          "component": "SUPPLIES : Regular Life Support Supplies, 1-Units",
+          "quantity": 1,
+          "notes": "600 Man days of Supplies . CESRD p110"
+        },
+        {
+          "component": "VEHICLES : Escape Pods, 5-Units",
+          "quantity": 5,
+          "notes": "This covers the installation of rescue bubbles and other escape pods for the entire crew."
+        },
+        {
+          "component": "SUPPLIES : Vacc Suit TL8, 10-Units",
+          "quantity": 10,
+          "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection"
+        },
+        {
+          "component": "SUPPLIES : Luxury Life Support Supplies, 1-Units",
+          "quantity": 1,
+          "notes": "600 Man days of Supplies . CESRD p110"
+        },
+        {
+          "component": "VEHICLES : Escape Pods, 5-Units",
+          "quantity": 5,
+          "notes": "This covers the installation of rescue bubbles and other escape pods for the entire crew."
+        }
+      ]
+    }
+  ]
+}

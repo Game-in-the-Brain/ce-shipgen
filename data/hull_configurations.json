@@ -1,0 +1,25 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:28.993976"
+  },
+  "configurations": [
+    {
+      "configurationName": "Distributed",
+      "hullCostModifier": 0.9,
+      "notes": "Cannot mount fuel scoops. Atmospheric operations suffer -4 DM (failed checks inflict 2D6 damage)."
+    },
+    {
+      "configurationName": "Standard",
+      "hullCostModifier": 1.0,
+      "notes": "Atmospheric operations suffer a -2 DM."
+    },
+    {
+      "configurationName": "Streamlined",
+      "hullCostModifier": 1.1,
+      "notes": "Includes fuel scoops."
+    }
+  ]
+}

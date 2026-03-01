@@ -1,0 +1,219 @@
+{
+  "metadata": {
+    "source": "RAW SHIP TABLES R63:AA107",
+    "version": "1.0",
+    "count": 21
+  },
+  "smallCraftDrives": [
+    {
+      "code": "sA",
+      "mDriveTons": 0.5,
+      "mDriveCost": 1000000,
+      "pPlantTons": 1.2,
+      "pPlantCost": 3000000,
+      "fuelPerWeek": 0.4,
+      "minFuel": 0.1,
+      "crew": 0
+    },
+    {
+      "code": "sB",
+      "mDriveTons": 1.0,
+      "mDriveCost": 2000000,
+      "pPlantTons": 1.5,
+      "pPlantCost": 3500000,
+      "fuelPerWeek": 0.5,
+      "minFuel": 0.1,
+      "crew": 0
+    },
+    {
+      "code": "sC",
+      "mDriveTons": 1.5,
+      "mDriveCost": 3000000,
+      "pPlantTons": 1.8,
+      "pPlantCost": 4000000,
+      "fuelPerWeek": 0.6,
+      "minFuel": 0.1,
+      "crew": 0
+    },
+    {
+      "code": "sD",
+      "mDriveTons": 2.0,
+      "mDriveCost": 3500000,
+      "pPlantTons": 2.1,
+      "pPlantCost": 4500000,
+      "fuelPerWeek": 0.7,
+      "minFuel": 0.1,
+      "crew": 0
+    },
+    {
+      "code": "sE",
+      "mDriveTons": 2.5,
+      "mDriveCost": 4000000,
+      "pPlantTons": 2.4,
+      "pPlantCost": 5000000,
+      "fuelPerWeek": 0.8,
+      "minFuel": 0.1,
+      "crew": 0
+    },
+    {
+      "code": "sF",
+      "mDriveTons": 3.0,
+      "mDriveCost": 6000000,
+      "pPlantTons": 2.7,
+      "pPlantCost": 5500000,
+      "fuelPerWeek": 0.9,
+      "minFuel": 0.1,
+      "crew": 0
+    },
+    {
+      "code": "sG",
+      "mDriveTons": 3.5,
+      "mDriveCost": 8000000,
+      "pPlantTons": 3.0,
+      "pPlantCost": 6000000,
+      "fuelPerWeek": 1.0,
+      "minFuel": 0.1,
+      "crew": 1
+    },
+    {
+      "code": "sH",
+      "mDriveTons": 4.0,
+      "mDriveCost": 9000000,
+      "pPlantTons": 3.3,
+      "pPlantCost": 6500000,
+      "fuelPerWeek": 1.1,
+      "minFuel": 0.1,
+      "crew": 1
+    },
+    {
+      "code": "sJ",
+      "mDriveTons": 4.5,
+      "mDriveCost": 10000000,
+      "pPlantTons": 3.6,
+      "pPlantCost": 7000000,
+      "fuelPerWeek": 1.2,
+      "minFuel": 0.1,
+      "crew": 1
+    },
+    {
+      "code": "sK",
+      "mDriveTons": 5.0,
+      "mDriveCost": 11000000,
+      "pPlantTons": 3.9,
+      "pPlantCost": 7500000,
+      "fuelPerWeek": 1.3,
+      "minFuel": 0.1,
+      "crew": 1
+    },
+    {
+      "code": "sL",
+      "mDriveTons": 6.0,
+      "mDriveCost": 12000000,
+      "pPlantTons": 4.5,
+      "pPlantCost": 8000000,
+      "fuelPerWeek": 1.5,
+      "minFuel": 0.1,
+      "crew": 2
+    },
+    {
+      "code": "sM",
+      "mDriveTons": 7.0,
+      "mDriveCost": 14000000,
+      "pPlantTons": 5.1,
+      "pPlantCost": 9000000,
+      "fuelPerWeek": 1.7,
+      "minFuel": 0.1,
+      "crew": 2
+    },
+    {
+      "code": "sN",
+      "mDriveTons": 8.0,
+      "mDriveCost": 16000000,
+      "pPlantTons": 5.7,
+      "pPlantCost": 10000000,
+      "fuelPerWeek": 1.9,
+      "minFuel": 0.1,
+      "crew": 2
+    },
+    {
+      "code": "sP",
+      "mDriveTons": 9.0,
+      "mDriveCost": 18000000,
+      "pPlantTons": 6.3,
+      "pPlantCost": 12000000,
+      "fuelPerWeek": 2.1,
+      "minFuel": 0.1,
+      "crew": 2
+    },
+    {
+      "code": "sQ",
+      "mDriveTons": 10.0,
+      "mDriveCost": 20000000,
+      "pPlantTons": 6.9,
+      "pPlantCost": 14000000,
+      "fuelPerWeek": 2.3,
+      "minFuel": 0.1,
+      "crew": 2
+    },
+    {
+      "code": "sR",
+      "mDriveTons": 11.0,
+      "mDriveCost": 22000000,
+      "pPlantTons": 7.5,
+      "pPlantCost": 16000000,
+      "fuelPerWeek": 2.5,
+      "minFuel": 0.1,
+      "crew": 2
+    },
+    {
+      "code": "sS",
+      "mDriveTons": 12.0,
+      "mDriveCost": 24000000,
+      "pPlantTons": 8.1,
+      "pPlantCost": 18000000,
+      "fuelPerWeek": 2.7,
+      "minFuel": 0.1,
+      "crew": 3
+    },
+    {
+      "code": "sT",
+      "mDriveTons": 13.0,
+      "mDriveCost": 26000000,
+      "pPlantTons": 8.7,
+      "pPlantCost": 20000000,
+      "fuelPerWeek": 2.9,
+      "minFuel": 0.1,
+      "crew": 3
+    },
+    {
+      "code": "sU",
+      "mDriveTons": 14.0,
+      "mDriveCost": 28000000,
+      "pPlantTons": 9.3,
+      "pPlantCost": 22000000,
+      "fuelPerWeek": 3.1,
+      "minFuel": 0.1,
+      "crew": 3
+    },
+    {
+      "code": "sV",
+      "mDriveTons": 15.0,
+      "mDriveCost": 30000000,
+      "pPlantTons": 9.9,
+      "pPlantCost": 24000000,
+      "fuelPerWeek": 3.3,
+      "minFuel": 0.1,
+      "crew": 3
+    },
+    {
+      "code": "sW",
+      "mDriveTons": 16.0,
+      "mDriveCost": 32000000,
+      "pPlantTons": 10.5,
+      "pPlantCost": 26000000,
+      "fuelPerWeek": 3.5,
+      "minFuel": 0.1,
+      "crew": 3
+    }
+  ]
+}

@@ -1,0 +1,101 @@
+{
+  "metadata": {
+    "project": "CE Ship Data Extraction",
+    "sourceFile": "GI7B EXTERNAL RAW CE SHIPS 231024-06 240930.xlsx",
+    "extractedAt": "2026-03-01T22:31:07.683723",
+    "totalFiles": 13
+  },
+  "extractedFiles": [
+    {
+      "filename": "ship_software.json",
+      "size_bytes": 1965,
+      "entries": 5,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "hull_configurations.json",
+      "size_bytes": 640,
+      "entries": 3,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_crew.json",
+      "size_bytes": 2198,
+      "entries": 14,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_vehicles.json",
+      "size_bytes": 1344,
+      "entries": 11,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_sensors.json",
+      "size_bytes": 1098,
+      "entries": 5,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_missiles.json",
+      "size_bytes": 794,
+      "entries": 3,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_armor.json",
+      "size_bytes": 661,
+      "entries": 3,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_drives.json",
+      "size_bytes": 6358,
+      "entries": 24,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "life_support.json",
+      "size_bytes": 2000,
+      "entries": 18,
+      "source": "CE RAW SHIPS",
+      "sheet": "MG2E_TABLES240501"
+    },
+    {
+      "filename": "sample_ships.json",
+      "size_bytes": 4578,
+      "entries": 1,
+      "source": "CE RAW SHIPS",
+      "sheet": "Unknown"
+    },
+    {
+      "filename": "ship_bridge_computer.json",
+      "size_bytes": 925,
+      "entries": 4,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_weapons.json",
+      "size_bytes": 1806,
+      "entries": 8,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    },
+    {
+      "filename": "ship_hulls.json",
+      "size_bytes": 2892,
+      "entries": 18,
+      "source": "CE RAW SHIPS",
+      "sheet": "Tables 00"
+    }
+  ]
+}

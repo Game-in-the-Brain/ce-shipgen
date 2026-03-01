@@ -1,0 +1,31 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:14.463751"
+  },
+  "missileTypes": [
+    {
+      "missileType": "Nuclear",
+      "techLevel": 6,
+      "damage": "2D6+ 1 radiation hit",
+      "costPerMissile": "Cr3,750",
+      "notes": "Radiation hit suffers a \u2013DM equal to the ship's armor"
+    },
+    {
+      "missileType": "Standard",
+      "techLevel": 6,
+      "damage": "1D6",
+      "costPerMissile": "Cr1,250",
+      "notes": null
+    },
+    {
+      "missileType": "Smart",
+      "techLevel": 8,
+      "damage": "1D6",
+      "costPerMissile": "Cr2,500",
+      "notes": "Attack roll is always 8+, and may attack every turn if they miss until they are destroyed, jammed or run out of fuel"
+    }
+  ]
+}

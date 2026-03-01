@@ -1,0 +1,34 @@
+{
+  "metadata": {
+    "source": "RAW SHIP TABLES (14,24)",
+    "version": "1.0"
+  },
+  "armorTypes": [
+    {
+      "armorType": "Titanium Steel TL7+",
+      "tl": 7,
+      "protection": 2,
+      "costFactor": 0.05
+    },
+    {
+      "armorType": "Crystaliron TL10+",
+      "tl": 10,
+      "protection": 4,
+      "costFactor": 0.2
+    },
+    {
+      "armorType": "Bonded Superdense TL14+",
+      "tl": 14,
+      "protection": 6,
+      "costFactor": 0.5
+    }
+  ],
+  "armorOptions": [
+    {
+      "option": "Reflec TL 10",
+      "tl": 10,
+      "costPerDton": 100000.0,
+      "description": "Reflec coating on the hull increases the ship\u2019s armor against lasers by 3. Adding Reflec costs MCr0.1 per ton of hull and can only be added once."
+    }
+  ]
+}

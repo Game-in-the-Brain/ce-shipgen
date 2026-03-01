@@ -1,0 +1,121 @@
+{
+  "metadata": {
+    "source": "RAW SHIP TABLES AT8:AX24",
+    "version": "1.0",
+    "count": 16
+  },
+  "lifeSupport": [
+    {
+      "component": "Staterooms",
+      "tl": 7,
+      "dtons": 4.0,
+      "cost": 500000,
+      "description": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive."
+    },
+    {
+      "component": "Low  Berths",
+      "tl": 9,
+      "dtons": 0.5,
+      "cost": 50000,
+      "description": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton."
+    },
+    {
+      "component": "Additional Cabin",
+      "tl": 7,
+      "dtons": 1.5,
+      "cost": 75000,
+      "description": "One Passenger per Cabin."
+    },
+    {
+      "component": "Briefing Room",
+      "tl": 7,
+      "dtons": 4.0,
+      "cost": 500000,
+      "description": "A specialized briefing room is useful on mercenary cruisers and other adventuring ships, where teams can discuss plans or meet with clients privately. A briefing room gives a +1 DM to Tactics checks made when planning missions on board ship. Ships with command bridges and fighter squadrons require additional briefing rooms and facilities. Capital ships must therefore have one briefing room per ship section, and one briefing room for every 20 fighter or bomber crew."
+    },
+    {
+      "component": "Detention Cells",
+      "tl": 7,
+      "dtons": 2.0,
+      "cost": 250000,
+      "description": "Found primarily on military and government vessels, a detention cell is used to keep prisoners. A detention cell displaces 2 tons and costs MCr0.25."
+    },
+    {
+      "component": "Luxuries",
+      "tl": 7,
+      "dtons": 1.0,
+      "cost": 100000,
+      "description": "Luxuries cost Cr100,000 per ton, and make life on board ship more pleasant. Each ton of luxuries counts as one level of the Steward skill for the purposes of carrying passengers, and therefore allows a ship to carry middle and high passage passengers without carrying a trained steward on board. CESRD p. 130"
+    },
+    {
+      "component": "Laboratory",
+      "tl": 7,
+      "dtons": 4.0,
+      "cost": 1000000,
+      "description": "Space allocated to laboratories can be used for research and experimentation. Each four tons of lab space allows for one scientist to perform research on board ship. The cost for research equipment varies depending on the type of research undertaken, but is generally around MCr1.0 per 4 tons."
+    },
+    {
+      "component": "Vault",
+      "tl": 7,
+      "dtons": 12.0,
+      "cost": 6000000,
+      "description": "A vault is a special armored chamber in the heart of a spacecraft, designed to survive attacks that would annihilate the rest of the ship. A vault has another four Hull and Structure points that only come into play when the ship housing the vault is destroyed. A vault can contain cargo, staterooms or any other internal components equivalent up to 6 tons. A vault requires 12 tons of space and costs MCr6."
+    },
+    {
+      "component": "Barracks",
+      "tl": 7,
+      "dtons": 0.2,
+      "cost": 100000,
+      "description": "A barracks takes up 2 tons per marine, and costs MCr0.1 per marine. Barracks can only be used to accommodate troops intended for boarding or assault operations. Troops accommodated in barracks cannot be used to reduce the number of service crew embarked."
+    },
+    {
+      "component": "Armory",
+      "tl": 7,
+      "dtons": 2.0,
+      "cost": 500000,
+      "description": "Ships carrying a large number of marines or soldiers can benefit from an armory, a specialized weapons store. An armory can only be accessed by those with the correct codes (usually the ship\u2019s senior officers and security team) and contains a wide variety of weapons. In game terms, an armory has enough snub pistols for the crew, enough accelerator or gauss rifles for any marines, and a selection of other military equipment like grenades, combat drug packs, combat armor and communications equipment. A general armory for a spacecraft costs MCr0.5 and takes up 2 tons of space. Where military vessels are concerned, the number of armories built into the ship\u2019s design is based on crew size. One armory is installed for either every 50 crew members, or every 10 marines, in order to provide adequate storage for equipment, weapons and ammunition."
+    },
+    {
+      "component": "Library",
+      "tl": 7,
+      "dtons": 4.0,
+      "cost": 400000,
+      "description": "A library room contains computer files as well as lecterns, display screens, holotanks and even hard copies of books. A good library is useful for both research and passing time in jump space. Having a library on board a ship gives one extra week of training time for new skills per week spent in jump space. A library for a spacecraft costs MCr4 and takes up 4 tons of space."
+    },
+    {
+      "component": "Additional Airlocks",
+      "tl": 7,
+      "dtons": 1.0,
+      "cost": 200000,
+      "description": "A ship or craft needs an airlock so that it can be accessed without depressuring the entire craft. "
+    },
+    {
+      "component": "Ship\u2019s Locker",
+      "tl": 7,
+      "dtons": 0.5,
+      "cost": 0,
+      "description": "Every ship has a ship\u2019s locker. Typical equipment carried aboard will include protective clothing, vacc suits, weapons such as shotguns or pistols, ammunition, compasses and survival aids, and portable shelters. The contents of the locker are defined only when they need to be but always contains vacc suits and other useful items. The ship\u2019s locker is usually protected by a biometric lock keyed to the ship\u2019s officers."
+    },
+    {
+      "component": "Workshop",
+      "tl": 7,
+      "dtons": 8.0,
+      "cost": 2000000,
+      "description": "Machining Tools for Repair and Fabrication. "
+    },
+    {
+      "component": "Seating Module",
+      "tl": 7,
+      "dtons": 1.0,
+      "cost": 24000,
+      "description": "4 Seats. Sealed Seating modular unit. "
+    },
+    {
+      "component": "Emergency low Berth",
+      "tl": 9,
+      "dtons": 0.25,
+      "cost": 25000,
+      "description": "will not carry passengers, only used for survival"
+    }
+  ]
+}

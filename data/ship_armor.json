@@ -1,0 +1,28 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:14.458728"
+  },
+  "armorTypes": [
+    {
+      "armorType": "Titanium Steel",
+      "techLevel": 7,
+      "protection": "2 per 5%, minimum 1 ton",
+      "costDescription": "5% of base hull"
+    },
+    {
+      "armorType": "Crystaliron",
+      "techLevel": 10,
+      "protection": "4 per 5%, minimum 1 ton",
+      "costDescription": "20% of base hull"
+    },
+    {
+      "armorType": "Bonded Superdense",
+      "techLevel": 14,
+      "protection": "6 per 5%, minimum 1 ton",
+      "costDescription": "50% of base hull"
+    }
+  ]
+}

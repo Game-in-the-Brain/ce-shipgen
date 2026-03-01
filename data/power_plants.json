@@ -1,0 +1,24 @@
+{
+  "metadata": {
+    "source": "RAW SHIP TABLES (13,29)",
+    "version": "1.0"
+  },
+  "powerPlants": [
+    {
+      "plantType": "FUSION PLANT",
+      "tl": 9,
+      "costModifier": 1,
+      "dtModifier": 1,
+      "annualMaintenance": 0.005,
+      "notes": "DEFAULT"
+    },
+    {
+      "plantType": "FISSION PLANT",
+      "tl": 8,
+      "costModifier": 2,
+      "dtModifier": 2,
+      "annualMaintenance": 0.01,
+      "notes": ""
+    }
+  ]
+}

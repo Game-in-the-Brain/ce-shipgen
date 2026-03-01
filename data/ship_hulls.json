@@ -1,0 +1,136 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:14.458135"
+  },
+  "hulls": [
+    {
+      "hullName": "100 tons",
+      "hullCode": "1",
+      "hullVolume": 100,
+      "priceMCr": 2.0,
+      "constructionTimeWeeks": 36
+    },
+    {
+      "hullName": "200 tons",
+      "hullCode": "2",
+      "hullVolume": 200,
+      "priceMCr": 8.0,
+      "constructionTimeWeeks": 44
+    },
+    {
+      "hullName": "300 tons",
+      "hullCode": "3",
+      "hullVolume": 300,
+      "priceMCr": 12.0,
+      "constructionTimeWeeks": 52
+    },
+    {
+      "hullName": "400 tons",
+      "hullCode": "4",
+      "hullVolume": 400,
+      "priceMCr": 16.0,
+      "constructionTimeWeeks": 60
+    },
+    {
+      "hullName": "500 tons",
+      "hullCode": "5",
+      "hullVolume": 500,
+      "priceMCr": 32.0,
+      "constructionTimeWeeks": 68
+    },
+    {
+      "hullName": "600 tons",
+      "hullCode": "6",
+      "hullVolume": 600,
+      "priceMCr": 48.0,
+      "constructionTimeWeeks": 76
+    },
+    {
+      "hullName": "700 tons",
+      "hullCode": "7",
+      "hullVolume": 700,
+      "priceMCr": 64.0,
+      "constructionTimeWeeks": 84
+    },
+    {
+      "hullName": "800 tons",
+      "hullCode": "8",
+      "hullVolume": 800,
+      "priceMCr": 80.0,
+      "constructionTimeWeeks": 92
+    },
+    {
+      "hullName": "900 tons",
+      "hullCode": "9",
+      "hullVolume": 900,
+      "priceMCr": 90.0,
+      "constructionTimeWeeks": 100
+    },
+    {
+      "hullName": "1,000 tons",
+      "hullCode": "A",
+      "hullVolume": 1000,
+      "priceMCr": 100.0,
+      "constructionTimeWeeks": 108
+    },
+    {
+      "hullName": "1,200 tons",
+      "hullCode": "C",
+      "hullVolume": 1200,
+      "priceMCr": 120.0,
+      "constructionTimeWeeks": 124
+    },
+    {
+      "hullName": "1,400 tons",
+      "hullCode": "E",
+      "hullVolume": 1400,
+      "priceMCr": 140.0,
+      "constructionTimeWeeks": 140
+    },
+    {
+      "hullName": "1,600 tons",
+      "hullCode": "G",
+      "hullVolume": 1600,
+      "priceMCr": 160.0,
+      "constructionTimeWeeks": 156
+    },
+    {
+      "hullName": "1,800 tons",
+      "hullCode": "J",
+      "hullVolume": 1800,
+      "priceMCr": 180.0,
+      "constructionTimeWeeks": 172
+    },
+    {
+      "hullName": "2,000 tons",
+      "hullCode": "L",
+      "hullVolume": 2000,
+      "priceMCr": 200.0,
+      "constructionTimeWeeks": 188
+    },
+    {
+      "hullName": "3,000 tons",
+      "hullCode": "M",
+      "hullVolume": 3000,
+      "priceMCr": 300.0,
+      "constructionTimeWeeks": 268
+    },
+    {
+      "hullName": "4,000 tons",
+      "hullCode": "N",
+      "hullVolume": 4000,
+      "priceMCr": 400.0,
+      "constructionTimeWeeks": 348
+    },
+    {
+      "hullName": "5,000 tons",
+      "hullCode": "P",
+      "hullVolume": 5000,
+      "priceMCr": 500.0,
+      "constructionTimeWeeks": 428
+    }
+  ]
+}

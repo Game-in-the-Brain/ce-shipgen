@@ -1,0 +1,80 @@
+{
+  "metadata": {
+    "source": "CE RAW SHIPS",
+    "sheet": "Tables 00",
+    "version": "1.0",
+    "extractedAt": "2026-03-01T22:29:41.462407"
+  },
+  "crewPositions": [
+    {
+      "position": "Command",
+      "minimum": null,
+      "fullComplement": "One commanding officer or Captain, one executive officer, three administrative personnel (for ships over 1,000 tons)"
+    },
+    {
+      "position": "Pilot",
+      "minimum": "One",
+      "fullComplement": "Three (one per 8-hour shift)"
+    },
+    {
+      "position": "Navigator",
+      "minimum": "One (optional with computer software)",
+      "fullComplement": "One"
+    },
+    {
+      "position": "Engineer",
+      "minimum": "One",
+      "fullComplement": "One per 35 tons of drives and power plant"
+    },
+    {
+      "position": "Sensors Operator",
+      "minimum": null,
+      "fullComplement": "One"
+    },
+    {
+      "position": "Medic",
+      "minimum": null,
+      "fullComplement": "One per 120 passengers and crew"
+    },
+    {
+      "position": "Steward",
+      "minimum": null,
+      "fullComplement": "One per four high passengers or ten middle passengers (assumes Steward-1)"
+    },
+    {
+      "position": "Turret Gunner",
+      "minimum": "One per turret weapon",
+      "fullComplement": "One per turret weapon"
+    },
+    {
+      "position": "Bay Gunner",
+      "minimum": "One per bay weapon",
+      "fullComplement": "Two per bay weapon"
+    },
+    {
+      "position": "Screen Operator",
+      "minimum": "One per screen device",
+      "fullComplement": "Four per screen device"
+    },
+    {
+      "position": "Chief Security Officer",
+      "minimum": null,
+      "fullComplement": "One (optional)"
+    },
+    {
+      "position": "Flight Crew",
+      "minimum": null,
+      "fullComplement": "One per smallcraft or vehicle carried in hangars or launch tubes, plus one support crew per three vehicles or vessels"
+    },
+    {
+      "position": "Marine",
+      "minimum": null,
+      "fullComplement": "On ships over 1,000 tons, may have up to 30 per 1,000 tons"
+    },
+    {
+      "position": "Other",
+      "minimum": null,
+      "fullComplement": "As needed (i.e. medical staff, scientists, surveyors, etc.)"
+    }
+  ]
+}
