@@ -1,4 +1,4 @@
-import { Plus, Library, Settings, HelpCircle, Rocket } from 'lucide-react'
+import { Plus, Library, Settings, HelpCircle, Rocket, ExternalLink, Heart } from 'lucide-react'
 
 interface StartupScreenProps {
   onGenerate: () => void
@@ -63,8 +63,65 @@ export default function StartupScreen({ onGenerate, onLibrary, onSettings }: Sta
       </div>
 
       {/* Version */}
-      <div className="mt-12 text-gray-600 text-sm">
-        Version 0.1.0 (Milestone 1)
+      <div className="mt-8 text-gray-600 text-sm">
+        Version 0.2.0 (Milestone 2)
+      </div>
+
+      {/* Attribution & Links */}
+      <div className="mt-8 max-w-lg text-center">
+        <div className="p-4 bg-space-800/50 rounded-xl border border-space-700">
+          <p className="text-sm text-gray-400 mb-3">
+            Referring to{' '}
+            <a 
+              href="https://www.drivethrurpg.com/en/product/186894/cepheus-engine-system-reference-document"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-cyan hover:text-cyan-300 inline-flex items-center gap-1 transition-colors"
+            >
+              Cepheus Engine <ExternalLink size={12} />
+            </a>
+          </p>
+          
+          <div className="border-t border-space-700 my-3"></div>
+          
+          <p className="text-sm text-gray-400 mb-2">
+            This App is brought to you by{' '}
+            <a 
+              href="https://www.drivethrurpg.com/en/publisher/17858/game-in-the-brain"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-purple hover:text-purple-300 inline-flex items-center gap-1 transition-colors"
+            >
+              Game in the Brain <ExternalLink size={12} />
+            </a>
+          </p>
+          
+          <p className="text-sm text-gray-500 leading-relaxed">
+            Help support us making free apps to automate your games by patronizing our products and leaving a positive review and feedback! Check us out at{' '}
+            <a 
+              href="https://gi7b.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-cyan hover:text-cyan-300 transition-colors"
+            >
+              gi7b.org
+            </a>
+            {' '}and our wiki at{' '}
+            <a 
+              href="https://wiki.gi7b.org"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-accent-cyan hover:text-cyan-300 transition-colors"
+            >
+              wiki.gi7b.org
+            </a>
+          </p>
+
+          <div className="mt-3 flex items-center justify-center gap-1 text-sm text-accent-orange">
+            <Heart size={14} className="fill-current" />
+            <span>Support open gaming tools</span>
+          </div>
+        </div>
       </div>
     </div>
   )
