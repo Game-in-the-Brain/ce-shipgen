@@ -1,5 +1,6 @@
 import { useState, useEffect, useCallback } from 'react'
-import { Check, AlertCircle, Download, Upload, RotateCcw, Save, ChevronDown } from 'lucide-react'
+import { Check, AlertCircle, Download, Upload, RotateCcw, Save, ChevronDown, FileJson, Table as TableIcon } from 'lucide-react'
+import TableDataEditor from './TableDataEditor'
 
 // List of all data tables
 const DATA_TABLES = [
@@ -19,6 +20,7 @@ const DATA_TABLES = [
 ] as const
 
 type ValidationStatus = 'valid' | 'invalid' | 'parsing' | null
+type ViewMode = 'json' | 'table'
 
 interface JsonEditorProps {
   onDataChange?: (tableId: string, data: any) => void
@@ -28,11 +30,13 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
   const [selectedTable, setSelectedTable] = useState<string>(DATA_TABLES[0].id)
   const [jsonContent, setJsonContent] = useState<string>('')
   const [originalContent, setOriginalContent] = useState<string>('')
+  const [parsedData, setParsedData] = useState<any[]>([])
   const [validationStatus, setValidationStatus] = useState<ValidationStatus>(null)
   const [validationError, setValidationError] = useState<string>('')
   const [hasChanges, setHasChanges] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [storageKey, setStorageKey] = useState<string>('')
+  const [viewMode, setViewMode] = useState<ViewMode>('table') // Default to table view
 
   // Load table data
   const loadTable = useCallback(async (tableId: string) => {
@@ -84,12 +88,13 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
     loadTable(selectedTable)
   }, [selectedTable, loadTable])
 
-  // Validate JSON
+  // Validate JSON and parse data
   const validateJson = (content: string): boolean => {
     setValidationStatus('parsing')
     
     try {
-      JSON.parse(content)
+      const parsed = JSON.parse(content)
+      setParsedData(Array.isArray(parsed) ? parsed : [parsed])
       setValidationStatus('valid')
       setValidationError('')
       return true
@@ -98,6 +103,15 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
       setValidationError(error instanceof Error ? error.message : 'Invalid JSON')
       return false
     }
+  }
+
+  // Handle table data changes from TableDataEditor
+  const handleTableDataChange = (newData: any[]) => {
+    const formatted = JSON.stringify(newData, null, 2)
+    setJsonContent(formatted)
+    setParsedData(newData)
+    setHasChanges(formatted !== originalContent)
+    validateJson(formatted)
   }
 
   // Handle content change
@@ -245,20 +259,76 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
           )}
         </div>
 
-        {/* JSON Editor */}
-        <div>
-          <label className="block text-sm font-medium text-gray-300 mb-2">
-            JSON Content
-          </label>
-          <textarea
-            value={jsonContent}
-            onChange={handleContentChange}
-            disabled={isLoading}
-            className="w-full h-96 p-4 bg-space-900 border border-space-600 rounded-lg font-mono text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-accent-cyan resize-none"
-            spellCheck={false}
-            placeholder="Loading..."
-          />
+        {/* View Mode Toggle */}
+        <div className="flex items-center justify-between p-3 bg-space-700/50 rounded-lg">
+          <span className="text-sm text-gray-300">Edit Mode</span>
+          <div className="flex gap-2">
+            <button
+              onClick={() => setViewMode('table')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors ${
+                viewMode === 'table' 
+                  ? 'bg-accent-cyan text-space-900' 
+                  : 'bg-space-600 text-gray-300 hover:bg-space-500'
+              }`}
+            >
+              <TableIcon size={16} />
+              <span className="text-sm">Table</span>
+            </button>
+            <button
+              onClick={() => setViewMode('json')}
+              className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors ${
+                viewMode === 'json' 
+                  ? 'bg-accent-cyan text-space-900' 
+                  : 'bg-space-600 text-gray-300 hover:bg-space-500'
+              }`}
+            >
+              <FileJson size={16} />
+              <span className="text-sm">JSON</span>
+            </button>
+          </div>
         </div>
+
+        {/* Table or JSON Editor */}
+        {viewMode === 'table' && validationStatus === 'valid' ? (
+          <div className="border border-space-600 rounded-lg overflow-hidden">
+            <div className="p-3 bg-space-700 border-b border-space-600 flex items-center justify-between">
+              <span className="text-sm font-medium text-gray-300">Data Editor</span>
+              <span className="text-xs text-gray-500">Click cells to edit • Click column headers to sort</span>
+            </div>
+            <div className="p-4 max-h-96 overflow-auto">
+              <TableDataEditor 
+                data={parsedData} 
+                onChange={handleTableDataChange}
+              />
+            </div>
+          </div>
+        ) : viewMode === 'table' && validationStatus !== 'valid' ? (
+          <div className="p-8 text-center border border-space-600 rounded-lg">
+            <AlertCircle size={48} className="text-accent-orange mx-auto mb-3" />
+            <p className="text-gray-400">Cannot display table view - JSON is invalid</p>
+            <p className="text-sm text-gray-500 mt-2">Switch to JSON view to fix errors</p>
+            <button 
+              onClick={() => setViewMode('json')}
+              className="mt-4 btn-secondary"
+            >
+              Switch to JSON View
+            </button>
+          </div>
+        ) : (
+          <div>
+            <label className="block text-sm font-medium text-gray-300 mb-2">
+              JSON Content
+            </label>
+            <textarea
+              value={jsonContent}
+              onChange={handleContentChange}
+              disabled={isLoading}
+              className="w-full h-96 p-4 bg-space-900 border border-space-600 rounded-lg font-mono text-sm text-gray-200 focus:outline-none focus:ring-2 focus:ring-accent-cyan resize-none"
+              spellCheck={false}
+              placeholder="Loading..."
+            />
+          </div>
+        )}
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-3">
