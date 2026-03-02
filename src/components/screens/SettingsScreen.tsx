@@ -1,6 +1,8 @@
+import { useState } from 'react'
 import { ArrowLeft, Monitor, Smartphone, Moon, Sun, Laptop } from 'lucide-react'
 import JsonTableEditor from '../settings/JsonTableEditor'
 import RuleSettings from '../settings/RuleSettings'
+import SettingsSnapshots from '../settings/SettingsSnapshots'
 
 interface SettingsScreenProps {
   layoutMode: 'desktop' | 'phone'
@@ -9,11 +11,13 @@ interface SettingsScreenProps {
 }
 
 export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: SettingsScreenProps) {
+  const [snapshotVersion, setSnapshotVersion] = useState(0)
+
   return (
     <div className="h-full flex flex-col bg-space-900">
       {/* Header */}
       <div className="flex items-center gap-4 p-4 border-b border-space-700 bg-space-800">
-        <button 
+        <button
           onClick={onBack}
           className="flex items-center gap-2 text-gray-400 hover:text-white transition-colors"
         >
@@ -26,7 +30,7 @@ export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: S
       {/* Settings Content */}
       <div className="flex-1 overflow-y-auto p-4">
         <div className="max-w-4xl mx-auto space-y-6">
-          
+
           {/* Layout Settings */}
           <section className="bg-space-800 rounded-xl border border-space-700 overflow-hidden">
             <div className="p-4 border-b border-space-700">
@@ -38,8 +42,8 @@ export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: S
                 <button
                   onClick={() => onLayoutChange('desktop')}
                   className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${
-                    layoutMode === 'desktop' 
-                      ? 'border-accent-cyan bg-accent-cyan/10' 
+                    layoutMode === 'desktop'
+                      ? 'border-accent-cyan bg-accent-cyan/10'
                       : 'border-space-600 hover:border-space-500'
                   }`}
                 >
@@ -53,8 +57,8 @@ export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: S
                 <button
                   onClick={() => onLayoutChange('phone')}
                   className={`flex-1 flex flex-col items-center gap-2 p-4 rounded-xl border-2 transition-all ${
-                    layoutMode === 'phone' 
-                      ? 'border-accent-cyan bg-accent-cyan/10' 
+                    layoutMode === 'phone'
+                      ? 'border-accent-cyan bg-accent-cyan/10'
                       : 'border-space-600 hover:border-space-500'
                   }`}
                 >
@@ -71,8 +75,11 @@ export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: S
           {/* Rule Settings */}
           <RuleSettings />
 
+          {/* Snapshots */}
+          <SettingsSnapshots onSnapshotLoad={() => setSnapshotVersion(v => v + 1)} />
+
           {/* JSON Table Editor */}
-          <JsonTableEditor />
+          <JsonTableEditor key={snapshotVersion} />
 
           {/* Theme Settings */}
           <section className="bg-space-800 rounded-xl border border-space-700 overflow-hidden">
@@ -100,7 +107,7 @@ export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: S
 
           {/* Version */}
           <div className="text-center text-sm text-gray-500 pt-4">
-            CE ShipGen v0.2.0 (Milestone 2)
+            CE ShipGen v0.2.5 (Milestone 2.5)
           </div>
         </div>
       </div>

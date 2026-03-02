@@ -27,18 +27,43 @@ function LayoutToggle({ mode, onChange }: { mode: LayoutMode; onChange: (mode: L
 function Header({ layoutMode, setLayoutMode }: { layoutMode: LayoutMode; setLayoutMode: (m: LayoutMode) => void }) {
   const location = useLocation()
   const isStartup = location.pathname === '/'
-  
+  const [isOnline, setIsOnline] = useState(navigator.onLine)
+  const [isStandalone] = useState(
+    window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true
+  )
+
+  useEffect(() => {
+    const onOnline = () => setIsOnline(true)
+    const onOffline = () => setIsOnline(false)
+    window.addEventListener('online', onOnline)
+    window.addEventListener('offline', onOffline)
+    return () => {
+      window.removeEventListener('online', onOnline)
+      window.removeEventListener('offline', onOffline)
+    }
+  }, [])
+
   if (isStartup) return null
 
   return (
     <header className="h-14 bg-space-800 border-b border-space-700 flex items-center justify-between px-4 sticky top-0 z-40">
       <div className="flex items-center gap-2">
-        <Link 
+        <Link
           to="/"
           className="text-accent-cyan hover:text-cyan-300 transition-colors font-semibold text-lg"
         >
           CE ShipGen
         </Link>
+        {isStandalone && (
+          <span className="flex items-center gap-1 text-xs text-accent-green">
+            <span className="w-2 h-2 rounded-full bg-accent-green" /> Installed
+          </span>
+        )}
+        {!isOnline && (
+          <span className="flex items-center gap-1 text-xs text-accent-orange">
+            <span className="w-2 h-2 rounded-full bg-accent-orange" /> Offline
+          </span>
+        )}
       </div>
 
       <div className="flex items-center gap-2">
@@ -90,41 +115,41 @@ function App() {
   return (
     <div className="min-h-screen bg-space-900">
       <Header layoutMode={layoutMode} setLayoutMode={setLayoutMode} />
-      
+
       <main className="h-[calc(100vh-3.5rem)]">
         <Routes>
-          <Route 
-            path="/" 
+          <Route
+            path="/"
             element={
-              <StartupScreen 
+              <StartupScreen
                 onGenerate={() => navigate('/design')}
                 onLibrary={() => navigate('/library')}
                 onSettings={() => navigate('/settings')}
               />
-            } 
+            }
           />
-          <Route 
-            path="/design" 
-            element={<ShipDesignView layoutMode={layoutMode} />} 
+          <Route
+            path="/design"
+            element={<ShipDesignView layoutMode={layoutMode} />}
           />
-          <Route 
-            path="/library" 
+          <Route
+            path="/library"
             element={
-              <LibraryView 
+              <LibraryView
                 onBack={() => navigate('/')}
                 onLoad={() => navigate('/design')}
               />
-            } 
+            }
           />
-          <Route 
-            path="/settings" 
+          <Route
+            path="/settings"
             element={
-              <SettingsScreen 
+              <SettingsScreen
                 layoutMode={layoutMode}
                 onLayoutChange={setLayoutMode}
                 onBack={() => navigate('/')}
               />
-            } 
+            }
           />
         </Routes>
       </main>

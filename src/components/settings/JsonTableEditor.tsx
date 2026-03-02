@@ -1,9 +1,9 @@
-import { useState, useEffect, useCallback } from 'react'
+import { useState, useEffect, useCallback, useRef } from 'react'
 import { Check, AlertCircle, Download, Upload, RotateCcw, Save, ChevronDown, FileJson, Table as TableIcon } from 'lucide-react'
 import TableDataEditor from './TableDataEditor'
 
 // List of all data tables
-const DATA_TABLES = [
+export const DATA_TABLES = [
   { id: 'ship_hulls', name: 'Hull Specifications', file: 'ship_hulls.json', description: '18 hull sizes from 10 to 5000 tons' },
   { id: 'ship_drives', name: 'Standard Drives', file: 'ship_drives.json', description: '26 drive codes (A-Z) with J-drive, M-drive, Power Plant' },
   { id: 'smallcraft_drives', name: 'Small Craft Drives', file: 'smallcraft_drives.json', description: '21 small craft drive codes (sA-sW)' },
@@ -26,6 +26,17 @@ interface JsonEditorProps {
   onDataChange?: (tableId: string, data: any) => void
 }
 
+// FR-023: Security helpers
+function sanitizeString(v: string): string { return v.replace(/<[^>]*>/g, '').slice(0, 500) }
+function sanitizeRow(row: Record<string, unknown>): Record<string, unknown> {
+  const r: Record<string, unknown> = {}
+  for (const [k, v] of Object.entries(row)) r[k] = typeof v === 'string' ? sanitizeString(v) : v
+  return r
+}
+function isArrayOfObjects(v: unknown): v is Record<string, unknown>[] {
+  return Array.isArray(v) && v.every(i => typeof i === 'object' && i !== null && !Array.isArray(i))
+}
+
 export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
   const [selectedTable, setSelectedTable] = useState<string>(DATA_TABLES[0].id)
   const [jsonContent, setJsonContent] = useState<string>('')
@@ -36,14 +47,22 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
   const [hasChanges, setHasChanges] = useState(false)
   const [isLoading, setIsLoading] = useState(false)
   const [storageKey, setStorageKey] = useState<string>('')
-  const [viewMode, setViewMode] = useState<ViewMode>('table') // Default to table view
+  const [viewMode, setViewMode] = useState<ViewMode>('table')
+  const [autoSaved, setAutoSaved] = useState(false)
+  const autoSaveTimerRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+
+  const showAutoSaveToast = () => {
+    if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current)
+    setAutoSaved(true)
+    autoSaveTimerRef.current = setTimeout(() => setAutoSaved(false), 1500)
+  }
 
   // Load table data
   const loadTable = useCallback(async (tableId: string) => {
     setIsLoading(true)
     setValidationStatus(null)
     setValidationError('')
-    
+
     const table = DATA_TABLES.find(t => t.id === tableId)
     if (!table) return
 
@@ -51,15 +70,13 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
     setStorageKey(key)
 
     try {
-      // First try to load from localStorage (customized data)
       const saved = localStorage.getItem(key)
-      
+
       if (saved) {
         setJsonContent(saved)
         setOriginalContent(saved)
         validateJson(saved)
       } else {
-        // Load from default data file
         const response = await fetch(`${import.meta.env.BASE_URL}data/${table.file}`)
         if (response.ok) {
           const data = await response.json()
@@ -68,14 +85,12 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
           setOriginalContent(formatted)
           validateJson(formatted)
         } else {
-          // If file doesn't exist, create empty template
           setJsonContent('[]')
           setOriginalContent('[]')
           validateJson('[]')
         }
       }
-    } catch (error) {
-      console.error('Error loading table:', error)
+    } catch {
       setJsonContent('[]')
       setOriginalContent('[]')
       validateJson('[]')
@@ -90,10 +105,17 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
     loadTable(selectedTable)
   }, [selectedTable, loadTable])
 
+  // Cleanup timer on unmount
+  useEffect(() => {
+    return () => {
+      if (autoSaveTimerRef.current) clearTimeout(autoSaveTimerRef.current)
+    }
+  }, [])
+
   // Validate JSON and parse data
   const validateJson = (content: string): boolean => {
     setValidationStatus('parsing')
-    
+
     try {
       const parsed = JSON.parse(content)
       setParsedData(Array.isArray(parsed) ? parsed : [parsed])
@@ -107,16 +129,20 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
     }
   }
 
-  // Handle table data changes from TableDataEditor
+  // FR-022: Handle table data changes — auto-save immediately
   const handleTableDataChange = (newData: any[]) => {
-    const formatted = JSON.stringify(newData, null, 2)
+    const sanitized = newData.map(row => sanitizeRow(row))
+    const formatted = JSON.stringify(sanitized, null, 2)
     setJsonContent(formatted)
-    setParsedData(newData)
-    setHasChanges(formatted !== originalContent)
+    setParsedData(sanitized)
     validateJson(formatted)
+    localStorage.setItem(storageKey, formatted)
+    setOriginalContent(formatted)
+    setHasChanges(false)
+    showAutoSaveToast()
   }
 
-  // Handle content change
+  // Handle content change in JSON view
   const handleContentChange = (e: React.ChangeEvent<HTMLTextAreaElement>) => {
     const newContent = e.target.value
     setJsonContent(newContent)
@@ -124,7 +150,7 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
     setHasChanges(newContent !== originalContent)
   }
 
-  // Save changes
+  // Save JSON edits (only used in JSON view)
   const handleSave = () => {
     if (validationStatus !== 'valid') {
       alert('Cannot save: JSON is invalid. Please fix the errors first.')
@@ -137,13 +163,13 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
       setOriginalContent(jsonContent)
       setHasChanges(false)
       onDataChange?.(selectedTable, parsed)
-      alert('Changes saved successfully!')
-    } catch (error) {
-      alert('Error saving: ' + (error instanceof Error ? error.message : 'Unknown error'))
+      showAutoSaveToast()
+    } catch {
+      alert('Error saving.')
     }
   }
 
-  // Reset to original
+  // Reset to web defaults
   const handleReset = () => {
     if (hasChanges && !confirm('Are you sure? All unsaved changes will be lost.')) {
       return
@@ -151,7 +177,7 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
 
     localStorage.removeItem(storageKey)
     loadTable(selectedTable)
-    alert('Table reset to default values.')
+    alert('Table reset to web defaults.')
   }
 
   // Export table
@@ -182,17 +208,21 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
     reader.onload = (event) => {
       try {
         const content = event.target?.result as string
-        // Validate before setting
-        JSON.parse(content)
+        const parsed = JSON.parse(content)
+        if (!isArrayOfObjects(parsed)) {
+          alert('Invalid file: must be a JSON array of objects. Apply JSON to save.')
+          return
+        }
         setJsonContent(content)
         validateJson(content)
         setHasChanges(true)
-        alert('File imported successfully. Click "Save Changes" to apply.')
-      } catch (error) {
+        alert('File imported successfully. Apply JSON to save.')
+      } catch {
         alert('Error importing file: Invalid JSON')
       }
     }
     reader.readAsText(file)
+    e.target.value = ''
   }
 
   const selectedTableInfo = DATA_TABLES.find(t => t.id === selectedTable)
@@ -205,9 +235,10 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
           <h3 className="font-semibold text-white">Data Tables</h3>
           <p className="text-sm text-gray-400">Edit ship component definitions</p>
         </div>
-        {hasChanges && (
-          <span className="px-2 py-1 bg-accent-orange/20 text-accent-orange text-xs rounded-full">
-            Unsaved Changes
+        {autoSaved && (
+          <span className="flex items-center gap-1 px-2 py-1 bg-accent-green/20 text-accent-green text-xs rounded-full">
+            <Check size={14} />
+            Saved
           </span>
         )}
       </div>
@@ -268,8 +299,8 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
             <button
               onClick={() => setViewMode('table')}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors ${
-                viewMode === 'table' 
-                  ? 'bg-accent-cyan text-space-900' 
+                viewMode === 'table'
+                  ? 'bg-accent-cyan text-space-900'
                   : 'bg-space-600 text-gray-300 hover:bg-space-500'
               }`}
             >
@@ -279,8 +310,8 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
             <button
               onClick={() => setViewMode('json')}
               className={`flex items-center gap-2 px-3 py-1.5 rounded-lg transition-colors ${
-                viewMode === 'json' 
-                  ? 'bg-accent-cyan text-space-900' 
+                viewMode === 'json'
+                  ? 'bg-accent-cyan text-space-900'
                   : 'bg-space-600 text-gray-300 hover:bg-space-500'
               }`}
             >
@@ -302,8 +333,8 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
               <span className="text-xs text-gray-500">Click cells to edit • Click column headers to sort</span>
             </div>
             <div className="p-4 max-h-96 overflow-auto">
-              <TableDataEditor 
-                data={parsedData} 
+              <TableDataEditor
+                data={parsedData}
                 onChange={handleTableDataChange}
               />
             </div>
@@ -313,7 +344,7 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
             <AlertCircle size={48} className="text-accent-orange mx-auto mb-3" />
             <p className="text-gray-400">Cannot display table view - JSON is invalid</p>
             <p className="text-sm text-gray-500 mt-2">Switch to JSON view to fix errors</p>
-            <button 
+            <button
               onClick={() => setViewMode('json')}
               className="mt-4 btn-secondary"
             >
@@ -338,21 +369,23 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
 
         {/* Action Buttons */}
         <div className="flex flex-wrap gap-3">
-          <button
-            onClick={handleSave}
-            disabled={!hasChanges || validationStatus !== 'valid'}
-            className="flex items-center gap-2 px-4 py-2 bg-accent-cyan hover:bg-cyan-400 disabled:bg-space-700 disabled:text-gray-500 text-space-900 font-medium rounded-lg transition-colors"
-          >
-            <Save size={18} />
-            <span>Save Changes</span>
-          </button>
+          {viewMode === 'json' && (
+            <button
+              onClick={handleSave}
+              disabled={!hasChanges || validationStatus !== 'valid'}
+              className="flex items-center gap-2 px-4 py-2 bg-accent-cyan hover:bg-cyan-400 disabled:bg-space-700 disabled:text-gray-500 text-space-900 font-medium rounded-lg transition-colors"
+            >
+              <Save size={18} />
+              <span>Apply JSON</span>
+            </button>
+          )}
 
           <button
             onClick={handleReset}
             className="flex items-center gap-2 px-4 py-2 bg-space-700 hover:bg-space-600 text-gray-200 rounded-lg transition-colors"
           >
             <RotateCcw size={18} />
-            <span>Reset to Default</span>
+            <span>Reset to Web Defaults</span>
           </button>
 
           <button
@@ -378,8 +411,8 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
 
         {/* Instructions */}
         <div className="text-xs text-gray-500 space-y-1">
-          <p>• Changes are saved to browser storage and persist between sessions</p>
-          <p>• Use "Reset to Default" to restore original values from the rulebook</p>
+          <p>• Table view edits save automatically to browser storage</p>
+          <p>• Use "Reset to Web Defaults" to restore original values from the rulebook</p>
           <p>• Export/Import allows sharing customized tables with others</p>
           <p>• Invalid JSON will show an error and cannot be saved</p>
         </div>

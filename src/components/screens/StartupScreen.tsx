@@ -1,4 +1,5 @@
-import { Plus, Library, Settings, HelpCircle, Rocket, ExternalLink, Heart } from 'lucide-react'
+import { useState, useEffect } from 'react'
+import { Plus, Library, Settings, HelpCircle, Rocket, ExternalLink, Heart, Download } from 'lucide-react'
 
 interface StartupScreenProps {
   onGenerate: () => void
@@ -7,17 +8,42 @@ interface StartupScreenProps {
 }
 
 export default function StartupScreen({ onGenerate, onLibrary, onSettings }: StartupScreenProps) {
+  const [deferredPrompt, setDeferredPrompt] = useState<BeforeInstallPromptEvent | null>(null)
+  const [isStandalone] = useState(
+    window.matchMedia('(display-mode: standalone)').matches || navigator.standalone === true
+  )
+  const [isIOS] = useState(/iphone|ipad|ipod/i.test(navigator.userAgent))
+  const [showIOSHelp, setShowIOSHelp] = useState(false)
+
+  useEffect(() => {
+    const handler = (e: BeforeInstallPromptEvent) => {
+      e.preventDefault()
+      setDeferredPrompt(e)
+    }
+    window.addEventListener('beforeinstallprompt', handler)
+    return () => window.removeEventListener('beforeinstallprompt', handler)
+  }, [])
+
+  const handleInstall = async () => {
+    if (!deferredPrompt) return
+    await deferredPrompt.prompt()
+    const { outcome } = await deferredPrompt.userChoice
+    if (outcome === 'accepted') {
+      setDeferredPrompt(null)
+    }
+  }
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center p-4 bg-gradient-to-br from-space-900 via-space-800 to-space-900 relative">
       {/* GI7B Logo - Upper Right */}
-      <a 
+      <a
         href="https://gi7b.org"
         target="_blank"
         rel="noopener noreferrer"
         className="absolute top-4 right-4 z-10"
       >
-        <img 
-          src="/ce-shipgen/gi7b-logo.png" 
+        <img
+          src="/ce-shipgen/gi7b-logo.png"
           alt="Game in the Brain"
           className="h-16 w-auto opacity-80 hover:opacity-100 transition-opacity"
           onError={(e) => { (e.target as HTMLImageElement).style.display = 'none'; }}
@@ -75,11 +101,48 @@ export default function StartupScreen({ onGenerate, onLibrary, onSettings }: Sta
           <HelpCircle size={18} />
           <span className="text-sm">Help & About</span>
         </button>
+
+        {/* PWA Install Prompt (Chrome/Edge) */}
+        {!isStandalone && deferredPrompt && (
+          <button
+            onClick={() => void handleInstall()}
+            className="w-full flex items-center justify-center gap-2 px-6 py-3 bg-space-800 hover:bg-space-700 text-gray-200 font-medium rounded-xl transition-colors border border-space-700 hover:border-space-600 btn-secondary"
+          >
+            <Download size={18} />
+            <span>Install App</span>
+          </button>
+        )}
+
+        {/* iOS Add to Home Screen hint */}
+        {!isStandalone && isIOS && !deferredPrompt && (
+          <div className="text-center">
+            <button
+              onClick={() => setShowIOSHelp(v => !v)}
+              className="text-sm text-accent-cyan hover:text-cyan-300 transition-colors"
+            >
+              Add to Home Screen
+            </button>
+          </div>
+        )}
+
+        {/* iOS Instructions */}
+        {showIOSHelp && (
+          <div className="p-4 bg-space-800 border border-space-700 rounded-xl text-sm text-gray-300 relative">
+            <button
+              onClick={() => setShowIOSHelp(false)}
+              className="absolute top-2 right-3 text-gray-500 hover:text-gray-300 text-lg leading-none"
+              aria-label="Dismiss"
+            >
+              ×
+            </button>
+            In Safari: tap <strong>Share</strong> → <strong>Add to Home Screen</strong>
+          </div>
+        )}
       </div>
 
       {/* Version */}
       <div className="mt-8 text-gray-600 text-sm">
-        Version 0.2.0 (Milestone 2)
+        Version 0.2.5 (Milestone 2.5)
       </div>
 
       {/* Attribution & Links */}
@@ -87,7 +150,7 @@ export default function StartupScreen({ onGenerate, onLibrary, onSettings }: Sta
         <div className="p-4 bg-space-800/50 rounded-xl border border-space-700">
           <p className="text-sm text-gray-400 mb-3">
             Referring to{' '}
-            <a 
+            <a
               href="https://www.drivethrurpg.com/en/product/186894/cepheus-engine-system-reference-document"
               target="_blank"
               rel="noopener noreferrer"
@@ -96,12 +159,12 @@ export default function StartupScreen({ onGenerate, onLibrary, onSettings }: Sta
               Cepheus Engine <ExternalLink size={12} />
             </a>
           </p>
-          
+
           <div className="border-t border-space-700 my-3"></div>
-          
+
           <p className="text-sm text-gray-400 mb-2">
             This App is brought to you by{' '}
-            <a 
+            <a
               href="https://www.drivethrurpg.com/en/publisher/17858/game-in-the-brain"
               target="_blank"
               rel="noopener noreferrer"
@@ -110,10 +173,10 @@ export default function StartupScreen({ onGenerate, onLibrary, onSettings }: Sta
               Game in the Brain <ExternalLink size={12} />
             </a>
           </p>
-          
+
           <p className="text-sm text-gray-500 leading-relaxed">
             Help support us making free apps to automate your games by patronizing our products and leaving a positive review and feedback! Check us out at{' '}
-            <a 
+            <a
               href="https://gi7b.org"
               target="_blank"
               rel="noopener noreferrer"
@@ -122,7 +185,7 @@ export default function StartupScreen({ onGenerate, onLibrary, onSettings }: Sta
               gi7b.org
             </a>
             {' '}and our wiki at{' '}
-            <a 
+            <a
               href="https://wiki.gi7b.org"
               target="_blank"
               rel="noopener noreferrer"
