@@ -885,7 +885,9 @@ The issue is likely a combination of Hypothesis 1 and 3:
 | 9 | Table view error | Loading before validation | Added isLoading check |
 | 10 | deploy.sh disappearing | File not committed | Committed to repo |
 | 11 | Image upload | Can't save from chat | Created placeholder code |
-| 12 | Table view broken | Data loading + empty tables | **IN PROGRESS** |
+| 12 | Table view broken | Data loading + empty tables | **FIXED — March 2, 2026 session 2** |
+| 13 | vite-env.d.ts missing | Standard Vite file never created | Created src/vite-env.d.ts |
+| 14 | import.meta.env TS error | Missing vite/client types | Fixed by #13 above |
 
 ---
 
@@ -894,21 +896,16 @@ The issue is likely a combination of Hypothesis 1 and 3:
 **Working:**
 - ✅ UI Layout & Tiling System
 - ✅ Settings navigation
-- ✅ JSON editor (when data exists)
+- ✅ JSON editor (all 13 tables)
+- ✅ Table view (all 13 tables)
 - ✅ Rule toggles
 - ✅ URL routing
 - ✅ GI7B branding
 
-**Broken/Issues:**
-- ⚠️ Table view for some tables (loading/empty data issues)
-- ⚠️ Missing data files for 7 tables
-- ⚠️ Table view error message appears incorrectly
-
 **Needs Testing:**
-- ⏳ All 13 tables with complete data
-- ⏳ Table editing functionality
-- ⏳ Save/Reset on all tables
+- ⏳ Table editing and Save/Reset on all 13 tables
 - ⏳ Mobile responsiveness of table editor
+- ⏳ Export/Import JSON per table
 
 ---
 
@@ -925,17 +922,203 @@ The issue is likely a combination of Hypothesis 1 and 3:
 - State initialization needs better handling (null vs undefined vs loading)
 - Empty state handling is crucial for UX
 - Deployment script needs to be committed from start
+- Vite standard files (vite-env.d.ts) should be scaffolded from day one
 
 **Technical debt:**
-- 7 tables missing sample data
+- ship_drives.json in public/data/ only has 3 entries (A, B, C) — full table has 26 codes (A–Z)
 - Need robust error handling for empty/malformed data
 - Need data validation schemas
 - PWA service worker may need cache invalidation strategy
 
 ---
 
-*Timelog last updated: March 2, 2026 (23:30 UTC)*
-*Total active development: ~14 hours*
-*Files modified: 50+*
+## Session 2 — March 2, 2026 (Post-Milestone 2 Bug Fix)
+
+**Timestamp:** March 2, 2026 (~19:00–19:30 UTC)
+**Agent:** Claude Sonnet 4.6 (new session, picked up from PROJECT_NOTES.md)
+**Context:** Picked up from PROJECT_NOTES.md — no PRD or AGENT_IMPLEMENTATION_GUIDE in repo (not committed by previous agent)
+
+---
+
+### Problem: Settings Data Table View Completely Broken
+
+**User Report:** "the current problem is the settings: data tables cannot be viewed in a table view"
+
+**Investigation findings:**
+
+The app has two `data/` directories that serve different purposes:
+
+| Directory | Purpose | Served by Vite? |
+|-----------|---------|----------------|
+| `data/` (root) | Source extraction from Excel — nested JSON with metadata | ❌ No |
+| `public/data/` | Static files served to browser | ✅ Yes |
+
+The previous session only populated 6 of 13 required tables in `public/data/`. The other 7 tables only existed in `data/` (root), which Vite never serves.
+
+---
+
+### Bug 1: 7 of 13 Data Files Missing from `public/data/`
+
+**Root Cause:** The previous agent extracted data into `data/` (root) but only created 6 flat-array files in `public/data/`. When the browser fetched the other 7 tables, it got a 404 response.
+
+**What happened in code:**
+```
+fetch('/data/ship_weapons.json')
+  → 404 Not Found
+  → catch block: setJsonContent('[]'), setOriginalContent('[]')
+  → BUT: validateJson('[]') was NOT called
+  → validationStatus stayed null
+  → Table view condition: validationStatus === 'valid' → false
+  → Shows "Cannot display table view - JSON is invalid" error
+```
+
+**Why this was wrong:** The error message said "JSON is invalid" but the JSON was fine (`[]` is valid JSON). The real problem was that the file was simply missing, and the fallback code never updated the validation state.
+
+**Fix:** Created all 7 missing flat-array JSON files in `public/data/`:
+- `smallcraft_drives.json` — 21 small craft drive codes (sA–sW)
+- `ship_bridge_computer.json` — 4 bridge/computer size specs
+- `ship_software.json` — 5 ship programs
+- `ship_sensors.json` — 5 sensor types
+- `ship_weapons.json` — 8 weapons (turret + bay)
+- `ship_missiles.json` — 3 missile types
+- `ship_vehicles.json` — 11 vehicles and drones
+
+**Data format difference (important):** Root `data/` files use nested structure with metadata:
+```json
+{ "metadata": { "source": "...", "version": "1.0" }, "weapons": [ {...}, ... ] }
+```
+`public/data/` files must be flat arrays so `TableDataEditor` can render them:
+```json
+[ { "weaponName": "Pulse Laser", "techLevel": 7, ... }, ... ]
+```
+
+---
+
+### Bug 2: `validateJson()` Not Called on Error/Empty Fallback
+
+**Root Cause:** In `JsonTableEditor.tsx`, the `loadTable` function had two branches where it set `jsonContent` to `'[]'` but never called `validateJson('[]')`:
+
+**Before (broken):**
+```typescript
+} else {
+  // file 404'd
+  setJsonContent('[]')
+  setOriginalContent('[]')
+  // ← validateJson NEVER CALLED
+  // validationStatus stays null
+}
+// catch block same problem
+```
+
+**After (fixed):**
+```typescript
+} else {
+  setJsonContent('[]')
+  setOriginalContent('[]')
+  validateJson('[]')  // ← now called; sets validationStatus to 'valid'
+}
+```
+
+**Why this was wrong:** `validationStatus` starts as `null`. The table view renders only when `validationStatus === 'valid'`. If a file 404s and the fallback never validates the empty array, the component stays in an error state even though `[]` is perfectly valid JSON. The displayed error message ("JSON is invalid") was actively misleading — the JSON was valid, the file was just missing.
+
+**Lesson:** Any code path that sets content must also call validation. The validation state machine had incomplete transitions.
+
+---
+
+### Bug 3: Fetch URL Breaks on GitHub Pages (Production)
+
+**Root Cause:** The fetch URL was hardcoded as an absolute path:
+```typescript
+fetch(`/data/${table.file}`)
+```
+
+**Why this breaks in production:**
+- Dev server: Vite serves `public/` at root → `/data/...` works ✓
+- GitHub Pages: App lives at `https://xunema.github.io/ce-shipgen/` → `/data/...` resolves to `https://xunema.github.io/data/...` → **404** ✗
+
+The previous agent set `base: '/ce-shipgen/'` in `vite.config.ts` to fix asset loading, but this only affects Vite's asset bundling — `fetch()` calls are not rewritten.
+
+**Fix:**
+```typescript
+fetch(`${import.meta.env.BASE_URL}data/${table.file}`)
+```
+
+`import.meta.env.BASE_URL` is set by Vite at build time to the configured base path (`/ce-shipgen/`), so this resolves correctly in both dev and production.
+
+---
+
+### Bug 4: `src/vite-env.d.ts` Missing (Build Failure)
+
+**Root Cause:** The standard Vite project template generates `src/vite-env.d.ts` with:
+```typescript
+/// <reference types="vite/client" />
+```
+This file was never created when the project was built manually (because the previous agent avoided the interactive `npm create vite` wizard). Without it, TypeScript does not know about `import.meta.env` and throws:
+
+```
+error TS2339: Property 'env' does not exist on type 'ImportMeta'
+```
+
+This caused the build to fail when Bug 3's fix was applied.
+
+**Fix:** Created `src/vite-env.d.ts` with the standard triple-slash reference. This tells TypeScript to include Vite's client-side type definitions, which declare `ImportMeta.env`, `ImportMeta.hot`, etc.
+
+**Why this was missing:** When the previous agent manually created project files to avoid the interactive wizard, it replicated the functionality of `vite.config.ts`, `tailwind.config.js`, etc., but missed this type declaration file. It's easy to overlook because it has no runtime effect — it only matters for TypeScript type checking during build.
+
+---
+
+### Deployment Session Notes
+
+**Deploy process used (manual, no deploy.sh):**
+```bash
+npm install
+npm run build          # tsc + vite build → dist/
+cp -r dist/. /tmp/     # copy built files to temp
+git checkout gh-pages
+git rm -rf .           # wipe gh-pages branch
+cp -r /tmp/. .         # restore built files
+git add [specific files only]  # exclude node_modules, dist/
+git commit
+git push origin gh-pages
+git checkout main
+```
+
+**Problem during deploy:** After switching to gh-pages and copying built files, `node_modules/` and `dist/` were still present in the working tree from before. Had to add files individually rather than `git add .` to avoid committing them.
+
+**Lesson (repeated from Session 1):** A committed `deploy.sh` script would prevent this. The script should explicitly list what to include rather than doing `git add .`. This problem was documented in Session 1 but the fix (committing deploy.sh) was apparently lost or not retained in the repo.
+
+---
+
+### Summary of All Fixes Applied
+
+| File | Change | Why |
+|------|--------|-----|
+| `public/data/smallcraft_drives.json` | Created (21 rows) | Missing — 404 on load |
+| `public/data/ship_bridge_computer.json` | Created (4 rows) | Missing — 404 on load |
+| `public/data/ship_software.json` | Created (5 rows) | Missing — 404 on load |
+| `public/data/ship_sensors.json` | Created (5 rows) | Missing — 404 on load |
+| `public/data/ship_weapons.json` | Created (8 rows) | Missing — 404 on load |
+| `public/data/ship_missiles.json` | Created (3 rows) | Missing — 404 on load |
+| `public/data/ship_vehicles.json` | Created (11 rows) | Missing — 404 on load |
+| `src/components/settings/JsonTableEditor.tsx` | Fix fetch URL + add validateJson in fallbacks | Bugs 2 & 3 |
+| `src/vite-env.d.ts` | Created | Bug 4 — build failure |
+
+**Commits:**
+- `main` branch: `dc04eef0` — "Fix settings table view: add missing data files and fetch URL"
+- `gh-pages` branch: `e20c0e91` — "Deploy: fix settings table view (all 13 data tables)"
+
+**Deployed:** https://xunema.github.io/ce-shipgen/
+
+---
+
+*Session 2 notes written: March 2, 2026*
+*Session 2 duration: ~30 minutes*
+*Files changed: 9 (7 new data files, 1 TS fix, 1 new type declaration)*
+
+---
+
+*Timelog last updated: March 2, 2026 (Session 2)*
+*Total active development: ~14.5 hours*
+*Files modified: 60+*
 *Commits: 15+*
 *Deployments: 12+*
