@@ -98,6 +98,19 @@ Licensed under **GPL v3** - you can:
 
 ## 🛣️ Roadmap & Future Ideas
 
+### Project Scope & Ecosystem
+
+**CE ShipGen focuses on:** Ships, Habitats, and Vehicles
+
+**Related Projects:**
+- **[Mneme World Generator PWA](https://github.com/justinaquino/mneme-world-generator-pwa)** - Handles detailed economic systems including:
+  - Trade volume calculations between systems
+  - Living economies with dynamic events
+  - Market fluctuations and trade route analysis
+  - World-building and system generation
+  
+**This project** (CE ShipGen) provides the vessel construction tools that feed into those economic systems. The Bill of Quantities (BOQ) method used here for ships can scale to vehicles and habitats, but detailed economic simulation remains in the world generator scope.
+
 ### Near Term (Milestones 3-4)
 - **Ship Library** - Complete save/load/export system with IndexedDB
 - **Common Ships** - Pre-built library of standard Cepheus Engine ships
@@ -120,6 +133,13 @@ Licensed under **GPL v3** - you can:
   - Space station and habitat construction rules
   - Spin gravity calculations
   - Life support and infrastructure
+
+- **Vehicle Construction** (Future Section)
+  - The BOQ (Bill of Quantities) method scales to ground vehicles and small craft
+  - Grav vehicles, tracked vehicles, wheeled vehicles
+  - ATVs, air/rafts, and planetary vehicles
+  - Modular component system using same methodology as ships
+  - *Note: This extends the ship construction system to smaller craft*
 
 ### Logistic Calculators (Major Feature)
 Comprehensive supply chain and economic management for ship operations:
