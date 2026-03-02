@@ -1,0 +1,7 @@
+[
+  { "sensorType": "Standard", "techLevel": 8, "dm": -4, "includes": "Radar, Lidar", "tons": 0, "costCr": 0, "notes": "Included in bridge cost and tonnage" },
+  { "sensorType": "Basic Civilian", "techLevel": 9, "dm": -2, "includes": "Radar, Lidar", "tons": 1, "costCr": 50000, "notes": "" },
+  { "sensorType": "Basic Military", "techLevel": 10, "dm": 0, "includes": "Radar, Lidar, Jammers", "tons": 2, "costCr": 1000000, "notes": "" },
+  { "sensorType": "Advanced", "techLevel": 11, "dm": 1, "includes": "Radar, Lidar, Densitometer, Jammers", "tons": 3, "costCr": 2000000, "notes": "" },
+  { "sensorType": "Very Advanced", "techLevel": 12, "dm": 2, "includes": "Radar, Lidar, Densitometer, Jammers, Neural Activity Sensor", "tons": 5, "costCr": 4000000, "notes": "" }
+]

@@ -1,0 +1,7 @@
+[
+  { "programName": "Auto-Repair", "techLevel": "10+", "rating": "10 per repair attempt", "costMCr": "0.005 per repair attempt", "notes": "Computer may attempt one repair per turn, or give DM+1 to an attempt; at TL12 can purchase additional attempt for twice the Rating and Cost." },
+  { "programName": "Evade", "techLevel": "9+", "rating": "5 + 5 per DM-1", "costMCr": "1 per DM-1", "notes": "Imposes DM-1 on incoming fire; every two TLs higher, can purchase an additional DM-1, to maximum DM-3 at TL13." },
+  { "programName": "Fire Control", "techLevel": "9+", "rating": "5 per weapon", "costMCr": "2 per weapon", "notes": "Ship computer may fire one weapon; for each additional weapon TL is increased by 1. Can also sacrifice a weapon to give DM+1 to another attack. Maximum five weapons." },
+  { "programName": "Jump Control", "techLevel": "9+", "rating": "5 per Jn", "costMCr": "0.1 x Jn", "notes": "Governs Jump drives up to a given Jump number (Jn); TL same as required for that Jump number." },
+  { "programName": "Jump Course Tape", "techLevel": "9+", "rating": "1 per Jn", "costMCr": "0.001 x Jn", "notes": "Provides jump plot from one specific world to a specific destination. Price based on parsecs; one-use program." }
+]

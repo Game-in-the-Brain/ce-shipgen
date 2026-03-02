@@ -1,0 +1,6 @@
+[
+  { "shipSize": "200 tons or less", "bridgeSize": "10 tons", "bridgeTons": 10, "computerModel": "Model 1", "techLevel": 7, "rating": 5, "costCr": 30000 },
+  { "shipSize": "300 – 1000 tons", "bridgeSize": "20 tons", "bridgeTons": 20, "computerModel": "Model 2", "techLevel": 9, "rating": 10, "costCr": 160000 },
+  { "shipSize": "1100 – 2000 tons", "bridgeSize": "40 tons", "bridgeTons": 40, "computerModel": "Model 3", "techLevel": 11, "rating": 15, "costCr": 2000000 },
+  { "shipSize": "More than 2000 tons", "bridgeSize": "60 tons", "bridgeTons": 60, "computerModel": "Model 4", "techLevel": 12, "rating": 20, "costCr": 5000000 }
+]

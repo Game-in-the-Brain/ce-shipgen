@@ -1,0 +1,13 @@
+[
+  { "vehicleName": "ATV", "tons": 13, "installationCostMCr": 2.6, "notes": "" },
+  { "vehicleName": "Air/Raft", "tons": 5, "installationCostMCr": 1.0, "notes": "" },
+  { "vehicleName": "Cutter", "tons": 65, "installationCostMCr": 13.0, "notes": "" },
+  { "vehicleName": "Escape Pods", "tons": 0.5, "installationCostMCr": 0.1, "notes": "Per passenger; 0.5t per person, Cr100,000 each" },
+  { "vehicleName": "Life Boat", "tons": 26, "installationCostMCr": 5.2, "notes": "" },
+  { "vehicleName": "Mining Drones", "tons": 10, "installationCostMCr": 2.0, "notes": "" },
+  { "vehicleName": "Pinnace", "tons": 52, "installationCostMCr": 10.4, "notes": "" },
+  { "vehicleName": "Probe Drones (5)", "tons": 1, "installationCostMCr": 0.2, "notes": "Pack of 5 drones" },
+  { "vehicleName": "Repair Drones", "tons": 1, "installationCostMCr": 0.2, "notes": "1% of ship hull; cost MCr0.2 per ton of drones" },
+  { "vehicleName": "Ship's Boat", "tons": 39, "installationCostMCr": 7.8, "notes": "" },
+  { "vehicleName": "Shuttle", "tons": 122.5, "installationCostMCr": 24.5, "notes": "" }
+]

@@ -1,0 +1,23 @@
+[
+  { "code": "sA", "mDriveTons": 0.5, "mDriveCostCr": 1000000, "pPlantTons": 1.2, "pPlantCostCr": 3000000, "fuelPerWeek": 0.4, "minFuel": 0.1, "crew": 0 },
+  { "code": "sB", "mDriveTons": 1.0, "mDriveCostCr": 2000000, "pPlantTons": 1.5, "pPlantCostCr": 3500000, "fuelPerWeek": 0.5, "minFuel": 0.1, "crew": 0 },
+  { "code": "sC", "mDriveTons": 1.5, "mDriveCostCr": 3000000, "pPlantTons": 1.8, "pPlantCostCr": 4000000, "fuelPerWeek": 0.6, "minFuel": 0.1, "crew": 0 },
+  { "code": "sD", "mDriveTons": 2.0, "mDriveCostCr": 3500000, "pPlantTons": 2.1, "pPlantCostCr": 4500000, "fuelPerWeek": 0.7, "minFuel": 0.1, "crew": 0 },
+  { "code": "sE", "mDriveTons": 2.5, "mDriveCostCr": 4000000, "pPlantTons": 2.4, "pPlantCostCr": 5000000, "fuelPerWeek": 0.8, "minFuel": 0.1, "crew": 0 },
+  { "code": "sF", "mDriveTons": 3.0, "mDriveCostCr": 6000000, "pPlantTons": 2.7, "pPlantCostCr": 5500000, "fuelPerWeek": 0.9, "minFuel": 0.1, "crew": 0 },
+  { "code": "sG", "mDriveTons": 3.5, "mDriveCostCr": 8000000, "pPlantTons": 3.0, "pPlantCostCr": 6000000, "fuelPerWeek": 1.0, "minFuel": 0.1, "crew": 1 },
+  { "code": "sH", "mDriveTons": 4.0, "mDriveCostCr": 9000000, "pPlantTons": 3.3, "pPlantCostCr": 6500000, "fuelPerWeek": 1.1, "minFuel": 0.1, "crew": 1 },
+  { "code": "sJ", "mDriveTons": 4.5, "mDriveCostCr": 10000000, "pPlantTons": 3.6, "pPlantCostCr": 7000000, "fuelPerWeek": 1.2, "minFuel": 0.1, "crew": 1 },
+  { "code": "sK", "mDriveTons": 5.0, "mDriveCostCr": 11000000, "pPlantTons": 3.9, "pPlantCostCr": 7500000, "fuelPerWeek": 1.3, "minFuel": 0.1, "crew": 1 },
+  { "code": "sL", "mDriveTons": 6.0, "mDriveCostCr": 12000000, "pPlantTons": 4.5, "pPlantCostCr": 8000000, "fuelPerWeek": 1.5, "minFuel": 0.1, "crew": 2 },
+  { "code": "sM", "mDriveTons": 7.0, "mDriveCostCr": 14000000, "pPlantTons": 5.1, "pPlantCostCr": 9000000, "fuelPerWeek": 1.7, "minFuel": 0.1, "crew": 2 },
+  { "code": "sN", "mDriveTons": 8.0, "mDriveCostCr": 16000000, "pPlantTons": 5.7, "pPlantCostCr": 10000000, "fuelPerWeek": 1.9, "minFuel": 0.1, "crew": 2 },
+  { "code": "sP", "mDriveTons": 9.0, "mDriveCostCr": 18000000, "pPlantTons": 6.3, "pPlantCostCr": 12000000, "fuelPerWeek": 2.1, "minFuel": 0.1, "crew": 2 },
+  { "code": "sQ", "mDriveTons": 10.0, "mDriveCostCr": 20000000, "pPlantTons": 6.9, "pPlantCostCr": 14000000, "fuelPerWeek": 2.3, "minFuel": 0.1, "crew": 2 },
+  { "code": "sR", "mDriveTons": 11.0, "mDriveCostCr": 22000000, "pPlantTons": 7.5, "pPlantCostCr": 16000000, "fuelPerWeek": 2.5, "minFuel": 0.1, "crew": 2 },
+  { "code": "sS", "mDriveTons": 12.0, "mDriveCostCr": 24000000, "pPlantTons": 8.1, "pPlantCostCr": 18000000, "fuelPerWeek": 2.7, "minFuel": 0.1, "crew": 3 },
+  { "code": "sT", "mDriveTons": 13.0, "mDriveCostCr": 26000000, "pPlantTons": 8.7, "pPlantCostCr": 20000000, "fuelPerWeek": 2.9, "minFuel": 0.1, "crew": 3 },
+  { "code": "sU", "mDriveTons": 14.0, "mDriveCostCr": 28000000, "pPlantTons": 9.3, "pPlantCostCr": 22000000, "fuelPerWeek": 3.1, "minFuel": 0.1, "crew": 3 },
+  { "code": "sV", "mDriveTons": 15.0, "mDriveCostCr": 30000000, "pPlantTons": 9.9, "pPlantCostCr": 24000000, "fuelPerWeek": 3.3, "minFuel": 0.1, "crew": 3 },
+  { "code": "sW", "mDriveTons": 16.0, "mDriveCostCr": 32000000, "pPlantTons": 10.5, "pPlantCostCr": 26000000, "fuelPerWeek": 3.5, "minFuel": 0.1, "crew": 3 }
+]

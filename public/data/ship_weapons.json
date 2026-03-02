@@ -1,0 +1,10 @@
+[
+  { "weaponName": "Missile Rack", "weaponType": "Turret", "techLevel": 6, "range": "Special", "damage": "Depends on missile", "costMCr": 0.75, "notes": "" },
+  { "weaponName": "Pulse Laser", "weaponType": "Turret", "techLevel": 7, "range": "Short", "damage": "2D6", "costMCr": 0.5, "notes": "Suffers DM-2 to attack" },
+  { "weaponName": "Sandcaster", "weaponType": "Turret", "techLevel": 7, "range": "Special", "damage": "Special", "costMCr": 0.25, "notes": "Reduces laser damage by 1D6; blocks beam lasers" },
+  { "weaponName": "Particle Beam", "weaponType": "Turret", "techLevel": 8, "range": "Long", "damage": "3D6 + radiation hit", "costMCr": 4.0, "notes": "" },
+  { "weaponName": "Beam Laser", "weaponType": "Turret", "techLevel": 9, "range": "Medium", "damage": "1D6", "costMCr": 1.0, "notes": "" },
+  { "weaponName": "Missile Bank", "weaponType": "Bay", "techLevel": 6, "range": "Special", "damage": "Launches a flight of twelve missiles", "costMCr": 12.0, "notes": "" },
+  { "weaponName": "Particle Beam", "weaponType": "Bay", "techLevel": 8, "range": "Long", "damage": "6D6 + 1 radiation hit", "costMCr": 20.0, "notes": "" },
+  { "weaponName": "Meson Gun", "weaponType": "Bay", "techLevel": 11, "range": "Long", "damage": "5D6 + 1 radiation hit", "costMCr": 50.0, "notes": "Ignores armor" }
+]

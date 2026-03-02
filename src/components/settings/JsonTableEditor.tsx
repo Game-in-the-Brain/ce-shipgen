@@ -60,7 +60,7 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
         validateJson(saved)
       } else {
         // Load from default data file
-        const response = await fetch(`/data/${table.file}`)
+        const response = await fetch(`${import.meta.env.BASE_URL}data/${table.file}`)
         if (response.ok) {
           const data = await response.json()
           const formatted = JSON.stringify(data, null, 2)
@@ -71,12 +71,14 @@ export default function JsonTableEditor({ onDataChange }: JsonEditorProps) {
           // If file doesn't exist, create empty template
           setJsonContent('[]')
           setOriginalContent('[]')
+          validateJson('[]')
         }
       }
     } catch (error) {
       console.error('Error loading table:', error)
       setJsonContent('[]')
       setOriginalContent('[]')
+      validateJson('[]')
     } finally {
       setIsLoading(false)
       setHasChanges(false)
