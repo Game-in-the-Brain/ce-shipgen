@@ -26,7 +26,67 @@ Create a Progressive Web App (PWA) that implements the complete Cepheus Engine s
 
 ---
 
-## 2. FUNCTIONAL REQUIREMENTS
+## 2. GI7B UI STANDARD REFERENCE
+
+CE ShipGen is the **canonical reference implementation** of the GI7B Generator UI Standard. All GI7B generators follow this navigation tree, layout system, and tile pattern.
+
+### App Navigation Tree
+
+```
+Landing Page  (/)
+│
+├── 🌙/☀️  Theme Toggle   [header — always visible]
+│         Night (dark) / Day (light)
+│
+├── 🖥️/📱  Layout Toggle  [header — always visible]
+│         Desktop: three-column  (Nav 15% | Tiles 55% | Summary 30%)
+│         Mobile:  single-column vertical stack
+│
+├── ✨ Generate Now  (/generate)
+│      Main creation flow — tile-based, 19-step ship design
+│
+├── 📚 Library  (/library)
+│      All saved ships — search, filter, export
+│
+└── ⚙️ Settings  (/settings)
+    ├── 📄 JSON Tables        (/settings/tables)
+    │      All generation tables — editable, exportable, versionable per step
+    ├── 🧩 Mechanics Modules  (/settings/mechanics)
+    │      Rule variant toggles (CE RAW vs Mneme Variant)
+    ├── 🎲 Generation Options (/settings/options)
+    │      Presets, "Random Everything", lock/unlock fields
+    └── 🔧 Other Settings     (/settings/other)
+           Theme, layout defaults, version info, PWA install
+```
+
+### Tile System
+
+| State | Description |
+|-------|-------------|
+| **Collapsed** | Summary label only — shows key value |
+| **Expanded** | Full tile content — inputs, selections, details |
+| **Focused** | Full-screen overlay — ESC to exit |
+
+### Settings Sections
+
+| Section | Route | Icon | Purpose |
+|---------|-------|------|---------|
+| JSON Tables | `/settings/tables` | 📄 | All data tables — dual JSON/Table view, canonical + custom |
+| Mechanics Modules | `/settings/mechanics` | 🧩 | Rule variant toggles (CE RAW vs Mneme Variant) |
+| Generation Options | `/settings/options` | 🎲 | Named presets, "Random Everything", field locks |
+| Other Settings | `/settings/other` | 🔧 | Theme, layout, version control, PWA install |
+
+### GI7B Generator Suite
+
+| Generator | Repo | UI Role |
+|-----------|------|---------|
+| **CE ShipGen** | xunema/ce-shipgen | **Canonical reference** — this repo |
+| CE CharacterGen | xunema/cecharactergen | Follows shipgen pattern |
+| Mneme World Gen | xunema/mneme-world-generator-pwa | Follows shipgen pattern |
+
+---
+
+## 3. FUNCTIONAL REQUIREMENTS
 
 ### 2.1 Core Ship Designer (FR-001 to FR-020)
 
@@ -132,9 +192,9 @@ Create a Progressive Web App (PWA) that implements the complete Cepheus Engine s
 
 ### 2.2 User Interface (FR-006 to FR-015)
 
-#### FR-006: Responsive Layout with Mode Toggle
+#### FR-006: Responsive Layout with Mode Toggle and Theme Toggle (GI7B Standard)
 **Priority:** Critical
-**Description:** Two distinct layout modes with manual toggle
+**Description:** Two distinct layout modes with manual toggle, plus Night/Day theme toggle — both always visible in header
 
 **Desktop/Tablet Mode (Landscape):**
 - Horizontal tiling (left-to-right)
@@ -147,12 +207,18 @@ Create a Progressive Web App (PWA) that implements the complete Cepheus Engine s
 - Scrollable tiles stack
 - Bottom navigation or swipe gestures
 
-**Layout Toggle:**
-- Manual button in header
-- Auto-detect viewport size
-- Store preference in localStorage
+**Layout Toggle (🖥️/📱):**
+- Manual button in header — always visible
+- Auto-detect viewport size on first load
+- Store `ce_shipgen_layout_mode` in localStorage
 
-**Acceptance:** No horizontal scroll on mobile, all features accessible, toggle works instantly
+**Theme Toggle (🌙/☀️):**
+- Manual button in header — always visible, left of layout toggle
+- Night (dark) / Day (light) mode
+- Store `ce_shipgen_theme` in localStorage
+- Default: system `prefers-color-scheme` on first load
+
+**Acceptance:** No horizontal scroll on mobile, all features accessible, both toggles always visible in header, both preferences persist
 
 ---
 
@@ -202,22 +268,50 @@ Startup → [Generate Ship] → Design Workflow
 
 ---
 
-#### FR-009: Settings Screen with JSON Editor
+#### FR-009: Settings Screen — GI7B Standard Sections
 **Priority:** High
-**Description:** Pre-design configuration with editable data tables
+**Description:** Pre-design configuration with editable data tables, rule toggles, and app settings. Follows the **GI7B UI Standard** with four fixed sections.
 
-**Sections:**
-1. **Layout Settings:** Desktop/Phone mode, focus behavior, animations
-2. **Rule Settings:** Cepheus/Mneme/Custom, individual rule toggles
-3. **JSON Table Editor:**
-   - Select table from dropdown
-   - Inline JSON editor with syntax highlighting
-   - Real-time schema validation
-   - Preview, Save, Export, Reset, Import
-4. **Theme Settings:** Dark/Light/Auto, colors, fonts
-5. **Data Management:** Export/Import/Clear all ships
+**URL:** `/settings` (redirects to `/settings/tables`) or `/settings/:section`
 
-**Acceptance:** JSON editor validates schema, changes apply immediately, import/export works, settings persist
+| Section | Route | Icon | Purpose |
+|---------|-------|------|---------|
+| JSON Tables | `/settings/tables` | 📄 | All data tables — dual JSON/Table view, canonical + custom |
+| Mechanics Modules | `/settings/mechanics` | 🧩 | Rule variant toggles (CE RAW vs Mneme Variant) |
+| Generation Options | `/settings/options` | 🎲 | Named presets, "Random Everything", field locks |
+| Other Settings | `/settings/other` | 🔧 | Theme, layout defaults, version control, PWA install |
+
+**1. 📄 JSON Tables** (`/settings/tables`)
+- Select table from dropdown (organized by category)
+- Inline JSON editor with syntax highlighting
+- Real-time schema validation
+- Dual view: JSON source / Spreadsheet table
+- Export individual tables as JSON; import custom tables
+- Canonical Tables (read-only reference) + Custom Tables (user-created)
+- **Tables In Play** — select which table is active per generation step
+
+**2. 🧩 Mechanics Modules** (`/settings/mechanics`)
+- Master toggle: Cepheus Engine RAW / Mneme Space Combat / Custom
+- Individual rule toggles (each discrete and named):
+  - Bridge sizing model (CE fixed / Mneme per-Dton)
+  - Life pod capacity (CE / Mneme variant)
+  - NavComm skill (Navigation / Comms)
+- Custom rule import for house rules
+
+**3. 🎲 Generation Options** (`/settings/options`)
+- "Random Everything" — fully random ship within constraints
+- Named presets (e.g., "Scout Ship", "Merchant Freighter", "Warship")
+- Lock/unlock individual design fields before generating
+- Default hull size and configuration preferences
+
+**4. 🔧 Other Settings** (`/settings/other`)
+- Theme: Dark / Light / Auto — mirrors header 🌙/☀️ toggle
+- Layout default: Desktop / Phone
+- Version display and update prompt
+- PWA install prompt
+- Data management: export/import/clear all ships
+
+**Acceptance:** JSON editor validates schema, changes apply immediately, import/export works, all four sections accessible via sidebar nav and direct URL
 
 ---
 
