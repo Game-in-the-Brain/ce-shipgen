@@ -1204,6 +1204,55 @@ export function ShipDesigner() {
             </div>
           </div>
         </CollapsibleSection>
+
+        {/* 13. Crew */}
+        <CollapsibleSection title="13. Crew Requirements (CE)" defaultOpen>
+          {crewReqs ? (
+            <div className="space-y-3">
+              <div className="grid grid-cols-3 gap-2 text-center">
+                <div className="bg-slate-800/50 p-2 rounded-lg">
+                  <div className="text-xs text-slate-500">Minimum Crew</div>
+                  <div className="text-xl font-bold text-blue-400">{crewReqs.totalMinimum}</div>
+                </div>
+                <div className="bg-slate-800/50 p-2 rounded-lg">
+                  <div className="text-xs text-slate-500">Full Complement</div>
+                  <div className="text-xl font-bold text-cyan-400">{crewReqs.totalFull}</div>
+                </div>
+                <div className="bg-slate-800/50 p-2 rounded-lg">
+                  <div className="text-xs text-slate-500">Monthly Payroll</div>
+                  <div className="text-xl font-bold text-green-400">{(crewReqs.monthlySalary / 1000).toFixed(0)}k Cr</div>
+                </div>
+              </div>
+
+              <div className="overflow-x-auto">
+                <table className="w-full text-sm">
+                  <thead>
+                    <tr className="text-left text-slate-500 border-b border-slate-700">
+                      <th className="pb-1">Position</th>
+                      <th className="pb-1 text-center">Min</th>
+                      <th className="pb-1 text-center">Full</th>
+                      <th className="pb-1 text-right">Salary/mo</th>
+                      <th className="pb-1 text-right">Shift</th>
+                    </tr>
+                  </thead>
+                  <tbody className="divide-y divide-slate-800">
+                    {crewReqs.positions.map((p, i) => (
+                      <tr key={i} className={p.minimum > 0 ? 'text-slate-200' : 'text-slate-500'}>
+                        <td className="py-1.5">{p.position}</td>
+                        <td className="py-1.5 text-center">{p.minimum}</td>
+                        <td className="py-1.5 text-center">{p.fullComplement}</td>
+                        <td className="py-1.5 text-right">{p.salary.toLocaleString()} Cr</td>
+                        <td className="py-1.5 text-right">{p.shiftPay.toLocaleString()} Cr</td>
+                      </tr>
+                    ))}
+                  </tbody>
+                </table>
+              </div>
+            </div>
+          ) : (
+            <div className="text-sm text-slate-500">Select a hull to calculate crew requirements.</div>
+          )}
+        </CollapsibleSection>
       </div>
 
       {/* Right Column: BOQ & Summary */}
