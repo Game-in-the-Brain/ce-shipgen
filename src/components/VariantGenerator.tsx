@@ -63,9 +63,9 @@ export function VariantGenerator() {
       }
 
       // Vary drives
-      const mDriveCode = baseShip.mDrive;
-      const jDriveCode = baseShip.jDrive;
-      const ppCode = baseShip.powerPlant;
+      const mDriveCode = baseShip.mDrive || '';
+      const jDriveCode = baseShip.jDrive || '';
+      const ppCode = baseShip.powerPlant || '';
 
       const newMDrive = params.driveVariance > 0 && Math.random() < 0.4
         ? String(pickRandom(drives.filter((d: Record<string, unknown>) => Number(d['M-Drive\n Tons']) > 0))?.['Drive Code'] || mDriveCode)
@@ -111,7 +111,7 @@ export function VariantGenerator() {
       }
 
       // Vary weapons
-      const newWeapons: ShipComponent[] = baseShip.weapons
+      const newWeapons: ShipComponent[] = (baseShip.weapons || [])
         .filter(() => Math.random() > (params.weaponVariance / 200))
         .map(w => ({ ...w, qty: varyInt(w.qty || 1, params.weaponVariance) }));
 
@@ -159,7 +159,7 @@ export function VariantGenerator() {
       const ppTons = selectedPP ? Number(selectedPP['P-Plant\n Tons'] || 0) : 0;
       const ppFuelWk = selectedPP ? Number(selectedPP['Fuel/Wk\n (tons)'] || 0) : 0;
 
-      const selectedBridge = tables.ship_bridge?.rows?.find((b: Record<string, unknown>) => String(b['WEAPONS'] || b['Bridge Size']).includes(baseShip.bridge));
+      const selectedBridge = tables.ship_bridge?.rows?.find((b: Record<string, unknown>) => String(b['WEAPONS'] || b['Bridge Size']).includes(baseShip.bridge || ''));
       const bridgeTons = selectedBridge ? Number(selectedBridge['DTONS'] || selectedBridge['Tons'] || 0) : 0;
       const bridgeCost = selectedBridge ? Number(selectedBridge['COST'] || 0) : 0;
 
@@ -167,10 +167,10 @@ export function VariantGenerator() {
       const powerFuel = ppFuelWk * 2;
       const totalFuel = jumpFuel + powerFuel;
 
-      const stateroomTons = baseShip.staterooms * 4;
-      const stateroomCost = baseShip.staterooms * 500000;
-      const lowBerthTons = baseShip.lowBerths * 0.5;
-      const lowBerthCost = baseShip.lowBerths * 50000;
+      const stateroomTons = (baseShip.staterooms || 0) * 4;
+      const stateroomCost = (baseShip.staterooms || 0) * 500000;
+      const lowBerthTons = (baseShip.lowBerths || 0) * 0.5;
+      const lowBerthCost = (baseShip.lowBerths || 0) * 50000;
 
       const armorTons = actualHullDtons * 0.05 * armorQty;
 
@@ -182,10 +182,10 @@ export function VariantGenerator() {
       if (mDriveTons > 0) components.push({ section: 'M-Drive', module: newMDrive, dtons: mDriveTons, cost: mDriveCost });
       if (jDriveTons > 0) components.push({ section: 'J-Drive', module: newJDrive, dtons: jDriveTons, cost: jDriveCost });
       if (ppTons > 0) components.push({ section: 'Power Plant', module: newPP, dtons: ppTons, cost: ppCost });
-      if (bridgeTons > 0) components.push({ section: 'Bridge', module: baseShip.bridge, dtons: bridgeTons, cost: bridgeCost });
+      if (bridgeTons > 0) components.push({ section: 'Bridge', module: baseShip.bridge || '', dtons: bridgeTons, cost: bridgeCost });
       if (totalFuel > 0) components.push({ section: 'Fuel', module: 'Jump + Power Plant', dtons: totalFuel, cost: 0 });
-      if (stateroomTons > 0) components.push({ section: 'Life Support', module: `${baseShip.staterooms} Staterooms`, dtons: stateroomTons, cost: stateroomCost });
-      if (lowBerthTons > 0) components.push({ section: 'Life Support', module: `${baseShip.lowBerths} Low Berths`, dtons: lowBerthTons, cost: lowBerthCost });
+      if (stateroomTons > 0) components.push({ section: 'Life Support', module: `${baseShip.staterooms || 0} Staterooms`, dtons: stateroomTons, cost: stateroomCost });
+      if (lowBerthTons > 0) components.push({ section: 'Life Support', module: `${baseShip.lowBerths || 0} Low Berths`, dtons: lowBerthTons, cost: lowBerthCost });
       components.push(...newModules, ...newWeapons);
       if (cargo > 0) components.push({ section: 'Cargo', module: 'Cargo Hold', dtons: cargo, cost: 0 });
 
@@ -201,15 +201,16 @@ export function VariantGenerator() {
         hullDtons: actualHullDtons,
         configuration: baseShip.configuration,
         armor: armorType,
+        armorQty,
         mDrive: newMDrive,
         jDrive: newJDrive,
         powerPlant: newPP,
-        bridge: baseShip.bridge,
-        computer: baseShip.computer,
-        software: baseShip.software,
-        sensors: baseShip.sensors,
-        staterooms: baseShip.staterooms,
-        lowBerths: baseShip.lowBerths,
+        bridge: baseShip.bridge || '',
+        computer: baseShip.computer || '',
+        software: baseShip.software || [],
+        sensors: baseShip.sensors || '',
+        staterooms: baseShip.staterooms || 0,
+        lowBerths: baseShip.lowBerths || 0,
         crew: [],
         modules: newModules,
         weapons: newWeapons,

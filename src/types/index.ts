@@ -179,6 +179,63 @@ export interface EnginePerformanceModel {
   [hullSize: string]: string | number | null;
 }
 
+// ─── Child Table Items ───
+
+export interface ChildItem {
+  id: string;
+  name: string;
+  dtons: number;
+  cost: number;
+  qty: number;
+  tl?: number;
+  notes?: string;
+  options?: string[];
+  slots?: number;
+  slotItems?: ChildItem[];
+}
+
+export interface DriveItem extends ChildItem {
+  type: 'thrust' | 'powerPlant' | 'jump';
+  driveCode: string;
+  performance?: number;
+}
+
+export interface BridgeItem extends ChildItem {
+  type: 'cockpit' | 'bridge' | 'commandStation' | 'cabin';
+  stations?: number;
+}
+
+export interface ComputerItem extends ChildItem {
+  model: string;
+  slots: number;
+  options: string[];
+}
+
+export interface SoftwareItem extends ChildItem {
+  program: string;
+  rating: number;
+  active: boolean;
+}
+
+export interface SensorItem extends ChildItem {
+  sensorType: string;
+}
+
+export interface LifeSupportItem extends ChildItem {
+  facilityType: string;
+  capacity: number;
+}
+
+export interface WeaponMountItem extends ChildItem {
+  mountType: 'turret' | 'bay' | 'hardpoint';
+  maxWeapons: number;
+  weapons: ChildItem[];
+}
+
+export interface SupplyItem extends ChildItem {
+  supplyType: string;
+}
+
 // Ship Design
 export interface ShipComponent {
   section: string;
@@ -198,19 +255,31 @@ export interface ShipDesign {
   hullDtons: number;
   configuration: string;
   armor: string;
-  mDrive: string;
-  jDrive: string;
-  powerPlant: string;
-  bridge: string;
-  computer: string;
-  software: string[];
-  sensors: string;
-  staterooms: number;
-  lowBerths: number;
-  crew: ShipComponent[];
+  armorQty: number;
+  // New child-table architecture (v0.02+)
+  drives?: DriveItem[];
+  commandControl?: BridgeItem[];
+  computers?: ComputerItem[];
+  softwareList?: SoftwareItem[];
+  sensorList?: SensorItem[];
+  lifeSupport?: LifeSupportItem[];
+  weaponMounts?: WeaponMountItem[];
+  supplies?: SupplyItem[];
+  // Legacy flat fields (pre-v0.02 compatibility)
+  mDrive?: string;
+  jDrive?: string;
+  powerPlant?: string;
+  bridge?: string;
+  computer?: string;
+  software?: string[];
+  sensors?: string;
+  staterooms?: number;
+  lowBerths?: number;
+  weapons?: ShipComponent[];
+  // Common fields
   modules: ShipComponent[];
-  weapons: ShipComponent[];
   cargo: number;
+  crew: ShipComponent[];
   components: ShipComponent[];
   totalCost: number;
   availableDtons: number;

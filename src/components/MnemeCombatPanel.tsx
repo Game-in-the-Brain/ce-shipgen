@@ -7,7 +7,7 @@ interface MnemeCombatPanelProps {
 }
 
 export function MnemeCombatPanel({ ship }: MnemeCombatPanelProps) {
-  const weaponCount = ship.weapons.reduce((s, w) => s + (w.qty || 1), 0);
+  const weaponCount = (ship.weapons || []).reduce((s, w) => s + (w.qty || 1), 0);
   const stats = calcMnemeCombatStats(ship.hullDtons, weaponCount, 0);
 
   return (

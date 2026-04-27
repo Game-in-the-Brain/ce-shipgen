@@ -79,7 +79,7 @@ export function exportShipToFoundryVTT(ship: ShipDesign): string {
 <p><strong>Cost:</strong> ${(ship.totalCost / 1e6).toFixed(2)} MCr</p>
 <p><strong>Components:</strong> ${ship.components.length}</p>`,
     },
-    items: ship.weapons.map((w, i) => ({
+    items: (ship.weapons || []).map((w, i) => ({
       name: w.module,
       type: 'weapon',
       _id: `weapon${i}`,

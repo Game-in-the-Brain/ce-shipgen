@@ -20,9 +20,9 @@ export function validateShip(design: ShipDesign): ValidationResult {
 
   // 2. Power Plant ≥ max(M-Drive, J-Drive) letter
   if (design.mDrive || design.jDrive) {
-    const minPP = getMinPowerPlantLetter(design.mDrive, design.jDrive);
+    const minPP = getMinPowerPlantLetter(design.mDrive || '', design.jDrive || '');
     const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-    const ppIndex = letters.indexOf(design.powerPlant.toUpperCase());
+    const ppIndex = letters.indexOf((design.powerPlant || '').toUpperCase());
     const minIndex = letters.indexOf(minPP);
     if (minPP && (ppIndex < 0 || ppIndex < minIndex)) {
       hardErrors.push({
@@ -36,7 +36,7 @@ export function validateShip(design: ShipDesign): ValidationResult {
 
   // 3. Hardpoints ≤ floor(Hull/100)
   const maxHardpoints = Math.floor(design.hullDtons / 100);
-  const usedHardpoints = design.weapons.reduce((s, w) => s + (w.qty || 1), 0);
+  const usedHardpoints = (design.weapons || []).reduce((s, w) => s + (w.qty || 1), 0);
   if (usedHardpoints > maxHardpoints) {
     hardErrors.push({
       code: 'HARDPOINTS_EXCEEDED',
@@ -93,7 +93,7 @@ export function validateShip(design: ShipDesign): ValidationResult {
   }
 
   // Weapons without fire control
-  if (design.weapons.length > 0 && !design.software.some(s => s.toLowerCase().includes('fire'))) {
+  if ((design.weapons || []).length > 0 && !(design.software || []).some(s => s.toLowerCase().includes('fire'))) {
     softWarnings.push({
       code: 'NO_FIRE_CONTROL',
       message: 'Weapons installed but no Fire Control software selected',
@@ -103,7 +103,7 @@ export function validateShip(design: ShipDesign): ValidationResult {
   }
 
   // Jump drive without navigation software
-  if (design.jDrive && !design.software.some(s => s.toLowerCase().includes('jump') || s.toLowerCase().includes('nav'))) {
+  if (design.jDrive && !(design.software || []).some(s => s.toLowerCase().includes('jump') || s.toLowerCase().includes('nav'))) {
     softWarnings.push({
       code: 'NO_JUMP_NAV',
       message: 'Jump drive installed but no Jump Control/Navigation software selected',
@@ -113,9 +113,10 @@ export function validateShip(design: ShipDesign): ValidationResult {
   }
 
   // Crew > life support capacity
-  const stateroomCapacity = design.staterooms * 2; // 2 per stateroom
-  const totalPeople = crewCount + design.staterooms; // rough estimate
-  if (totalPeople > stateroomCapacity && design.staterooms > 0) {
+  const staterooms = design.staterooms || 0;
+  const stateroomCapacity = staterooms * 2; // 2 per stateroom
+  const totalPeople = crewCount + staterooms; // rough estimate
+  if (totalPeople > stateroomCapacity && staterooms > 0) {
     softWarnings.push({
       code: 'LIFE_SUPPORT_STRESSED',
       message: 'Crew and passengers may exceed life support capacity',

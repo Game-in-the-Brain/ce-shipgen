@@ -17,7 +17,7 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
   const hullPoints = calcHullPoints(ship.hullDtons);
   const structurePoints = calcStructurePoints(ship.hullDtons);
   const hardpoints = calcHardpoints(ship.hullDtons);
-  const usedHardpoints = ship.weapons.reduce((s, w) => s + (w.qty || 1), 0);
+  const usedHardpoints = (ship.weapons || []).reduce((s, w) => s + (w.qty || 1), 0);
 
   return (
     <div className="fixed inset-0 z-[80] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
@@ -147,11 +147,11 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
           </div>
 
           {/* Weapons */}
-          {ship.weapons.length > 0 && (
+          {(ship.weapons || []).length > 0 && (
             <div>
               <h3 className="text-sm font-semibold text-slate-300 mb-2">Weapons</h3>
               <div className="bg-slate-800/50 rounded-lg divide-y divide-slate-700">
-                {ship.weapons.map((w, i) => (
+                {(ship.weapons || []).map((w, i) => (
                   <div key={i} className="px-3 py-2 flex justify-between text-sm">
                     <span>{w.module}</span>
                     <span className="text-slate-400">{w.qty || 1}× | {w.dtons} DT</span>

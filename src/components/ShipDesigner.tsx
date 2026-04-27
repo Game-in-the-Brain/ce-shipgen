@@ -1,7 +1,8 @@
-import { useState, useMemo, useCallback } from 'react';
+import { useState, useMemo, useEffect } from 'react';
 import { useTableStore } from '../store/tableStore';
 import { CollapsibleSection } from './CollapsibleSection';
 import { BOQView } from './BOQView';
+import { ChildTable } from './ChildTable';
 import { MnemeCombatPanel } from './MnemeCombatPanel';
 import { downloadJson, generateSnapshotName } from '../utils/exportImport';
 import {
@@ -11,7 +12,20 @@ import {
 } from '../calculations';
 import { validateShip } from '../validations';
 import { Save, Calculator, Trash2, AlertTriangle, CheckCircle } from 'lucide-react';
-import type { ShipComponent, ShipDesign } from '../types';
+import type { ShipComponent, ShipDesign, ChildItem } from '../types';
+
+// ─── Helpers ───
+
+function generateShipName(hullDtons: number): string {
+  const now = new Date();
+  const yy = String(now.getFullYear()).slice(2);
+  const mm = String(now.getMonth() + 1).padStart(2, '0');
+  const dd = String(now.getDate()).padStart(2, '0');
+  const rand = Math.floor(Math.random() * 90) + 10;
+  return `${Math.round(hullDtons)}DT-${yy}${mm}${dd}-${rand}`;
+}
+
+// ─── Component ───
 
 export function ShipDesigner() {
   const tables = useTableStore((s) => s.tables);
@@ -22,13 +36,46 @@ export function ShipDesigner() {
   const setCurrentShip = useTableStore((s) => s.setCurrentShip);
   const currentShip = useTableStore((s) => s.currentShip);
 
-  // Form state
+  // ─── Basic Info ───
   const [name, setName] = useState('');
   const [tl, setTl] = useState(9);
+
+  // ─── Hull & Config ───
   const [hullCode, setHullCode] = useState('');
   const [config, setConfig] = useState('Standard');
+
+  // ─── Armor ───
   const [armorType, setArmorType] = useState('');
   const [armorQty, setArmorQty] = useState(1);
+
+  const [jumpParsecs, setJumpParsecs] = useState(0);
+
+  // ─── Command & Control (child table) ───
+  const [commandRows, setCommandRows] = useState<ChildItem[]>([]);
+
+  // ─── Computers (child table, max 2) ───
+  const [computerRows, setComputerRows] = useState<ChildItem[]>([]);
+
+  // ─── Software (child table) ───
+  const [softwareRows, setSoftwareRows] = useState<ChildItem[]>([]);
+
+  // ─── Sensors (child table) ───
+  const [sensorRows, setSensorRows] = useState<ChildItem[]>([]);
+
+  // ─── Life Support (child table) ───
+  const [lifeSupportRows, setLifeSupportRows] = useState<ChildItem[]>([]);
+
+  // ─── Modules (child table) ───
+  const [moduleRows, setModuleRows] = useState<ChildItem[]>([]);
+
+  // ─── Weapon Mounts (child table) ───
+  const [weaponMountRows, setWeaponMountRows] = useState<ChildItem[]>([]);
+
+  // ─── Cargo ───
+  const [cargo, setCargo] = useState(0);
+  const [supplyRows, setSupplyRows] = useState<ChildItem[]>([]);
+
+  // ─── Legacy flat fields (for backward compat) ───
   const [mDrive, setMDrive] = useState('');
   const [jDrive, setJDrive] = useState('');
   const [powerPlant, setPowerPlant] = useState('');
@@ -40,34 +87,41 @@ export function ShipDesigner() {
   const [lowBerths, setLowBerths] = useState(0);
   const [selectedModules, setSelectedModules] = useState<{id: string; qty: number}[]>([]);
   const [selectedWeapons, setSelectedWeapons] = useState<{id: string; qty: number}[]>([]);
-  const [jumpParsecs, setJumpParsecs] = useState(2);
-  const [cargo, setCargo] = useState(0);
 
-  // Get table data
+  // ─── Table Data ───
   const hulls = tables.ship_hulls?.rows || [];
   const configs = tables.hull_configurations?.rows || [];
   const armors = tables.ship_armor?.rows || [];
   const drives = tables.ship_drives?.rows || [];
   const bridges = tables.ship_bridge?.rows || [];
+  const computers = tables.ship_computers?.rows || [];
   const software = tables.ship_software?.rows || [];
   const sensorList = tables.ship_sensors?.rows || [];
   const modules = tables.ship_modules?.rows || [];
   const weapons = tables.ship_weapons?.rows || [];
 
-
+  // ─── Hull Calculations ───
   const selectedHull = hulls.find((h: Record<string, unknown>) => String(h['DTONS']) === hullCode || String(h['Performance Column']) === hullCode);
   const hullDtons = selectedHull ? Number(selectedHull['DTONS']) : 0;
   const hullCost = selectedHull ? Number(selectedHull['COST']) : 0;
 
+  // Auto-generate name when hull changes
+  useEffect(() => {
+    if (hullDtons > 0 && !name) {
+      setName(generateShipName(hullDtons));
+    }
+  }, [hullDtons]);
+
   const selectedConfig = configs.find((c: Record<string, unknown>) => String(c['Configuration']).includes(config));
   const configMod = selectedConfig ? Number(selectedConfig['Hull Cost Modifier'] || 0) : 0;
 
+  // ─── Armor ───
   const selectedArmor = armors.find((a: Record<string, unknown>) => String(a['Armor Type']).includes(armorType));
-  const armorProtection = selectedArmor ? Number(selectedArmor['Protection'] || 0) : 0;
-  const armorCostMod = selectedArmor ? Number(selectedArmor['Cost'] || 0) : 0;
+  const armorCostMod = selectedArmor ? Number(selectedArmor['Cost Factor'] || selectedArmor['Cost'] || 0) : 0;
   const armorTons = calcArmorTonnage(hullDtons, 0.05, armorQty, 1.0);
   const armorCost = calcArmorCost(hullCost, armorCostMod, armorQty);
 
+  // ─── Legacy Drives (for backward compat calcs) ───
   const selectedMDrive = drives.find((d: Record<string, unknown>) => String(d['Drive Code']) === mDrive);
   const mDriveTons = selectedMDrive ? Number(selectedMDrive['M-Drive\n Tons'] || 0) : 0;
   const mDriveCost = selectedMDrive ? Number(selectedMDrive['M-Drive COST'] || 0) : 0;
@@ -79,31 +133,32 @@ export function ShipDesigner() {
   const selectedPP = drives.find((d: Record<string, unknown>) => String(d['Drive Code']) === powerPlant);
   const ppTons = selectedPP ? Number(selectedPP['P-Plant\n Tons'] || 0) : 0;
   const ppCost = selectedPP ? Number(selectedPP['PP COST'] || 0) : 0;
-  const selectedBridge = bridges.find((b: Record<string, unknown>) => String(b['WEAPONS'] || b['Bridge Size']).includes(bridge));
-  const bridgeTons = selectedBridge ? Number(selectedBridge['DTONS'] || selectedBridge['Tons'] || 0) : 0;
-  const bridgeCost = selectedBridge ? Number(selectedBridge['COST'] || 0) : 0;
+  const ppFuelWk = selectedPP ? Number(selectedPP['Fuel/Wk\n (tons)'] || 0) : 0;
 
+  // ─── Fuel ───
   const jumpFuel = calcJumpFuel(hullDtons, jumpParsecs);
   const powerFuel = calcPowerFuel(ppTons, 2);
   const totalFuel = jumpFuel + powerFuel;
 
+  // ─── Legacy Life Support ───
   const stateroomTons = calcStateroomTonnage(staterooms);
   const stateroomCost = calcStateroomCost(staterooms);
   const lowBerthTons = calcLowBerthTonnage(lowBerths);
   const lowBerthCost = calcLowBerthCost(lowBerths);
 
-  const moduleComponents: ShipComponent[] = selectedModules.map((sm) => {
-    const mod = modules.find((m: Record<string, unknown>) => String(m['Module'] || m['WEAPONS']).includes(sm.id));
-    const tons = mod ? Number(mod['Dtons'] || mod['DTONS'] || 0) : 0;
-    const cost = mod ? Number(mod['Cost'] || mod['COST'] || 0) : 0;
-    return {
-      section: 'Module',
-      module: sm.id,
-      dtons: tons * sm.qty,
-      cost: cost * sm.qty,
-      qty: sm.qty,
-    };
-  });
+  // ─── Legacy Bridge ───
+  const selectedBridge = bridges.find((b: Record<string, unknown>) => String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']).includes(bridge));
+  const bridgeTons = selectedBridge ? Number(selectedBridge['CONTROLS/ BRIDGE'] || selectedBridge['DTONS'] || selectedBridge['Tons'] || 0) : 0;
+  const bridgeCost = selectedBridge ? Number(selectedBridge['COST per DTON'] || selectedBridge['COST'] || 0) : 0;
+
+  // ─── Child Table Components ───
+  const moduleComponents: ShipComponent[] = moduleRows.map((m) => ({
+    section: 'Module',
+    module: m.name,
+    dtons: m.dtons * m.qty,
+    cost: m.cost * m.qty,
+    qty: m.qty,
+  }));
 
   const weaponComponents: ShipComponent[] = selectedWeapons.map((sw) => {
     const wpn = weapons.find((w: Record<string, unknown>) => String(w['WEAPONS']).includes(sw.id));
@@ -118,47 +173,66 @@ export function ShipDesigner() {
     };
   });
 
-  const usedTons = hullDtons > 0 ? (
+  // ─── Allocated Tons ───
+  const allocatedTons = (
     armorTons + mDriveTons + jDriveTons + ppTons + bridgeTons + totalFuel +
-    stateroomTons + lowBerthTons + cargo +
+    stateroomTons + lowBerthTons +
     moduleComponents.reduce((s, c) => s + c.dtons, 0) +
-    weaponComponents.reduce((s, c) => s + c.dtons, 0)
-  ) : 0;
+    weaponComponents.reduce((s, c) => s + c.dtons, 0) +
+    commandRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
+    computerRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
+    sensorRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
+    lifeSupportRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
+    supplyRows.reduce((s, r) => s + r.dtons * r.qty, 0)
+  );
 
-  const availableDtons = hullDtons - usedTons + cargo; // cargo is adjustable
+  const availableDtons = hullDtons - allocatedTons;
 
+  // ─── Total Cost ───
   const totalCost = hullCost + (hullCost * configMod) + armorCost + mDriveCost + jDriveCost + ppCost +
     bridgeCost + stateroomCost + lowBerthCost +
     moduleComponents.reduce((s, c) => s + c.cost, 0) +
-    weaponComponents.reduce((s, c) => s + c.cost, 0);
+    weaponComponents.reduce((s, c) => s + c.cost, 0) +
+    commandRows.reduce((s, r) => s + r.cost * r.qty, 0) +
+    computerRows.reduce((s, r) => s + r.cost * r.qty, 0) +
+    sensorRows.reduce((s, r) => s + r.cost * r.qty, 0) +
+    lifeSupportRows.reduce((s, r) => s + r.cost * r.qty, 0) +
+    supplyRows.reduce((s, r) => s + r.cost * r.qty, 0);
 
+  // ─── BOQ Components ───
   const components: ShipComponent[] = useMemo(() => {
     const list: ShipComponent[] = [];
     if (hullDtons > 0) {
-      list.push({ section: 'Hull', module: `Hull ${hullDtons}DT`, dtons: hullDtons, cost: hullCost });
-      list.push({ section: 'Config', module: config, dtons: 0, cost: hullCost * configMod });
+      list.push({ section: 'Hull', module: `${hullDtons} DT Hull`, dtons: hullDtons, cost: hullCost });
+      if (configMod !== 0) list.push({ section: 'Config', module: config, dtons: 0, cost: hullCost * configMod });
     }
     if (armorTons > 0) list.push({ section: 'Armor', module: armorType, dtons: armorTons, cost: armorCost });
     if (mDriveTons > 0) list.push({ section: 'M-Drive', module: mDrive, dtons: mDriveTons, cost: mDriveCost });
     if (jDriveTons > 0) list.push({ section: 'J-Drive', module: jDrive, dtons: jDriveTons, cost: jDriveCost });
     if (ppTons > 0) list.push({ section: 'Power Plant', module: powerPlant, dtons: ppTons, cost: ppCost });
     if (bridgeTons > 0) list.push({ section: 'Bridge', module: bridge, dtons: bridgeTons, cost: bridgeCost });
-    if (totalFuel > 0) list.push({ section: 'Fuel', module: 'Jump + Power Plant', dtons: totalFuel, cost: 0 });
+    if (totalFuel > 0) list.push({ section: 'Fuel', module: `Jump-${jumpParsecs} + Power`, dtons: totalFuel, cost: 0 });
     if (stateroomTons > 0) list.push({ section: 'Life Support', module: `${staterooms} Staterooms`, dtons: stateroomTons, cost: stateroomCost });
     if (lowBerthTons > 0) list.push({ section: 'Life Support', module: `${lowBerths} Low Berths`, dtons: lowBerthTons, cost: lowBerthCost });
+    commandRows.forEach(r => list.push({ section: 'Command', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
+    computerRows.forEach(r => list.push({ section: 'Computer', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
+    sensorRows.forEach(r => list.push({ section: 'Sensors', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
+    lifeSupportRows.forEach(r => list.push({ section: 'Life Support', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
     list.push(...moduleComponents);
     list.push(...weaponComponents);
+    supplyRows.forEach(r => list.push({ section: 'Supplies', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
     if (cargo > 0) list.push({ section: 'Cargo', module: 'Cargo Hold', dtons: cargo, cost: 0 });
     return list;
-  }, [hullDtons, hullCost, config, configMod, armorTons, armorType, armorCost, mDriveTons, mDrive, mDriveCost, jDriveTons, jDrive, jDriveCost, ppTons, powerPlant, ppCost, bridgeTons, bridge, bridgeCost, totalFuel, stateroomTons, staterooms, stateroomCost, lowBerthTons, lowBerths, lowBerthCost, moduleComponents, weaponComponents, cargo]);
+  }, [hullDtons, hullCost, config, configMod, armorTons, armorType, armorCost, mDriveTons, mDrive, mDriveCost, jDriveTons, jDrive, jDriveCost, ppTons, powerPlant, ppCost, bridgeTons, bridge, bridgeCost, totalFuel, jumpParsecs, stateroomTons, staterooms, stateroomCost, lowBerthTons, lowBerths, lowBerthCost, commandRows, computerRows, sensorRows, lifeSupportRows, moduleComponents, weaponComponents, supplyRows, cargo]);
 
-  // Validation
+  // ─── Validation ───
   const validation = useMemo(() => {
     if (!hullDtons) return null;
     const design: ShipDesign = {
       id: currentShip?.id || 'temp',
       name, tl, hullCode, hullDtons, configuration: config,
-      armor: armorType, mDrive, jDrive, powerPlant,
+      armor: armorType, armorQty,
+      mDrive, jDrive, powerPlant,
       bridge, computer, software: softwareList,
       sensors, staterooms, lowBerths,
       crew: [],
@@ -168,45 +242,19 @@ export function ShipDesigner() {
       createdAt: currentShip?.createdAt || new Date().toISOString(),
     };
     return validateShip(design);
-  }, [name, tl, hullCode, hullDtons, config, armorType, mDrive, jDrive, powerPlant, bridge, computer, softwareList, sensors, staterooms, lowBerths, moduleComponents, weaponComponents, cargo, components, totalCost, availableDtons, currentShip]);
+  }, [name, tl, hullCode, hullDtons, config, armorType, armorQty, mDrive, jDrive, powerPlant, bridge, computer, softwareList, sensors, staterooms, lowBerths, moduleComponents, weaponComponents, cargo, components, totalCost, availableDtons, currentShip]);
 
-  const toggleSoftware = useCallback((sw: string) => {
-    setSoftwareList(prev => prev.includes(sw) ? prev.filter(s => s !== sw) : [...prev, sw]);
-  }, []);
-
-  const toggleModule = useCallback((mod: string) => {
-    setSelectedModules(prev => {
-      const exists = prev.find(m => m.id === mod);
-      if (exists) return prev.filter(m => m.id !== mod);
-      return [...prev, { id: mod, qty: 1 }];
-    });
-  }, []);
-
-  const updateModuleQty = useCallback((mod: string, qty: number) => {
-    setSelectedModules(prev => prev.map(m => m.id === mod ? { ...m, qty: Math.max(1, qty) } : m));
-  }, []);
-
-  const toggleWeapon = useCallback((wpn: string) => {
-    setSelectedWeapons(prev => {
-      const exists = prev.find(w => w.id === wpn);
-      if (exists) return prev.filter(w => w.id !== wpn);
-      return [...prev, { id: wpn, qty: 1 }];
-    });
-  }, []);
-
-  const updateWeaponQty = useCallback((wpn: string, qty: number) => {
-    setSelectedWeapons(prev => prev.map(w => w.id === wpn ? { ...w, qty: Math.max(1, qty) } : w));
-  }, []);
-
+  // ─── Actions ───
   const saveShip = () => {
     const ship: ShipDesign = {
       id: currentShip?.id || `ship-${Date.now()}`,
-      name: name || 'Untitled Ship',
+      name: name || generateShipName(hullDtons),
       tl,
       hullCode,
       hullDtons,
       configuration: config,
       armor: armorType,
+      armorQty,
       mDrive,
       jDrive,
       powerPlant,
@@ -230,7 +278,24 @@ export function ShipDesigner() {
     } else {
       addShip(ship);
     }
-    setCurrentShip(ship);
+  };
+
+  const exportShip = () => {
+    const ship: ShipDesign = {
+      id: `export-${Date.now()}`,
+      name: name || generateShipName(hullDtons),
+      tl, hullCode, hullDtons, configuration: config,
+      armor: armorType, armorQty,
+      mDrive, jDrive, powerPlant,
+      bridge, computer, software: softwareList,
+      sensors, staterooms, lowBerths,
+      crew: [],
+      modules: moduleComponents,
+      weapons: weaponComponents,
+      cargo, components, totalCost, availableDtons,
+      createdAt: new Date().toISOString(),
+    };
+    downloadJson(JSON.stringify(ship, null, 2), `ship-${name.replace(/\s+/g, '_')}-${generateSnapshotName()}.json`);
   };
 
   const loadShip = (ship: ShipDesign) => {
@@ -239,29 +304,73 @@ export function ShipDesigner() {
     setHullCode(ship.hullCode);
     setConfig(ship.configuration);
     setArmorType(ship.armor);
-    setMDrive(ship.mDrive);
-    setJDrive(ship.jDrive);
-    setPowerPlant(ship.powerPlant);
-    setBridge(ship.bridge);
-    setComputer(ship.computer);
-    setSoftwareList(ship.software);
-    setSensors(ship.sensors);
-    setStaterooms(ship.staterooms);
-    setLowBerths(ship.lowBerths);
+    setArmorQty(ship.armorQty || 1);
+    setMDrive(ship.mDrive || '');
+    setJDrive(ship.jDrive || '');
+    setPowerPlant(ship.powerPlant || '');
+    setBridge(ship.bridge || '');
+    setComputer(ship.computer || '');
+    setSoftwareList(ship.software || []);
+    setSensors(ship.sensors || '');
+    setStaterooms(ship.staterooms || 0);
+    setLowBerths(ship.lowBerths || 0);
+    setSelectedModules((ship.modules || []).map(m => ({ id: m.module, qty: m.qty || 1 })));
+    setSelectedWeapons((ship.weapons || []).map(w => ({ id: w.module, qty: w.qty || 1 })));
     setCargo(ship.cargo);
-    setSelectedModules(ship.modules.map(m => ({ id: m.module, qty: m.qty || 1 })));
-    setSelectedWeapons(ship.weapons.map(w => ({ id: w.module, qty: w.qty || 1 })));
-    setCurrentShip(ship);
   };
 
-  const exportShip = () => {
-    if (!currentShip) return;
-    downloadJson(JSON.stringify(currentShip, null, 2), `ship-${currentShip.name.replace(/\s+/g, '_')}-${generateSnapshotName()}.json`);
+  const resetDesigner = () => {
+    setName('');
+    setTl(9);
+    setHullCode('');
+    setConfig('Standard');
+    setArmorType('');
+    setArmorQty(1);
+    setMDrive('');
+    setJDrive('');
+    setPowerPlant('');
+    setBridge('');
+    setComputer('');
+    setSoftwareList([]);
+    setSensors('');
+    setStaterooms(0);
+    setLowBerths(0);
+    setSelectedModules([]);
+    setSelectedWeapons([]);
+    setJumpParsecs(0);
+    setCargo(0);
+    setCommandRows([]);
+    setComputerRows([]);
+    setSoftwareRows([]);
+    setSensorRows([]);
+    setLifeSupportRows([]);
+    setModuleRows([]);
+    setWeaponMountRows([]);
+    setSupplyRows([]);
+    setCurrentShip(null);
   };
 
+  // ─── Drive filtering helpers ───
+  const validMDrives = drives.filter((d: Record<string, unknown>) => Number(d['M-Drive\n Tons']) > 0);
+  const validJDrives = drives.filter((d: Record<string, unknown>) => Number(d['J-Drive\n Tons']) > 0);
+  const validPPs = drives;
+
+  // ─── Cockpit/Bridge filtering ───
+  const smallCraftBridges = bridges.filter((b: Record<string, unknown>) => {
+    const max = Number(b['<='] || 999);
+    return max <= 90;
+  });
+  const shipBridges = bridges.filter((b: Record<string, unknown>) => {
+    const min = Number(b['>='] || 0);
+    return min >= 100;
+  });
+  const availableBridges = hullDtons <= 90 ? smallCraftBridges : shipBridges;
+
+  // ─── Render ───
   return (
     <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
       <div className="lg:col-span-2 space-y-3">
+        {/* Header */}
         <div className="flex items-center justify-between">
           <h1 className="text-2xl font-bold">Ship Designer</h1>
           <div className="flex gap-2">
@@ -273,9 +382,13 @@ export function ShipDesigner() {
                 <Calculator className="w-4 h-4" /> Export
               </button>
             )}
+            <button onClick={resetDesigner} className="btn-secondary flex items-center gap-2">
+              <Trash2 className="w-4 h-4" /> Reset
+            </button>
           </div>
         </div>
 
+        {/* Validation */}
         {validation && (
           <div className={`rounded-lg p-3 text-sm ${validation.valid ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
             <div className="flex items-center gap-2 font-semibold mb-1">
@@ -294,19 +407,45 @@ export function ShipDesigner() {
           </div>
         )}
 
+        {/* Available DTons Summary */}
+        {hullDtons > 0 && (
+          <div className="tile">
+            <div className="tile-header">
+              <span className="font-semibold">Tonnage Budget</span>
+              <span className={`text-sm font-medium ${availableDtons < 0 ? 'text-red-400' : 'text-green-400'}`}>
+                {availableDtons.toFixed(1)} DT available / {hullDtons} DT total
+              </span>
+            </div>
+            <div className="tile-content">
+              <div className="w-full bg-slate-800 rounded-full h-3 overflow-hidden">
+                <div
+                  className={`h-full rounded-full transition-all ${availableDtons < 0 ? 'bg-red-500' : availableDtons < hullDtons * 0.1 ? 'bg-amber-500' : 'bg-green-500'}`}
+                  style={{ width: `${Math.min(100, (allocatedTons / hullDtons) * 100)}%` }}
+                />
+              </div>
+              <div className="flex justify-between text-xs text-slate-500 mt-1">
+                <span>Allocated: {allocatedTons.toFixed(1)} DT</span>
+                <span>{((allocatedTons / hullDtons) * 100).toFixed(1)}%</span>
+              </div>
+            </div>
+          </div>
+        )}
+
+        {/* 1. Basic Info */}
         <CollapsibleSection title="1. Basic Info" defaultOpen>
           <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm text-slate-400 mb-1">Ship Name</label>
-              <input className="input w-full" value={name} onChange={(e) => setName(e.target.value)} />
+              <input className="input w-full" value={name} onChange={(e) => setName(e.target.value)} placeholder={hullDtons > 0 ? generateShipName(hullDtons) : 'Ship Name'} />
             </div>
             <div>
               <label className="block text-sm text-slate-400 mb-1">Tech Level</label>
-              <input className="input w-full" type="number" min={7} max={15} value={tl} onChange={(e) => setTl(Number(e.target.value))} />
+              <input className="input w-full" type="number" min={6} max={15} value={tl} onChange={(e) => setTl(Number(e.target.value))} />
             </div>
           </div>
         </CollapsibleSection>
 
+        {/* 2. Hull & Configuration */}
         <CollapsibleSection title="2. Hull & Configuration" defaultOpen>
           <div className="grid grid-cols-2 gap-4">
             <div>
@@ -324,84 +463,99 @@ export function ShipDesigner() {
               <label className="block text-sm text-slate-400 mb-1">Configuration</label>
               <select className="input w-full" value={config} onChange={(e) => setConfig(e.target.value)}>
                 {configs.map((c: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(c['Configuration']).split(' ')[0]}>
-                    {String(c['Configuration'])}
+                  <option key={i} value={String(c['Configuration'])}>
+                    {String(c['Configuration'])} {Number(c['Hull Cost Modifier']) > 0 ? '+' : ''}{Number(c['Hull Cost Modifier']) * 100}%
                   </option>
                 ))}
               </select>
             </div>
           </div>
-          {hullDtons > 0 && (
-            <div className="mt-3 text-sm text-slate-400">
-              Hull Points: {Math.floor(hullDtons / 50)} | Structure Points: {Math.ceil(hullDtons / 50)} | Hardpoints: {Math.floor(hullDtons / 100)}
-            </div>
-          )}
         </CollapsibleSection>
 
+        {/* 3. Armor */}
         <CollapsibleSection title="3. Armor" defaultOpen>
-          <div className="grid grid-cols-3 gap-4">
+          <div className="grid grid-cols-2 gap-4">
             <div>
               <label className="block text-sm text-slate-400 mb-1">Armor Type</label>
               <select className="input w-full" value={armorType} onChange={(e) => setArmorType(e.target.value)}>
                 <option value="">None</option>
                 {armors.map((a: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(a['Armor Type']).split(' ')[0]}>
-                    {String(a['Armor Type'])}
+                  <option key={i} value={String(a['Armor Type'])}>
+                    {String(a['Armor Type'])} — Prot {Number(a['Prot'] || a['Protection'] || 0)}
                   </option>
                 ))}
               </select>
             </div>
             <div>
-              <label className="block text-sm text-slate-400 mb-1">Thickness (×5%)</label>
-              <input className="input w-full" type="number" min={0} max={10} value={armorQty} onChange={(e) => setArmorQty(Number(e.target.value))} />
-            </div>
-            <div className="flex items-end">
-              <div className="text-sm text-slate-400">
-                {armorTons > 0 && <span>{armorTons.toFixed(1)} DT | Protection: {armorProtection * armorQty}</span>}
-              </div>
+              <label className="block text-sm text-slate-400 mb-1">Layers (Qty)</label>
+              <input className="input w-full" type="number" min={1} max={10} value={armorQty} onChange={(e) => setArmorQty(Number(e.target.value))} />
             </div>
           </div>
+          {armorTons > 0 && (
+            <div className="mt-2 text-sm text-slate-400">
+              Armor Tons: {armorTons.toFixed(1)} DT | Cost: {armorCost.toLocaleString()} Cr
+            </div>
+          )}
         </CollapsibleSection>
 
+        {/* 4. Drives & Power */}
         <CollapsibleSection title="4. Drives & Power" defaultOpen>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="space-y-4">
+            {/* M-Drive */}
             <div>
-              <label className="block text-sm text-slate-400 mb-1">Jump Parsecs</label>
-              <select className="input w-full" value={jumpParsecs} onChange={(e) => setJumpParsecs(Number(e.target.value))}>
-                {[1,2,3,4,5,6].map((n) => (
-                  <option key={n} value={n}>{n}</option>
-                ))}
-              </select>
-            </div>
-          </div>
-          <div className="grid grid-cols-3 gap-4 mt-4">
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">M-Drive</label>
+              <label className="block text-sm text-slate-400 mb-1">M-Drive (Thrust)</label>
               <select className="input w-full" value={mDrive} onChange={(e) => setMDrive(e.target.value)}>
                 <option value="">None</option>
-                {drives.filter((d: Record<string, unknown>) => Number(d['M-Drive\n Tons']) > 0).map((d: Record<string, unknown>, i: number) => (
+                {validMDrives.map((d: Record<string, unknown>, i: number) => (
                   <option key={i} value={String(d['Drive Code'])}>
                     {String(d['Drive Code'])} — {String(d['M-Drive\n Tons'])} DT
                   </option>
                 ))}
               </select>
+              {mDrive && (
+                <div className="text-xs mt-1 text-slate-500">
+                  {mDriveTons} DT | {mDriveCost.toLocaleString()} Cr
+                </div>
+              )}
             </div>
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">J-Drive</label>
-              <select className="input w-full" value={jDrive} onChange={(e) => setJDrive(e.target.value)}>
-                <option value="">None</option>
-                {drives.filter((d: Record<string, unknown>) => Number(d['J-Drive\n Tons']) > 0).map((d: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(d['Drive Code'])}>
-                    {String(d['Drive Code'])} — {String(d['J-Drive\n Tons'])} DT
-                  </option>
-                ))}
-              </select>
+
+            {/* Jump Drive */}
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm text-slate-400 mb-1">Jump Parsecs</label>
+                <select className="input w-full" value={jumpParsecs} onChange={(e) => setJumpParsecs(Number(e.target.value))}>
+                  {[0,1,2,3,4,5,6].map((n) => (
+                    <option key={n} value={n}>{n === 0 ? '0 (None)' : n}</option>
+                  ))}
+                </select>
+                {jumpParsecs > 0 && tl < 9 && (
+                  <div className="text-xs mt-1 text-red-400">Jump requires TL 9+</div>
+                )}
+              </div>
+              <div>
+                <label className="block text-sm text-slate-400 mb-1">J-Drive</label>
+                <select className="input w-full" value={jDrive} onChange={(e) => setJDrive(e.target.value)} disabled={jumpParsecs === 0}>
+                  <option value="">{jumpParsecs === 0 ? 'N/A' : 'None'}</option>
+                  {validJDrives.map((d: Record<string, unknown>, i: number) => (
+                    <option key={i} value={String(d['Drive Code'])}>
+                      {String(d['Drive Code'])} — {String(d['J-Drive\n Tons'])} DT
+                    </option>
+                  ))}
+                </select>
+                {jDrive && jumpParsecs > 0 && (
+                  <div className="text-xs mt-1 text-slate-500">
+                    {jDriveTons} DT | {jDriveCost.toLocaleString()} Cr
+                  </div>
+                )}
+              </div>
             </div>
+
+            {/* Power Plant */}
             <div>
               <label className="block text-sm text-slate-400 mb-1">Power Plant</label>
               <select className="input w-full" value={powerPlant} onChange={(e) => setPowerPlant(e.target.value)}>
                 <option value="">None</option>
-                {drives.map((d: Record<string, unknown>, i: number) => (
+                {validPPs.map((d: Record<string, unknown>, i: number) => (
                   <option key={i} value={String(d['Drive Code'])}>
                     {String(d['Drive Code'])} — {String(d['P-Plant\n Tons'])} DT
                   </option>
@@ -415,146 +569,582 @@ export function ShipDesigner() {
                   PP ≥ {getMinPowerPlantLetter(mDrive, jDrive)} required
                 </div>
               )}
+              {ppTons > 0 && (
+                <div className="text-xs mt-1 text-slate-500">
+                  {ppTons} DT | {ppCost.toLocaleString()} Cr | Fuel/Wk: {ppFuelWk} tons
+                </div>
+              )}
             </div>
-          </div>
-          <div className="mt-3 text-sm text-slate-400">
-            Fuel: Jump {jumpFuel.toFixed(1)} DT + Power {powerFuel.toFixed(1)} DT = {totalFuel.toFixed(1)} DT
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="5. Bridge & Computer" defaultOpen>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Bridge / Cockpit</label>
-              <select className="input w-full" value={bridge} onChange={(e) => setBridge(e.target.value)}>
-                <option value="">None</option>
-                {bridges.map((b: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(b['WEAPONS'] || b['Bridge Size'])}>
-                    {String(b['WEAPONS'] || b['Bridge Size'])} — {String(b['DTONS'] || b['Tons'])} DT
+        {/* 5. Command & Control */}
+        <CollapsibleSection title="5. Command & Control" defaultOpen>
+          <div className="space-y-3">
+            <div className="text-xs text-slate-500">
+              {hullDtons <= 90
+                ? 'Small craft: Cockpit options available. Ships ≤90 DT use cockpits.'
+                : 'Ship size: Bridge options available. Ships >90 DT require bridges.'}
+            </div>
+
+            <ChildTable
+              title="Bridges / Cockpits / Cabins"
+              items={commandRows}
+              onChange={setCommandRows}
+              columns={[
+                { key: 'name', label: 'Type', editable: true, type: 'text' },
+                { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
+                { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+                { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              ]}
+              createNewItem={() => {
+                const isSmall = hullDtons <= 90;
+                const defaultBridge = isSmall
+                  ? smallCraftBridges[0]
+                  : shipBridges[0];
+                const bridgeName = defaultBridge ? String(defaultBridge['CONTROLS/BRidge'] || defaultBridge['Bridge Size'] || 'Bridge') : 'Bridge';
+                const bridgeDt = defaultBridge ? Number(defaultBridge['CONTROLS/ BRIDGE'] || defaultBridge['DTONS'] || 0) : 10;
+                const bridgeCostPerDt = defaultBridge ? Number(defaultBridge['COST per DTON'] || defaultBridge['COST'] || 0) : 0;
+                return {
+                  id: `cmd-${Date.now()}`,
+                  name: bridgeName,
+                  dtons: bridgeDt,
+                  cost: bridgeCostPerDt * bridgeDt,
+                  qty: 1,
+                };
+              }}
+              addButtonLabel="Add Bridge/Cockpit"
+            />
+
+            {/* Legacy bridge selector for quick pick */}
+            <div className="pt-2 border-t border-slate-700">
+              <label className="block text-sm text-slate-400 mb-1">Quick Add Bridge/Cockpit</label>
+              <select
+                className="input w-full"
+                value=""
+                onChange={(e) => {
+                  if (!e.target.value) return;
+                  const b = bridges.find((br: Record<string, unknown>) => String(br['CONTROLS/BRidge'] || br['Bridge Size'] || br['WEAPONS']) === e.target.value);
+                  if (b) {
+                    const dt = Number(b['CONTROLS/ BRIDGE'] || b['DTONS'] || b['Tons'] || 0);
+                    const costPerDt = Number(b['COST per DTON'] || b['COST'] || 0);
+                    setCommandRows(prev => [...prev, {
+                      id: `cmd-${Date.now()}`,
+                      name: String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']),
+                      dtons: dt,
+                      cost: costPerDt * dt,
+                      qty: 1,
+                    }]);
+                  }
+                  e.target.value = '';
+                }}
+              >
+                <option value="">Select from table...</option>
+                {availableBridges.map((b: Record<string, unknown>, i: number) => (
+                  <option key={i} value={String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS'])}>
+                    {String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS'])} — {Number(b['CONTROLS/ BRIDGE'] || b['DTONS'] || b['Tons'] || 0)} DT
                   </option>
                 ))}
               </select>
             </div>
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Computer</label>
-              <input className="input w-full" value={computer} onChange={(e) => setComputer(e.target.value)} placeholder="e.g. Model 2 bis/fib" />
+          </div>
+        </CollapsibleSection>
+
+        {/* 6. Computer Options */}
+        <CollapsibleSection title="6. Computer Options" defaultOpen>
+          <ChildTable
+            title="Computers (Max 2)"
+            items={computerRows}
+            onChange={setComputerRows}
+            maxItems={2}
+            columns={[
+              { key: 'name', label: 'Model', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+            ]}
+            createNewItem={() => ({
+              id: `comp-${Date.now()}`,
+              name: 'Model 1',
+              dtons: 1,
+              cost: 30000,
+              qty: 1,
+            })}
+            addButtonLabel="Add Computer"
+          />
+
+          <div className="pt-2 border-t border-slate-700">
+            <label className="block text-sm text-slate-400 mb-1">Quick Add Computer</label>
+            <select
+              className="input w-full"
+              value=""
+              onChange={(e) => {
+                if (!e.target.value) return;
+                const c = computers.find((comp: Record<string, unknown>) => String(comp['Model']) === e.target.value);
+                if (c) {
+                  setComputerRows(prev => [...prev, {
+                    id: `comp-${Date.now()}`,
+                    name: String(c['Model']),
+                    dtons: 1,
+                    cost: Number(c['Cost'] || 0),
+                    qty: 1,
+                    tl: Number(c['TL'] || 7),
+                  }]);
+                }
+                e.target.value = '';
+              }}
+            >
+              <option value="">Select from table...</option>
+              {computers.map((c: Record<string, unknown>, i: number) => (
+                <option key={i} value={String(c['Model'])}>
+                  {String(c['Model'])} — TL {Number(c['TL'])} | Rating {Number(c['Rating'])} | {Number(c['Cost']).toLocaleString()} Cr
+                </option>
+              ))}
+            </select>
+          </div>
+        </CollapsibleSection>
+
+        {/* 7. Software */}
+        <CollapsibleSection title="7. Software" defaultOpen>
+          <ChildTable
+            title="Software Programs"
+            items={softwareRows}
+            onChange={setSoftwareRows}
+            columns={[
+              { key: 'name', label: 'Program', editable: true, type: 'text' },
+              { key: 'tl', label: 'TL', editable: true, type: 'number', width: 'w-14' },
+              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+            ]}
+            createNewItem={() => ({
+              id: `sw-${Date.now()}`,
+              name: 'Jump Control',
+              dtons: 0,
+              cost: 0,
+              qty: 1,
+              tl: tl,
+            })}
+            addButtonLabel="Add Software"
+          />
+
+          {/* Auto software flags */}
+          <div className="flex gap-2 mt-2">
+            {jDrive && jumpParsecs > 0 && (
+              <span className="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded">Jump Control required</span>
+            )}
+            <span className="text-xs bg-green-900/30 text-green-400 px-2 py-1 rounded">Security TL{tl}</span>
+            {selectedWeapons.length > 0 && (
+              <span className="text-xs bg-amber-900/30 text-amber-400 px-2 py-1 rounded">Fire Control recommended</span>
+            )}
+          </div>
+
+          {/* Legacy software toggle */}
+          <div className="pt-3 border-t border-slate-700">
+            <label className="block text-sm text-slate-400 mb-2">Legacy Software Selection</label>
+            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+              {software.map((sw: Record<string, unknown>, i: number) => {
+                const swName = String(sw['Program'] || '');
+                const isSelected = softwareList.includes(swName);
+                return (
+                  <label key={i} className={`flex items-center gap-2 p-2 rounded cursor-pointer text-sm ${isSelected ? 'bg-blue-900/20 border border-blue-700' : 'bg-slate-800/50 border border-slate-700'}`}>
+                    <input
+                      type="checkbox"
+                      checked={isSelected}
+                      onChange={() => {
+                        setSoftwareList(prev => isSelected ? prev.filter(s => s !== swName) : [...prev, swName]);
+                      }}
+                      className="rounded border-slate-600"
+                    />
+                    <div className="flex-1 min-w-0">
+                      <div className="truncate">{swName}</div>
+                      <div className="text-xs text-slate-500">TL {Number(sw['TL'])} | {String(sw['Cost (MCr)'])}</div>
+                    </div>
+                  </label>
+                );
+              })}
             </div>
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="6. Software" defaultOpen>
-          <div className="grid grid-cols-2 gap-2">
-            {software.map((sw: Record<string, unknown>, i: number) => (
-              <label key={i} className="flex items-center gap-2 p-2 rounded hover:bg-slate-800 cursor-pointer">
-                <input
-                  type="checkbox"
-                  checked={softwareList.includes(String(sw['WEAPONS'] || sw['Program'] || sw['Software']))}
-                  onChange={() => toggleSoftware(String(sw['WEAPONS'] || sw['Program'] || sw['Software']))}
-                  className="rounded border-slate-600"
-                />
-                <span className="text-sm">{String(sw['WEAPONS'] || sw['Program'] || sw['Software'])}</span>
-                <span className="text-xs text-slate-500 ml-auto">{sw['COST'] ? Number(sw['COST']).toLocaleString() + ' Cr' : ''}</span>
-              </label>
-            ))}
+        {/* 8. Sensors */}
+        <CollapsibleSection title="8. Sensors" defaultOpen>
+          <ChildTable
+            title="Sensor Systems"
+            items={sensorRows}
+            onChange={setSensorRows}
+            columns={[
+              { key: 'name', label: 'Sensor', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+            ]}
+            createNewItem={() => ({
+              id: `sensor-${Date.now()}`,
+              name: 'Standard Sensors',
+              dtons: 0,
+              cost: 0,
+              qty: 1,
+            })}
+            addButtonLabel="Add Sensor"
+          />
+
+          <div className="pt-2 border-t border-slate-700">
+            <label className="block text-sm text-slate-400 mb-1">Quick Add Sensor</label>
+            <select
+              className="input w-full"
+              value=""
+              onChange={(e) => {
+                if (!e.target.value) return;
+                const s = sensorList.find((sen: Record<string, unknown>) => String(sen['Sensors']) === e.target.value);
+                if (s) {
+                  setSensorRows(prev => [...prev, {
+                    id: `sensor-${Date.now()}`,
+                    name: String(s['Sensors']),
+                    dtons: Number(s['Tons'] || 0),
+                    cost: Number(s['Cost'] || 0),
+                    qty: 1,
+                    tl: Number(s['TL'] || 8),
+                  }]);
+                }
+                e.target.value = '';
+              }}
+            >
+              <option value="">Select from table...</option>
+              {sensorList.map((s: Record<string, unknown>, i: number) => (
+                <option key={i} value={String(s['Sensors'])}>
+                  {String(s['Sensors'])} — {Number(s['Tons'])} DT | DM {String(s['DM'])} | {Number(s['Cost']).toLocaleString()} Cr
+                </option>
+              ))}
+            </select>
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="7. Sensors" defaultOpen>
-          <select className="input w-full" value={sensors} onChange={(e) => setSensors(e.target.value)}>
-            <option value="">None</option>
-            {sensorList.map((s: Record<string, unknown>, i: number) => (
-              <option key={i} value={String(s['System'] || s['Sensor Type'] || s['WEAPONS'])}>
-                {String(s['System'] || s['Sensor Type'] || s['WEAPONS'])} — {String(s['DM'] || s['TL'])}
-              </option>
-            ))}
-          </select>
-        </CollapsibleSection>
+        {/* 9. Life Support */}
+        <CollapsibleSection title="9. Life Support & Facilities" defaultOpen>
+          <ChildTable
+            title="Life Support Facilities"
+            items={lifeSupportRows}
+            onChange={setLifeSupportRows}
+            columns={[
+              { key: 'name', label: 'Facility', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+            ]}
+            createNewItem={() => ({
+              id: `ls-${Date.now()}`,
+              name: 'Stateroom',
+              dtons: 4,
+              cost: 500000,
+              qty: 1,
+            })}
+            addButtonLabel="Add Facility"
+          />
 
-        <CollapsibleSection title="8. Life Support" defaultOpen>
-          <div className="grid grid-cols-2 gap-4">
+          <div className="pt-2 border-t border-slate-700">
+            <label className="block text-sm text-slate-400 mb-1">Quick Add Facility</label>
+            <select
+              className="input w-full"
+              value=""
+              onChange={(e) => {
+                if (!e.target.value) return;
+                const ls = tables.life_support?.rows?.find((l: Record<string, unknown>) => String(l['LIFE SUPPORT']) === e.target.value);
+                if (ls) {
+                  setLifeSupportRows(prev => [...prev, {
+                    id: `ls-${Date.now()}`,
+                    name: String(ls['LIFE SUPPORT']),
+                    dtons: Number(ls['DTONS'] || 0),
+                    cost: Number(ls['COST'] || 0),
+                    qty: 1,
+                    tl: Number(ls['TL'] || 7),
+                  }]);
+                }
+                e.target.value = '';
+              }}
+            >
+              <option value="">Select from table...</option>
+              {(tables.life_support?.rows || []).map((l: Record<string, unknown>, i: number) => (
+                <option key={i} value={String(l['LIFE SUPPORT'])}>
+                  {String(l['LIFE SUPPORT'])} — {Number(l['DTONS'])} DT | {Number(l['COST']).toLocaleString()} Cr
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Legacy staterooms/low berths */}
+          <div className="grid grid-cols-2 gap-4 pt-3 border-t border-slate-700">
             <div>
-              <label className="block text-sm text-slate-400 mb-1">Staterooms</label>
+              <label className="block text-sm text-slate-400 mb-1">Staterooms (legacy)</label>
               <input className="input w-full" type="number" min={0} value={staterooms} onChange={(e) => setStaterooms(Number(e.target.value))} />
             </div>
             <div>
-              <label className="block text-sm text-slate-400 mb-1">Low Berths</label>
+              <label className="block text-sm text-slate-400 mb-1">Low Berths (legacy)</label>
               <input className="input w-full" type="number" min={0} value={lowBerths} onChange={(e) => setLowBerths(Number(e.target.value))} />
             </div>
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="9. Modules" defaultOpen>
-          <div className="grid grid-cols-2 gap-2">
-            {modules.map((mod: Record<string, unknown>, i: number) => {
-              const modName = String(mod['Module'] || mod['WEAPONS'] || '');
-              const selected = selectedModules.find(m => m.id === modName);
-              return (
-                <div key={i} className="flex items-center gap-2 p-2 rounded hover:bg-slate-800">
-                  <input
-                    type="checkbox"
-                    checked={!!selected}
-                    onChange={() => toggleModule(modName)}
-                    className="rounded border-slate-600"
-                  />
-                  <span className="text-sm flex-1">{modName}</span>
-                  {selected && (
-                    <input
-                      type="number"
-                      min={1}
-                      value={selected.qty}
-                      onChange={(e) => updateModuleQty(modName, Number(e.target.value))}
-                      className="input w-16 text-sm py-0.5"
-                    />
-                  )}
-                </div>
-              );
+        {/* 10. Modules */}
+        <CollapsibleSection title="10. Modules (No Life Support)" defaultOpen>
+          <ChildTable
+            title="Modules"
+            items={moduleRows}
+            onChange={setModuleRows}
+            columns={[
+              { key: 'name', label: 'Module', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+            ]}
+            createNewItem={() => ({
+              id: `mod-${Date.now()}`,
+              name: 'Fuel Scoops',
+              dtons: 0,
+              cost: 1000000,
+              qty: 1,
             })}
+            addButtonLabel="Add Module"
+          />
+
+          <div className="pt-2 border-t border-slate-700">
+            <label className="block text-sm text-slate-400 mb-1">Quick Add Module</label>
+            <select
+              className="input w-full"
+              value=""
+              onChange={(e) => {
+                if (!e.target.value) return;
+                const m = modules.find((mod: Record<string, unknown>) => String(mod['MODULES'] || mod['Module']) === e.target.value);
+                if (m) {
+                  setModuleRows(prev => [...prev, {
+                    id: `mod-${Date.now()}`,
+                    name: String(m['MODULES'] || m['Module']),
+                    dtons: Number(m['DTONS'] || m['Dtons'] || 0),
+                    cost: Number(m['COST'] || m['Cost'] || 0),
+                    qty: 1,
+                    tl: Number(m['TL'] || 7),
+                  }]);
+                }
+                e.target.value = '';
+              }}
+            >
+              <option value="">Select from table...</option>
+              {modules.map((m: Record<string, unknown>, i: number) => (
+                <option key={i} value={String(m['MODULES'] || m['Module'])}>
+                  {String(m['MODULES'] || m['Module'])} — {Number(m['DTONS'] || m['Dtons'] || 0)} DT | {Number(m['COST'] || m['Cost'] || 0).toLocaleString()} Cr
+                </option>
+              ))}
+            </select>
+          </div>
+
+          {/* Legacy module toggles */}
+          <div className="pt-3 border-t border-slate-700">
+            <label className="block text-sm text-slate-400 mb-2">Legacy Module Selection</label>
+            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+              {modules.map((mod: Record<string, unknown>, i: number) => {
+                const modName = String(mod['MODULES'] || mod['Module'] || '');
+                const selected = selectedModules.find(m => m.id === modName);
+                return (
+                  <div key={i} className="flex items-center gap-2 p-2 bg-slate-800/50 rounded">
+                    <input
+                      type="checkbox"
+                      checked={!!selected}
+                      onChange={() => {
+                        setSelectedModules(prev => {
+                          const exists = prev.find(m => m.id === modName);
+                          if (exists) return prev.filter(m => m.id !== modName);
+                          return [...prev, { id: modName, qty: 1 }];
+                        });
+                      }}
+                      className="rounded border-slate-600"
+                    />
+                    <span className="text-sm flex-1">{modName}</span>
+                    {selected && (
+                      <input
+                        type="number"
+                        min={1}
+                        value={selected.qty}
+                        onChange={(e) => {
+                          setSelectedModules(prev => prev.map(m => m.id === modName ? { ...m, qty: Math.max(1, Number(e.target.value)) } : m));
+                        }}
+                        className="input w-14 text-xs py-1"
+                      />
+                    )}
+                  </div>
+                );
+              })}
+            </div>
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="10. Weapons" defaultOpen>
-          <div className="grid grid-cols-2 gap-2">
-            {weapons.map((wpn: Record<string, unknown>, i: number) => {
-              const wpnName = String(wpn['WEAPONS'] || '');
-              const selected = selectedWeapons.find(w => w.id === wpnName);
-              return (
-                <div key={i} className="flex items-center gap-2 p-2 rounded hover:bg-slate-800">
-                  <input
-                    type="checkbox"
-                    checked={!!selected}
-                    onChange={() => toggleWeapon(wpnName)}
-                    className="rounded border-slate-600"
-                  />
-                  <span className="text-sm flex-1">{wpnName}</span>
-                  {selected && (
-                    <input
-                      type="number"
-                      min={1}
-                      value={selected.qty}
-                      onChange={(e) => updateWeaponQty(wpnName, Number(e.target.value))}
-                      className="input w-16 text-sm py-0.5"
-                    />
-                  )}
-                </div>
-              );
-            })}
+        {/* 11. Weapons / Turrets / Hardmounts */}
+        <CollapsibleSection title="11. Weapons, Turrets & Hardmounts" defaultOpen>
+          <div className="space-y-3">
+            <ChildTable
+              title="Weapon Mounts"
+              items={weaponMountRows}
+              onChange={setWeaponMountRows}
+              columns={[
+                { key: 'name', label: 'Mount', editable: true, type: 'text' },
+                { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
+                { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+                { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              ]}
+              createNewItem={() => ({
+                id: `mount-${Date.now()}`,
+                name: 'Turret, Single',
+                dtons: 1,
+                cost: 200000,
+                qty: 1,
+              })}
+              addButtonLabel="Add Mount"
+            />
+
+            <div className="pt-2 border-t border-slate-700">
+              <label className="block text-sm text-slate-400 mb-1">Quick Add Mount</label>
+              <select
+                className="input w-full"
+                value=""
+                onChange={(e) => {
+                  if (!e.target.value) return;
+                  const w = weapons.find((wpn: Record<string, unknown>) => String(wpn['WEAPONS']).includes('Turret') && String(wpn['WEAPONS']) === e.target.value);
+                  if (w) {
+                    setWeaponMountRows(prev => [...prev, {
+                      id: `mount-${Date.now()}`,
+                      name: String(w['WEAPONS']),
+                      dtons: Number(w['DTONS'] || 0),
+                      cost: Number(w['COST'] || 0),
+                      qty: 1,
+                      tl: Number(w['TL'] || 7),
+                    }]);
+                  }
+                  e.target.value = '';
+                }}
+              >
+                <option value="">Select mount from table...</option>
+                {weapons.filter((w: Record<string, unknown>) => String(w['WEAPONS']).includes('Turret') || String(w['WEAPONS']).includes('Bay') || String(w['WEAPONS']).includes('Hard')).map((w: Record<string, unknown>, i: number) => (
+                  <option key={i} value={String(w['WEAPONS'])}>
+                    {String(w['WEAPONS'])} — {Number(w['DTONS'])} DT | {Number(w['COST']).toLocaleString()} Cr
+                  </option>
+                ))}
+              </select>
+            </div>
+
+            {/* Legacy weapon toggles */}
+            <div className="pt-3 border-t border-slate-700">
+              <label className="block text-sm text-slate-400 mb-2">Legacy Weapon Selection</label>
+              <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+                {weapons.map((wpn: Record<string, unknown>, i: number) => {
+                  const wpnName = String(wpn['WEAPONS'] || '');
+                  const selected = selectedWeapons.find(w => w.id === wpnName);
+                  return (
+                    <div key={i} className="flex items-center gap-2 p-2 bg-slate-800/50 rounded">
+                      <input
+                        type="checkbox"
+                        checked={!!selected}
+                        onChange={() => {
+                          setSelectedWeapons(prev => {
+                            const exists = prev.find(w => w.id === wpnName);
+                            if (exists) return prev.filter(w => w.id !== wpnName);
+                            return [...prev, { id: wpnName, qty: 1 }];
+                          });
+                        }}
+                        className="rounded border-slate-600"
+                      />
+                      <span className="text-sm flex-1">{wpnName}</span>
+                      {selected && (
+                        <input
+                          type="number"
+                          min={1}
+                          value={selected.qty}
+                          onChange={(e) => {
+                            setSelectedWeapons(prev => prev.map(w => w.id === wpnName ? { ...w, qty: Math.max(1, Number(e.target.value)) } : w));
+                          }}
+                          className="input w-14 text-xs py-1"
+                        />
+                      )}
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
           </div>
         </CollapsibleSection>
 
-        <CollapsibleSection title="11. Cargo" defaultOpen>
-          <div>
-            <label className="block text-sm text-slate-400 mb-1">Cargo (DT)</label>
-            <input className="input w-full" type="number" min={0} value={cargo} onChange={(e) => setCargo(Number(e.target.value))} />
+        {/* 12. Cargo */}
+        <CollapsibleSection title="12. Cargo & Supplies" defaultOpen>
+          <div className="space-y-3">
+            <div className="grid grid-cols-2 gap-4">
+              <div>
+                <label className="block text-sm text-slate-400 mb-1">Cargo Hold (DT)</label>
+                <input className="input w-full" type="number" min={0} value={cargo} onChange={(e) => setCargo(Number(e.target.value))} />
+              </div>
+              <div className="flex items-end">
+                <div className="text-sm text-slate-400">
+                  Cargo has no life support. Vacc suits required for entry.
+                </div>
+              </div>
+            </div>
+
+            <ChildTable
+              title="Supplies in Cargo"
+              items={supplyRows}
+              onChange={setSupplyRows}
+              columns={[
+                { key: 'name', label: 'Supply', editable: true, type: 'text' },
+                { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
+                { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
+                { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              ]}
+              createNewItem={() => ({
+                id: `supply-${Date.now()}`,
+                name: 'Missile Pack',
+                dtons: 1,
+                cost: 15000,
+                qty: 1,
+              })}
+              addButtonLabel="Add Supply"
+            />
+
+            <div className="pt-2 border-t border-slate-700">
+              <label className="block text-sm text-slate-400 mb-1">Quick Add Supply</label>
+              <select
+                className="input w-full"
+                value=""
+                onChange={(e) => {
+                  if (!e.target.value) return;
+                  const s = tables.ship_supplies?.rows?.find((sup: Record<string, unknown>) => String(sup['Supply']) === e.target.value);
+                  if (s) {
+                    setSupplyRows(prev => [...prev, {
+                      id: `supply-${Date.now()}`,
+                      name: String(s['Supply']),
+                      dtons: Number(s['Dtons'] || 0),
+                      cost: Number(s['Cost'] || 0),
+                      qty: 1,
+                      tl: Number(s['TL'] || 6),
+                    }]);
+                  }
+                  e.target.value = '';
+                }}
+              >
+                <option value="">Select from table...</option>
+                {(tables.ship_supplies?.rows || []).map((s: Record<string, unknown>, i: number) => (
+                  <option key={i} value={String(s['Supply'])}>
+                    {String(s['Supply'])} — {Number(s['Dtons'])} DT | {Number(s['Cost']).toLocaleString()} Cr
+                  </option>
+                ))}
+              </select>
+            </div>
           </div>
         </CollapsibleSection>
       </div>
 
+      {/* Right Column: BOQ & Summary */}
       <div className="space-y-4">
-        <BOQView 
+        <BOQView
           components={components}
           totalCost={totalCost}
           hullDtons={hullDtons}
-          usedTons={usedTons}
+          usedTons={allocatedTons}
           availableDtons={availableDtons}
         />
 
@@ -563,7 +1153,7 @@ export function ShipDesigner() {
             <div className="tile-content">
               <MnemeCombatPanel ship={{
                 id: 'preview', name, tl, hullCode, hullDtons, configuration: config,
-                armor: armorType, mDrive, jDrive, powerPlant,
+                armor: armorType, armorQty, mDrive, jDrive, powerPlant,
                 bridge, computer, software: softwareList,
                 sensors, staterooms, lowBerths,
                 crew: [], modules: moduleComponents, weapons: weaponComponents,
@@ -574,6 +1164,7 @@ export function ShipDesigner() {
           </div>
         )}
 
+        {/* Ship Library Quick List */}
         {ships.length > 0 && (
           <div className="tile">
             <div className="tile-header">
