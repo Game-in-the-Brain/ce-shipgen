@@ -372,31 +372,38 @@ export function ShipDesigner() {
   // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [ppRows]);
 
-  // ─── Auto-populate armor rows when model or hull changes ───
+  // ─── Auto-populate armor rows when model, rating, or hull changes ───
   const lastArmorNames = useRef<string[]>([]);
-  const lastArmorQtys = useRef<number[]>([]);
+  const lastArmorRatings = useRef<number[]>([]);
   const lastHullForArmor = useRef<number>(0);
   useEffect(() => {
     const currentNames = armorRows.map(r => r.name);
-    const currentQtys = armorRows.map(r => r.qty);
+    const currentRatings = armorRows.map(r => r.rating || 0);
     const nameChanged = armorRows.some((row, idx) => row.name !== lastArmorNames.current[idx]);
-    const qtyChanged = armorRows.some((row, idx) => row.qty !== lastArmorQtys.current[idx]);
+    const ratingChanged = armorRows.some((row, idx) => (row.rating || 0) !== lastArmorRatings.current[idx]);
     const hullChanged = hullDtons !== lastHullForArmor.current;
-    if (!nameChanged && !qtyChanged && !hullChanged) return;
+    if (!nameChanged && !ratingChanged && !hullChanged) return;
     lastArmorNames.current = currentNames;
-    lastArmorQtys.current = currentQtys;
+    lastArmorRatings.current = currentRatings;
     lastHullForArmor.current = hullDtons;
     const updated = armorRows.map((row) => {
       const a = armors.find((ar: Record<string, unknown>) => String(ar['Armor Type']).includes(row.name));
       if (!a) return { ...row, notes: 'Armor-?', dtons: 0, cost: 0 };
       const pct = Number(a['Cost Factor'] || 0.05);
       const prot = Number(a['Prot'] || a['Protection'] || 0);
+      // Default rating to material's prot value on first select; user can edit down to 1
+      const rating = (nameChanged && !ratingChanged && row.rating === prot) || row.rating === undefined || row.rating === 0
+        ? prot
+        : (row.rating || 1);
+      const efficiency = prot > 0 ? pct / prot : 0.025;
       return {
         ...row,
         tl: Number(a['TL'] || 7),
-        notes: `Armor-${prot}`,
-        dtons: calcArmorTonnage(hullDtons, pct, row.qty, 1.0),
-        cost: calcArmorCost(hullCost, pct, row.qty),
+        rating,
+        notes: `Armor-${rating}`,
+        dtons: calcArmorTonnage(hullDtons, efficiency * rating, 1, 1.0),
+        cost: calcArmorCost(hullCost, efficiency * rating, 1),
+        qty: 1,
       };
     });
     setArmorRows(updated);
@@ -1002,20 +1009,24 @@ export function ShipDesigner() {
             onChange={setArmorRows}
             columns={[
               { key: 'name', label: 'MODEL', editable: true, type: 'select', width: 'w-40', options: armors.map((a: Record<string, unknown>) => ({ value: String(a['Armor Type']), label: String(a['Armor Type']) })) },
-              { key: 'notes', label: 'RATING', editable: false, width: 'w-20' },
+              { key: 'rating', label: 'RATING', editable: true, type: 'number', width: 'w-16', step: 1 },
+              { key: 'notes', label: 'ARMOR', editable: false, width: 'w-16' },
               { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
               { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
-              { key: 'qty', label: 'LAYERS', editable: true, type: 'number', width: 'w-16', step: '0.1' },
             ]}
             createNewItem={() => {
               const a = armors[0];
+              const prot = a ? Number(a['Prot'] || 0) : 2;
+              const pct = a ? Number(a['Cost Factor'] || 0.05) : 0.05;
+              const efficiency = prot > 0 ? pct / prot : 0.025;
               return {
                 id: `armor-${Date.now()}`,
                 name: a ? String(a['Armor Type']) : 'Titanium Steel TL7+',
                 tl: a ? Number(a['TL'] || 7) : 7,
-                notes: a ? `Armor-${Number(a['Prot'] || 0)}` : 'Armor-2',
-                dtons: a ? calcArmorTonnage(hullDtons, Number(a['Cost Factor'] || 0.05), 1, 1.0) : calcArmorTonnage(hullDtons, 0.05, 1, 1.0),
-                cost: a ? calcArmorCost(hullCost, Number(a['Cost Factor'] || 0.05), 1) : calcArmorCost(hullCost, 0.05, 1),
+                rating: prot,
+                notes: `Armor-${prot}`,
+                dtons: calcArmorTonnage(hullDtons, efficiency * prot, 1, 1.0),
+                cost: calcArmorCost(hullCost, efficiency * prot, 1),
                 qty: 1,
               };
             }}
@@ -1030,20 +1041,23 @@ export function ShipDesigner() {
             <ShField
               label="QUICK ADD ARMOR"
               value=""
-              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...armors.map((a: Record<string, unknown>) => ({ value: String(a['Armor Type']), label: `${String(a['Armor Type'])} · Armor-${Number(a['Prot'] || a['Protection'] || 0)} · TL${Number(a['TL'])}` }))]}
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...armors.map((a: Record<string, unknown>) => ({ value: String(a['Armor Type']), label: `${String(a['Armor Type'])} · TL${Number(a['TL'])}` }))]}
               onChange={(v) => {
                 if (!v) return;
                 const a = armors.find((ar: Record<string, unknown>) => String(ar['Armor Type']) === v);
                 if (a) {
                   const pct = Number(a['Cost Factor'] || 0.05);
                   const prot = Number(a['Prot'] || a['Protection'] || 0);
+                  const efficiency = prot > 0 ? pct / prot : 0.025;
+                  const rating = prot || 2;
                   setArmorRows(prev => [...prev, {
                     id: `armor-${Date.now()}`,
                     name: String(a['Armor Type']),
                     tl: Number(a['TL'] || 7),
-                    notes: `Armor-${prot}`,
-                    dtons: calcArmorTonnage(hullDtons, pct, 1, 1.0),
-                    cost: calcArmorCost(hullCost, pct, 1),
+                    rating,
+                    notes: `Armor-${rating}`,
+                    dtons: calcArmorTonnage(hullDtons, efficiency * rating, 1, 1.0),
+                    cost: calcArmorCost(hullCost, efficiency * rating, 1),
                     qty: 1,
                   }]);
                 }

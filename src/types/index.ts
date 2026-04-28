@@ -190,6 +190,7 @@ export interface ChildItem {
   tl?: number;
   notes?: string;
   variant?: string;
+  rating?: number;
   options?: string[];
   slots?: number;
   slotItems?: ChildItem[];
