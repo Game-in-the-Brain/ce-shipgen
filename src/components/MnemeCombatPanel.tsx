@@ -1,5 +1,7 @@
 import { calcMnemeCombatStats } from '../calculations';
 import { Crosshair, Shield, Zap, Target } from 'lucide-react';
+import { colors } from './shipgen/theme';
+import { ShLabel, ShNum, ShData } from './shipgen/primitives';
 import type { ShipDesign } from '../types';
 
 interface MnemeCombatPanelProps {
@@ -10,50 +12,49 @@ export function MnemeCombatPanel({ ship }: MnemeCombatPanelProps) {
   const weaponCount = (ship.weapons || []).reduce((s, w) => s + (w.qty || 1), 0);
   const stats = calcMnemeCombatStats(ship.hullDtons, weaponCount, 0);
 
-  return (
-    <div className="space-y-3">
-      <h3 className="text-sm font-semibold text-cyan-400 uppercase tracking-wide flex items-center gap-2">
-        <Crosshair className="w-4 h-4" /> Mneme Combat Stats
-      </h3>
+  const statBox = (label: string, value: string | number, icon: React.ReactNode, color: string) => (
+    <div style={{
+      background: colors.panelAlt,
+      border: `1px solid ${colors.hair}`,
+      padding: '10px 12px',
+    }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 6, marginBottom: 4 }}>
+        <span style={{ color: colors.inkDim }}>{icon}</span>
+        <ShLabel size={10} dim>{label}</ShLabel>
+      </div>
+      <ShNum size={24} color={color}>{value}</ShNum>
+    </div>
+  );
 
-      <div className="grid grid-cols-2 md:grid-cols-4 gap-2">
-        <div className="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-          <div className="text-xs text-slate-500 flex items-center gap-1">
-            <Shield className="w-3 h-3" /> Hull
-          </div>
-          <div className="text-lg font-semibold text-blue-400">{stats.hullPoints}</div>
-        </div>
-        <div className="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-          <div className="text-xs text-slate-500 flex items-center gap-1">
-            <Shield className="w-3 h-3" /> Structure
-          </div>
-          <div className="text-lg font-semibold text-cyan-400">{stats.structurePoints}</div>
-        </div>
-        <div className="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-          <div className="text-xs text-slate-500 flex items-center gap-1">
-            <Target className="w-3 h-3" /> Hardpoints
-          </div>
-          <div className="text-lg font-semibold text-amber-400">{stats.usedHardpoints} / {stats.hardpoints}</div>
-        </div>
-        <div className="bg-slate-800/50 p-2 rounded-lg border border-slate-700">
-          <div className="text-xs text-slate-500 flex items-center gap-1">
-            <Zap className="w-3 h-3" /> Weapons
-          </div>
-          <div className="text-lg font-semibold text-red-400">{stats.weaponCount}</div>
-        </div>
+  return (
+    <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+        <Crosshair className="w-4 h-4" style={{ color: colors.glow }} />
+        <ShLabel size={13} style={{ color: colors.glow }}>MNEME COMBAT STATS</ShLabel>
+      </div>
+
+      <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8 }}>
+        {statBox('HULL', stats.hullPoints, <Shield className="w-3 h-3" />, colors.glow)}
+        {statBox('STRUCTURE', stats.structurePoints, <Shield className="w-3 h-3" />, colors.glowSoft)}
+        {statBox('HARDPOINTS', `${stats.usedHardpoints} / ${stats.hardpoints}`, <Target className="w-3 h-3" />, colors.amber)}
+        {statBox('WEAPONS', stats.weaponCount, <Zap className="w-3 h-3" />, colors.warn)}
       </div>
 
       {/* MAC Summary */}
-      <div className="bg-slate-800/30 p-3 rounded-lg border border-slate-700">
-        <div className="text-xs text-slate-500 mb-1">Multiple Attack Consolidation (MAC)</div>
-        <div className="flex items-center gap-4">
+      <div style={{
+        background: colors.panelAlt,
+        border: `1px solid ${colors.hair}`,
+        padding: '12px 14px',
+      }}>
+        <ShLabel size={11} dim>MULTIPLE ATTACK CONSOLIDATION (MAC)</ShLabel>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 24, marginTop: 8 }}>
           <div>
-            <span className="text-sm text-slate-400">Attack DM: </span>
-            <span className="text-sm font-semibold text-green-400">+{stats.mac.attackDm}</span>
+            <ShData size={12} dim>ATTACK DM: </ShData>
+            <ShData size={14} glow good>+{stats.mac.attackDm}</ShData>
           </div>
           <div>
-            <span className="text-sm text-slate-400">Extra Damage: </span>
-            <span className="text-sm font-semibold text-green-400">{stats.mac.extraDamage}</span>
+            <ShData size={12} dim>EXTRA DAMAGE: </ShData>
+            <ShData size={14} glow good>{stats.mac.extraDamage}</ShData>
           </div>
         </div>
       </div>

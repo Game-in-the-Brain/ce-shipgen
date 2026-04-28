@@ -1,5 +1,5 @@
 import { useState, useEffect } from 'react';
-import { Rocket, X, BookOpen, CheckCircle } from 'lucide-react';
+import { colors, fonts } from './shipgen/theme';
 
 interface VersionInfo {
   version: string;
@@ -40,8 +40,15 @@ export function StartupScreen({ onDismiss }: StartupScreenProps) {
 
   if (loading) {
     return (
-      <div className="fixed inset-0 z-[100] bg-slate-950 flex items-center justify-center">
-        <div className="animate-spin rounded-full h-12 w-12 border-b-2 border-blue-500" />
+      <div className="fixed inset-0 z-[100] flex items-center justify-center" style={{ background: colors.bg }}>
+        <div style={{
+          width: 40, height: 40,
+          border: `2px solid ${colors.hair}`,
+          borderTopColor: colors.glow,
+          borderRadius: '50%',
+          animation: 'spin 1s linear infinite',
+        }} />
+        <style>{`@keyframes spin { to { transform: rotate(360deg); } }`}</style>
       </div>
     );
   }
@@ -49,65 +56,98 @@ export function StartupScreen({ onDismiss }: StartupScreenProps) {
   if (!version) return null;
 
   return (
-    <div className="fixed inset-0 z-[100] bg-slate-950/95 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-slate-900 border border-slate-700 rounded-2xl max-w-lg w-full shadow-2xl overflow-hidden">
+    <div className="fixed inset-0 z-[100] flex items-center justify-center p-4" style={{ background: `${colors.bg}ee`, backdropFilter: 'blur(4px)' }}>
+      <div style={{
+        background: colors.panel,
+        border: `1px solid ${colors.hair}`,
+        maxWidth: 520,
+        width: '100%',
+        position: 'relative',
+      }}>
+        {/* corner ticks */}
+        {[
+          { top: -1, left: 10 }, { top: 10, left: -1 },
+          { top: -1, right: 10 }, { top: 10, right: -1 },
+          { bottom: -1, left: 10 }, { bottom: 10, left: -1 },
+          { bottom: -1, right: 10 }, { bottom: 10, right: -1 },
+        ].map((p, i) => (
+          <div key={i} style={{
+            position: 'absolute', background: colors.glow, opacity: 0.6,
+            width: 'left' in p || 'right' in p ? (i % 2 === 0 ? 12 : 1) : (i % 2 === 0 ? 1 : 12),
+            height: 'top' in p || 'bottom' in p ? (i % 2 === 0 ? 1 : 12) : (i % 2 === 0 ? 12 : 1),
+            top: 'top' in p ? p.top : undefined,
+            bottom: 'bottom' in p ? p.bottom : undefined,
+            left: 'left' in p ? p.left : undefined,
+            right: 'right' in p ? p.right : undefined,
+          }} />
+        ))}
+
         {/* Header */}
-        <div className="bg-gradient-to-r from-blue-900/50 to-slate-900 p-6 border-b border-slate-800">
-          <div className="flex items-center justify-between">
-            <div className="flex items-center gap-3">
-              <div className="bg-blue-600 p-2 rounded-lg">
-                <Rocket className="w-6 h-6 text-white" />
+        <div style={{ padding: '24px 24px 18px', borderBottom: `1px solid ${colors.hair}`, background: colors.panelAlt }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 16 }}>
+            <div style={{
+              width: 44, height: 44, border: `1.5px solid ${colors.glow}`,
+              display: 'flex', alignItems: 'center', justifyContent: 'center',
+              boxShadow: `0 0 10px ${colors.glow}55, inset 0 0 10px ${colors.glow}22`,
+            }}>
+              <span style={{ fontFamily: fonts.display, fontSize: 24, color: colors.glow }}>◆</span>
+            </div>
+            <div>
+              <div style={{ fontFamily: fonts.display, fontSize: 28, color: colors.ink, letterSpacing: '0.24em', lineHeight: 1 }}>
+                {version.name}
               </div>
-              <div>
-                <h1 className="text-xl font-bold text-white">{version.name}</h1>
-                <p className="text-sm text-blue-400">Version {version.version}</p>
+              <div style={{ fontFamily: fonts.mono, fontSize: 12, color: colors.glow, letterSpacing: '0.12em', marginTop: 4 }}>
+                VERSION {version.version} · {version.date}
               </div>
             </div>
-            <button 
-              onClick={handleDismiss}
-              className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition-colors"
-            >
-              <X className="w-5 h-5" />
-            </button>
           </div>
         </div>
 
         {/* Content */}
-        <div className="p-6 space-y-4">
+        <div style={{ padding: '20px 24px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           <div>
-            <h2 className="text-sm font-semibold text-slate-300 uppercase tracking-wide mb-3 flex items-center gap-2">
-              <BookOpen className="w-4 h-4" /> What's New
-            </h2>
-            <ul className="space-y-2">
+            <div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 600, color: colors.inkSoft, letterSpacing: '0.14em', marginBottom: 10 }}>
+              CHANGELOG
+            </div>
+            <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: 0, padding: 0, listStyle: 'none' }}>
               {version.changelog.map((item, i) => (
-                <li key={i} className="flex items-start gap-2 text-sm text-slate-400">
-                  <CheckCircle className="w-4 h-4 text-green-500 mt-0.5 shrink-0" />
+                <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontFamily: fonts.mono, fontSize: 13, color: colors.inkSoft }}>
+                  <span style={{ color: colors.glow, fontSize: 16, lineHeight: 1 }}>›</span>
                   <span>{item}</span>
                 </li>
               ))}
             </ul>
           </div>
 
-          <div className="pt-2 border-t border-slate-800">
-            <label className="flex items-center gap-2 text-sm text-slate-400 cursor-pointer">
-              <input 
-                type="checkbox" 
-                checked={dontShow}
-                onChange={(e) => setDontShow(e.target.checked)}
-                className="rounded border-slate-600 bg-slate-800 text-blue-600 focus:ring-blue-500"
-              />
-              Don't show again until next update
-            </label>
-          </div>
+          <label style={{ display: 'flex', alignItems: 'center', gap: 10, cursor: 'pointer', fontFamily: fonts.mono, fontSize: 12, color: colors.inkDim }}>
+            <input
+              type="checkbox"
+              checked={dontShow}
+              onChange={(e) => setDontShow(e.target.checked)}
+              style={{ accentColor: colors.glow }}
+            />
+            Don't show again until next update
+          </label>
         </div>
 
         {/* Footer */}
-        <div className="p-4 bg-slate-900 border-t border-slate-800 flex justify-end">
-          <button 
+        <div style={{ padding: '14px 24px', borderTop: `1px solid ${colors.hair}`, display: 'flex', justifyContent: 'flex-end', background: colors.panelAlt }}>
+          <button
             onClick={handleDismiss}
-            className="btn-primary px-6"
+            style={{
+              padding: '10px 28px',
+              fontFamily: fonts.mono,
+              fontSize: 14,
+              fontWeight: 600,
+              letterSpacing: '0.12em',
+              background: colors.glow,
+              color: colors.bg,
+              border: `1px solid ${colors.glow}`,
+              cursor: 'pointer',
+              boxShadow: `0 0 12px ${colors.glow}55`,
+            }}
           >
-            Get Started
+            INITIALIZE
           </button>
         </div>
       </div>
@@ -118,7 +158,6 @@ export function StartupScreen({ onDismiss }: StartupScreenProps) {
 export function shouldShowStartup(): boolean {
   try {
     localStorage.getItem(SEEN_VERSION_KEY);
-    // We'll check against the actual version in the component; here just return true to render
     return true;
   } catch {
     return true;

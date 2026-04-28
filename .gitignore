@@ -42,3 +42,11 @@ coverage
 .env
 .env.local
 .env.*.local
+# Wrapper build outputs
+/src-tauri/target
+/src-tauri/gen
+*.msi
+*.appimage
+*.deb
+*.apk
+*.aab

@@ -7,19 +7,29 @@
     "dev": "vite",
     "build": "tsc && vite build",
     "preview": "vite preview",
-    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0"
+    "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "build:wrapper": "tsc && vite build --base ./",
+    "tauri:dev": "cargo tauri dev",
+    "tauri:build": "cargo tauri build",
+    "capacitor:sync": "npx cap sync",
+    "capacitor:build:android": "npx cap build android",
+    "wrapper:build:desktop": "npm run build:wrapper && cargo tauri build",
+    "wrapper:build:android": "npm run build:wrapper && npx cap sync && npx cap build android"
   },
   "dependencies": {
+    "clsx": "^2.1.0",
+    "immer": "^10.0.3",
+    "lucide-react": "^0.330.0",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-router-dom": "^6.22.0",
-    "zustand": "^4.5.0",
-    "immer": "^10.0.3",
-    "lucide-react": "^0.330.0",
-    "clsx": "^2.1.0",
-    "tailwind-merge": "^2.2.1"
+    "tailwind-merge": "^2.2.1",
+    "zustand": "^4.5.0"
   },
   "devDependencies": {
+    "@capacitor/android": "^6.2.1",
+    "@capacitor/cli": "^6.2.1",
+    "@capacitor/core": "^6.2.1",
     "@types/react": "^18.2.55",
     "@types/react-dom": "^18.2.19",
     "@typescript-eslint/eslint-plugin": "^6.21.0",

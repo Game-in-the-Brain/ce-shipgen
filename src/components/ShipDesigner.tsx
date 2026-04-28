@@ -1,8 +1,8 @@
 import { useState, useMemo, useEffect } from 'react';
 import { useTableStore } from '../store/tableStore';
-import { CollapsibleSection } from './CollapsibleSection';
-import { BOQView } from './BOQView';
+import { useSettings } from './ThemeProvider';
 import { ChildTable } from './ChildTable';
+import { BOQView } from './BOQView';
 import { MnemeCombatPanel } from './MnemeCombatPanel';
 import { downloadJson, generateSnapshotName } from '../utils/exportImport';
 import { fmtNumber, fmtCost, fmtTons } from '../utils/formatters';
@@ -13,6 +13,9 @@ import {
 } from '../calculations';
 import { validateShip } from '../validations';
 import { Save, Calculator, Trash2, AlertTriangle, CheckCircle } from 'lucide-react';
+import { colors, fonts } from './shipgen/theme';
+import { ShLabel, ShNum, ShData, ShPanel, ShField } from './shipgen/primitives';
+import { TonnageGauge } from './shipgen/TonnageGauge';
 import type { ShipComponent, ShipDesign, ChildItem } from '../types';
 
 // ─── Helpers ───
@@ -114,6 +117,36 @@ function createDefaultShips(addShip: (ship: ShipDesign) => void) {
   defaults.forEach(addShip);
 }
 
+// ─── Step Accordion ───
+
+function Step({ num, title, kw, children, defaultOpen = true }: {
+  num: number; title: string; kw?: string; children: React.ReactNode; defaultOpen?: boolean;
+}) {
+  const [open, setOpen] = useState(defaultOpen);
+  return (
+    <section style={{ marginBottom: 14, background: colors.panel, border: `1px solid ${colors.hair}` }}>
+      <button
+        onClick={() => setOpen(!open)}
+        style={{
+          width: '100%', display: 'flex', alignItems: 'center', gap: 14,
+          padding: '14px 18px', background: 'transparent', border: 'none',
+          cursor: 'pointer', borderBottom: open ? `1px solid ${colors.hair}` : 'none',
+          textAlign: 'left',
+        }}
+      >
+        <ShNum size={22} color={colors.glow}>{String(num).padStart(2, '0')}</ShNum>
+        <div style={{ width: 1, height: 18, background: colors.hair }} />
+        <ShLabel size={15} weight={600} style={{ color: colors.ink, letterSpacing: '0.16em', flex: 1 }}>
+          {title}
+        </ShLabel>
+        {kw && <ShData size={12} dim>{kw}</ShData>}
+        <ShData size={18} dim style={{ color: colors.glow }}>{open ? '−' : '+'}</ShData>
+      </button>
+      {open && <div style={{ padding: 18 }}>{children}</div>}
+    </section>
+  );
+}
+
 // ─── Component ───
 
 export function ShipDesigner() {
@@ -124,6 +157,7 @@ export function ShipDesigner() {
   const deleteShip = useTableStore((s) => s.deleteShip);
   const setCurrentShip = useTableStore((s) => s.setCurrentShip);
   const currentShip = useTableStore((s) => s.currentShip);
+  const { layoutMode } = useSettings();
 
   // ─── Basic Info ───
   const [name, setName] = useState('');
@@ -386,7 +420,6 @@ export function ShipDesigner() {
     list.push(...weaponComponents);
     supplyRows.forEach(r => list.push({ section: 'Supplies', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
     if (cargo > 0) list.push({ section: 'Cargo', module: 'Cargo Hold', dtons: cargo, cost: 0 });
-    // Crew costs (monthly salaries as a one-line summary, not tonnage)
     if (crewReqs) {
       list.push({ section: 'Crew', module: `Minimum Crew (${crewReqs.totalMinimum})`, dtons: 0, cost: 0 });
       crewReqs.positions.forEach(p => {
@@ -478,13 +511,11 @@ export function ShipDesigner() {
     setTl(ship.tl);
     setHullCode(ship.hullCode);
     setConfig(ship.configuration);
-    // Legacy armor load
     if (ship.armor && ship.armor !== 'None') {
       setArmorRows([{ id: `armor-${Date.now()}`, name: ship.armor, dtons: 0, cost: 0, qty: ship.armorQty || 1 }]);
     } else {
       setArmorRows([]);
     }
-    // armorRows is the new state
     setMDrive(ship.mDrive || '');
     setJDrive(ship.jDrive || '');
     setPowerPlant(ship.powerPlant || '');
@@ -545,63 +576,71 @@ export function ShipDesigner() {
   });
   const availableBridges = hullDtons <= 90 ? smallCraftBridges : shipBridges;
 
-  // ─── Render ───
   return (
-    <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
-      <div className="lg:col-span-2 space-y-3">
+    <div style={{
+      display: 'grid',
+      gridTemplateColumns: layoutMode === 'phone' ? '1fr' : 'minmax(0, 1fr) 420px',
+      gap: layoutMode === 'phone' ? 14 : 22,
+    }}>
+      {/* LEFT: Design Steps */}
+      <div>
         {/* Header */}
-        <div className="flex items-center justify-between">
-          <h1 className="text-2xl font-bold">Ship Designer</h1>
-          <div className="flex gap-2">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', marginBottom: 18 }}>
+          <ShNum size={36} color={colors.ink}>SHIP DESIGNER</ShNum>
+          <div style={{ display: 'flex', gap: 10 }}>
             <button onClick={saveShip} className="btn-primary flex items-center gap-2">
-              <Save className="w-4 h-4" /> {currentShip ? 'Update' : 'Save'}
+              <Save className="w-4 h-4" /> {currentShip ? 'UPDATE' : 'SAVE'}
             </button>
             {currentShip && (
               <button onClick={exportShip} className="btn-secondary flex items-center gap-2">
-                <Calculator className="w-4 h-4" /> Export
+                <Calculator className="w-4 h-4" /> EXPORT
               </button>
             )}
             <button onClick={resetDesigner} className="btn-secondary flex items-center gap-2">
-              <Trash2 className="w-4 h-4" /> Reset
+              <Trash2 className="w-4 h-4" /> RESET
             </button>
           </div>
         </div>
 
         {/* Load from Library */}
         {ships.length > 0 && (
-          <div className="flex items-center gap-2">
-            <label className="text-sm text-slate-400 whitespace-nowrap">Load from Library:</label>
-            <select
-              className="input flex-1"
+          <div style={{ marginBottom: 14 }}>
+            <ShField
+              label="LOAD FROM LIBRARY"
               value=""
-              onChange={(e) => {
-                const ship = ships.find((s) => s.id === e.target.value);
+              onChange={(v) => {
+                if (!v) return;
+                const ship = ships.find((s) => s.id === v);
                 if (ship) loadShip(ship);
-                e.target.value = '';
               }}
-            >
-              <option value="">Select a saved ship...</option>
-              {ships.map((ship) => (
-                <option key={ship.id} value={ship.id}>
-                  {ship.name} ({fmtTons(ship.hullDtons)})
-                </option>
-              ))}
-            </select>
+              options={[
+                { value: '', label: '— SELECT SHIP —' },
+                ...ships.map((ship) => ({ value: ship.id, label: `${ship.name} · ${fmtTons(ship.hullDtons)} · TL${ship.tl}` })),
+              ]}
+            />
           </div>
         )}
 
         {/* Validation */}
         {validation && (
-          <div className={`rounded-lg p-3 text-sm ${validation.valid ? 'bg-green-900/30 border border-green-700' : 'bg-red-900/30 border border-red-700'}`}>
-            <div className="flex items-center gap-2 font-semibold mb-1">
-              {validation.valid ? <CheckCircle size={16} className="text-green-400"/> : <AlertTriangle size={16} className="text-red-400"/>}
-              <span className={validation.valid ? 'text-green-300' : 'text-red-300'}>
-                {validation.valid ? 'Design Valid' : `${validation.hardErrors.length} Issue${validation.hardErrors.length > 1 ? 's' : ''}`}
-              </span>
+          <div style={{
+            marginBottom: 14,
+            padding: '12px 16px',
+            border: `1px solid ${validation.valid ? colors.good : colors.warn}`,
+            background: validation.valid ? `${colors.good}10` : `${colors.warn}10`,
+          }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: validation.valid ? 0 : 8 }}>
+              {validation.valid
+                ? <CheckCircle size={16} style={{ color: colors.good }} />
+                : <AlertTriangle size={16} style={{ color: colors.warn }} />
+              }
+              <ShData size={13} glow={!validation.valid} warn={!validation.valid} good={validation.valid} weight={600}>
+                {validation.valid ? 'DESIGN VALID' : `${validation.hardErrors.length} ISSUE${validation.hardErrors.length > 1 ? 'S' : ''}`}
+              </ShData>
             </div>
             {!validation.valid && (
-              <ul className="list-disc list-inside text-red-200 space-y-0.5">
-                {validation.hardErrors.map((err: {message: string}, i: number) => (
+              <ul style={{ margin: '4px 0 0', paddingLeft: 20, listStyle: 'disc', color: colors.warn, fontFamily: fonts.mono, fontSize: 12 }}>
+                {validation.hardErrors.map((err: { message: string }, i: number) => (
                   <li key={i}>{err.message}</li>
                 ))}
               </ul>
@@ -609,80 +648,67 @@ export function ShipDesigner() {
           </div>
         )}
 
-        {/* Available DTons Summary */}
+        {/* Tonnage Budget */}
         {hullDtons > 0 && (
-          <div className="tile">
-            <div className="tile-header">
-              <span className="font-semibold">Tonnage Budget</span>
-              <span className={`text-sm font-medium ${availableDtons < 0 ? 'text-red-400' : 'text-green-400'}`}>
-                {fmtTons(availableDtons)} available / {fmtTons(hullDtons)} total
-              </span>
-            </div>
-            <div className="tile-content">
-              <div className="w-full bg-slate-800 rounded-full h-3 overflow-hidden">
-                <div
-                  className={`h-full rounded-full transition-all ${availableDtons < 0 ? 'bg-red-500' : availableDtons < hullDtons * 0.1 ? 'bg-amber-500' : 'bg-green-500'}`}
-                  style={{ width: `${Math.min(100, (allocatedTons / hullDtons) * 100)}%` }}
-                />
+          <ShPanel no="SHEET 01" title="Tonnage Budget" kw="BOQ" style={{ marginBottom: 14 }}>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: 14 }}>
+              <div>
+                <ShLabel size={12} dim>HULL</ShLabel>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6 }}>
+                  <ShNum size={40}>{hullDtons}</ShNum>
+                  <ShData size={14} dim>DT</ShData>
+                </div>
               </div>
-              <div className="flex justify-between text-xs text-slate-500 mt-1">
-                <span>Allocated: {fmtTons(allocatedTons)}</span>
-                <span>{((allocatedTons / hullDtons) * 100).toFixed(1)}%</span>
+              <div style={{ textAlign: 'right' }}>
+                <ShLabel size={12} dim>AVAILABLE</ShLabel>
+                <div style={{ display: 'flex', alignItems: 'baseline', gap: 6, justifyContent: 'flex-end' }}>
+                  <ShNum size={40} color={availableDtons < 0 ? colors.warn : colors.glow}>
+                    {availableDtons > 0 ? '+' : ''}{availableDtons.toFixed(1)}
+                  </ShNum>
+                  <ShData size={14} dim>DT</ShData>
+                </div>
               </div>
             </div>
-          </div>
+            <TonnageGauge used={allocatedTons} total={hullDtons} />
+          </ShPanel>
         )}
 
-        {/* 1. Basic Info */}
-        <CollapsibleSection title="1. Basic Info" defaultOpen>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Ship Name</label>
-              <input className="input w-full" value={name} onChange={(e) => setName(e.target.value)} placeholder={hullDtons > 0 ? generateShipName(hullDtons) : 'Ship Name'} />
-            </div>
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Tech Level</label>
-              <input className="input w-full" type="number" min={6} max={15} value={tl} onChange={(e) => setTl(Number(e.target.value))} />
-            </div>
+        {/* Step 1: Basic Info */}
+        <Step num={1} title="Basic Info" kw="ID">
+          <div style={{ display: 'flex', gap: 14 }}>
+            <ShField label="SHIP DESIGNATION" value={name} onChange={(v) => setName(v ?? '')} />
+            <ShField label="TECH LEVEL" value={tl} type="number" flex={0.4} onChange={(v) => setTl(Number(v) || 0)} />
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 2. Hull & Configuration */}
-        <CollapsibleSection title="2. Hull & Configuration" defaultOpen>
-          <div className="grid grid-cols-2 gap-4">
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Hull Size</label>
-              <select className="input w-full" value={hullCode} onChange={(e) => setHullCode(e.target.value)}>
-                <option value="">Select Hull...</option>
-                {hulls.map((h: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(h['DTONS'])}>
-                    {String(h['DTONS'])} DT — {fmtCost(Number(h['COST']))}
-                  </option>
-                ))}
-              </select>
-            </div>
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Configuration</label>
-              <select className="input w-full" value={config} onChange={(e) => setConfig(e.target.value)}>
-                {configs.map((c: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(c['Configuration'])}>
-                    {String(c['Configuration'])} {Number(c['Hull Cost Modifier']) > 0 ? '+' : ''}{Number(c['Hull Cost Modifier']) * 100}%
-                  </option>
-                ))}
-              </select>
-            </div>
+        {/* Step 2: Hull & Configuration */}
+        <Step num={2} title="Hull & Configuration" kw="HUL/CFG">
+          <div style={{ display: 'flex', gap: 14 }}>
+            <ShField
+              label="HULL SIZE"
+              value={hullCode}
+              options={hulls.map((h: Record<string, unknown>) => ({ value: String(h['DTONS']), label: `${String(h['DTONS'])} DT · ${fmtCost(Number(h['COST']))}` }))}
+              onChange={(v) => setHullCode(v ?? '')}
+              hint={hullDtons > 0 ? `HP ${Math.floor(hullDtons / 50)} · SP ${Math.ceil(hullDtons / 50)} · HARDPOINTS ${Math.floor(hullDtons / 100)}` : 'SELECT HULL TO BEGIN'}
+            />
+            <ShField
+              label="CONFIGURATION"
+              value={config}
+              options={configs.map((c: Record<string, unknown>) => ({ value: String(c['Configuration']), label: `${String(c['Configuration'])} ${Number(c['Hull Cost Modifier']) > 0 ? '+' : ''}${Number(c['Hull Cost Modifier']) * 100}%` }))}
+              onChange={(v) => setConfig(v ?? 'Standard')}
+            />
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 3. Armor */}
-        <CollapsibleSection title="3. Armor" defaultOpen>
+        {/* Step 3: Armor */}
+        <Step num={3} title="Armor" kw="ARM">
           <ChildTable
-            title="Armor Layers"
+            title="ARMOR LAYERS"
             items={armorRows}
             onChange={setArmorRows}
             columns={[
-              { key: 'name', label: 'Type', editable: true, type: 'text' },
-              { key: 'qty', label: 'Layers', editable: true, type: 'number', width: 'w-20', step: '0.1' },
+              { key: 'name', label: 'TYPE', editable: true, type: 'text' },
+              { key: 'qty', label: 'LAYERS', editable: true, type: 'number', width: 'w-20', step: '0.1' },
             ]}
             createNewItem={() => ({
               id: `armor-${Date.now()}`,
@@ -691,17 +717,16 @@ export function ShipDesigner() {
               cost: 0,
               qty: 1,
             })}
-            addButtonLabel="Add Armor Layer"
+            addButtonLabel="ADD ARMOR LAYER"
           />
-
-          <div className="pt-2 border-t border-slate-700">
-            <label className="block text-sm text-slate-400 mb-1">Quick Add Armor</label>
-            <select
-              className="input w-full"
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD ARMOR"
               value=""
-              onChange={(e) => {
-                if (!e.target.value) return;
-                const a = armors.find((ar: Record<string, unknown>) => String(ar['Armor Type']) === e.target.value);
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...armors.map((a: Record<string, unknown>) => ({ value: String(a['Armor Type']), label: `${String(a['Armor Type'])} · P${Number(a['Prot'] || a['Protection'] || 0)} · TL${Number(a['TL'])}` }))]}
+              onChange={(v) => {
+                if (!v) return;
+                const a = armors.find((ar: Record<string, unknown>) => String(ar['Armor Type']) === v);
                 if (a) {
                   setArmorRows(prev => [...prev, {
                     id: `armor-${Date.now()}`,
@@ -712,140 +737,99 @@ export function ShipDesigner() {
                     tl: Number(a['TL'] || 7),
                   }]);
                 }
-                e.target.value = '';
               }}
-            >
-              <option value="">Select from table...</option>
-              {armors.map((a: Record<string, unknown>, i: number) => (
-                <option key={i} value={String(a['Armor Type'])}>
-                  {String(a['Armor Type'])} — Prot {Number(a['Prot'] || a['Protection'] || 0)} | TL{Number(a['TL'])}
-                </option>
-              ))}
-            </select>
+            />
           </div>
-
           {armorTons > 0 && (
-            <div className="mt-2 text-sm text-slate-400">
-              Total Armor: {fmtTons(armorTons)} | Cost: {fmtCost(armorCost)}
+            <div style={{ marginTop: 8 }}>
+              <ShData size={13} dim>TOTAL ARMOR: {fmtTons(armorTons)} · COST: {fmtCost(armorCost)}</ShData>
             </div>
           )}
-        </CollapsibleSection>
+        </Step>
 
-        {/* 4. Drives & Power */}
-        <CollapsibleSection title="4. Drives & Power" defaultOpen>
-          <div className="space-y-4">
-            {/* M-Drive */}
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">M-Drive (Thrust)</label>
-              <select className="input w-full" value={mDrive} onChange={(e) => setMDrive(e.target.value)}>
-                <option value="">None</option>
-                {validMDrives.map((d: Record<string, unknown>, i: number) => {
+        {/* Step 4: Drives & Power */}
+        <Step num={4} title="Drives & Power" kw="PRP/PWR">
+          <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+            <ShField
+              label="M-DRIVE (THRUST)"
+              value={mDrive}
+              options={[{ value: '', label: '— NONE —' }, ...validMDrives.map((d: Record<string, unknown>) => {
+                const code = String(d['Drive Code']);
+                const thrust = getThrustPerformance(code);
+                const tons = Number(d['M-Drive\n Tons'] || 0);
+                const cost = Number(d['M-Drive COST'] || 0);
+                return { value: code, label: thrust !== null ? `THRUST-${thrust} · ${code} · ${fmtTons(tons)} · ${fmtCost(cost)}` : `${code} · ${fmtTons(tons)} · ${fmtCost(cost)}` };
+              })]}
+              onChange={(v) => setMDrive(v ?? '')}
+              hint={mDrive ? `${fmtTons(mDriveTons)} · ${fmtCost(mDriveCost)}` : 'NO MANEUVER DRIVE'}
+            />
+            <div style={{ display: 'flex', gap: 14 }}>
+              <ShField
+                label="JUMP PARSECS"
+                value={String(jumpParsecs)}
+                options={[{ value: '0', label: '0 (NONE)' }, { value: '1', label: '1' }, { value: '2', label: '2' }, { value: '3', label: '3' }, { value: '4', label: '4' }, { value: '5', label: '5' }, { value: '6', label: '6' }]}
+                onChange={(v) => setJumpParsecs(Number(v))}
+              />
+              <ShField
+                label="J-DRIVE"
+                value={jDrive}
+                options={[{ value: '', label: jumpParsecs === 0 ? 'N/A' : '— NONE —' }, ...validJDrives.map((d: Record<string, unknown>) => {
                   const code = String(d['Drive Code']);
-                  const thrust = getThrustPerformance(code);
-                  const tons = Number(d['M-Drive\n Tons'] || 0);
-                  const cost = Number(d['M-Drive COST'] || 0);
-                  return (
-                    <option key={i} value={code}>
-                      {thrust !== null ? `Thrust-${thrust} — ${code} — ${fmtTons(tons)} — ${fmtCost(cost)}` : `${code} — ${fmtTons(tons)} — ${fmtCost(cost)}`}
-                    </option>
-                  );
-                })}
-              </select>
-              {mDrive && (
-                <div className="text-xs mt-1 text-slate-500">
-                  {fmtTons(mDriveTons)} | {fmtCost(mDriveCost)}
-                </div>
-              )}
+                  const tons = Number(d['J-Drive\n Tons'] || 0);
+                  const cost = Number(d['J-Drive COST'] || 0);
+                  return { value: code, label: `${code} · ${fmtTons(tons)} · ${fmtCost(cost)}` };
+                })]}
+                onChange={(v) => setJDrive(v ?? '')}
+                hint={jDrive && jumpParsecs > 0 ? `JUMP-${jumpParsecs} · ${fmtTons(jDriveTons)} · ${fmtCost(jDriveCost)}` : 'SUBLIGHT ONLY'}
+              />
             </div>
-
-            {/* Jump Drive */}
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm text-slate-400 mb-1">Jump Parsecs</label>
-                <select className="input w-full" value={jumpParsecs} onChange={(e) => setJumpParsecs(Number(e.target.value))}>
-                  {[0,1,2,3,4,5,6].map((n) => (
-                    <option key={n} value={n}>{n === 0 ? '0 (None)' : n}</option>
-                  ))}
-                </select>
-                {jumpParsecs > 0 && tl < 9 && (
-                  <div className="text-xs mt-1 text-red-400">Jump requires TL 9+</div>
-                )}
+            <ShField
+              label="POWER PLANT"
+              value={powerPlant}
+              options={[{ value: '', label: '— NONE —' }, ...validPPs.map((d: Record<string, unknown>) => {
+                const code = String(d['Drive Code']);
+                const tons = Number(d['P-Plant\n Tons'] || 0);
+                const cost = Number(d['PP COST'] || 0);
+                return { value: code, label: `${code} · ${fmtTons(tons)} · ${fmtCost(cost)}` };
+              })]}
+              onChange={(v) => setPowerPlant(v ?? '')}
+              hint={powerPlant ? `${fmtTons(ppTons)} · ${fmtCost(ppCost)} · FUEL/WK ${ppFuelWk} TONS` : '—'}
+            />
+            {mDrive && jDrive && powerPlant && (
+              <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+                {getMinPowerPlantLetter(mDrive, jDrive) <= powerPlant
+                  ? <CheckCircle size={14} style={{ color: colors.good }} />
+                  : <AlertTriangle size={14} style={{ color: colors.warn }} />
+                }
+                <ShData size={12} good={getMinPowerPlantLetter(mDrive, jDrive) <= powerPlant} warn={getMinPowerPlantLetter(mDrive, jDrive) > powerPlant}>
+                  PP ≥ {getMinPowerPlantLetter(mDrive, jDrive)} REQUIRED
+                </ShData>
               </div>
-              <div>
-                <label className="block text-sm text-slate-400 mb-1">J-Drive</label>
-                <select className="input w-full" value={jDrive} onChange={(e) => setJDrive(e.target.value)} disabled={jumpParsecs === 0}>
-                  <option value="">{jumpParsecs === 0 ? 'N/A' : 'None'}</option>
-                  {validJDrives.map((d: Record<string, unknown>, i: number) => (
-                    <option key={i} value={String(d['Drive Code'])}>
-                      {String(d['Drive Code'])} — {fmtTons(Number(d['J-Drive\n Tons'] || 0))} | {fmtCost(Number(d['J-Drive COST'] || 0))}
-                    </option>
-                  ))}
-                </select>
-                {jDrive && jumpParsecs > 0 && (
-                  <div className="text-xs mt-1 text-slate-500">
-                    {fmtTons(jDriveTons)} | {fmtCost(jDriveCost)}
-                  </div>
-                )}
-              </div>
-            </div>
-
-            {/* Power Plant */}
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Power Plant</label>
-              <select className="input w-full" value={powerPlant} onChange={(e) => setPowerPlant(e.target.value)}>
-                <option value="">None</option>
-                {validPPs.map((d: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(d['Drive Code'])}>
-                    {String(d['Drive Code'])} — {fmtTons(Number(d['P-Plant\n Tons'] || 0))} | {fmtCost(Number(d['PP COST'] || 0))}
-                  </option>
-                ))}
-              </select>
-              {mDrive && jDrive && powerPlant && (
-                <div className={`text-xs mt-1 flex items-center gap-1 ${
-                  getMinPowerPlantLetter(mDrive, jDrive) <= powerPlant ? 'text-green-400' : 'text-red-400'
-                }`}>
-                  {getMinPowerPlantLetter(mDrive, jDrive) <= powerPlant ? <CheckCircle size={12}/> : <AlertTriangle size={12}/>}
-                  PP ≥ {getMinPowerPlantLetter(mDrive, jDrive)} required
-                </div>
-              )}
-              {powerPlant && (
-                <div className="text-xs mt-1 text-blue-400 flex items-center gap-1">
-                  <CheckCircle size={12} /> Qty: 1
-                </div>
-              )}
-              {ppTons > 0 && (
-                <div className="text-xs mt-1 text-slate-500">
-                  {fmtTons(ppTons)} | {fmtCost(ppCost)} | Fuel/Wk: {ppFuelWk} tons
-                </div>
-              )}
-            </div>
+            )}
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 5. Command & Control */}
-        <CollapsibleSection title="5. Command & Control" defaultOpen>
-          <div className="space-y-3">
-            <div className="text-xs text-slate-500">
-              {hullDtons <= 90
-                ? 'Small craft: Cockpit options available. Ships ≤90 DT use cockpits.'
-                : 'Ship size: Bridge options available. Ships >90 DT require bridges.'}
-            </div>
-
+        {/* Step 5: Command & Control */}
+        <Step num={5} title="Command & Control" kw="C&C">
+          <ShData size={12} dim>
+            {hullDtons <= 90
+              ? '// SMALL CRAFT: COCKPIT OPTIONS · ≤90 DT USES COCKPITS'
+              : '// SHIP SIZE: BRIDGE OPTIONS · >90 DT REQUIRES BRIDGES'}
+          </ShData>
+          <div style={{ marginTop: 12 }}>
             <ChildTable
-              title="Bridges / Cockpits / Cabins"
+              title="BRIDGES / COCKPITS / CABINS"
               items={commandRows}
               onChange={setCommandRows}
               columns={[
-                { key: 'name', label: 'Type', editable: true, type: 'text' },
-                { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
-                { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-                { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+                { key: 'name', label: 'TYPE', editable: true, type: 'text' },
+                { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
+                { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+                { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
               ]}
               createNewItem={() => {
                 const isSmall = hullDtons <= 90;
-                const defaultBridge = isSmall
-                  ? smallCraftBridges[0]
-                  : shipBridges[0];
+                const defaultBridge = isSmall ? smallCraftBridges[0] : shipBridges[0];
                 const bridgeName = defaultBridge ? String(defaultBridge['CONTROLS/BRidge'] || defaultBridge['Bridge Size'] || 'Bridge') : 'Bridge';
                 const bridgeDt = defaultBridge ? Number(defaultBridge['CONTROLS/ BRIDGE'] || defaultBridge['DTONS'] || 0) : 10;
                 const bridgeCostPerDt = defaultBridge ? Number(defaultBridge['COST per DTON'] || defaultBridge['COST'] || 0) : 0;
@@ -857,60 +841,50 @@ export function ShipDesigner() {
                   qty: 1,
                 };
               }}
-              addButtonLabel="Add Bridge/Cockpit"
+              addButtonLabel="ADD BRIDGE/COCKPIT"
             />
-
-            {/* Legacy bridge selector for quick pick */}
-            <div className="pt-2 border-t border-slate-700">
-              <label className="block text-sm text-slate-400 mb-1">Quick Add Bridge/Cockpit</label>
-              <select
-                className="input w-full"
-                value=""
-                onChange={(e) => {
-                  if (!e.target.value) return;
-                  const b = bridges.find((br: Record<string, unknown>) => String(br['CONTROLS/BRidge'] || br['Bridge Size'] || br['WEAPONS']) === e.target.value);
-                  if (b) {
-                    const dt = Number(b['CONTROLS/ BRIDGE'] || b['DTONS'] || b['Tons'] || 0);
-                    const costPerDt = Number(b['COST per DTON'] || b['COST'] || 0);
-                    setCommandRows(prev => [...prev, {
-                      id: `cmd-${Date.now()}`,
-                      name: String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']),
-                      dtons: dt,
-                      cost: costPerDt * dt,
-                      qty: 1,
-                    }]);
-                  }
-                  e.target.value = '';
-                }}
-              >
-                <option value="">Select from table...</option>
-                {availableBridges.map((b: Record<string, unknown>, i: number) => {
-                  const name = String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']);
+          </div>
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD BRIDGE/COCKPIT"
+              value=""
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...availableBridges.map((b: Record<string, unknown>) => {
+                const name = String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']);
+                const dt = Number(b['CONTROLS/ BRIDGE'] || b['DTONS'] || b['Tons'] || 0);
+                const costPerDt = Number(b['COST per DTON'] || b['COST'] || 0);
+                return { value: name, label: `${name} · ${fmtTons(dt)} · ${fmtCost(costPerDt * dt)}` };
+              })]}
+              onChange={(v) => {
+                if (!v) return;
+                const b = bridges.find((br: Record<string, unknown>) => String(br['CONTROLS/BRidge'] || br['Bridge Size'] || br['WEAPONS']) === v);
+                if (b) {
                   const dt = Number(b['CONTROLS/ BRIDGE'] || b['DTONS'] || b['Tons'] || 0);
                   const costPerDt = Number(b['COST per DTON'] || b['COST'] || 0);
-                  return (
-                    <option key={i} value={name}>
-                      {name} — {fmtTons(dt)} | {fmtCost(costPerDt * dt)}
-                    </option>
-                  );
-                })}
-              </select>
-            </div>
+                  setCommandRows(prev => [...prev, {
+                    id: `cmd-${Date.now()}`,
+                    name: String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']),
+                    dtons: dt,
+                    cost: costPerDt * dt,
+                    qty: 1,
+                  }]);
+                }
+              }}
+            />
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 6. Computer Options */}
-        <CollapsibleSection title="6. Computer Options" defaultOpen>
+        {/* Step 6: Computer Options */}
+        <Step num={6} title="Computer Options" kw="COMP">
           <ChildTable
-            title="Computers (Max 2)"
+            title="COMPUTERS (MAX 2)"
             items={computerRows}
             onChange={setComputerRows}
             maxItems={2}
             columns={[
-              { key: 'name', label: 'Model', editable: true, type: 'text' },
-              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
-              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              { key: 'name', label: 'MODEL', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
             ]}
             createNewItem={() => ({
               id: `comp-${Date.now()}`,
@@ -919,17 +893,19 @@ export function ShipDesigner() {
               cost: 30000,
               qty: 1,
             })}
-            addButtonLabel="Add Computer"
+            addButtonLabel="ADD COMPUTER"
           />
-
-          <div className="pt-2 border-t border-slate-700">
-            <label className="block text-sm text-slate-400 mb-1">Quick Add Computer</label>
-            <select
-              className="input w-full"
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD COMPUTER"
               value=""
-              onChange={(e) => {
-                if (!e.target.value) return;
-                const c = computers.find((comp: Record<string, unknown>) => String(comp['Model']) === e.target.value);
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...computers.map((c: Record<string, unknown>) => ({
+                value: String(c['Model']),
+                label: `${String(c['Model'])} · ${fmtCost(Number(c['Cost'] || 0))} · TL${Number(c['TL'])}`,
+              }))]}
+              onChange={(v) => {
+                if (!v) return;
+                const c = computers.find((comp: Record<string, unknown>) => String(comp['Model']) === v);
                 if (c) {
                   setComputerRows(prev => [...prev, {
                     id: `comp-${Date.now()}`,
@@ -940,30 +916,22 @@ export function ShipDesigner() {
                     tl: Number(c['TL'] || 7),
                   }]);
                 }
-                e.target.value = '';
               }}
-            >
-              <option value="">Select from table...</option>
-              {computers.map((c: Record<string, unknown>, i: number) => (
-                <option key={i} value={String(c['Model'])}>
-                  {String(c['Model'])} — {fmtCost(Number(c['Cost'] || 0))} | TL{Number(c['TL'])}
-                </option>
-              ))}
-            </select>
+            />
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 7. Software */}
-        <CollapsibleSection title="7. Software" defaultOpen>
+        {/* Step 7: Software */}
+        <Step num={7} title="Software" kw="SW">
           <ChildTable
-            title="Software Programs"
+            title="SOFTWARE PROGRAMS"
             items={softwareRows}
             onChange={setSoftwareRows}
             columns={[
-              { key: 'name', label: 'Program', editable: true, type: 'text' },
+              { key: 'name', label: 'PROGRAM', editable: true, type: 'text' },
               { key: 'tl', label: 'TL', editable: true, type: 'number', width: 'w-14' },
-              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
             ]}
             createNewItem={() => ({
               id: `sw-${Date.now()}`,
@@ -973,59 +941,70 @@ export function ShipDesigner() {
               qty: 1,
               tl: tl,
             })}
-            addButtonLabel="Add Software"
+            addButtonLabel="ADD SOFTWARE"
           />
-
-          {/* Auto software flags */}
-          <div className="flex gap-2 mt-2">
+          <div style={{ marginTop: 10, display: 'flex', gap: 8, flexWrap: 'wrap' }}>
             {jDrive && jumpParsecs > 0 && (
-              <span className="text-xs bg-blue-900/30 text-blue-400 px-2 py-1 rounded">Jump Control required</span>
+              <span style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.glow, border: `1px solid ${colors.glow}44`, padding: '4px 8px', background: `${colors.glow}10` }}>
+                JUMP CONTROL REQUIRED
+              </span>
             )}
-            <span className="text-xs bg-green-900/30 text-green-400 px-2 py-1 rounded">Security TL{tl}</span>
+            <span style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.good, border: `1px solid ${colors.good}44`, padding: '4px 8px', background: `${colors.good}10` }}>
+              SECURITY TL{tl}
+            </span>
             {selectedWeapons.length > 0 && (
-              <span className="text-xs bg-amber-900/30 text-amber-400 px-2 py-1 rounded">Fire Control recommended</span>
+              <span style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.amber, border: `1px solid ${colors.amber}44`, padding: '4px 8px', background: `${colors.amber}10` }}>
+                FIRE CONTROL RECOMMENDED
+              </span>
             )}
           </div>
-
-          {/* Legacy software toggle */}
-          <div className="pt-3 border-t border-slate-700">
-            <label className="block text-sm text-slate-400 mb-2">Legacy Software Selection</label>
-            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+          <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${colors.hair}` }}>
+            <ShLabel size={12} dim>LEGACY SOFTWARE SELECTION</ShLabel>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, maxHeight: 192, overflowY: 'auto', marginTop: 8 }}>
               {software.map((sw: Record<string, unknown>, i: number) => {
                 const swName = String(sw['Program'] || '');
                 const isSelected = softwareList.includes(swName);
                 return (
-                  <label key={i} className={`flex items-center gap-2 p-2 rounded cursor-pointer text-sm ${isSelected ? 'bg-blue-900/20 border border-blue-700' : 'bg-slate-800/50 border border-slate-700'}`}>
+                  <label key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    padding: '8px 10px',
+                    cursor: 'pointer',
+                    fontFamily: fonts.mono,
+                    fontSize: 13,
+                    border: `1px solid ${isSelected ? colors.glow : colors.hair}`,
+                    background: isSelected ? `${colors.glow}10` : colors.panelAlt,
+                    color: isSelected ? colors.glow : colors.inkSoft,
+                  }}>
                     <input
                       type="checkbox"
                       checked={isSelected}
                       onChange={() => {
                         setSoftwareList(prev => isSelected ? prev.filter(s => s !== swName) : [...prev, swName]);
                       }}
-                      className="rounded border-slate-600"
+                      style={{ accentColor: colors.glow }}
                     />
-                    <div className="flex-1 min-w-0">
-                      <div className="truncate">{swName}</div>
-                      <div className="text-xs text-slate-500">TL {Number(sw['TL'])} | {String(sw['Cost (MCr)'])}</div>
+                    <div style={{ flex: 1, minWidth: 0 }}>
+                      <div style={{ whiteSpace: 'nowrap', overflow: 'hidden', textOverflow: 'ellipsis' }}>{swName}</div>
+                      <div style={{ fontSize: 11, color: colors.inkDim }}>TL {Number(sw['TL'])} · {String(sw['Cost (MCr)'])}</div>
                     </div>
                   </label>
                 );
               })}
             </div>
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 8. Sensors */}
-        <CollapsibleSection title="8. Sensors" defaultOpen>
+        {/* Step 8: Sensors */}
+        <Step num={8} title="Sensors" kw="SNS">
           <ChildTable
-            title="Sensor Systems"
+            title="SENSOR SYSTEMS"
             items={sensorRows}
             onChange={setSensorRows}
             columns={[
-              { key: 'name', label: 'Sensor', editable: true, type: 'text' },
-              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
-              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              { key: 'name', label: 'SENSOR', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
             ]}
             createNewItem={() => ({
               id: `sensor-${Date.now()}`,
@@ -1034,17 +1013,19 @@ export function ShipDesigner() {
               cost: 0,
               qty: 1,
             })}
-            addButtonLabel="Add Sensor"
+            addButtonLabel="ADD SENSOR"
           />
-
-          <div className="pt-2 border-t border-slate-700">
-            <label className="block text-sm text-slate-400 mb-1">Quick Add Sensor</label>
-            <select
-              className="input w-full"
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD SENSOR"
               value=""
-              onChange={(e) => {
-                if (!e.target.value) return;
-                const s = sensorList.find((sen: Record<string, unknown>) => String(sen['Sensors']) === e.target.value);
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...sensorList.map((s: Record<string, unknown>) => ({
+                value: String(s['Sensors']),
+                label: `${String(s['Sensors'])} · ${fmtTons(Number(s['Tons'] || 0))} · ${fmtCost(Number(s['Cost'] || 0))} · TL${Number(s['TL'] || 8)}`,
+              }))]}
+              onChange={(v) => {
+                if (!v) return;
+                const s = sensorList.find((sen: Record<string, unknown>) => String(sen['Sensors']) === v);
                 if (s) {
                   setSensorRows(prev => [...prev, {
                     id: `sensor-${Date.now()}`,
@@ -1055,30 +1036,22 @@ export function ShipDesigner() {
                     tl: Number(s['TL'] || 8),
                   }]);
                 }
-                e.target.value = '';
               }}
-            >
-              <option value="">Select from table...</option>
-              {sensorList.map((s: Record<string, unknown>, i: number) => (
-                <option key={i} value={String(s['Sensors'])}>
-                  {String(s['Sensors'])} — {fmtTons(Number(s['Tons'] || 0))} | {fmtCost(Number(s['Cost'] || 0))} | TL{Number(s['TL'] || 8)}
-                </option>
-              ))}
-            </select>
+            />
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 9. Life Support */}
-        <CollapsibleSection title="9. Life Support & Facilities" defaultOpen>
+        {/* Step 9: Life Support */}
+        <Step num={9} title="Life Support & Facilities" kw="LSS">
           <ChildTable
-            title="Life Support Facilities"
+            title="LIFE SUPPORT FACILITIES"
             items={lifeSupportRows}
             onChange={setLifeSupportRows}
             columns={[
-              { key: 'name', label: 'Facility', editable: true, type: 'text' },
-              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
-              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              { key: 'name', label: 'FACILITY', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
             ]}
             createNewItem={() => ({
               id: `ls-${Date.now()}`,
@@ -1087,17 +1060,19 @@ export function ShipDesigner() {
               cost: 500000,
               qty: 1,
             })}
-            addButtonLabel="Add Facility"
+            addButtonLabel="ADD FACILITY"
           />
-
-          <div className="pt-2 border-t border-slate-700">
-            <label className="block text-sm text-slate-400 mb-1">Quick Add Facility</label>
-            <select
-              className="input w-full"
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD FACILITY"
               value=""
-              onChange={(e) => {
-                if (!e.target.value) return;
-                const ls = tables.life_support?.rows?.find((l: Record<string, unknown>) => String(l['LIFE SUPPORT']) === e.target.value);
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...(tables.life_support?.rows || []).map((l: Record<string, unknown>) => ({
+                value: String(l['LIFE SUPPORT']),
+                label: `${String(l['LIFE SUPPORT'])} · ${fmtTons(Number(l['DTONS'] || 0))} · ${fmtCost(Number(l['COST'] || 0))} · TL${Number(l['TL'] || 7)}`,
+              }))]}
+              onChange={(v) => {
+                if (!v) return;
+                const ls = tables.life_support?.rows?.find((l: Record<string, unknown>) => String(l['LIFE SUPPORT']) === v);
                 if (ls) {
                   setLifeSupportRows(prev => [...prev, {
                     id: `ls-${Date.now()}`,
@@ -1108,42 +1083,26 @@ export function ShipDesigner() {
                     tl: Number(ls['TL'] || 7),
                   }]);
                 }
-                e.target.value = '';
               }}
-            >
-              <option value="">Select from table...</option>
-              {(tables.life_support?.rows || []).map((l: Record<string, unknown>, i: number) => (
-                <option key={i} value={String(l['LIFE SUPPORT'])}>
-                  {String(l['LIFE SUPPORT'])} — {fmtTons(Number(l['DTONS'] || 0))} | {fmtCost(Number(l['COST'] || 0))} | TL{Number(l['TL'] || 7)}
-                </option>
-              ))}
-            </select>
+            />
           </div>
-
-          {/* Legacy staterooms/low berths */}
-          <div className="grid grid-cols-2 gap-4 pt-3 border-t border-slate-700">
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Staterooms (legacy)</label>
-              <input className="input w-full" type="number" min={0} value={staterooms} onChange={(e) => setStaterooms(Number(e.target.value))} />
-            </div>
-            <div>
-              <label className="block text-sm text-slate-400 mb-1">Low Berths (legacy)</label>
-              <input className="input w-full" type="number" min={0} value={lowBerths} onChange={(e) => setLowBerths(Number(e.target.value))} />
-            </div>
+          <div style={{ display: 'flex', gap: 14, marginTop: 14, paddingTop: 12, borderTop: `1px solid ${colors.hair}` }}>
+            <ShField label="STATEROOMS (LEGACY)" value={staterooms} type="number" onChange={(v) => setStaterooms(Number(v))} />
+            <ShField label="LOW BERTHS (LEGACY)" value={lowBerths} type="number" onChange={(v) => setLowBerths(Number(v))} />
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 10. Modules */}
-        <CollapsibleSection title="10. Modules (No Life Support)" defaultOpen>
+        {/* Step 10: Modules */}
+        <Step num={10} title="Modules (No Life Support)" kw="MOD">
           <ChildTable
-            title="Modules"
+            title="MODULES"
             items={moduleRows}
             onChange={setModuleRows}
             columns={[
-              { key: 'name', label: 'Module', editable: true, type: 'text' },
-              { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
-              { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-              { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+              { key: 'name', label: 'MODULE', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
             ]}
             createNewItem={() => ({
               id: `mod-${Date.now()}`,
@@ -1152,17 +1111,19 @@ export function ShipDesigner() {
               cost: 1000000,
               qty: 1,
             })}
-            addButtonLabel="Add Module"
+            addButtonLabel="ADD MODULE"
           />
-
-          <div className="pt-2 border-t border-slate-700">
-            <label className="block text-sm text-slate-400 mb-1">Quick Add Module</label>
-            <select
-              className="input w-full"
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD MODULE"
               value=""
-              onChange={(e) => {
-                if (!e.target.value) return;
-                const m = modules.find((mod: Record<string, unknown>) => String(mod['MODULES'] || mod['Module']) === e.target.value);
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...modules.map((m: Record<string, unknown>) => ({
+                value: String(m['MODULES'] || m['Module']),
+                label: `${String(m['MODULES'] || m['Module'])} · ${fmtTons(Number(m['DTONS'] || m['Dtons'] || 0))} · ${fmtCost(Number(m['COST'] || m['Cost'] || 0))} · TL${Number(m['TL'] || 7)}`,
+              }))]}
+              onChange={(v) => {
+                if (!v) return;
+                const m = modules.find((mod: Record<string, unknown>) => String(mod['MODULES'] || mod['Module']) === v);
                 if (m) {
                   setModuleRows(prev => [...prev, {
                     id: `mod-${Date.now()}`,
@@ -1173,27 +1134,25 @@ export function ShipDesigner() {
                     tl: Number(m['TL'] || 7),
                   }]);
                 }
-                e.target.value = '';
               }}
-            >
-              <option value="">Select from table...</option>
-              {modules.map((m: Record<string, unknown>, i: number) => (
-                <option key={i} value={String(m['MODULES'] || m['Module'])}>
-                  {String(m['MODULES'] || m['Module'])} — {fmtTons(Number(m['DTONS'] || m['Dtons'] || 0))} | {fmtCost(Number(m['COST'] || m['Cost'] || 0))} | TL{Number(m['TL'] || 7)}
-                </option>
-              ))}
-            </select>
+            />
           </div>
-
-          {/* Legacy module toggles */}
-          <div className="pt-3 border-t border-slate-700">
-            <label className="block text-sm text-slate-400 mb-2">Legacy Module Selection</label>
-            <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
+          <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${colors.hair}` }}>
+            <ShLabel size={12} dim>LEGACY MODULE SELECTION</ShLabel>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, maxHeight: 192, overflowY: 'auto', marginTop: 8 }}>
               {modules.map((mod: Record<string, unknown>, i: number) => {
                 const modName = String(mod['MODULES'] || mod['Module'] || '');
                 const selected = selectedModules.find(m => m.id === modName);
                 return (
-                  <div key={i} className="flex items-center gap-2 p-2 bg-slate-800/50 rounded">
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    padding: '8px 10px',
+                    background: colors.panelAlt,
+                    border: `1px solid ${colors.hair}`,
+                    fontFamily: fonts.mono,
+                    fontSize: 13,
+                    color: colors.inkSoft,
+                  }}>
                     <input
                       type="checkbox"
                       checked={!!selected}
@@ -1204,9 +1163,9 @@ export function ShipDesigner() {
                           return [...prev, { id: modName, qty: 1 }];
                         });
                       }}
-                      className="rounded border-slate-600"
+                      style={{ accentColor: colors.glow }}
                     />
-                    <span className="text-sm flex-1">{modName}</span>
+                    <span style={{ flex: 1 }}>{modName}</span>
                     {selected && (
                       <input
                         type="number"
@@ -1215,7 +1174,15 @@ export function ShipDesigner() {
                         onChange={(e) => {
                           setSelectedModules(prev => prev.map(m => m.id === modName ? { ...m, qty: Math.max(1, Number(e.target.value)) } : m));
                         }}
-                        className="input w-14 text-xs py-1"
+                        style={{
+                          width: 56,
+                          padding: '4px 6px',
+                          background: colors.panel,
+                          border: `1px solid ${colors.hair}`,
+                          color: colors.ink,
+                          fontFamily: fonts.mono,
+                          fontSize: 12,
+                        }}
                       />
                     )}
                   </div>
@@ -1223,126 +1190,129 @@ export function ShipDesigner() {
               })}
             </div>
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 11. Weapons / Turrets / Hardmounts */}
-        <CollapsibleSection title="11. Weapons, Turrets & Hardmounts" defaultOpen>
-          <div className="space-y-3">
-            <ChildTable
-              title="Weapon Mounts"
-              items={weaponMountRows}
-              onChange={setWeaponMountRows}
-              columns={[
-                { key: 'name', label: 'Mount', editable: true, type: 'text' },
-                { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
-                { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-                { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
-              ]}
-              createNewItem={() => ({
-                id: `mount-${Date.now()}`,
-                name: 'Turret, Single',
-                dtons: 1,
-                cost: 200000,
-                qty: 1,
-              })}
-              addButtonLabel="Add Mount"
+        {/* Step 11: Weapons */}
+        <Step num={11} title="Weapons, Turrets & Hardmounts" kw="WPN">
+          <ChildTable
+            title="WEAPON MOUNTS"
+            items={weaponMountRows}
+            onChange={setWeaponMountRows}
+            columns={[
+              { key: 'name', label: 'MOUNT', editable: true, type: 'text' },
+              { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
+              { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+              { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
+            ]}
+            createNewItem={() => ({
+              id: `mount-${Date.now()}`,
+              name: 'Turret, Single',
+              dtons: 1,
+              cost: 200000,
+              qty: 1,
+            })}
+            addButtonLabel="ADD MOUNT"
+          />
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD MOUNT"
+              value=""
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...weapons.filter((w: Record<string, unknown>) => {
+                const wpn = String(w['WEAPONS']);
+                return wpn.includes('Turret') || wpn.includes('Bay') || wpn.includes('Hard');
+              }).map((w: Record<string, unknown>) => ({
+                value: String(w['WEAPONS']),
+                label: `${String(w['WEAPONS'])} · ${fmtTons(Number(w['DTONS'] || 0))} · ${fmtCost(Number(w['COST'] || 0))} · TL${Number(w['TL'] || 7)}`,
+              }))]}
+              onChange={(v) => {
+                if (!v) return;
+                const w = weapons.find((wpn: Record<string, unknown>) => String(wpn['WEAPONS']).includes('Turret') && String(wpn['WEAPONS']) === v);
+                if (w) {
+                  setWeaponMountRows(prev => [...prev, {
+                    id: `mount-${Date.now()}`,
+                    name: String(w['WEAPONS']),
+                    dtons: Number(w['DTONS'] || 0),
+                    cost: Number(w['COST'] || 0),
+                    qty: 1,
+                    tl: Number(w['TL'] || 7),
+                  }]);
+                }
+              }}
             />
-
-            <div className="pt-2 border-t border-slate-700">
-              <label className="block text-sm text-slate-400 mb-1">Quick Add Mount</label>
-              <select
-                className="input w-full"
-                value=""
-                onChange={(e) => {
-                  if (!e.target.value) return;
-                  const w = weapons.find((wpn: Record<string, unknown>) => String(wpn['WEAPONS']).includes('Turret') && String(wpn['WEAPONS']) === e.target.value);
-                  if (w) {
-                    setWeaponMountRows(prev => [...prev, {
-                      id: `mount-${Date.now()}`,
-                      name: String(w['WEAPONS']),
-                      dtons: Number(w['DTONS'] || 0),
-                      cost: Number(w['COST'] || 0),
-                      qty: 1,
-                      tl: Number(w['TL'] || 7),
-                    }]);
-                  }
-                  e.target.value = '';
-                }}
-              >
-                <option value="">Select mount from table...</option>
-                {weapons.filter((w: Record<string, unknown>) => String(w['WEAPONS']).includes('Turret') || String(w['WEAPONS']).includes('Bay') || String(w['WEAPONS']).includes('Hard')).map((w: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(w['WEAPONS'])}>
-                    {String(w['WEAPONS'])} — {fmtTons(Number(w['DTONS'] || 0))} | {fmtCost(Number(w['COST'] || 0))} | TL{Number(w['TL'] || 7)}
-                  </option>
-                ))}
-              </select>
-            </div>
-
-            {/* Legacy weapon toggles */}
-            <div className="pt-3 border-t border-slate-700">
-              <label className="block text-sm text-slate-400 mb-2">Legacy Weapon Selection</label>
-              <div className="grid grid-cols-2 gap-2 max-h-48 overflow-y-auto">
-                {weapons.map((wpn: Record<string, unknown>, i: number) => {
-                  const wpnName = String(wpn['WEAPONS'] || '');
-                  const selected = selectedWeapons.find(w => w.id === wpnName);
-                  return (
-                    <div key={i} className="flex items-center gap-2 p-2 bg-slate-800/50 rounded">
+          </div>
+          <div style={{ marginTop: 14, paddingTop: 12, borderTop: `1px solid ${colors.hair}` }}>
+            <ShLabel size={12} dim>LEGACY WEAPON SELECTION</ShLabel>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 8, maxHeight: 192, overflowY: 'auto', marginTop: 8 }}>
+              {weapons.map((wpn: Record<string, unknown>, i: number) => {
+                const wpnName = String(wpn['WEAPONS'] || '');
+                const selected = selectedWeapons.find(w => w.id === wpnName);
+                return (
+                  <div key={i} style={{
+                    display: 'flex', alignItems: 'center', gap: 8,
+                    padding: '8px 10px',
+                    background: colors.panelAlt,
+                    border: `1px solid ${colors.hair}`,
+                    fontFamily: fonts.mono,
+                    fontSize: 13,
+                    color: colors.inkSoft,
+                  }}>
+                    <input
+                      type="checkbox"
+                      checked={!!selected}
+                      onChange={() => {
+                        setSelectedWeapons(prev => {
+                          const exists = prev.find(w => w.id === wpnName);
+                          if (exists) return prev.filter(w => w.id !== wpnName);
+                          return [...prev, { id: wpnName, qty: 1 }];
+                        });
+                      }}
+                      style={{ accentColor: colors.glow }}
+                    />
+                    <span style={{ flex: 1 }}>{wpnName}</span>
+                    {selected && (
                       <input
-                        type="checkbox"
-                        checked={!!selected}
-                        onChange={() => {
-                          setSelectedWeapons(prev => {
-                            const exists = prev.find(w => w.id === wpnName);
-                            if (exists) return prev.filter(w => w.id !== wpnName);
-                            return [...prev, { id: wpnName, qty: 1 }];
-                          });
+                        type="number"
+                        min={1}
+                        value={selected.qty}
+                        onChange={(e) => {
+                          setSelectedWeapons(prev => prev.map(w => w.id === wpnName ? { ...w, qty: Math.max(1, Number(e.target.value)) } : w));
                         }}
-                        className="rounded border-slate-600"
+                        style={{
+                          width: 56,
+                          padding: '4px 6px',
+                          background: colors.panel,
+                          border: `1px solid ${colors.hair}`,
+                          color: colors.ink,
+                          fontFamily: fonts.mono,
+                          fontSize: 12,
+                        }}
                       />
-                      <span className="text-sm flex-1">{wpnName}</span>
-                      {selected && (
-                        <input
-                          type="number"
-                          min={1}
-                          value={selected.qty}
-                          onChange={(e) => {
-                            setSelectedWeapons(prev => prev.map(w => w.id === wpnName ? { ...w, qty: Math.max(1, Number(e.target.value)) } : w));
-                          }}
-                          className="input w-14 text-xs py-1"
-                        />
-                      )}
-                    </div>
-                  );
-                })}
-              </div>
+                    )}
+                  </div>
+                );
+              })}
             </div>
           </div>
-        </CollapsibleSection>
+        </Step>
 
-        {/* 12. Cargo */}
-        <CollapsibleSection title="12. Cargo & Supplies" defaultOpen>
-          <div className="space-y-3">
-            <div className="grid grid-cols-2 gap-4">
-              <div>
-                <label className="block text-sm text-slate-400 mb-1">Cargo Hold (DT)</label>
-                <input className="input w-full" type="number" min={0} value={cargo} onChange={(e) => setCargo(Number(e.target.value))} />
-              </div>
-              <div className="flex items-end">
-                <div className="text-sm text-slate-400">
-                  Cargo has no life support. Vacc suits required for entry.
-                </div>
-              </div>
+        {/* Step 12: Cargo */}
+        <Step num={12} title="Cargo & Supplies" kw="CRG">
+          <div style={{ display: 'flex', gap: 14 }}>
+            <ShField label="CARGO HOLD (DT)" value={cargo} type="number" onChange={(v) => setCargo(Number(v))} />
+            <div style={{ flex: 1, display: 'flex', alignItems: 'flex-end' }}>
+              <ShData size={12} dim>// CARGO HAS NO LIFE SUPPORT · VACC SUITS REQUIRED</ShData>
             </div>
-
+          </div>
+          <div style={{ marginTop: 14 }}>
             <ChildTable
-              title="Supplies in Cargo"
+              title="SUPPLIES IN CARGO"
               items={supplyRows}
               onChange={setSupplyRows}
               columns={[
-                { key: 'name', label: 'Supply', editable: true, type: 'text' },
-                { key: 'dtons', label: 'DTons', editable: true, type: 'number', width: 'w-20' },
-                { key: 'cost', label: 'Cost', editable: true, type: 'number', width: 'w-24' },
-                { key: 'qty', label: 'Qty', editable: true, type: 'number', width: 'w-14' },
+                { key: 'name', label: 'SUPPLY', editable: true, type: 'text' },
+                { key: 'dtons', label: 'DTONS', editable: true, type: 'number', width: 'w-20' },
+                { key: 'cost', label: 'COST', editable: true, type: 'number', width: 'w-24' },
+                { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
               ]}
               createNewItem={() => ({
                 id: `supply-${Date.now()}`,
@@ -1351,79 +1321,72 @@ export function ShipDesigner() {
                 cost: 15000,
                 qty: 1,
               })}
-              addButtonLabel="Add Supply"
+              addButtonLabel="ADD SUPPLY"
             />
-
-            <div className="pt-2 border-t border-slate-700">
-              <label className="block text-sm text-slate-400 mb-1">Quick Add Supply</label>
-              <select
-                className="input w-full"
-                value=""
-                onChange={(e) => {
-                  if (!e.target.value) return;
-                  const s = tables.ship_supplies?.rows?.find((sup: Record<string, unknown>) => String(sup['Supply']) === e.target.value);
-                  if (s) {
-                    setSupplyRows(prev => [...prev, {
-                      id: `supply-${Date.now()}`,
-                      name: String(s['Supply']),
-                      dtons: Number(s['Dtons'] || 0),
-                      cost: Number(s['Cost'] || 0),
-                      qty: 1,
-                      tl: Number(s['TL'] || 6),
-                    }]);
-                  }
-                  e.target.value = '';
-                }}
-              >
-                <option value="">Select from table...</option>
-                {(tables.ship_supplies?.rows || []).map((s: Record<string, unknown>, i: number) => (
-                  <option key={i} value={String(s['Supply'])}>
-                    {String(s['Supply'])} — {fmtTons(Number(s['Dtons'] || 0))} | {fmtCost(Number(s['Cost'] || 0))} | TL{Number(s['TL'] || 6)}
-                  </option>
-                ))}
-              </select>
-            </div>
           </div>
-        </CollapsibleSection>
+          <div style={{ marginTop: 12 }}>
+            <ShField
+              label="QUICK ADD SUPPLY"
+              value=""
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...(tables.ship_supplies?.rows || []).map((s: Record<string, unknown>) => ({
+                value: String(s['Supply']),
+                label: `${String(s['Supply'])} · ${fmtTons(Number(s['Dtons'] || 0))} · ${fmtCost(Number(s['Cost'] || 0))} · TL${Number(s['TL'] || 6)}`,
+              }))]}
+              onChange={(v) => {
+                if (!v) return;
+                const s = tables.ship_supplies?.rows?.find((sup: Record<string, unknown>) => String(sup['Supply']) === v);
+                if (s) {
+                  setSupplyRows(prev => [...prev, {
+                    id: `supply-${Date.now()}`,
+                    name: String(s['Supply']),
+                    dtons: Number(s['Dtons'] || 0),
+                    cost: Number(s['Cost'] || 0),
+                    qty: 1,
+                    tl: Number(s['TL'] || 6),
+                  }]);
+                }
+              }}
+            />
+          </div>
+        </Step>
 
-        {/* 13. Crew */}
-        <CollapsibleSection title="13. Crew Requirements (CE)" defaultOpen>
+        {/* Step 13: Crew */}
+        <Step num={13} title="Crew Requirements (CE)" kw="CREW" defaultOpen={false}>
           {crewReqs ? (
-            <div className="space-y-3">
-              <div className="grid grid-cols-3 gap-2 text-center">
-                <div className="bg-slate-800/50 p-2 rounded-lg">
-                  <div className="text-xs text-slate-500">Minimum Crew</div>
-                  <div className="text-xl font-bold text-blue-400">{crewReqs.totalMinimum}</div>
-                </div>
-                <div className="bg-slate-800/50 p-2 rounded-lg">
-                  <div className="text-xs text-slate-500">Full Complement</div>
-                  <div className="text-xl font-bold text-cyan-400">{crewReqs.totalFull}</div>
-                </div>
-                <div className="bg-slate-800/50 p-2 rounded-lg">
-                  <div className="text-xs text-slate-500">Monthly Payroll</div>
-                  <div className="text-xl font-bold text-green-400">{(crewReqs.monthlySalary / 1000).toFixed(0)}k Cr</div>
-                </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 14 }}>
+              <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
+                {[
+                  ['MINIMUM CREW', String(crewReqs.totalMinimum), colors.glow],
+                  ['FULL COMPLEMENT', String(crewReqs.totalFull), colors.glowSoft],
+                  ['MONTHLY PAYROLL', `${(crewReqs.monthlySalary / 1000).toFixed(0)}K CR`, colors.amber],
+                ].map(([label, val, c]) => (
+                  <div key={label} style={{ border: `1px solid ${colors.hair}`, padding: '12px 14px', background: colors.panelAlt }}>
+                    <ShLabel size={11} dim>{label}</ShLabel>
+                    <div style={{ marginTop: 4 }}>
+                      <ShNum size={28} color={c as string}>{val}</ShNum>
+                    </div>
+                  </div>
+                ))}
               </div>
-
-              <div className="overflow-x-auto">
-                <table className="w-full text-sm">
+              <div style={{ overflowX: 'auto' }}>
+                <table style={{ width: '100%', borderCollapse: 'collapse', fontFamily: fonts.mono, fontSize: 13 }}>
                   <thead>
-                    <tr className="text-left text-slate-500 border-b border-slate-700">
-                      <th className="pb-1">Position</th>
-                      <th className="pb-1 text-center">Min</th>
-                      <th className="pb-1 text-center">Full</th>
-                      <th className="pb-1 text-right">Salary/mo</th>
-                      <th className="pb-1 text-right">Shift</th>
+                    <tr>
+                      <th style={{ textAlign: 'left', padding: '8px 0', borderBottom: `1px solid ${colors.hair}`, color: colors.inkDim, fontSize: 11, letterSpacing: '0.1em', textTransform: 'uppercase' }}>POSITION</th>
+                      <th style={{ textAlign: 'center', padding: '8px 0', borderBottom: `1px solid ${colors.hair}`, color: colors.inkDim, fontSize: 11 }}>MIN</th>
+                      <th style={{ textAlign: 'center', padding: '8px 0', borderBottom: `1px solid ${colors.hair}`, color: colors.inkDim, fontSize: 11 }}>FULL</th>
+                      <th style={{ textAlign: 'right', padding: '8px 0', borderBottom: `1px solid ${colors.hair}`, color: colors.inkDim, fontSize: 11 }}>SALARY/MO</th>
+                      <th style={{ textAlign: 'right', padding: '8px 0', borderBottom: `1px solid ${colors.hair}`, color: colors.inkDim, fontSize: 11 }}>SHIFT</th>
                     </tr>
                   </thead>
-                  <tbody className="divide-y divide-slate-800">
+                  <tbody>
                     {crewReqs.positions.map((p, i) => (
-                      <tr key={i} className={p.minimum > 0 ? 'text-slate-200' : 'text-slate-500'}>
-                        <td className="py-1.5">{p.position}</td>
-                        <td className="py-1.5 text-center">{p.minimum}</td>
-                        <td className="py-1.5 text-center">{p.fullComplement}</td>
-                        <td className="py-1.5 text-right">{fmtNumber(p.salary)} Cr</td>
-                        <td className="py-1.5 text-right">{fmtNumber(p.shiftPay)} Cr</td>
+                      <tr key={i} style={{ color: p.minimum > 0 ? colors.inkSoft : colors.inkDim }}>
+                        <td style={{ padding: '6px 0', borderBottom: `1px dotted ${colors.hairFaint}` }}>{p.position}</td>
+                        <td style={{ padding: '6px 0', borderBottom: `1px dotted ${colors.hairFaint}`, textAlign: 'center' }}>{p.minimum}</td>
+                        <td style={{ padding: '6px 0', borderBottom: `1px dotted ${colors.hairFaint}`, textAlign: 'center' }}>{p.fullComplement}</td>
+                        <td style={{ padding: '6px 0', borderBottom: `1px dotted ${colors.hairFaint}`, textAlign: 'right' }}>{fmtNumber(p.salary)} CR</td>
+                        <td style={{ padding: '6px 0', borderBottom: `1px dotted ${colors.hairFaint}`, textAlign: 'right' }}>{fmtNumber(p.shiftPay)} CR</td>
                       </tr>
                     ))}
                   </tbody>
@@ -1431,13 +1394,13 @@ export function ShipDesigner() {
               </div>
             </div>
           ) : (
-            <div className="text-sm text-slate-500">Select a hull to calculate crew requirements.</div>
+            <ShData size={13} dim>// SELECT A HULL TO CALCULATE CREW REQUIREMENTS</ShData>
           )}
-        </CollapsibleSection>
+        </Step>
       </div>
 
-      {/* Right Column: BOQ & Summary */}
-      <div className="space-y-4">
+      {/* RIGHT: Summary Panel */}
+      <aside style={{ display: 'flex', flexDirection: 'column', gap: 16 }}>
         <BOQView
           components={components}
           totalCost={totalCost}
@@ -1447,44 +1410,49 @@ export function ShipDesigner() {
         />
 
         {hullDtons > 0 && (
-          <div className="tile">
-            <div className="tile-content">
-              <MnemeCombatPanel ship={{
-                id: 'preview', name, tl, hullCode, hullDtons, configuration: config,
-                armor: armorRows.map(r => r.name).join(', ') || 'None',
-                armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
-                bridge, computer, software: softwareList,
-                sensors, staterooms, lowBerths,
-                crew: [], modules: moduleComponents, weapons: weaponComponents,
-                cargo, components, totalCost, availableDtons,
-                createdAt: new Date().toISOString(),
-              }} />
-            </div>
-          </div>
+          <ShPanel no="SHEET 03" title="Mneme Combat" kw="MAC">
+            <MnemeCombatPanel ship={{
+              id: 'preview', name, tl, hullCode, hullDtons, configuration: config,
+              armor: armorRows.map(r => r.name).join(', ') || 'None',
+              armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
+              bridge, computer, software: softwareList,
+              sensors, staterooms, lowBerths,
+              crew: [], modules: moduleComponents, weapons: weaponComponents,
+              cargo, components, totalCost, availableDtons,
+              createdAt: new Date().toISOString(),
+            }} />
+          </ShPanel>
         )}
 
         {/* Ship Library Quick List */}
         {ships.length > 0 && (
-          <div className="tile">
-            <div className="tile-header">
-              <span className="font-semibold">Ship Library</span>
-            </div>
-            <div className="tile-content space-y-2 max-h-64 overflow-y-auto">
+          <ShPanel no="SHEET 04" title="Ship Library" kw="LIB">
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 280, overflowY: 'auto' }}>
               {ships.map((ship) => (
-                <div key={ship.id} className="flex items-center justify-between p-2 bg-slate-800 rounded">
-                  <button onClick={() => loadShip(ship)} className="text-left flex-1">
-                    <div className="text-sm font-medium">{ship.name}</div>
-                    <div className="text-xs text-slate-400">{fmtTons(ship.hullDtons)} | TL{ship.tl} | {fmtCost(ship.totalCost)}</div>
+                <div key={ship.id} style={{
+                  display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+                  padding: '8px 10px',
+                  background: colors.panelAlt,
+                  border: `1px solid ${colors.hair}`,
+                }}>
+                  <button onClick={() => loadShip(ship)} style={{ textAlign: 'left', flex: 1, background: 'transparent', border: 'none', cursor: 'pointer', color: colors.inkSoft, fontFamily: fonts.mono, fontSize: 13 }}>
+                    <div style={{ fontWeight: 600, color: colors.ink }}>{ship.name}</div>
+                    <div style={{ fontSize: 11, color: colors.inkDim, marginTop: 2 }}>{fmtTons(ship.hullDtons)} · TL{ship.tl} · {fmtCost(ship.totalCost)}</div>
                   </button>
-                  <button onClick={() => deleteShip(ship.id)} className="p-1 hover:bg-red-900/30 rounded text-slate-500 hover:text-red-400">
+                  <button
+                    onClick={() => deleteShip(ship.id)}
+                    style={{ padding: 6, background: 'transparent', border: 'none', color: colors.inkDim, cursor: 'pointer' }}
+                    onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.color = colors.warn; }}
+                    onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.color = colors.inkDim; }}
+                  >
                     <Trash2 className="w-3.5 h-3.5" />
                   </button>
                 </div>
               ))}
             </div>
-          </div>
+          </ShPanel>
         )}
-      </div>
+      </aside>
     </div>
   );
 }

@@ -234,7 +234,7 @@ export function VariantGenerator() {
 
   return (
     <div>
-      <h1 className="text-2xl font-bold mb-6">Variant Generator</h1>
+      <h1 className="text-2xl font-bold mb-6" style={{ color: 'var(--sh-ink)', fontFamily: 'var(--font-sh-display), monospace', letterSpacing: '0.12em' }}>VARIANT GENERATOR</h1>
 
       <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
         <div className="lg:col-span-1 space-y-4">
@@ -250,16 +250,16 @@ export function VariantGenerator() {
               ))}
             </select>
             {ships.length === 0 && (
-              <p className="text-sm text-slate-500 mt-2">Save a ship in the Designer first.</p>
+              <p className="text-sm mt-2" style={{ color: 'var(--sh-ink-dim)' }}>Save a ship in the Designer first.</p>
             )}
           </CollapsibleSection>
 
           <CollapsibleSection title="Parameters" defaultOpen>
             <div className="space-y-4">
               <div>
-                <label className="flex justify-between text-sm text-slate-400 mb-1">
+                <label className="flex justify-between text-sm mb-1" style={{ color: 'var(--sh-ink-dim)' }}>
                   <span>Number of Variants</span>
-                  <span>{count}</span>
+                  <span style={{ color: 'var(--sh-glow)' }}>{count}</span>
                 </label>
                 <input 
                   type="range" min={1} max={10} value={count} 
@@ -277,9 +277,9 @@ export function VariantGenerator() {
                 ['hullVariance', 'Hull Variance'],
               ] as [keyof VariantParams, string][]).map(([key, label]) => (
                 <div key={key}>
-                  <label className="flex justify-between text-sm text-slate-400 mb-1">
+                  <label className="flex justify-between text-sm mb-1" style={{ color: 'var(--sh-ink-dim)' }}>
                     <span>{label}</span>
-                    <span>{params[key]}%</span>
+                    <span style={{ color: 'var(--sh-glow)' }}>{params[key]}%</span>
                   </label>
                   <input 
                     type="range" min={0} max={100} value={params[key]} 
@@ -323,7 +323,7 @@ export function VariantGenerator() {
               <div key={ship.id} className="tile">
                 <div className="tile-header">
                   <span className="font-semibold">{ship.name}</span>
-                  <span className="text-sm text-slate-400">{(ship.totalCost / 1e6).toFixed(2)} MCr</span>
+                  <span className="text-sm" style={{ color: 'var(--sh-ink-dim)' }}>{(ship.totalCost / 1e6).toFixed(2)} MCr</span>
                 </div>
                 <div className="tile-content">
                   <BOQView 
@@ -339,7 +339,7 @@ export function VariantGenerator() {
           </div>
 
           {generated.length === 0 && (
-            <div className="text-center py-16 text-slate-500">
+            <div className="text-center py-16" style={{ color: 'var(--sh-ink-dim)' }}>
               <p>Select a base ship and generate variants.</p>
             </div>
           )}

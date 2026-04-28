@@ -82,12 +82,12 @@ export function TableManager() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold text-slate-100">Data Tables</h1>
-          <p className="text-sm text-slate-400 mt-1">Edit, import, export, and share rule tables. All changes auto-save to browser storage.</p>
+          <h1 className="text-2xl font-bold" style={{ color: 'var(--sh-ink)', fontFamily: 'var(--font-sh-display), monospace', letterSpacing: '0.12em' }}>DATA TABLES</h1>
+          <p className="text-sm mt-1" style={{ color: 'var(--sh-ink-dim)' }}>Edit, import, export, and share rule tables. All changes auto-save to browser storage.</p>
         </div>
         <div className="flex items-center gap-2">
           {saveMessage && (
-            <span className="text-sm text-green-400 bg-green-900/30 px-3 py-1 rounded-md">{saveMessage}</span>
+            <span className="text-sm px-3 py-1" style={{ color: 'var(--sh-good)', background: 'rgba(122,217,154,0.12)', border: '1px solid rgba(122,217,154,0.3)' }}>{saveMessage}</span>
           )}
           <button onClick={handleExport} className="btn-secondary flex items-center gap-2">
             <Download className="w-4 h-4" /> Export All
@@ -103,7 +103,7 @@ export function TableManager() {
       </div>
 
       {importError && (
-        <div className="mb-4 p-3 bg-red-900/30 border border-red-700 rounded-md text-red-300 text-sm">
+        <div className="mb-4 p-3 text-sm" style={{ background: 'rgba(255,122,90,0.12)', border: '1px solid rgba(255,122,90,0.3)', color: 'var(--sh-warn)' }}>
           {importError}
         </div>
       )}
@@ -123,7 +123,7 @@ export function TableManager() {
                     const data = JSON.stringify({ [id]: table }, null, 2);
                     downloadJson(data, `ce-shipgen-${id}-${generateSnapshotName()}.json`);
                   }}
-                  className="p-1.5 hover:bg-slate-600 rounded text-slate-400 hover:text-slate-200"
+                  className="p-1.5 rounded" style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='var(--sh-panel-alt)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-soft)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
                   title="Export this table"
                 >
                   <FileJson className="w-4 h-4" />

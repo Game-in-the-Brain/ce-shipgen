@@ -1,0 +1,73 @@
+/* CE ShipGen — global styles + theme tokens.
+   Import once at app root. */
+
+@import url('https://fonts.googleapis.com/css2?family=VT323&family=JetBrains+Mono:wght@400;500;600;700&display=swap');
+
+:root {
+  --sh-bg:          #06100c;
+  --sh-panel:       #0a1612;
+  --sh-panel-alt:   #040c09;
+  --sh-ink:         #dcffea;
+  --sh-ink-soft:    #9bd9b3;
+  --sh-ink-dim:     #5a8a72;
+  --sh-glow:        #5cffae;
+  --sh-glow-soft:   #7fffba;
+  --sh-amber:       #f4cf45;
+  --sh-warn:        #ff7a5a;
+  --sh-good:        #7ad99a;
+  --sh-hair:        rgba(220, 255, 234, 0.16);
+  --sh-hair-faint:  rgba(220, 255, 234, 0.08);
+  --sh-hair-bright: rgba(92, 255, 174, 0.35);
+}
+
+/* Optional alternate themes — apply via [data-shipgen-theme="amber"] etc. */
+[data-shipgen-theme="amber"] {
+  --sh-bg:        #100a03;
+  --sh-panel:     #1a1208;
+  --sh-panel-alt: #0a0602;
+  --sh-ink:       #ffe9b8;
+  --sh-ink-soft:  #d9b87a;
+  --sh-ink-dim:   #8a6f40;
+  --sh-glow:      #ffaf3a;
+  --sh-glow-soft: #ffc879;
+  --sh-amber:     #ffaf3a;
+}
+
+[data-shipgen-theme="blueprint"] {
+  --sh-bg:        #0a1424;
+  --sh-panel:     #0f1d33;
+  --sh-panel-alt: #060e1c;
+  --sh-ink:       #e0ecff;
+  --sh-ink-soft:  #9bb4d9;
+  --sh-ink-dim:   #5a7290;
+  --sh-glow:      #6fb6ff;
+  --sh-glow-soft: #9dcfff;
+  --sh-amber:     #ffcb6f;
+}
+
+/* Scanline overlay — apply with class="sh-scanlines" */
+.sh-scanlines::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+  z-index: 30;
+  background: repeating-linear-gradient(
+    0deg,
+    transparent 0,
+    transparent 3px,
+    rgba(92, 255, 174, 0.025) 3px,
+    rgba(92, 255, 174, 0.025) 4px
+  );
+}
+
+/* Faint grid backdrop */
+.sh-grid-bg {
+  background-image:
+    linear-gradient(var(--sh-hair-faint) 1px, transparent 1px),
+    linear-gradient(90deg, var(--sh-hair-faint) 1px, transparent 1px);
+  background-size: 48px 48px;
+}
+
+/* Tabular nums helper */
+.sh-tnum { font-variant-numeric: tabular-nums; }

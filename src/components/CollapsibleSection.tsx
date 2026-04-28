@@ -1,5 +1,6 @@
 import { useState, type ReactNode } from 'react';
 import { ChevronDown, ChevronRight } from 'lucide-react';
+import { colors, fonts } from './shipgen/theme';
 
 interface Props {
   title: string;
@@ -14,21 +15,28 @@ export function CollapsibleSection({ title, children, defaultOpen = false, badge
 
   return (
     <div className="tile mb-3">
-      <div 
+      <div
         className="tile-header"
         onClick={() => setOpen(!open)}
         onKeyDown={(e) => { if (e.key === 'Enter' || e.key === ' ') setOpen(!open); }}
         role="button"
         tabIndex={0}
       >
-        <div className="flex items-center gap-2">
-          {open ? <ChevronDown className="w-4 h-4 text-slate-400" /> : <ChevronRight className="w-4 h-4 text-slate-400" />}
-          <span className="font-semibold text-slate-200">{title}</span>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          {open
+            ? <ChevronDown className="w-4 h-4" style={{ color: colors.inkDim }} />
+            : <ChevronRight className="w-4 h-4" style={{ color: colors.inkDim }} />
+          }
+          <span style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 600, color: colors.inkSoft, letterSpacing: '0.06em' }}>{title}</span>
           {badge !== undefined && (
-            <span className="text-xs bg-slate-700 text-slate-300 px-1.5 py-0.5 rounded-full">{badge}</span>
+            <span style={{
+              fontFamily: fonts.mono, fontSize: 11,
+              background: colors.panelAlt, color: colors.inkDim,
+              padding: '2px 8px', border: `1px solid ${colors.hair}`,
+            }}>{badge}</span>
           )}
         </div>
-        {actions && <div className="flex items-center gap-2" onClick={(e) => e.stopPropagation()}>{actions}</div>}
+        {actions && <div style={{ display: 'flex', alignItems: 'center', gap: 8 }} onClick={(e) => e.stopPropagation()}>{actions}</div>}
       </div>
       {open && (
         <div className="tile-content">

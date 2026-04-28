@@ -1,3 +1,5 @@
+import { colors, fonts } from './shipgen/theme';
+import { ShLabel, ShNum, ShData } from './shipgen/primitives';
 import type { ShipComponent } from '../types';
 
 interface Props {
@@ -19,40 +21,91 @@ export function BOQView({ components, totalCost, hullDtons, usedTons, availableD
   const isValid = hullDtons > 0 && usedTons <= hullDtons;
 
   return (
-    <div className="tile sticky top-20">
-      <div className="tile-header">
-        <span className="font-semibold">Bill of Quantities</span>
+    <div style={{
+      position: 'sticky', top: 20,
+      background: colors.panel,
+      border: `1px solid ${colors.hair}`,
+    }}>
+      {/* Header */}
+      <div style={{
+        padding: '12px 18px',
+        borderBottom: `1px solid ${colors.hair}`,
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        background: colors.panelAlt,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <ShData size={14} dim weight={500}>SHEET 02</ShData>
+          <div style={{ width: 1, height: 14, background: colors.hair }} />
+          <ShLabel size={14} weight={600} style={{ color: colors.glow, letterSpacing: '0.18em' }}>
+            BILL OF QUANTITIES
+          </ShLabel>
+        </div>
+        <ShData size={12} dim>BOQ</ShData>
       </div>
-      <div className="tile-content space-y-4">
-        <div className="grid grid-cols-2 gap-3 text-sm">
-          <div className="bg-slate-800 p-3 rounded">
-            <div className="text-slate-400 text-xs">Hull Size</div>
-            <div className="text-lg font-bold">{hullDtons > 0 ? `${hullDtons} DT` : '—'}</div>
+
+      <div style={{ padding: 18, display: 'flex', flexDirection: 'column', gap: 16 }}>
+        {/* Top stats */}
+        <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: 12 }}>
+          <div style={{ border: `1px solid ${colors.hair}`, padding: '10px 12px', background: colors.panelAlt }}>
+            <ShLabel size={11} dim>HULL SIZE</ShLabel>
+            <div style={{ marginTop: 4 }}>
+              <ShNum size={22}>{hullDtons > 0 ? `${hullDtons} DT` : '—'}</ShNum>
+            </div>
           </div>
-          <div className={`p-3 rounded ${isValid ? 'bg-green-900/30' : hullDtons > 0 ? 'bg-red-900/30' : 'bg-slate-800'}`}>
-            <div className="text-slate-400 text-xs">Available</div>
-            <div className="text-lg font-bold">{availableDtons.toFixed(1)} DT</div>
+          <div style={{
+            border: `1px solid ${isValid ? colors.good : hullDtons > 0 ? colors.warn : colors.hair}`,
+            padding: '10px 12px',
+            background: isValid ? `${colors.good}10` : hullDtons > 0 ? `${colors.warn}10` : colors.panelAlt,
+          }}>
+            <ShLabel size={11} dim>AVAILABLE</ShLabel>
+            <div style={{ marginTop: 4 }}>
+              <ShNum size={22} color={isValid ? colors.good : hullDtons > 0 ? colors.warn : colors.ink}>
+                {availableDtons.toFixed(1)} DT
+              </ShNum>
+            </div>
           </div>
-          <div className="bg-slate-800 p-3 rounded">
-            <div className="text-slate-400 text-xs">Total Tonnage</div>
-            <div className="text-lg font-bold">{totalTons.toFixed(1)} DT</div>
+          <div style={{ border: `1px solid ${colors.hair}`, padding: '10px 12px', background: colors.panelAlt }}>
+            <ShLabel size={11} dim>TOTAL TONNAGE</ShLabel>
+            <div style={{ marginTop: 4 }}>
+              <ShNum size={22}>{totalTons.toFixed(1)} DT</ShNum>
+            </div>
           </div>
-          <div className="bg-slate-800 p-3 rounded">
-            <div className="text-slate-400 text-xs">Total Cost</div>
-            <div className="text-lg font-bold">{(totalCost / 1e6).toFixed(2)} MCr</div>
+          <div style={{ border: `1px solid ${colors.hair}`, padding: '10px 12px', background: colors.panelAlt }}>
+            <ShLabel size={11} dim>TOTAL COST</ShLabel>
+            <div style={{ marginTop: 4 }}>
+              <ShNum size={22}>{(totalCost / 1e6).toFixed(2)} MCR</ShNum>
+            </div>
           </div>
         </div>
 
+        {/* Section lists */}
         {Object.entries(bySection).map(([section, items]) => (
           <div key={section}>
-            <div className="text-xs font-semibold text-slate-400 uppercase tracking-wider mb-1">{section}</div>
-            <div className="space-y-1">
+            <div style={{
+              fontFamily: fonts.mono, fontSize: 11, fontWeight: 600,
+              color: colors.inkDim, letterSpacing: '0.14em', textTransform: 'uppercase',
+              marginBottom: 6,
+            }}>
+              {section}
+            </div>
+            <div style={{ display: 'flex', flexDirection: 'column', gap: 4 }}>
               {items.map((item, i) => (
-                <div key={i} className="flex justify-between text-sm py-1 border-b border-slate-700/50">
-                  <span className="text-slate-300">{item.qty && item.qty > 1 ? `${item.qty}× ` : ''}{item.module}</span>
-                  <div className="flex gap-4">
-                    <span className="text-slate-400 w-16 text-right">{item.dtons > 0 ? `${item.dtons.toFixed(1)} DT` : ''}</span>
-                    <span className="text-slate-400 w-24 text-right">{item.cost > 0 ? `${(item.cost / 1e6).toFixed(2)} M` : ''}</span>
+                <div key={i} style={{
+                  display: 'flex', justifyContent: 'space-between',
+                  fontFamily: fonts.mono, fontSize: 13,
+                  padding: '4px 0',
+                  borderBottom: `1px dotted ${colors.hairFaint}`,
+                }}>
+                  <span style={{ color: colors.inkSoft }}>
+                    {item.qty && item.qty > 1 ? `${item.qty}× ` : ''}{item.module}
+                  </span>
+                  <div style={{ display: 'flex', gap: 16 }}>
+                    <span style={{ color: colors.inkDim, width: 64, textAlign: 'right' }}>
+                      {item.dtons > 0 ? `${item.dtons.toFixed(1)} DT` : ''}
+                    </span>
+                    <span style={{ color: colors.inkDim, width: 80, textAlign: 'right' }}>
+                      {item.cost > 0 ? `${(item.cost / 1e6).toFixed(2)} M` : ''}
+                    </span>
                   </div>
                 </div>
               ))}
@@ -61,8 +114,8 @@ export function BOQView({ components, totalCost, hullDtons, usedTons, availableD
         ))}
 
         {components.length === 0 && (
-          <div className="text-center text-slate-500 py-4 text-sm">
-            Select a hull to begin designing
+          <div style={{ textAlign: 'center', padding: '24px 0', color: colors.inkDim, fontFamily: fonts.mono, fontSize: 13 }}>
+            // SELECT A HULL TO BEGIN DESIGNING
           </div>
         )}
       </div>

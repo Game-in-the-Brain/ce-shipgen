@@ -3,6 +3,8 @@ import { MnemeCombatPanel } from './MnemeCombatPanel';
 import { calcHullPoints, calcStructurePoints, calcHardpoints } from '../calculations';
 import { exportShipToFoundryVTT } from '../utils/exportImport';
 import { X, Download, Edit3, Trash2, Gamepad2 } from 'lucide-react';
+import { colors, fonts } from './shipgen/theme';
+import { ShLabel, ShNum } from './shipgen/primitives';
 import type { ShipDesign } from '../types';
 
 interface ShipDetailModalProps {
@@ -19,124 +21,102 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
   const hardpoints = calcHardpoints(ship.hullDtons);
   const usedHardpoints = (ship.weapons || []).reduce((s, w) => s + (w.qty || 1), 0);
 
+  const iconBtn = (onClick: () => void, title: string, icon: React.ReactNode, hoverColor: string) => (
+    <button
+      onClick={onClick}
+      title={title}
+      style={{ padding: 8, background: 'transparent', border: 'none', color: colors.inkDim, cursor: 'pointer', borderRadius: 8 }}
+      onMouseEnter={(e) => { (e.currentTarget as HTMLButtonElement).style.background = colors.panelAlt; (e.currentTarget as HTMLButtonElement).style.color = hoverColor; }}
+      onMouseLeave={(e) => { (e.currentTarget as HTMLButtonElement).style.background = 'transparent'; (e.currentTarget as HTMLButtonElement).style.color = colors.inkDim; }}
+    >
+      {icon}
+    </button>
+  );
+
+  const statBox = (label: string, value: string | number, color: string) => (
+    <div style={{ background: colors.panelAlt, border: `1px solid ${colors.hair}`, padding: '12px 14px' }}>
+      <ShLabel size={11} dim>{label}</ShLabel>
+      <div style={{ marginTop: 4 }}>
+        <ShNum size={24} color={color}>{value}</ShNum>
+      </div>
+    </div>
+  );
+
+  const configBox = (label: string, value: string) => (
+    <div style={{ background: colors.panelAlt, border: `1px solid ${colors.hair}`, padding: '10px 12px' }}>
+      <ShLabel size={11} dim>{label}</ShLabel>
+      <div style={{ marginTop: 4, fontFamily: fonts.mono, fontSize: 14, color: colors.inkSoft }}>{value}</div>
+    </div>
+  );
+
   return (
-    <div className="fixed inset-0 z-[80] bg-black/60 backdrop-blur-sm flex items-center justify-center p-4">
-      <div className="bg-slate-900 border border-slate-700 rounded-xl max-w-4xl w-full max-h-[90vh] shadow-2xl flex flex-col">
+    <div className="fixed inset-0 z-[80] flex items-center justify-center p-4" style={{ background: 'rgba(6,16,12,0.85)', backdropFilter: 'blur(4px)' }}>
+      <div style={{
+        background: colors.panel,
+        border: `1px solid ${colors.hair}`,
+        maxWidth: 900,
+        width: '100%',
+        maxHeight: '90vh',
+        display: 'flex',
+        flexDirection: 'column',
+      }}>
         {/* Header */}
-        <div className="flex items-center justify-between p-4 border-b border-slate-800 shrink-0">
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', padding: '16px 20px', borderBottom: `1px solid ${colors.hair}`, flexShrink: 0 }}>
           <div>
-            <h2 className="text-xl font-bold">{ship.name}</h2>
-            <p className="text-sm text-slate-400">
+            <h2 style={{ fontFamily: fonts.display, fontSize: 24, color: colors.ink, letterSpacing: '0.12em' }}>{ship.name}</h2>
+            <p style={{ fontFamily: fonts.mono, fontSize: 13, color: colors.inkDim, marginTop: 4 }}>
               TL {ship.tl} | {ship.hullDtons} DT | {(ship.totalCost / 1e6).toFixed(2)} MCr
             </p>
           </div>
-          <div className="flex items-center gap-2">
-            <button
-              onClick={() => onEdit(ship)}
-              className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-blue-400"
-              title="Edit"
-            >
-              <Edit3 className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => onExport(ship)}
-              className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-green-400"
-              title="Export JSON"
-            >
-              <Download className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => {
-                const data = exportShipToFoundryVTT(ship);
-                const blob = new Blob([data], { type: 'application/json' });
-                const url = URL.createObjectURL(blob);
-                const a = document.createElement('a');
-                a.href = url;
-                a.download = `foundry-${ship.name.replace(/\s+/g, '_')}.json`;
-                document.body.appendChild(a);
-                a.click();
-                document.body.removeChild(a);
-                URL.revokeObjectURL(url);
-              }}
-              className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-purple-400"
-              title="Export to Foundry VTT"
-            >
-              <Gamepad2 className="w-4 h-4" />
-            </button>
-            <button
-              onClick={() => {
-                if (confirm(`Delete "${ship.name}"?`)) {
-                  onDelete(ship.id);
-                  onClose();
-                }
-              }}
-              className="p-2 hover:bg-red-900/30 rounded-lg text-slate-400 hover:text-red-400"
-              title="Delete"
-            >
-              <Trash2 className="w-4 h-4" />
-            </button>
-            <button
-              onClick={onClose}
-              className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white ml-2"
-            >
-              <X className="w-5 h-5" />
-            </button>
+          <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            {iconBtn(() => onEdit(ship), 'Edit', <Edit3 className="w-4 h-4" />, colors.glow)}
+            {iconBtn(() => onExport(ship), 'Export JSON', <Download className="w-4 h-4" />, colors.good)}
+            {iconBtn(() => {
+              const data = exportShipToFoundryVTT(ship);
+              const blob = new Blob([data], { type: 'application/json' });
+              const url = URL.createObjectURL(blob);
+              const a = document.createElement('a');
+              a.href = url;
+              a.download = `foundry-${ship.name.replace(/\s+/g, '_')}.json`;
+              document.body.appendChild(a);
+              a.click();
+              document.body.removeChild(a);
+              URL.revokeObjectURL(url);
+            }, 'Export to Foundry VTT', <Gamepad2 className="w-4 h-4" />, colors.glowSoft)}
+            {iconBtn(() => {
+              if (confirm(`Delete "${ship.name}"?`)) {
+                onDelete(ship.id);
+                onClose();
+              }
+            }, 'Delete', <Trash2 className="w-4 h-4" />, colors.warn)}
+            <div style={{ width: 1, height: 24, background: colors.hair, margin: '0 4px' }} />
+            {iconBtn(onClose, 'Close', <X className="w-5 h-5" />, colors.ink)}
           </div>
         </div>
 
         {/* Content */}
-        <div className="overflow-y-auto p-4 space-y-4">
+        <div style={{ overflowY: 'auto', padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 16 }}>
           {/* Stats Grid */}
-          <div className="grid grid-cols-2 md:grid-cols-4 gap-3">
-            <div className="bg-slate-800 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Hull Points</div>
-              <div className="text-lg font-semibold text-blue-400">{hullPoints}</div>
-            </div>
-            <div className="bg-slate-800 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Structure</div>
-              <div className="text-lg font-semibold text-cyan-400">{structurePoints}</div>
-            </div>
-            <div className="bg-slate-800 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Hardpoints</div>
-              <div className="text-lg font-semibold text-amber-400">{usedHardpoints} / {hardpoints}</div>
-            </div>
-            <div className="bg-slate-800 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Available Tons</div>
-              <div className="text-lg font-semibold text-green-400">{ship.availableDtons.toFixed(1)} DT</div>
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 10 }}>
+            {statBox('HULL POINTS', hullPoints, colors.glow)}
+            {statBox('STRUCTURE', structurePoints, colors.glowSoft)}
+            {statBox('HARDPOINTS', `${usedHardpoints} / ${hardpoints}`, colors.amber)}
+            {statBox('AVAILABLE TONS', `${ship.availableDtons.toFixed(1)} DT`, colors.good)}
           </div>
 
           {/* Configuration */}
-          <div className="grid grid-cols-2 md:grid-cols-3 gap-3 text-sm">
-            <div className="bg-slate-800/50 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Configuration</div>
-              <div className="font-medium">{ship.configuration}</div>
-            </div>
-            <div className="bg-slate-800/50 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Armor</div>
-              <div className="font-medium">{ship.armor || 'None'}</div>
-            </div>
-            <div className="bg-slate-800/50 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">M-Drive</div>
-              <div className="font-medium">{ship.mDrive || 'None'}</div>
-            </div>
-            <div className="bg-slate-800/50 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">J-Drive</div>
-              <div className="font-medium">{ship.jDrive || 'None'}</div>
-            </div>
-            <div className="bg-slate-800/50 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Power Plant</div>
-              <div className="font-medium">{ship.powerPlant || 'None'}</div>
-            </div>
-            <div className="bg-slate-800/50 p-3 rounded-lg">
-              <div className="text-xs text-slate-500">Bridge</div>
-              <div className="font-medium">{ship.bridge || 'None'}</div>
-            </div>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr', gap: 10 }}>
+            {configBox('CONFIGURATION', ship.configuration)}
+            {configBox('ARMOR', ship.armor || 'None')}
+            {configBox('M-DRIVE', ship.mDrive || 'None')}
+            {configBox('J-DRIVE', ship.jDrive || 'None')}
+            {configBox('POWER PLANT', ship.powerPlant || 'None')}
+            {configBox('BRIDGE', ship.bridge || 'None')}
           </div>
 
           {/* BOQ */}
           <div>
-            <h3 className="text-sm font-semibold text-slate-300 mb-2">Bill of Quantities</h3>
+            <ShLabel size={13} style={{ marginBottom: 8, display: 'block' }}>BILL OF QUANTITIES</ShLabel>
             <BOQView
               components={ship.components}
               totalCost={ship.totalCost}
@@ -149,12 +129,17 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
           {/* Weapons */}
           {(ship.weapons || []).length > 0 && (
             <div>
-              <h3 className="text-sm font-semibold text-slate-300 mb-2">Weapons</h3>
-              <div className="bg-slate-800/50 rounded-lg divide-y divide-slate-700">
+              <ShLabel size={13} style={{ marginBottom: 8, display: 'block' }}>WEAPONS</ShLabel>
+              <div style={{ background: colors.panelAlt, border: `1px solid ${colors.hair}` }}>
                 {(ship.weapons || []).map((w, i) => (
-                  <div key={i} className="px-3 py-2 flex justify-between text-sm">
-                    <span>{w.module}</span>
-                    <span className="text-slate-400">{w.qty || 1}× | {w.dtons} DT</span>
+                  <div key={i} style={{
+                    display: 'flex', justifyContent: 'space-between',
+                    padding: '8px 12px',
+                    fontFamily: fonts.mono, fontSize: 13,
+                    borderBottom: i < (ship.weapons || []).length - 1 ? `1px solid ${colors.hair}` : 'none',
+                  }}>
+                    <span style={{ color: colors.inkSoft }}>{w.module}</span>
+                    <span style={{ color: colors.inkDim }}>{w.qty || 1}× | {w.dtons} DT</span>
                   </div>
                 ))}
               </div>
@@ -164,12 +149,17 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
           {/* Modules */}
           {ship.modules.length > 0 && (
             <div>
-              <h3 className="text-sm font-semibold text-slate-300 mb-2">Modules</h3>
-              <div className="bg-slate-800/50 rounded-lg divide-y divide-slate-700">
+              <ShLabel size={13} style={{ marginBottom: 8, display: 'block' }}>MODULES</ShLabel>
+              <div style={{ background: colors.panelAlt, border: `1px solid ${colors.hair}` }}>
                 {ship.modules.map((m, i) => (
-                  <div key={i} className="px-3 py-2 flex justify-between text-sm">
-                    <span>{m.module}</span>
-                    <span className="text-slate-400">{m.qty || 1}× | {m.dtons} DT</span>
+                  <div key={i} style={{
+                    display: 'flex', justifyContent: 'space-between',
+                    padding: '8px 12px',
+                    fontFamily: fonts.mono, fontSize: 13,
+                    borderBottom: i < ship.modules.length - 1 ? `1px solid ${colors.hair}` : 'none',
+                  }}>
+                    <span style={{ color: colors.inkSoft }}>{m.module}</span>
+                    <span style={{ color: colors.inkDim }}>{m.qty || 1}× | {m.dtons} DT</span>
                   </div>
                 ))}
               </div>
@@ -179,8 +169,8 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
           {/* Mneme Combat */}
           <MnemeCombatPanel ship={ship} />
 
-          <div className="text-xs text-slate-500 pt-2">
-            Created: {new Date(ship.createdAt).toLocaleString()} | {ship.components.length} components
+          <div style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.inkDim, paddingTop: 8 }}>
+            CREATED: {new Date(ship.createdAt).toLocaleString()} | {ship.components.length} COMPONENTS
           </div>
         </div>
       </div>

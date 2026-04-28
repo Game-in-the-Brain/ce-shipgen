@@ -10,36 +10,60 @@ This document captures UI, UX, and design system requirements that supplement PR
 
 ## 1. Theme System
 
-### Day / Night Toggle
-- **Default:** Dark mode (space theme)
-- **Options:** Dark | Light | Auto (system preference)
+### Mainframe Theme (Default — v0.02+)
+As of FRD-062, the app uses the **CE ShipGen Mainframe** retro-CRT theme as the default app-wide aesthetic. This replaces the previous slate/blue dark mode.
+
+- **Default:** Mainframe (green phosphor on dark green-black)
+- **Options:** Mainframe | Amber | Blueprint
 - **Storage:** `ce_shipgen_theme` in localStorage
-- **Implementation:** CSS custom properties or Tailwind `dark:` variants with class-based toggling
+- **Implementation:** CSS custom properties (`--sh-*`) exported via `src/styles/shipgen.css`, consumed by Tailwind `sh-*` utilities
 - **Scope:** All components, all routes, all tables
 
-### Color Palette (Dark — Default)
+### Color Palette (Mainframe)
 ```
-Background:    #0f172a (slate-950)
-Surface:       #1e293b (slate-800)
-Border:        #334155 (slate-700)
-Text Primary:  #f1f5f9 (slate-100)
-Text Secondary:#94a3b8 (slate-400)
-Accent:        #3b82f6 (blue-500)
-Success:       #22c55e (green-500)
-Warning:       #f59e0b (amber-500)
-Danger:        #ef4444 (red-500)
-Cyan (Mneme):  #06b6d4 (cyan-500)
+Background:    #06100c (--sh-bg)
+Surface:       #0a1612 (--sh-panel)
+Surface Alt:   #040c09 (--sh-panel-alt)
+Text Primary:  #dcffea (--sh-ink)
+Text Secondary:#9bd9b3 (--sh-ink-soft)
+Text Muted:    #5a8a72 (--sh-ink-dim)
+Accent Glow:   #5cffae (--sh-glow)
+Accent Soft:   #7fffba (--sh-glow-soft)
+Amber:         #f4cf45 (--sh-amber)
+Warning:       #ff7a5a (--sh-warn)
+Success:       #7ad99a (--sh-good)
+Hairline:      rgba(220, 255, 234, 0.16) (--sh-hair)
 ```
 
-### Color Palette (Light)
+### Color Palette (Amber)
 ```
-Background:    #f8fafc (slate-50)
-Surface:       #ffffff (white)
-Border:        #e2e8f0 (slate-200)
-Text Primary:  #0f172a (slate-950)
-Text Secondary:#64748b (slate-500)
-Accent:        #2563eb (blue-600)
+Background:    #100a03
+Surface:       #1a1208
+Surface Alt:   #0a0602
+Text Primary:  #ffe9b8
+Text Secondary:#d9b87a
+Text Muted:    #8a6f40
+Accent Glow:   #ffaf3a
 ```
+
+### Color Palette (Blueprint)
+```
+Background:    #0a1424
+Surface:       #0f1d33
+Surface Alt:   #060e1c
+Text Primary:  #e0ecff
+Text Secondary:#9bb4d9
+Text Muted:    #5a7290
+Accent Glow:   #6fb6ff
+```
+
+### Legacy Palettes (Pre-v0.02)
+The previous slate/blue and light themes are deprecated but CSS variable mappings are preserved in `shipgen.css` for backward compatibility of any hardcoded slate classes.
+
+### Scanlines Toggle
+- **Control:** Theme toggle button in header (cycles scanlines on/off instead of dark/light)
+- **Class:** `sh-scanlines` applied to app root
+- **Effect:** Subtle horizontal line overlay at 2.5% opacity glow
 
 ---
 

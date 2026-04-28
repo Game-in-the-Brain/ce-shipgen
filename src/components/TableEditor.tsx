@@ -51,7 +51,7 @@ export function TableEditor({ tableId }: Props) {
         </button>
       </div>
 
-      <div className="overflow-x-auto rounded-md border border-slate-700">
+      <div className="overflow-x-auto" style={{ border: '1px solid var(--sh-hair)' }}>
         <table className="min-w-full">
           <thead>
             <tr>
@@ -64,8 +64,8 @@ export function TableEditor({ tableId }: Props) {
           </thead>
           <tbody>
             {table.rows.map((row, rowIndex) => (
-              <tr key={rowIndex} className="hover:bg-slate-800/50">
-                <td className="table-cell text-slate-500 text-xs">{rowIndex + 1}</td>
+              <tr key={rowIndex} className="hover:bg-sh-panel/50">
+                <td className="table-cell text-xs" style={{ color: 'var(--sh-ink-dim)' }}>{rowIndex + 1}</td>
                 {table.headers.map((col) => {
                   const isEditing = editingCell?.row === rowIndex && editingCell?.col === col;
                   const value = row[col];
@@ -82,7 +82,7 @@ export function TableEditor({ tableId }: Props) {
                         />
                       ) : (
                         <div
-                          className="cursor-pointer min-w-[60px] min-h-[24px] px-1 py-0.5 rounded hover:bg-slate-700/50 truncate max-w-[200px]"
+                          className="cursor-pointer min-w-[60px] min-h-[24px] px-1 py-0.5 rounded truncate max-w-[200px]" style={{ color: 'var(--sh-ink-soft)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLSpanElement).style.background='var(--sh-panel-alt)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLSpanElement).style.background='transparent'}}
                           onClick={() => startEdit(rowIndex, col, value)}
                           title={value !== null && value !== undefined ? String(value) : ''}
                         >
@@ -95,7 +95,7 @@ export function TableEditor({ tableId }: Props) {
                 <td className="table-cell">
                   <button
                     onClick={() => deleteRow(tableId, rowIndex)}
-                    className="p-1 hover:bg-red-900/30 rounded text-slate-500 hover:text-red-400"
+                    className="p-1 rounded" style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='rgba(255,122,90,0.12)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-warn)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
                     title="Delete row"
                   >
                     <Trash2 className="w-3.5 h-3.5" />
@@ -105,7 +105,7 @@ export function TableEditor({ tableId }: Props) {
             ))}
             {table.rows.length === 0 && (
               <tr>
-                <td colSpan={table.headers.length + 2} className="table-cell text-center text-slate-500 py-8">
+                <td colSpan={table.headers.length + 2} className="table-cell text-center py-8" style={{ color: 'var(--sh-ink-dim)' }}>
                   No rows. Click "Add Row" to start.
                 </td>
               </tr>

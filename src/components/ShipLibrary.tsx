@@ -25,8 +25,8 @@ export function ShipLibrary() {
     <div>
       <div className="flex items-center justify-between mb-6">
         <div>
-          <h1 className="text-2xl font-bold">Ship Library</h1>
-          <p className="text-sm text-slate-400 mt-1">{ships.length} ship{ships.length !== 1 ? 's' : ''} saved</p>
+          <h1 className="text-2xl font-bold" style={{ color: 'var(--sh-ink)', fontFamily: 'var(--font-sh-display), monospace', letterSpacing: '0.12em' }}>SHIP LIBRARY</h1>
+          <p className="text-sm mt-1" style={{ color: 'var(--sh-ink-dim)' }}>{ships.length} ship{ships.length !== 1 ? 's' : ''} saved</p>
         </div>
         {ships.length > 0 && (
           <button onClick={exportAll} className="btn-secondary flex items-center gap-2">
@@ -36,7 +36,7 @@ export function ShipLibrary() {
       </div>
 
       {ships.length === 0 ? (
-        <div className="text-center py-16 text-slate-500">
+        <div className="text-center py-16" style={{ color: 'var(--sh-ink-dim)' }}>
           <p>No ships saved yet.</p>
           <p className="text-sm mt-2">Go to the Design tab to create your first ship.</p>
         </div>
@@ -47,13 +47,14 @@ export function ShipLibrary() {
               <div className="tile-content">
                 <div className="flex items-start justify-between">
                   <div>
-                    <h3 className="font-bold text-lg">{ship.name}</h3>
-                    <p className="text-sm text-slate-400">TL {ship.tl} | {ship.hullDtons} DT</p>
+                    <h3 className="font-bold text-lg" style={{ color: 'var(--sh-ink)' }}>{ship.name}</h3>
+                    <p className="text-sm" style={{ color: 'var(--sh-ink-dim)' }}>TL {ship.tl} | {ship.hullDtons} DT</p>
                   </div>
                   <div className="flex gap-1">
                     <button 
                       onClick={() => setDetailShip(ship)}
-                      className="p-1.5 hover:bg-slate-700 rounded text-slate-400 hover:text-cyan-400"
+                      className="p-1.5 rounded"
+                      style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='var(--sh-panel-alt)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-glow)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
                       title="View Details"
                     >
                       <Eye className="w-4 h-4" />
@@ -63,21 +64,24 @@ export function ShipLibrary() {
                         setCurrentShip(ship);
                         navigate('/design');
                       }}
-                      className="p-1.5 hover:bg-slate-700 rounded text-slate-400 hover:text-blue-400"
+                      className="p-1.5 rounded"
+                      style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='var(--sh-panel-alt)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-glow)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
                       title="Edit"
                     >
                       <Edit3 className="w-4 h-4" />
                     </button>
                     <button 
                       onClick={() => exportShip(ship)}
-                      className="p-1.5 hover:bg-slate-700 rounded text-slate-400 hover:text-green-400"
+                      className="p-1.5 rounded"
+                      style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='var(--sh-panel-alt)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-good)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
                       title="Export"
                     >
                       <Download className="w-4 h-4" />
                     </button>
                     <button 
                       onClick={() => deleteShip(ship.id)}
-                      className="p-1.5 hover:bg-red-900/30 rounded text-slate-400 hover:text-red-400"
+                      className="p-1.5 rounded"
+                      style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='rgba(255,122,90,0.12)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-warn)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
                       title="Delete"
                     >
                       <Trash2 className="w-4 h-4" />
@@ -86,25 +90,25 @@ export function ShipLibrary() {
                 </div>
 
                 <div className="mt-3 grid grid-cols-2 gap-2 text-sm">
-                  <div className="bg-slate-800 p-2 rounded">
-                    <div className="text-xs text-slate-500">Cost</div>
-                    <div className="font-medium">{(ship.totalCost / 1e6).toFixed(2)} MCr</div>
+                  <div className="p-2" style={{ background: 'var(--sh-panel-alt)', border: '1px solid var(--sh-hair)' }}>
+                    <div className="text-xs" style={{ color: 'var(--sh-ink-dim)' }}>Cost</div>
+                    <div className="font-medium" style={{ color: 'var(--sh-ink-soft)' }}>{(ship.totalCost / 1e6).toFixed(2)} MCr</div>
                   </div>
-                  <div className="bg-slate-800 p-2 rounded">
-                    <div className="text-xs text-slate-500">Cargo</div>
-                    <div className="font-medium">{ship.cargo} DT</div>
+                  <div className="p-2" style={{ background: 'var(--sh-panel-alt)', border: '1px solid var(--sh-hair)' }}>
+                    <div className="text-xs" style={{ color: 'var(--sh-ink-dim)' }}>Cargo</div>
+                    <div className="font-medium" style={{ color: 'var(--sh-ink-soft)' }}>{ship.cargo} DT</div>
                   </div>
-                  <div className="bg-slate-800 p-2 rounded">
-                    <div className="text-xs text-slate-500">Config</div>
-                    <div className="font-medium">{ship.configuration}</div>
+                  <div className="p-2" style={{ background: 'var(--sh-panel-alt)', border: '1px solid var(--sh-hair)' }}>
+                    <div className="text-xs" style={{ color: 'var(--sh-ink-dim)' }}>Config</div>
+                    <div className="font-medium" style={{ color: 'var(--sh-ink-soft)' }}>{ship.configuration}</div>
                   </div>
-                  <div className="bg-slate-800 p-2 rounded">
-                    <div className="text-xs text-slate-500">Drive</div>
-                    <div className="font-medium">{ship.mDrive || '—'} / {ship.jDrive || '—'}</div>
+                  <div className="p-2" style={{ background: 'var(--sh-panel-alt)', border: '1px solid var(--sh-hair)' }}>
+                    <div className="text-xs" style={{ color: 'var(--sh-ink-dim)' }}>Drive</div>
+                    <div className="font-medium" style={{ color: 'var(--sh-ink-soft)' }}>{ship.mDrive || '—'} / {ship.jDrive || '—'}</div>
                   </div>
                 </div>
 
-                <div className="mt-3 text-xs text-slate-500">
+                <div className="mt-3 text-xs" style={{ color: 'var(--sh-ink-dim)' }}>
                   {ship.components.length} components | Created {new Date(ship.createdAt).toLocaleDateString()}
                 </div>
               </div>

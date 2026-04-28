@@ -1,111 +1,144 @@
 import { useState } from 'react';
 import { useSettings } from './ThemeProvider';
-import { Settings, Moon, Sun, Monitor, Smartphone, Monitor as MonitorDesktop, X } from 'lucide-react';
+import { Settings, Monitor, Smartphone, X } from 'lucide-react';
+import { colors, fonts } from './shipgen/theme';
 
 export function SettingsPanel() {
   const [open, setOpen] = useState(false);
-  const { theme, effectiveTheme, layoutMode, setTheme, setLayoutMode } = useSettings();
+  const { scanlines, layoutMode, setScanlines, setLayoutMode } = useSettings();
+
+  const btnBase: React.CSSProperties = {
+    padding: '8px 12px',
+    fontFamily: fonts.mono,
+    fontSize: 12,
+    letterSpacing: '0.06em',
+    border: `1px solid ${colors.hair}`,
+    background: 'transparent',
+    color: colors.inkDim,
+    cursor: 'pointer',
+    transition: 'all 0.15s',
+    display: 'flex',
+    alignItems: 'center',
+    gap: 6,
+  };
+
+  const btnActive: React.CSSProperties = {
+    ...btnBase,
+    borderColor: colors.glow,
+    color: colors.glow,
+    background: `${colors.glow}15`,
+    boxShadow: `0 0 8px ${colors.glow}33`,
+  };
 
   return (
     <>
       <button
         onClick={() => setOpen(true)}
-        className="p-2 hover:bg-slate-800 rounded-lg text-slate-400 hover:text-white transition-colors"
         title="Settings"
+        style={{
+          padding: '6px 10px', fontFamily: fonts.mono, fontSize: 11,
+          color: colors.inkDim, background: 'transparent',
+          border: `1px solid ${colors.hair}`, cursor: 'pointer', letterSpacing: '0.08em',
+        }}
       >
-        <Settings className="w-5 h-5" />
+        <Settings className="w-4 h-4" />
       </button>
 
       {open && (
-        <div className="fixed inset-0 z-[90] bg-black/50 backdrop-blur-sm flex items-center justify-center p-4">
-          <div className="bg-slate-900 border border-slate-700 rounded-xl max-w-sm w-full shadow-2xl">
-            <div className="flex items-center justify-between p-4 border-b border-slate-800">
-              <h2 className="text-lg font-semibold">Settings</h2>
-              <button 
-                onClick={() => setOpen(false)}
-                className="p-1.5 hover:bg-slate-800 rounded text-slate-400 hover:text-white"
-              >
+        <div
+          className="fixed inset-0 z-[90] flex items-center justify-center p-4"
+          style={{ background: 'rgba(6,16,12,0.85)', backdropFilter: 'blur(4px)' }}
+          onClick={() => setOpen(false)}
+        >
+          <div
+            onClick={(e) => e.stopPropagation()}
+            style={{
+              background: colors.panel,
+              border: `1px solid ${colors.hair}`,
+              maxWidth: 420,
+              width: '100%',
+              position: 'relative',
+            }}
+          >
+            {/* corner ticks */}
+            {[
+              { top: -1, left: 10 }, { top: 10, left: -1 },
+              { top: -1, right: 10 }, { top: 10, right: -1 },
+              { bottom: -1, left: 10 }, { bottom: 10, left: -1 },
+              { bottom: -1, right: 10 }, { bottom: 10, right: -1 },
+            ].map((p, i) => (
+              <div key={i} style={{
+                position: 'absolute', background: colors.glow, opacity: 0.6,
+                width: 'left' in p || 'right' in p ? (i % 2 === 0 ? 12 : 1) : (i % 2 === 0 ? 1 : 12),
+                height: 'top' in p || 'bottom' in p ? (i % 2 === 0 ? 1 : 12) : (i % 2 === 0 ? 12 : 1),
+                top: 'top' in p ? p.top : undefined,
+                bottom: 'bottom' in p ? p.bottom : undefined,
+                left: 'left' in p ? p.left : undefined,
+                right: 'right' in p ? p.right : undefined,
+              }} />
+            ))}
+
+            <div style={{
+              display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+              padding: '14px 18px', borderBottom: `1px solid ${colors.hair}`, background: colors.panelAlt,
+            }}>
+              <span style={{ fontFamily: fonts.mono, fontSize: 14, fontWeight: 600, color: colors.glow, letterSpacing: '0.18em' }}>
+                SETTINGS
+              </span>
+              <button onClick={() => setOpen(false)} style={{ padding: 4, background: 'transparent', border: 'none', color: colors.inkDim, cursor: 'pointer' }}>
                 <X className="w-5 h-5" />
               </button>
             </div>
 
-            <div className="p-4 space-y-6">
-              {/* Theme */}
+            <div style={{ padding: 18, display: 'flex', flexDirection: 'column', gap: 20 }}>
+              {/* Scanlines */}
               <div>
-                <label className="text-sm font-medium text-slate-300 mb-2 block">Theme</label>
-                <div className="grid grid-cols-3 gap-2">
+                <div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 600, color: colors.inkSoft, letterSpacing: '0.14em', marginBottom: 10 }}>
+                  DISPLAY
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
                   <button
-                    onClick={() => setTheme('dark')}
-                    className={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-colors ${
-                      theme === 'dark' 
-                        ? 'border-blue-500 bg-blue-900/20 text-blue-400' 
-                        : 'border-slate-700 hover:border-slate-600 text-slate-400'
-                    }`}
+                    onClick={() => setScanlines(true)}
+                    style={scanlines ? btnActive : btnBase}
                   >
-                    <Moon className="w-5 h-5" />
-                    <span className="text-xs">Dark</span>
+                    SCANLINES ON
                   </button>
                   <button
-                    onClick={() => setTheme('light')}
-                    className={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-colors ${
-                      theme === 'light' 
-                        ? 'border-blue-500 bg-blue-900/20 text-blue-400' 
-                        : 'border-slate-700 hover:border-slate-600 text-slate-400'
-                    }`}
+                    onClick={() => setScanlines(false)}
+                    style={!scanlines ? btnActive : btnBase}
                   >
-                    <Sun className="w-5 h-5" />
-                    <span className="text-xs">Light</span>
-                  </button>
-                  <button
-                    onClick={() => setTheme('auto')}
-                    className={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-colors ${
-                      theme === 'auto' 
-                        ? 'border-blue-500 bg-blue-900/20 text-blue-400' 
-                        : 'border-slate-700 hover:border-slate-600 text-slate-400'
-                    }`}
-                  >
-                    <Monitor className="w-5 h-5" />
-                    <span className="text-xs">Auto</span>
+                    SCANLINES OFF
                   </button>
                 </div>
-                <p className="text-xs text-slate-500 mt-2">
-                  Currently: {effectiveTheme === 'dark' ? 'Dark mode' : 'Light mode'}
-                </p>
               </div>
 
               {/* Layout */}
               <div>
-                <label className="text-sm font-medium text-slate-300 mb-2 block">Layout</label>
-                <div className="grid grid-cols-2 gap-2">
+                <div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 600, color: colors.inkSoft, letterSpacing: '0.14em', marginBottom: 10 }}>
+                  LAYOUT
+                </div>
+                <div style={{ display: 'flex', gap: 8 }}>
                   <button
                     onClick={() => setLayoutMode('desktop')}
-                    className={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-colors ${
-                      layoutMode === 'desktop' 
-                        ? 'border-blue-500 bg-blue-900/20 text-blue-400' 
-                        : 'border-slate-700 hover:border-slate-600 text-slate-400'
-                    }`}
+                    style={layoutMode === 'desktop' ? btnActive : btnBase}
                   >
-                    <MonitorDesktop className="w-5 h-5" />
-                    <span className="text-xs">Desktop</span>
+                    <Monitor className="w-4 h-4" /> DESKTOP
                   </button>
                   <button
                     onClick={() => setLayoutMode('phone')}
-                    className={`flex flex-col items-center gap-1 p-3 rounded-lg border transition-colors ${
-                      layoutMode === 'phone' 
-                        ? 'border-blue-500 bg-blue-900/20 text-blue-400' 
-                        : 'border-slate-700 hover:border-slate-600 text-slate-400'
-                    }`}
+                    style={layoutMode === 'phone' ? btnActive : btnBase}
                   >
-                    <Smartphone className="w-5 h-5" />
-                    <span className="text-xs">Phone</span>
+                    <Smartphone className="w-4 h-4" /> PHONE
                   </button>
                 </div>
               </div>
 
               {/* Data Management */}
-              <div className="pt-4 border-t border-slate-800">
-                <label className="text-sm font-medium text-slate-300 mb-2 block">Data</label>
-                <div className="space-y-2">
+              <div style={{ paddingTop: 14, borderTop: `1px solid ${colors.hair}` }}>
+                <div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 600, color: colors.inkSoft, letterSpacing: '0.14em', marginBottom: 10 }}>
+                  DATA
+                </div>
+                <div style={{ display: 'flex', flexDirection: 'column', gap: 8 }}>
                   <button
                     onClick={() => {
                       if (confirm('Clear all saved ships? This cannot be undone.')) {
@@ -113,7 +146,7 @@ export function SettingsPanel() {
                         window.location.reload();
                       }
                     }}
-                    className="w-full text-left px-3 py-2 rounded-lg text-sm text-red-400 hover:bg-red-900/20 transition-colors"
+                    style={{ ...btnBase, color: colors.warn, borderColor: `${colors.warn}44`, justifyContent: 'flex-start' }}
                   >
                     Clear All Saved Ships
                   </button>
@@ -126,7 +159,7 @@ export function SettingsPanel() {
                         window.location.reload();
                       }
                     }}
-                    className="w-full text-left px-3 py-2 rounded-lg text-sm text-amber-400 hover:bg-amber-900/20 transition-colors"
+                    style={{ ...btnBase, color: colors.amber, borderColor: `${colors.amber}44`, justifyContent: 'flex-start' }}
                   >
                     Reset Tables to Defaults
                   </button>

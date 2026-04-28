@@ -8,12 +8,12 @@ import { TableManager } from './components/TableManager';
 import { ShipDesigner } from './components/ShipDesigner';
 import { ShipLibrary } from './components/ShipLibrary';
 import { VariantGenerator } from './components/VariantGenerator';
-import { Moon, Sun, Smartphone, Monitor } from 'lucide-react';
+import { colors, fonts } from './components/shipgen/theme';
 
 function AppContent() {
   const loadTables = useTableStore((s) => s.loadTables);
   const loaded = useTableStore((s) => s.loaded);
-  const { effectiveTheme, toggleTheme, layoutMode, toggleLayout } = useSettings();
+  const { scanlines, layoutMode, toggleScanlines, toggleLayout } = useSettings();
   const [version, setVersion] = useState<string>('');
 
   useEffect(() => {
@@ -27,48 +27,107 @@ function AppContent() {
       .catch(() => setVersion(''));
   }, []);
 
+  const navBase: React.CSSProperties = {
+    padding: '6px 14px',
+    fontFamily: fonts.mono,
+    fontSize: 13,
+    fontWeight: 600,
+    letterSpacing: '0.08em',
+    textTransform: 'uppercase' as const,
+    border: `1px solid transparent`,
+    transition: 'all 0.15s',
+    textDecoration: 'none',
+  };
+
+  const navInactive: React.CSSProperties = {
+    ...navBase,
+    color: colors.inkDim,
+    background: 'transparent',
+  };
+
+  const navActive: React.CSSProperties = {
+    ...navBase,
+    color: colors.bg,
+    background: colors.glow,
+    borderColor: colors.glow,
+    boxShadow: `0 0 10px ${colors.glow}55`,
+  };
+
   return (
-    <div className={`min-h-screen ${effectiveTheme === 'dark' ? 'bg-slate-950 text-slate-100' : 'bg-slate-50 text-slate-900'}`}>
-      <header className={`border-b sticky top-0 z-50 ${effectiveTheme === 'dark' ? 'border-slate-800 bg-slate-900' : 'border-slate-200 bg-white'}`}>
-        <div className="max-w-7xl mx-auto px-4 h-14 flex items-center justify-between">
-          <div className="flex items-center gap-2">
-            <span className="text-xl font-bold text-blue-500">CE ShipGen</span>
-            <span className="text-xs text-slate-500 bg-slate-800/50 px-2 py-0.5 rounded">PWA</span>
-            {version && (
-              <span className="text-xs text-cyan-500 bg-cyan-900/20 px-2 py-0.5 rounded">v{version}</span>
-            )}
-            {layoutMode === 'phone' && (
-              <span className="text-xs text-amber-500 bg-amber-900/20 px-2 py-0.5 rounded">Phone</span>
-            )}
+    <div
+      className={scanlines ? 'sh-scanlines' : undefined}
+      style={{ position: 'relative', minHeight: '100vh', background: colors.bg, color: colors.ink, fontFamily: fonts.mono, overflow: 'hidden' }}
+    >
+      {/* faint grid backdrop */}
+      <div className="sh-grid-bg" style={{ position: 'absolute', inset: 0, pointerEvents: 'none' }} />
+
+      {/* HEADER */}
+      <header style={{
+        position: 'relative', zIndex: 20, height: 56, padding: '0 20px',
+        display: 'flex', alignItems: 'center', justifyContent: 'space-between',
+        borderBottom: `1px solid ${colors.hair}`, background: colors.panelAlt,
+      }}>
+        <div style={{ display: 'flex', alignItems: 'center', gap: 14 }}>
+          <div style={{
+            width: 32, height: 32, border: `1.5px solid ${colors.glow}`,
+            display: 'flex', alignItems: 'center', justifyContent: 'center',
+            boxShadow: `0 0 6px ${colors.glow}44, inset 0 0 6px ${colors.glow}22`,
+          }}>
+            <span style={{ fontFamily: fonts.display, fontSize: 18, color: colors.glow }}>◆</span>
           </div>
-          <nav className="flex items-center gap-1">
-            <NavLink to="/" className={({isActive}) => `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white' : effectiveTheme === 'dark' ? 'text-slate-300 hover:bg-slate-800' : 'text-slate-600 hover:bg-slate-100'}`}>Tables</NavLink>
-            <NavLink to="/design" className={({isActive}) => `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white' : effectiveTheme === 'dark' ? 'text-slate-300 hover:bg-slate-800' : 'text-slate-600 hover:bg-slate-100'}`}>Design</NavLink>
-            <NavLink to="/library" className={({isActive}) => `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white' : effectiveTheme === 'dark' ? 'text-slate-300 hover:bg-slate-800' : 'text-slate-600 hover:bg-slate-100'}`}>Library</NavLink>
-            <NavLink to="/variants" className={({isActive}) => `px-3 py-1.5 rounded-md text-sm font-medium transition-colors ${isActive ? 'bg-blue-600 text-white' : effectiveTheme === 'dark' ? 'text-slate-300 hover:bg-slate-800' : 'text-slate-600 hover:bg-slate-100'}`}>Variants</NavLink>
-            
-            <div className="w-px h-5 mx-1 bg-slate-700" />
-            
-            <button
-              onClick={toggleTheme}
-              className={`p-2 rounded-md transition-colors ${effectiveTheme === 'dark' ? 'text-slate-400 hover:bg-slate-800' : 'text-slate-500 hover:bg-slate-100'}`}
-              title="Toggle Theme"
-            >
-              {effectiveTheme === 'dark' ? <Moon className="w-4 h-4" /> : <Sun className="w-4 h-4" />}
-            </button>
-            <button
-              onClick={toggleLayout}
-              className={`p-2 rounded-md transition-colors ${effectiveTheme === 'dark' ? 'text-slate-400 hover:bg-slate-800' : 'text-slate-500 hover:bg-slate-100'}`}
-              title="Toggle Layout"
-            >
-              {layoutMode === 'desktop' ? <Monitor className="w-4 h-4" /> : <Smartphone className="w-4 h-4" />}
-            </button>
-            <SettingsPanel />
-          </nav>
+          <div>
+            <div style={{ fontFamily: fonts.display, fontSize: 22, color: colors.glow, letterSpacing: '0.28em', lineHeight: 1 }}>
+              CE · SHIPGEN
+            </div>
+            <div style={{ fontFamily: fonts.mono, fontSize: 10, color: colors.inkDim, letterSpacing: '0.12em', marginTop: 2 }}>
+              MAINFRAME · {version ? `v${version}` : 'v0.02'} · {layoutMode === 'phone' ? 'PHONE MODE' : 'DESKTOP'}
+            </div>
+          </div>
         </div>
+
+        <nav style={{ display: 'flex', alignItems: 'center', gap: 8 }}>
+          <NavLink to="/tables" style={({ isActive }) => isActive ? navActive : navInactive}>Tables</NavLink>
+          <NavLink to="/design" style={({ isActive }) => isActive ? navActive : navInactive}>Design</NavLink>
+          <NavLink to="/library" style={({ isActive }) => isActive ? navActive : navInactive}>Library</NavLink>
+          <NavLink to="/variants" style={({ isActive }) => isActive ? navActive : navInactive}>Variants</NavLink>
+
+          <div style={{ width: 1, height: 20, background: colors.hair, margin: '0 4px' }} />
+
+          <button
+            onClick={toggleScanlines}
+            title="Toggle Scanlines"
+            style={{
+              padding: '6px 10px', fontFamily: fonts.mono, fontSize: 11,
+              color: scanlines ? colors.glow : colors.inkDim,
+              background: scanlines ? `${colors.glow}15` : 'transparent',
+              border: `1px solid ${scanlines ? colors.glow : colors.hair}`,
+              cursor: 'pointer', letterSpacing: '0.08em',
+            }}
+          >
+            {scanlines ? 'SCAN ON' : 'SCAN OFF'}
+          </button>
+          <button
+            onClick={toggleLayout}
+            title="Toggle Layout"
+            style={{
+              padding: '6px 10px', fontFamily: fonts.mono, fontSize: 11,
+              color: colors.inkSoft, background: 'transparent',
+              border: `1px solid ${colors.hair}`, cursor: 'pointer', letterSpacing: '0.08em',
+            }}
+          >
+            {layoutMode === 'desktop' ? 'DESK' : 'PHONE'}
+          </button>
+          <SettingsPanel />
+        </nav>
       </header>
 
-      <main className={`max-w-7xl mx-auto px-4 py-6 ${layoutMode === 'phone' ? 'max-w-md' : ''}`}>
+      {/* MAIN */}
+      <main style={{
+        position: 'relative', zIndex: 10,
+        maxWidth: layoutMode === 'phone' ? 480 : 1400,
+        margin: '0 auto',
+        padding: layoutMode === 'phone' ? '12px 12px 40px' : '20px 28px 60px',
+      }}>
         <Routes>
           <Route path="/" element={<Navigate to="/design" replace />} />
           <Route path="/tables" element={<TableManager />} />
