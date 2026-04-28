@@ -1,0 +1,7 @@
+node_modules/
+dist/
+*.zip
+android/
+src-tauri/
+capacitor.config.ts
+WRAPPER_BUILD.md
