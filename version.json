@@ -1,12 +1,15 @@
 {
-  "version": "0.02",
+  "version": "0.03",
   "name": "CE ShipGen",
-  "date": "2026-04-27",
+  "date": "2026-04-29",
   "changelog": [
-    "Phase 1: Foundation Hardening — calculation engine extracted",
-    "Jump parsecs selector (1-6) with accurate fuel calculation",
-    "Power Plant validation (PP ≥ max M-drive, J-drive)",
-    "Validation summary panel with hard error detection",
-    "TypeScript strict mode compliance"
+    "Phase 2 complete — StartupScreen, Theme, Settings, Mneme Combat, Foundry Export",
+    "Mainframe UI integration across entire app (FRD-062)",
+    "ShipDesigner QA overhaul — child tables, default names, available DTons, drive rules",
+    "Armor / Drive / Power child tables with TL/Model/Performance/Dtons/Cost",
+    "Load from Library workflow with default ships",
+    "Minimum Crew requirements table with salaries (QA-12)",
+    "HashRouter for GitHub Pages deployment",
+    "Armor rating editable in increments of 1 with auto-computed dtons/cost"
   ]
 }
