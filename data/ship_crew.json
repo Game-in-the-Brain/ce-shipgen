@@ -1,0 +1,72 @@
+[
+  {
+    "Position": "Ship's Master",
+    "Minimum": "",
+    "Full Complement": "4 per Bridge",
+    "Salary": 6000.0,
+    "Shift": 1500
+  },
+  {
+    "Position": "Ship's Purser",
+    "Minimum": "",
+    "Full Complement": "1 per 200dtons (minimum 1)",
+    "Salary": 3000.0,
+    "Shift": 750
+  },
+  {
+    "Position": "Pilot",
+    "Minimum": "",
+    "Full Complement": "1 shift per 20 persons and per 100dtons of cargo.",
+    "Salary": 6000.0,
+    "Shift": 1500
+  },
+  {
+    "Position": "Navigator/ Comms-Sensor Operator",
+    "Minimum": "",
+    "Full Complement": "1 per Ship",
+    "Salary": 5000.0,
+    "Shift": 1250
+  },
+  {
+    "Position": "Engineer",
+    "Minimum": "",
+    "Full Complement": "1 per Ship",
+    "Salary": 4000.0,
+    "Shift": 1000
+  },
+  {
+    "Position": "Steward",
+    "Minimum": "",
+    "Full Complement": "1 per Ship",
+    "Salary": 3000.0,
+    "Shift": 750
+  },
+  {
+    "Position": "Medic",
+    "Minimum": "",
+    "Full Complement": "",
+    "Salary": 2000.0,
+    "Shift": 500
+  },
+  {
+    "Position": "Gunner/Marine",
+    "Minimum": "",
+    "Full Complement": "",
+    "Salary": 1000.0,
+    "Shift": 250
+  },
+  {
+    "Position": "Other Crew Member",
+    "Minimum": "",
+    "Full Complement": "",
+    "Salary": 1000.0,
+    "Shift": 250
+  },
+  {
+    "Position": "Scientist",
+    "Minimum": "",
+    "Full Complement": "1 per Ship",
+    "Salary": 4000.0,
+    "Shift": 1000
+  }
+]

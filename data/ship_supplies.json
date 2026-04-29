@@ -1,0 +1,121 @@
+[
+  {
+    "Supply": "Missile Pack, Standard",
+    "TL": 6.0,
+    "Dtons": 1.0,
+    "Cost": 15000.0,
+    "Notes": "12 standard missiles"
+  },
+  {
+    "Supply": "Sand Package",
+    "TL": 7.0,
+    "Dtons": 1.0,
+    "Cost": 10000.0,
+    "Notes": "20 barrels of Sand."
+  },
+  {
+    "Supply": "Missile Pack, Smart",
+    "TL": 8.0,
+    "Dtons": 1.0,
+    "Cost": 30000.0,
+    "Notes": "12 smart missiles"
+  },
+  {
+    "Supply": "Missile Pack, Nuclear",
+    "TL": 6.0,
+    "Dtons": 1.0,
+    "Cost": 45000.0,
+    "Notes": "12 standard nuclear missiles"
+  },
+  {
+    "Supply": "Ammo (for Autocannons)",
+    "TL": 6.0,
+    "Dtons": 1.0,
+    "Cost": 350000.0,
+    "Notes": "175,000 of rounds (300 rounds per use; 583 per dton);"
+  },
+  {
+    "Supply": "Repair Supplies",
+    "TL": 7.0,
+    "Dtons": 1.0,
+    "Cost": 10000.0,
+    "Notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110"
+  },
+  {
+    "Supply": "Regular Life Support Supplies",
+    "TL": 7.0,
+    "Dtons": 1.0,
+    "Cost": 54000.0,
+    "Notes": "600 Man days of Supplies . CESRD p110"
+  },
+  {
+    "Supply": "Luxury Life Support Supplies",
+    "TL": 7.0,
+    "Dtons": 1.0,
+    "Cost": 72000.0,
+    "Notes": "600 Man days of Supplies . CESRD p110"
+  },
+  {
+    "Supply": "Vacc Suit TL9",
+    "TL": 9.0,
+    "Dtons": null,
+    "Cost": 9000.0,
+    "Notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection"
+  },
+  {
+    "Supply": "Vacc Suit TL8",
+    "TL": 8.0,
+    "Dtons": null,
+    "Cost": 5000.0,
+    "Notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection"
+  },
+  {
+    "Supply": "Vacc Suit TL7",
+    "TL": 7.0,
+    "Dtons": 0.01,
+    "Cost": 2000.0,
+    "Notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection"
+  },
+  {
+    "Supply": "Emergency Vacc Suit TL7",
+    "TL": 7.0,
+    "Dtons": 0.07,
+    "Cost": 400.0,
+    "Notes": "Advance Crew Escape Suit. 10 mins backup life Support"
+  },
+  {
+    "Supply": "Refined Fuel",
+    "TL": 7.0,
+    "Dtons": 1.0,
+    "Cost": 500.0,
+    "Notes": ""
+  },
+  {
+    "Supply": "Fuel Module",
+    "TL": 8.0,
+    "Dtons": null,
+    "Cost": null,
+    "Notes": "Portable Fuel Module"
+  },
+  {
+    "Supply": "Cabin Module",
+    "TL": 8.0,
+    "Dtons": 1.5,
+    "Cost": 75000,
+    "Notes": ""
+  },
+  {
+    "Supply": "Cramped Passenger Seating Module",
+    "TL": 8.0,
+    "Dtons": 1.0,
+    "Cost": 130208.0,
+    "Notes": "Cramped modular passenger seating holding 5 in 1DT."
+  },
+  {
+    "Supply": "Standard Passenger Seating Module",
+    "TL": 8.0,
+    "Dtons": 1.0,
+    "Cost": 133208.0,
+    "Notes": "Standard Passenger Seating holds 3 in 1DT"
+  }
+]

@@ -1,0 +1,106 @@
+[
+  {
+    "Sensors": "Standard (Included in bridge)TL 8",
+    "TL": 8.0,
+    "DM": "\u20134",
+    "Includes": "Radar, Lidar",
+    "Tons": 0.0,
+    "Cost": 0.0
+  },
+  {
+    "Sensors": "Standard TL 8",
+    "TL": 8.0,
+    "DM": "\u20134",
+    "Includes": "Radar, Lidar",
+    "Tons": 0.5,
+    "Cost": 25000.0
+  },
+  {
+    "Sensors": "Basic Civilian TL 8",
+    "TL": 8.0,
+    "DM": "\u20132",
+    "Includes": "Radar, Lidar",
+    "Tons": 3.0,
+    "Cost": 250000.0
+  },
+  {
+    "Sensors": "Basic Civilian TL 9",
+    "TL": 9.0,
+    "DM": "\u20132",
+    "Includes": "Radar, Lidar",
+    "Tons": 1.0,
+    "Cost": 50000.0
+  },
+  {
+    "Sensors": "Basic Military TL 8",
+    "TL": 8.0,
+    "DM": 0.0,
+    "Includes": "Radar, Lidar, Jammers",
+    "Tons": 20.0,
+    "Cost": 100000000.0
+  },
+  {
+    "Sensors": "Basic Military TL 9",
+    "TL": 9.0,
+    "DM": 0.0,
+    "Includes": "Radar, Lidar, Jammers",
+    "Tons": 6.0,
+    "Cost": 10000000.0
+  },
+  {
+    "Sensors": "Basic Military TL 10",
+    "TL": 10.0,
+    "DM": 0.0,
+    "Includes": "Radar, Lidar, Jammers",
+    "Tons": 2.0,
+    "Cost": 1000000.0
+  },
+  {
+    "Sensors": "Advanced TL 9",
+    "TL": 9.0,
+    "DM": "+1",
+    "Includes": "Radar, Lidar, Densitometer, Jammers",
+    "Tons": 30.0,
+    "Cost": 200000000.0
+  },
+  {
+    "Sensors": "Advanced TL 10",
+    "TL": 10.0,
+    "DM": "+1",
+    "Includes": "Radar, Lidar, Densitometer, Jammers",
+    "Tons": 10.0,
+    "Cost": 20000000.0
+  },
+  {
+    "Sensors": "Advanced TL 11",
+    "TL": 11.0,
+    "DM": "+1",
+    "Includes": "Radar, Lidar, Densitometer, Jammers",
+    "Tons": 3.0,
+    "Cost": 2000000.0
+  },
+  {
+    "Sensors": "Very Advanced TL 10",
+    "TL": 10.0,
+    "DM": "+2",
+    "Includes": "Radar, Lidar, Densitometer, Jammers, Neural Activity Sensor",
+    "Tons": 50.0,
+    "Cost": 400000000.0
+  },
+  {
+    "Sensors": "Very Advanced TL 11",
+    "TL": 11.0,
+    "DM": "+2",
+    "Includes": "Radar, Lidar, Densitometer, Jammers, Neural Activity Sensor",
+    "Tons": 15.0,
+    "Cost": 40000000.0
+  },
+  {
+    "Sensors": "Very Advanced TL 12",
+    "TL": 12.0,
+    "DM": "+2",
+    "Includes": "Radar, Lidar, Densitometer, Jammers, Neural Activity Sensor",
+    "Tons": 5.0,
+    "Cost": 4000000.0
+  }
+]
