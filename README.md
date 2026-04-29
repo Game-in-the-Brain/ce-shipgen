@@ -7,6 +7,8 @@
 [![Status](https://img.shields.io/badge/Status-M3%20Current-blue)](https://github.com/xunema/ce-shipgen#-milestone-status)
 
 **Live Demo:** https://game-in-the-brain.github.io/ce-shipgen/
+https://pages.gi7b.org/gi7b/ce-shipgen/
+
 
 ---
 
