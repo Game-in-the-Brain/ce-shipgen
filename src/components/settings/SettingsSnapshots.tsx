@@ -2,6 +2,7 @@ import { useState, useEffect, useRef } from 'react'
 import { Save, Upload, RotateCcw, Check, Trash2, Download } from 'lucide-react'
 import { DATA_TABLES } from './JsonTableEditor'
 import type { RuleSet } from './RuleSettings'
+import type { TableId } from '../../types'
 
 interface SettingsSnapshot {
   id: string
@@ -9,6 +10,7 @@ interface SettingsSnapshot {
   createdAt: string
   tables: Record<string, any[]>
   rules: RuleSet
+  activeTables?: Record<TableId, 'default' | 'custom'>
 }
 
 interface SettingsSnapshotsProps {
@@ -124,12 +126,24 @@ export default function SettingsSnapshots({ onSnapshotLoad }: SettingsSnapshotsP
         customRules: []
       }
 
+      const activeTablesRaw = localStorage.getItem('ce-shipgen-storage');
+      let activeTables: Record<TableId, 'default' | 'custom'> | undefined;
+      if (activeTablesRaw) {
+        try {
+          const parsed = JSON.parse(activeTablesRaw);
+          activeTables = parsed?.state?.activeTables;
+        } catch {
+          // ignore
+        }
+      }
+
       const snapshot: SettingsSnapshot = {
         id: crypto.randomUUID ? crypto.randomUUID() : generateId(),
         name: newSnapshotName.trim(),
         createdAt: new Date().toISOString(),
         tables,
         rules,
+        activeTables,
       }
 
       const updated = [...snapshots, snapshot]
@@ -173,6 +187,22 @@ export default function SettingsSnapshots({ onSnapshotLoad }: SettingsSnapshotsP
       localStorage.setItem(`ce_shipgen_table_${tableId}`, JSON.stringify(data))
     }
     localStorage.setItem('ce_shipgen_rules', JSON.stringify(snapshot.rules))
+
+    if (snapshot.activeTables) {
+      const storageRaw = localStorage.getItem('ce-shipgen-storage');
+      if (storageRaw) {
+        try {
+          const parsed = JSON.parse(storageRaw);
+          if (parsed?.state) {
+            parsed.state.activeTables = snapshot.activeTables;
+            localStorage.setItem('ce-shipgen-storage', JSON.stringify(parsed));
+          }
+        } catch {
+          // ignore
+        }
+      }
+    }
+
     onSnapshotLoad?.()
     showToast(`Loaded "${snapshot.name}". Re-select tables to refresh editor.`)
   }

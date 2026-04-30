@@ -3,6 +3,8 @@ import { persist } from 'zustand/middleware';
 import { immer } from 'zustand/middleware/immer';
 import type { DataTable, TableId, ShipDesign } from '../types';
 
+type ActiveTableSource = 'default' | 'custom';
+
 const BASE = import.meta.env.BASE_URL;
 
 const TABLE_FILES: Record<TableId, string> = {
@@ -58,6 +60,7 @@ interface TableState {
   currentTable: TableId | null;
   ships: ShipDesign[];
   currentShip: ShipDesign | null;
+  activeTables: Record<TableId, ActiveTableSource>;
 }
 
 interface TableActions {
@@ -75,6 +78,8 @@ interface TableActions {
   updateShip: (ship: ShipDesign) => void;
   deleteShip: (id: string) => void;
   setCurrentShip: (ship: ShipDesign | null) => void;
+  setActiveTable: (id: TableId, source: ActiveTableSource) => void;
+  resetActiveTables: () => void;
 }
 
 export const useTableStore = create<TableState & TableActions>()(
@@ -89,6 +94,7 @@ export const useTableStore = create<TableState & TableActions>()(
         currentTable: null,
         ships: [],
         currentShip: null,
+        activeTables: {} as Record<TableId, ActiveTableSource>,
 
         loadTables: async () => {
           set({ loading: true, error: null });
@@ -207,13 +213,28 @@ export const useTableStore = create<TableState & TableActions>()(
         },
 
         setCurrentShip: (ship) => set({ currentShip: ship }),
+
+        setActiveTable: (id, source) => {
+          set((state) => {
+            state.activeTables[id] = source;
+          });
+        },
+
+        resetActiveTables: () => {
+          set((state) => {
+            Object.keys(state.defaults).forEach((id) => {
+              state.activeTables[id as TableId] = 'custom';
+            });
+          });
+        },
       }),
       {
         name: 'ce-shipgen-storage',
         partialize: (state) => ({ 
           tables: state.tables, 
           ships: state.ships,
-          currentShip: state.currentShip 
+          currentShip: state.currentShip,
+          activeTables: state.activeTables,
         }),
       }
     )

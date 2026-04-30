@@ -12,6 +12,8 @@ import {
   calcLowBerthTonnage, calcLowBerthCost, calcCrewRequirements,
 } from '../calculations';
 import { validateShip } from '../validations';
+import { getActiveTableById } from '../utils/getActiveTable';
+import type { TableId } from '../types';
 import { Save, Calculator, Trash2, AlertTriangle, CheckCircle } from 'lucide-react';
 import { colors, fonts } from './shipgen/theme';
 import { ShLabel, ShNum, ShData, ShPanel, ShField } from './shipgen/primitives';
@@ -151,6 +153,8 @@ function Step({ num, title, kw, children, defaultOpen = true }: {
 
 export function ShipDesigner() {
   const tables = useTableStore((s) => s.tables);
+  const defaults = useTableStore((s) => s.defaults);
+  const activeTables = useTableStore((s) => s.activeTables);
   const addShip = useTableStore((s) => s.addShip);
   const ships = useTableStore((s) => s.ships);
   const updateShip = useTableStore((s) => s.updateShip);
@@ -216,20 +220,22 @@ export function ShipDesigner() {
   const [selectedWeapons, setSelectedWeapons] = useState<{id: string; qty: number}[]>([]);
 
   // ─── Table Data ───
-  const hulls = tables.ship_hulls?.rows || [];
-  const configs = tables.hull_configurations?.rows || [];
-  const armors = tables.ship_armor?.rows || [];
-  const drives = tables.ship_drives?.rows || [];
-  const bridges = tables.ship_bridge?.rows || [];
-  const computers = tables.ship_computers?.rows || [];
-  const software = tables.ship_software?.rows || [];
-  const sensorList = tables.ship_sensors?.rows || [];
-  const modules = tables.ship_modules?.rows || [];
-  const weapons = tables.ship_weapons?.rows || [];
+  const getTableRows = (id: TableId) => getActiveTableById(id, tables, defaults, activeTables)?.rows || [];
+
+  const hulls = getTableRows('ship_hulls');
+  const configs = getTableRows('hull_configurations');
+  const armors = getTableRows('ship_armor');
+  const drives = getTableRows('ship_drives');
+  const bridges = getTableRows('ship_bridge');
+  const computers = getTableRows('ship_computers');
+  const software = getTableRows('ship_software');
+  const sensorList = getTableRows('ship_sensors');
+  const modules = getTableRows('ship_modules');
+  const weapons = getTableRows('ship_weapons');
 
   // ─── Thrust Performance Helper ───
   const getThrustPerformance = (driveCode: string): number | null => {
-    const perfRows = tables.engine_performance?.rows || [];
+    const perfRows = getTableRows('engine_performance');
     const driveIndex = drives.findIndex((d: Record<string, unknown>) => String(d['Drive Code']) === driveCode);
     if (driveIndex < 0 || driveIndex >= perfRows.length) return null;
     const row = perfRows[driveIndex];
@@ -350,7 +356,7 @@ export function ShipDesigner() {
     if (!nameChanged && !variantChanged) return;
     lastPPNames.current = currentNames;
     lastPPVariants.current = currentVariants;
-    const powerPlantTypes = tables.power_plants?.rows || [];
+    const powerPlantTypes = getTableRows('power_plants');
     const updated = ppRows.map((row) => {
       const d = drives.find((dr: Record<string, unknown>) => String(dr['Drive Code']) === row.name);
       if (!d) return row;
@@ -1167,7 +1173,7 @@ export function ShipDesigner() {
               createNewItem={() => {
                 const d = drives.find((dr: Record<string, unknown>) => Number(dr['P-Plant\n Tons'] || 0) > 0);
                 const code = d ? String(d['Drive Code']) : 'A';
-                const fusion = (tables.power_plants?.rows || []).find((p: Record<string, unknown>) => String(p['Plant Type']).toLowerCase().includes('fusion'));
+                const fusion = (getTableRows('power_plants')).find((p: Record<string, unknown>) => String(p['Plant Type']).toLowerCase().includes('fusion'));
                 return {
                   id: `pp-${Date.now()}`,
                   name: code,
@@ -1474,13 +1480,13 @@ export function ShipDesigner() {
             <ShField
               label="QUICK ADD FACILITY"
               value=""
-              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...(tables.life_support?.rows || []).map((l: Record<string, unknown>) => ({
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...(getTableRows('life_support')).map((l: Record<string, unknown>) => ({
                 value: String(l['LIFE SUPPORT']),
                 label: `${String(l['LIFE SUPPORT'])} · ${fmtTons(Number(l['DTONS'] || 0))} · ${fmtCost(Number(l['COST'] || 0))} · TL${Number(l['TL'] || 7)}`,
               }))]}
               onChange={(v) => {
                 if (!v) return;
-                const ls = tables.life_support?.rows?.find((l: Record<string, unknown>) => String(l['LIFE SUPPORT']) === v);
+                const ls = getTableRows('life_support').find((l: Record<string, unknown>) => String(l['LIFE SUPPORT']) === v);
                 if (ls) {
                   setLifeSupportRows(prev => [...prev, {
                     id: `ls-${Date.now()}`,
@@ -1736,13 +1742,13 @@ export function ShipDesigner() {
             <ShField
               label="QUICK ADD SUPPLY"
               value=""
-              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...(tables.ship_supplies?.rows || []).map((s: Record<string, unknown>) => ({
+              options={[{ value: '', label: '— SELECT FROM TABLE —' }, ...(getTableRows('ship_supplies')).map((s: Record<string, unknown>) => ({
                 value: String(s['Supply']),
                 label: `${String(s['Supply'])} · ${fmtTons(Number(s['Dtons'] || 0))} · ${fmtCost(Number(s['Cost'] || 0))} · TL${Number(s['TL'] || 6)}`,
               }))]}
               onChange={(v) => {
                 if (!v) return;
-                const s = tables.ship_supplies?.rows?.find((sup: Record<string, unknown>) => String(sup['Supply']) === v);
+                const s = getTableRows('ship_supplies').find((sup: Record<string, unknown>) => String(sup['Supply']) === v);
                 if (s) {
                   setSupplyRows(prev => [...prev, {
                     id: `supply-${Date.now()}`,

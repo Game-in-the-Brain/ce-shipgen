@@ -17,75 +17,99 @@ const COMPONENT_TO_TABLE: Record<ComponentType, TableId> = {
   vehicles: 'ship_vehicles',
 };
 
-export function getActiveTableKey(type: ComponentType): string {
-  const registryRaw = localStorage.getItem('ce_shipgen_active_tables');
-  const registry = registryRaw ? JSON.parse(registryRaw) : {};
-  return registry[type] || 'default';
-}
-
-export function setActiveTableKey(type: ComponentType, tableKey: string): void {
-  const registryRaw = localStorage.getItem('ce_shipgen_active_tables');
-  const registry = registryRaw ? JSON.parse(registryRaw) : {};
-  registry[type] = tableKey;
-  localStorage.setItem('ce_shipgen_active_tables', JSON.stringify(registry));
-}
-
-export function resetActiveTables(): void {
-  localStorage.removeItem('ce_shipgen_active_tables');
-}
-
+/**
+ * Get the active table for a given component type.
+ * Returns the default table if activeTables says 'default', otherwise returns the current (potentially customized) table.
+ */
 export function getActiveTable(
   type: ComponentType,
-  tables: Record<TableId, DataTable>
+  tables: Record<TableId, DataTable>,
+  defaults: Record<TableId, DataTable>,
+  activeTables: Record<TableId, 'default' | 'custom'>
 ): DataTable | null {
   const tableId = COMPONENT_TO_TABLE[type];
   const table = tables[tableId];
-  if (!table) return null;
+  const defaultTable = defaults[tableId];
+  if (!table || !defaultTable) return null;
 
-  const activeKey = getActiveTableKey(type);
-  if (activeKey === 'default') {
-    return table;
+  const source = activeTables[tableId] ?? 'custom';
+  if (source === 'default') {
+    return defaultTable;
   }
-
-  // Look for custom table in localStorage
-  const customRaw = localStorage.getItem(`ce_shipgen_table_${activeKey}`);
-  if (customRaw) {
-    try {
-      return JSON.parse(customRaw) as DataTable;
-    } catch {
-      // fall through to default
-    }
-  }
-
   return table;
 }
 
-export function listAvailableTables(
+/**
+ * Get the active table directly by TableId (for components that don't need ComponentType mapping).
+ */
+export function getActiveTableById(
+  id: TableId,
+  tables: Record<TableId, DataTable>,
+  defaults: Record<TableId, DataTable>,
+  activeTables: Record<TableId, 'default' | 'custom'>
+): DataTable | null {
+  const table = tables[id];
+  const defaultTable = defaults[id];
+  if (!table || !defaultTable) return null;
+
+  const source = activeTables[id] ?? 'custom';
+  if (source === 'default') {
+    return defaultTable;
+  }
+  return table;
+}
+
+/**
+ * List available table sources for a component type.
+ * Returns the default and current custom options.
+ */
+export function listAvailableTableSources(
   type: ComponentType,
-  tables: Record<TableId, DataTable>
+  tables: Record<TableId, DataTable>,
+  defaults: Record<TableId, DataTable>
 ): { key: string; name: string; isDefault: boolean }[] {
+  const tableId = COMPONENT_TO_TABLE[type];
+  const defaultTable = defaults[tableId];
+  const currentTable = tables[tableId];
   const result: { key: string; name: string; isDefault: boolean }[] = [];
 
-  // Add default
-  const tableId = COMPONENT_TO_TABLE[type];
-  const defaultTable = tables[tableId];
   if (defaultTable) {
     result.push({ key: 'default', name: `${defaultTable.name} (Default)`, isDefault: true });
   }
+  if (currentTable) {
+    const isModified = JSON.stringify(currentTable.rows) !== JSON.stringify(defaultTable?.rows);
+    result.push({
+      key: 'custom',
+      name: isModified ? `${currentTable.name} (Custom)` : `${currentTable.name} (Current)`,
+      isDefault: false,
+    });
+  }
 
-  // Scan localStorage for custom tables of this type
-  for (let i = 0; i < localStorage.length; i++) {
-    const key = localStorage.key(i);
-    if (key?.startsWith('ce_shipgen_table_')) {
-      try {
-        const data = JSON.parse(localStorage.getItem(key) || '{}');
-        if (data.id === tableId || data.type === type) {
-          result.push({ key: key.replace('ce_shipgen_table_', ''), name: data.name || 'Untitled', isDefault: false });
-        }
-      } catch {
-        // ignore invalid entries
-      }
-    }
+  return result;
+}
+
+/**
+ * List available table sources by TableId.
+ */
+export function listAvailableTableSourcesById(
+  id: TableId,
+  tables: Record<TableId, DataTable>,
+  defaults: Record<TableId, DataTable>
+): { key: string; name: string; isDefault: boolean }[] {
+  const defaultTable = defaults[id];
+  const currentTable = tables[id];
+  const result: { key: string; name: string; isDefault: boolean }[] = [];
+
+  if (defaultTable) {
+    result.push({ key: 'default', name: `${defaultTable.name} (Default)`, isDefault: true });
+  }
+  if (currentTable) {
+    const isModified = JSON.stringify(currentTable.rows) !== JSON.stringify(defaultTable?.rows);
+    result.push({
+      key: 'custom',
+      name: isModified ? `${currentTable.name} (Custom)` : `${currentTable.name} (Current)`,
+      isDefault: false,
+    });
   }
 
   return result;

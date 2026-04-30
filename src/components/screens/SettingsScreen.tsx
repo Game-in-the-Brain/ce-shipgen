@@ -3,6 +3,7 @@ import { ArrowLeft, Monitor, Smartphone, Moon, Sun, Laptop } from 'lucide-react'
 import JsonTableEditor from '../settings/JsonTableEditor'
 import RuleSettings from '../settings/RuleSettings'
 import SettingsSnapshots from '../settings/SettingsSnapshots'
+import TablesInPlay from '../settings/TablesInPlay'
 
 interface SettingsScreenProps {
   layoutMode: 'desktop' | 'phone'
@@ -74,6 +75,9 @@ export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: S
 
           {/* Rule Settings */}
           <RuleSettings />
+
+          {/* Tables In Play */}
+          <TablesInPlay />
 
           {/* Snapshots */}
           <SettingsSnapshots onSnapshotLoad={() => setSnapshotVersion(v => v + 1)} />
