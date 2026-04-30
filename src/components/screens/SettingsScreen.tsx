@@ -111,7 +111,7 @@ export default function SettingsScreen({ layoutMode, onLayoutChange, onBack }: S
 
           {/* Version */}
           <div className="text-center text-sm text-gray-500 pt-4">
-            CE ShipGen v0.2.5 (Milestone 2.5)
+            CE ShipGen v0.04 (Milestone 2.7)
           </div>
         </div>
       </div>
