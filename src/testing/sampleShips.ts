@@ -224,11 +224,289 @@ export const SAMPLE_HEAVY_FREIGHTER_1000: ShipDesign = baseShip({
 // ═══════════════════════════════════════════════════════════════════
 // All samples array
 // ═══════════════════════════════════════════════════════════════════
+
+
+// ═══════════════════════════════════════════════════════════════════
+// EXCEL-EXTRACTED SAMPLE SHIPS (sorted by tonnage, lowest first)
+// Source: GI7B EXTERNAL RAW CE SHIPS 231024-06 240930.xlsx
+// Sheet: CE SHIPS 230502
+// ═══════════════════════════════════════════════════════════════════
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 FIGHTER 10DT, 2man, 1BL, 2M (10DT) — Excel row 1143
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_FIGHTER_10DT_2MAN_1BL_2M_10: ShipDesign = baseShip({
+  name: 'TL9 FIGHTER 10DT, 2man, 1BL, 2M',
+  hullDtons: 10,
+  configuration: 'Streamlined',
+  mDrive: 'sC',
+  powerPlant: 'sG',
+  bridge: '2-man Cockpit',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 0,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 ESCORT FIGHTER 10DT, 2man, 1BL, 2SC (10DT) — Excel row 1184
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_ESCORT_FIGHTER_10DT_2MAN_1BL_2SC_10: ShipDesign = baseShip({
+  name: 'TL9 ESCORT FIGHTER 10DT, 2man, 1BL, 2SC',
+  hullDtons: 10,
+  configuration: 'Streamlined',
+  mDrive: 'sC',
+  powerPlant: 'sG',
+  bridge: '2-man Cockpit',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 0,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 FIGHTER 10DT, 2man, 3M (10DT) — Excel row 1226
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_FIGHTER_10DT_2MAN_3M_10: ShipDesign = baseShip({
+  name: 'TL9 FIGHTER 10DT, 2man, 3M',
+  hullDtons: 10,
+  configuration: 'Streamlined',
+  armor: 'Titanium Steel TL7+',
+  armorQty: 2,
+  mDrive: 'sC',
+  jDrive: 'A',
+  powerPlant: 'sC',
+  bridge: '2-man Cockpit',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  staterooms: 20,
+  lowBerths: 20,
+  cargo: 0,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 BOAT 10DT (10DT) — Excel row 1569
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_BOAT_10DT_10: ShipDesign = baseShip({
+  name: 'TL9 BOAT 10DT',
+  hullDtons: 10,
+  configuration: 'Streamlined',
+  armor: 'Titanium Steel TL7+',
+  armorQty: 2,
+  mDrive: 'sA',
+  powerPlant: 'sA',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 1,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 MEDIUM FIGHTER 20DT, 2man, 3M (20DT) — Excel row 1266
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_MEDIUM_FIGHTER_20DT_2MAN_3M_20: ShipDesign = baseShip({
+  name: 'TL9 MEDIUM FIGHTER 20DT, 2man, 3M',
+  hullDtons: 20,
+  configuration: 'Streamlined',
+  armor: 'Titanium Steel TL7+',
+  armorQty: 6,
+  mDrive: 'sE',
+  jDrive: 'A',
+  powerPlant: 'sE',
+  bridge: '2-man Cockpit',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  staterooms: 20,
+  lowBerths: 20,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 BOAT 20DT (20DT) — Excel row 1604
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_BOAT_20DT_20: ShipDesign = baseShip({
+  name: 'TL9 BOAT 20DT',
+  hullDtons: 20,
+  configuration: 'Streamlined',
+  armor: 'Titanium Steel TL7+',
+  armorQty: 2,
+  mDrive: 'sA',
+  powerPlant: 'sA',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 11,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 SHIP\'s BOAT 30DT (30DT) — Excel row 1679
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_SHIP_S_BOAT_30DT_30: ShipDesign = baseShip({
+  name: 'TL9 SHIP\'s BOAT 30DT',
+  hullDtons: 30,
+  configuration: 'Streamlined',
+  mDrive: 'sJ',
+  powerPlant: 'sJ',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 14,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 SHIP\'s BOAT 50DT (50DT) — Excel row 1714
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_SHIP_S_BOAT_50DT_50: ShipDesign = baseShip({
+  name: 'TL9 SHIP\'s BOAT 50DT',
+  hullDtons: 50,
+  configuration: 'Streamlined',
+  mDrive: 'sF',
+  powerPlant: 'sF',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 37,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 SHIP\'s BOAT 70DT (70DT) — Excel row 1749
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_SHIP_S_BOAT_70DT_70: ShipDesign = baseShip({
+  name: 'TL9 SHIP\'s BOAT 70DT',
+  hullDtons: 70,
+  configuration: 'Streamlined',
+  mDrive: 'sF',
+  powerPlant: 'sF',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// VEHICLES : 90DT Shuttle, 1-Units (90DT) — Excel row 1501
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_VEHICLES_90DT_SHUTTLE_1_UNITS_90: ShipDesign = baseShip({
+  name: 'VEHICLES : 90DT Shuttle, 1-Units',
+  hullDtons: 90,
+  configuration: 'Streamlined',
+  mDrive: 'sN',
+  powerPlant: 'sN',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 26,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 SHUTTLE 90DT (90DT) — Excel row 1531
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_SHUTTLE_90DT_90: ShipDesign = baseShip({
+  name: 'TL9 SHUTTLE 90DT',
+  hullDtons: 90,
+  configuration: 'Streamlined',
+  mDrive: 'sN',
+  powerPlant: 'sN',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  cargo: 26,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 SHIP\'s BOAT 95DT (95DT) — Excel row 1784
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_SHIP_S_BOAT_95DT_95: ShipDesign = baseShip({
+  name: 'TL9 SHIP\'s BOAT 95DT',
+  hullDtons: 95,
+  configuration: 'Streamlined',
+  mDrive: 'sF',
+  powerPlant: 'sF',
+  bridge: '2-man Cabin Controls',
+  computer: 'M1, R5 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL 9 COURIER SHIP 100DT (100DT) — Excel row 71
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL_9_COURIER_SHIP_100DT_100: ShipDesign = baseShip({
+  name: 'TL 9 COURIER SHIP 100DT',
+  hullDtons: 100,
+  configuration: 'Streamlined',
+  armor: 'Titanium Steel TL7+',
+  armorQty: 1,
+  mDrive: 'B',
+  jDrive: 'A',
+  powerPlant: 'B',
+  bridge: '10-ton Bridge',
+  computer: 'M2, R10 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  staterooms: 4,
+  lowBerths: 1,
+  cargo: 17,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL 9 YACHT 100DT (100DT) — Excel row 125
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL_9_YACHT_100DT_100: ShipDesign = baseShip({
+  name: 'TL 9 YACHT 100DT',
+  hullDtons: 100,
+  configuration: 'Streamlined',
+  armor: 'Titanium Steel TL7+',
+  armorQty: 1,
+  mDrive: 'A',
+  jDrive: 'A',
+  powerPlant: 'A',
+  bridge: '10-ton Bridge',
+  computer: 'M2, R10 Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  staterooms: 6,
+  lowBerths: 2,
+  cargo: 12,
+});
+
+// ═══════════════════════════════════════════════════════════════════
+// TL9 Research Vessel 200DT (200DT) — Excel row 178
+// ═══════════════════════════════════════════════════════════════════
+export const SAMPLE_TL9_RESEARCH_VESSEL_200DT_200: ShipDesign = baseShip({
+  name: 'TL9 Research Vessel 200DT',
+  hullDtons: 200,
+  configuration: 'Standard',
+  armor: 'Titanium Steel TL7+',
+  armorQty: 1,
+  mDrive: 'A',
+  jDrive: 'A',
+  powerPlant: 'A',
+  bridge: '10-ton Bridge',
+  computer: 'M1, R5 J-Spec Hardened',
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
+  staterooms: 6,
+  lowBerths: 3,
+  cargo: 35,
+});
+
 export const ALL_SAMPLE_SHIPS: ShipDesign[] = [
-  SAMPLE_FREE_TRADER_200,
+  // Small craft (10-95 DT)
+  SAMPLE_TL9_FIGHTER_10DT_2MAN_1BL_2M_10,
+  SAMPLE_TL9_ESCORT_FIGHTER_10DT_2MAN_1BL_2SC_10,
+  SAMPLE_TL9_FIGHTER_10DT_2MAN_3M_10,
+  SAMPLE_TL9_BOAT_10DT_10,
+  SAMPLE_TL9_MEDIUM_FIGHTER_20DT_2MAN_3M_20,
+  SAMPLE_TL9_BOAT_20DT_20,
+  SAMPLE_TL9_SHIP_S_BOAT_30DT_30,
+  SAMPLE_TL9_SHIP_S_BOAT_50DT_50,
+  SAMPLE_TL9_SHIP_S_BOAT_70DT_70,
+  SAMPLE_VEHICLES_90DT_SHUTTLE_1_UNITS_90,
+  SAMPLE_TL9_SHUTTLE_90DT_90,
+  SAMPLE_TL9_SHIP_S_BOAT_95DT_95,
+  // Standard ships (100-200 DT)
   SAMPLE_SHUTTLE_100,
+  SAMPLE_TL_9_COURIER_SHIP_100DT_100,
+  SAMPLE_TL_9_YACHT_100DT_100,
+  SAMPLE_FREE_TRADER_200,
+  SAMPLE_TL9_RESEARCH_VESSEL_200DT_200,
+  // Medium ships (300-400 DT)
   SAMPLE_PATROL_CRUISER_400,
   SAMPLE_LINER_600,
+  // Large ships (1000+ DT)
   SAMPLE_HEAVY_FREIGHTER_1000,
 ];
 
