@@ -12,13 +12,13 @@ import { SAMPLE_FREE_TRADER_200, SAMPLE_SHUTTLE_100, SAMPLE_PATROL_CRUISER_400 }
  *   3. Is the sample ship data wrong? → Fix the sample.
  */
 
-describe('Sample: 200-ton Free Trader', () => {
+describe('Sample: 200-ton Free Trader (Excel row 293)', () => {
   const report = validateShip(SAMPLE_FREE_TRADER_200, {
     hullDtons: 200,
     hullPoints: 4,
     structurePoints: 4,
     hardpoints: 2,
-    armorTons: 20, // 5% × 2 × 200
+    armorTons: 10, // Excel: qty=1, 5% of 200 = 10 DT (Titanium Steel gives Prot 2 per 5%)
     mDriveTons: 2,
     mDriveCost: 4,
     jDriveTons: 10,

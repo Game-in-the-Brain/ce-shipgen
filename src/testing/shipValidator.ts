@@ -10,20 +10,17 @@
  *   else console.log(report.failures);
  */
 
-import type { ShipDesign, DataTable } from '../types';
+import type { ShipDesign } from '../types';
 import {
   calcHullPoints,
   calcStructurePoints,
   calcHardpoints,
-  calcArmorTonnage,
-  calcArmorCost,
   calcJumpFuel,
   calcPowerFuel,
   calcStateroomTonnage,
   calcStateroomCost,
   calcLowBerthTonnage,
   calcLowBerthCost,
-  calcCrewRequirements,
 } from '../calculations';
 
 // ─── Result Types ───
@@ -168,27 +165,15 @@ export function validateShip(ship: ShipDesign, expected: ExpectedValues): Valida
   }
 
   // ── Life Support ──
-  check('Life Support', 'Stateroom Tons', calcStateroomTonnage(ship.staterooms), expected.stateroomTons, 'DT');
-  check('Life Support', 'Stateroom Cost', calcStateroomCost(ship.staterooms) / 1e6, expected.stateroomCost, 'MCr');
-  check('Life Support', 'Low Berth Tons', calcLowBerthTonnage(ship.lowBerths), expected.lowBerthTons, 'DT');
-  check('Life Support', 'Low Berth Cost', calcLowBerthCost(ship.lowBerths) / 1e6, expected.lowBerthCost, 'MCr');
+  check('Life Support', 'Stateroom Tons', calcStateroomTonnage(ship.staterooms || 0), expected.stateroomTons, 'DT');
+  check('Life Support', 'Stateroom Cost', calcStateroomCost(ship.staterooms || 0) / 1e6, expected.stateroomCost, 'MCr');
+  check('Life Support', 'Low Berth Tons', calcLowBerthTonnage(ship.lowBerths || 0), expected.lowBerthTons, 'DT');
+  check('Life Support', 'Low Berth Cost', calcLowBerthCost(ship.lowBerths || 0) / 1e6, expected.lowBerthCost, 'MCr');
 
   // ── Cargo ──
   check('Cargo', 'Tonnage', ship.cargo, expected.cargo, 'DT');
 
   // ── Totals ──
-  const weaponCount = (ship.weaponMounts || []).reduce((sum, w) => sum + w.qty, 0);
-  const crewReqs = calcCrewRequirements(
-    ship.hullDtons,
-    !!mDrive,
-    !!jDrive,
-    !!ship.sensorList?.length,
-    weaponCount,
-    ship.staterooms,
-    ship.lowBerths,
-    bridge?.stations || 0
-  );
-
   // Tonnage sanity check
   const componentsTonnage = [
     ship.armorQty * 0.05 * ship.hullDtons,
@@ -198,9 +183,9 @@ export function validateShip(ship: ShipDesign, expected: ExpectedValues): Valida
     24, // fuel placeholder
     bridge ? bridge.dtons * bridge.qty : 0,
     computer ? computer.dtons * computer.qty : 0,
-    calcStateroomTonnage(ship.staterooms),
-    calcLowBerthTonnage(ship.lowBerths),
-    ship.cargo,
+    calcStateroomTonnage(ship.staterooms || 0),
+    calcLowBerthTonnage(ship.lowBerths || 0),
+    ship.cargo || 0,
   ].reduce((a, b) => a + b, 0);
 
   check('Totals', 'Tonnage Used', componentsTonnage, expected.totalTonsUsed, 'DT', 5);

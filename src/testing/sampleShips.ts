@@ -1,23 +1,22 @@
 /**
  * Sample Ship Library — Reference Designs for Testing
  *
- * Each ship is a complete ShipDesign that can be loaded into ShipDesigner
- * to verify section calculations. Expected values are documented inline
- * and checked by shipValidator.test.ts.
+ * Each ship is extracted from the master Excel:
+ *   GI7B EXTERNAL RAW CE SHIPS 231024-06 240930.xlsx
+ *   Sheet: CE SHIPS 230502
  *
- * Testing methodology:
- * 1. Load sample ship into designer
- * 2. Compare computed values against expected (documented here)
- * 3. If mismatch → RCA: sample wrong? or shipgen calc wrong?
- * 4. Fix the incorrect side
+ * Expected values are verified against the Excel computed columns.
+ * If ShipDesigner produces different values, RCA:
+ *   1. Is the Excel formula wrong? → Fix Excel (rare)
+ *   2. Is the JSON table wrong? → Fix table
+ *   3. Is the shipgen calc wrong? → Fix calc
  */
 
 import type { ShipDesign, DriveItem, BridgeItem, ComputerItem, SoftwareItem, SensorItem, LifeSupportItem, WeaponMountItem } from '../types';
 
-// ─── Helper to build a base ship ───
 function baseShip(overrides: Partial<ShipDesign> & { name: string; hullDtons: number }): ShipDesign {
   const now = new Date().toISOString();
-  return {
+  const base: ShipDesign = {
     id: `sample-${overrides.name.toLowerCase().replace(/\s+/g, '-')}-${Date.now()}`,
     name: overrides.name,
     tl: 9,
@@ -43,12 +42,33 @@ function baseShip(overrides: Partial<ShipDesign> & { name: string; hullDtons: nu
     totalCost: 0,
     availableDtons: 0,
     createdAt: now,
-    ...overrides,
   };
+  return { ...base, ...overrides };
 }
 
 // ═══════════════════════════════════════════════════════════════════
-// SAMPLE 1: 200-ton Free Trader (from data/sample_ships.json)
+// SAMPLE 1: 200-ton Free Trader (Excel row 293)
+// ═══════════════════════════════════════════════════════════════════
+// Excel-verified totals:
+//   Hull: 200 DT, 8.00 MCr
+//   HP: 4, SP: 4, Hardpoints: 2
+//   Armor: Titanium Steel, 10 DT (5% × 200), 0.40 MCr
+//   M-Drive A: 2 DT, 4.00 MCr
+//   J-Drive A: 10 DT, 10.00 MCr
+//   Power Plant A: 4 DT, 8.00 MCr
+//   Fuel: 24 DT (Jump 20 + Power 4)
+//   Bridge: 10 DT, 1.00 MCr  ← SRD: MCr0.5 per 100t
+//   Computer: M1 + J-Spec + Hardened, 0.06 MCr
+//   Software: Interface (incl), Database 0.01, Security x2 (incl)
+//   Sensors: Standard (incl in bridge)
+//   Staterooms: 10 × 4 = 40 DT, 5.00 MCr
+//   Low Berths: 20 × 0.5 = 10 DT, 1.00 MCr
+//   Fuel Scoops: 2, 0 DT, 2.00 MCr
+//   Fuel Processors: 2, 2 DT, 0.10 MCr
+//   Triple Turrets: 2, 2 DT, 2.00 MCr
+//   Sand Casters: 6 (in turrets), 0 DT, 1.50 MCr
+//   Cargo: 86 DT
+//   TOTAL: 200 DT, 43.07 MCr
 // ═══════════════════════════════════════════════════════════════════
 export const SAMPLE_FREE_TRADER_200: ShipDesign = baseShip({
   name: '200-ton Free Trader',
@@ -56,13 +76,13 @@ export const SAMPLE_FREE_TRADER_200: ShipDesign = baseShip({
   tl: 9,
   configuration: 'Standard',
   armor: 'Titanium Steel TL7+',
-  armorQty: 2, // Armor-2 = qty 2 (each 5%)
+  armorQty: 1, // Excel: qty=1 → Armor-2 (one 5% layer of Titanium Steel)
   mDrive: 'A',
   jDrive: 'A',
   powerPlant: 'A',
   bridge: '10-ton Bridge',
   computer: 'Model 1',
-  software: ['Jump Control', 'Fire Control'],
+  software: ['Interface TL 7', 'Database TL 7', 'Security TL 7'],
   sensors: 'Standard Sensors',
   staterooms: 10,
   lowBerths: 20,
@@ -73,14 +93,16 @@ export const SAMPLE_FREE_TRADER_200: ShipDesign = baseShip({
     { id: 'pp-a', name: 'Fusion Plant A', type: 'powerPlant', driveCode: 'A', dtons: 4, cost: 8, qty: 1, performance: 0, tl: 9 },
   ] as DriveItem[],
   commandControl: [
-    { id: 'bridge-10', name: '10-ton Bridge', type: 'bridge', dtons: 10, cost: 0.5, qty: 1, stations: 2, tl: 9 },
+    { id: 'bridge-10', name: '10-ton Bridge', type: 'bridge', dtons: 10, cost: 1.0, qty: 1, stations: 2, tl: 9 },
   ] as BridgeItem[],
   computers: [
     { id: 'computer-m1', name: 'Model/1', model: 'Model/1', dtons: 1, cost: 0.03, qty: 1, rating: 5, slots: 1, options: ['J-Spec', 'Hardened'], tl: 9 },
   ] as ComputerItem[],
   softwareList: [
-    { id: 'sw-jump', name: 'Jump Control', program: 'Jump Control', dtons: 0, cost: 0.01, qty: 1, rating: 5, active: true, tl: 9 },
-    { id: 'sw-fc', name: 'Fire Control', program: 'Fire Control', dtons: 0, cost: 0.02, qty: 1, rating: 5, active: true, tl: 9 },
+    { id: 'sw-interface', name: 'Interface TL 7', program: 'Interface TL 7', dtons: 0, cost: 0, qty: 1, rating: 0, active: true, tl: 7 },
+    { id: 'sw-db', name: 'Database TL 7', program: 'Database TL 7', dtons: 0, cost: 0.01, qty: 1, rating: 0, active: true, tl: 7 },
+    { id: 'sw-sec1', name: 'Security TL 7', program: 'Security TL 7', dtons: 0, cost: 0, qty: 1, rating: 0, active: true, tl: 7 },
+    { id: 'sw-sec2', name: 'Security TL 7', program: 'Security TL 7', dtons: 0, cost: 0, qty: 1, rating: 0, active: true, tl: 7 },
   ] as SoftwareItem[],
   sensorList: [
     { id: 'sensor-std', name: 'Standard Sensors', sensorType: 'Standard', dtons: 0, cost: 0, qty: 1, tl: 9 },
@@ -91,29 +113,8 @@ export const SAMPLE_FREE_TRADER_200: ShipDesign = baseShip({
   ] as LifeSupportItem[],
   weaponMounts: [
     { id: 'turret-triple-1', name: 'Triple Turret', mountType: 'turret', dtons: 1, cost: 1, qty: 2, maxWeapons: 3, weapons: [], slots: 0 },
-    { id: 'missile-rack-1', name: 'Missile Rack', mountType: 'turret', dtons: 1, cost: 0.75, qty: 4, maxWeapons: 1, weapons: [], slots: 0 },
-    { id: 'sand-caster-1', name: 'Sand Caster', mountType: 'turret', dtons: 1, cost: 0.25, qty: 2, maxWeapons: 1, weapons: [], slots: 0 },
   ] as WeaponMountItem[],
 });
-
-// Expected values for 200-ton Free Trader:
-// Hull: 200 DT, 8.00 MCr
-// HP: floor(200/50) = 4, SP: ceil(200/50) = 4, Hardpoints: floor(200/100) = 2
-// Armor: Titanium Steel, 5% × 2 = 10% → 20 DT, cost = 8.00 × 0.05 × 2 = 0.80 MCr
-// M-Drive A: 2 DT, 4.00 MCr
-// J-Drive A: 10 DT, 10.00 MCr
-// Power Plant A: 4 DT, 8.00 MCr
-// Fuel: Jump-1 = 0.1×200×1 = 20 DT; Power 4 wks = (4/3)×4 ≈ 5.33 DT (or table says 1.0/wk = 4 DT)
-//   Sample says 24 DT total → matches 20 + 4
-// Bridge: 10 DT, 0.50 MCr (from table)
-// Computer Model/1: 1 DT, 0.03 MCr + options
-// Staterooms: 10 × 4 = 40 DT, 5.00 MCr
-// Low Berths: 20 × 0.5 = 10 DT, 1.00 MCr
-// Turrets: 2 × 1 = 2 DT
-// Missile Racks: 4 × 1 = 4 DT
-// Sand Casters: 2 × 1 = 2 DT
-// Cargo: 86 DT
-// Total used ≈ 200 - 86 = 114 DT for components
 
 // ═══════════════════════════════════════════════════════════════════
 // SAMPLE 2: 100-ton Shuttle (basic small craft)
@@ -137,7 +138,7 @@ export const SAMPLE_SHUTTLE_100: ShipDesign = baseShip({
 });
 
 // Expected:
-// Hull: 100 DT, 2.00 MCr (from table)
+// Hull: 100 DT, 2.00 MCr
 // HP: 2, SP: 2, Hardpoints: 1
 // M-Drive A: 2 DT, 4.00 MCr
 // Power Plant A: 4 DT, 8.00 MCr

@@ -277,7 +277,7 @@ export function ShipDesigner() {
             id: `cmd-${Date.now()}`,
             name: String(cockpit['CONTROLS/BRidge'] || cockpit['Bridge Size'] || '1-man Cockpit'),
             dtons: dt,
-            cost: costPerDt * dt,
+            cost: costPerDt * hullDtons,
             qty: 1,
           }]);
         }
@@ -290,7 +290,7 @@ export function ShipDesigner() {
             id: `cmd-${Date.now()}`,
             name: String(bridge['CONTROLS/BRidge'] || bridge['Bridge Size'] || 'Bridge'),
             dtons: dt,
-            cost: costPerDt * dt,
+            cost: costPerDt * hullDtons,
             qty: 1,
           }]);
         }
@@ -465,7 +465,7 @@ export function ShipDesigner() {
   // ─── Legacy Bridge ───
   const selectedBridge = bridges.find((b: Record<string, unknown>) => String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']).includes(bridge));
   const bridgeTons = selectedBridge ? Number(selectedBridge['CONTROLS/ BRIDGE'] || selectedBridge['DTONS'] || selectedBridge['Tons'] || 0) : 0;
-  const bridgeCost = selectedBridge ? Number(selectedBridge['COST per DTON'] || selectedBridge['COST'] || 0) : 0;
+  const bridgeCost = selectedBridge ? Number(selectedBridge['COST per DTON'] || selectedBridge['COST'] || 0) * hullDtons : 0;
 
   // ─── Child Table Components ───
   const moduleComponents: ShipComponent[] = moduleRows.map((m) => ({
@@ -898,14 +898,14 @@ export function ShipDesigner() {
                       if (cockpit) {
                         const bridgeDt = Number(cockpit['CONTROLS/ BRIDGE'] || cockpit['DTONS'] || cockpit['Tons'] || 0);
                         const costPerDt = Number(cockpit['COST per DTON'] || cockpit['COST'] || 0);
-                        setCommandRows([{ id: `cmd-${Date.now()}`, name: String(cockpit['CONTROLS/BRidge'] || cockpit['Bridge Size'] || '1-man Cockpit'), dtons: bridgeDt, cost: costPerDt * bridgeDt, qty: 1 }]);
+                        setCommandRows([{ id: `cmd-${Date.now()}`, name: String(cockpit['CONTROLS/BRidge'] || cockpit['Bridge Size'] || '1-man Cockpit'), dtons: bridgeDt, cost: costPerDt * dt, qty: 1 }]);
                       }
                     } else {
                       const bridge = shipBridges[0];
                       if (bridge) {
                         const bridgeDt = Number(bridge['CONTROLS/ BRIDGE'] || bridge['DTONS'] || bridge['Tons'] || 0);
                         const costPerDt = Number(bridge['COST per DTON'] || bridge['COST'] || 0);
-                        setCommandRows([{ id: `cmd-${Date.now()}`, name: String(bridge['CONTROLS/BRidge'] || bridge['Bridge Size'] || 'Bridge'), dtons: bridgeDt, cost: costPerDt * bridgeDt, qty: 1 }]);
+                        setCommandRows([{ id: `cmd-${Date.now()}`, name: String(bridge['CONTROLS/BRidge'] || bridge['Bridge Size'] || 'Bridge'), dtons: bridgeDt, cost: costPerDt * dt, qty: 1 }]);
                       }
                     }
                   }
@@ -1251,7 +1251,7 @@ export function ShipDesigner() {
                   id: `cmd-${Date.now()}`,
                   name: bridgeName,
                   dtons: bridgeDt,
-                  cost: bridgeCostPerDt * bridgeDt,
+                  cost: bridgeCostPerDt * hullDtons,
                   qty: 1,
                 };
               }}
@@ -1266,7 +1266,7 @@ export function ShipDesigner() {
                 const name = String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']);
                 const dt = Number(b['CONTROLS/ BRIDGE'] || b['DTONS'] || b['Tons'] || 0);
                 const costPerDt = Number(b['COST per DTON'] || b['COST'] || 0);
-                return { value: name, label: `${name} · ${fmtTons(dt)} · ${fmtCost(costPerDt * dt)}` };
+                return { value: name, label: `${name} · ${fmtTons(dt)} · ${fmtCost(costPerDt * hullDtons)}` };
               })]}
               onChange={(v) => {
                 if (!v) return;
@@ -1278,7 +1278,7 @@ export function ShipDesigner() {
                     id: `cmd-${Date.now()}`,
                     name: String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']),
                     dtons: dt,
-                    cost: costPerDt * dt,
+                    cost: costPerDt * hullDtons,
                     qty: 1,
                   }]);
                 }

@@ -1,0 +1,5703 @@
+[
+  {
+    "excel_row": 71,
+    "name": "TL 9 COURIER SHIP 100DT ",
+    "tonnage": 100,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "1.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 100,
+        "cost": 2000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Streamlined",
+        "notes": "No penalty in Atmosphere Operations.",
+        "qty": null,
+        "dtons": null,
+        "cost": 200000,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 100000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "4",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "A",
+        "notes": "20DT/jump Jump-2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 10000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 28.0,
+        "dtons": -28,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 4.0,
+        "dtons": -16,
+        "cost": 2000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 1.0,
+        "dtons": -0.25,
+        "cost": 25000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Beam Laser",
+        "notes": "1D6 Medium Ranged Weapon",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 9
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 17.7,
+        "dtons": -17.7,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 40.0,
+        "dtons": 0,
+        "cost": 200000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 20000,
+        "tl": 7
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "STATEROOM",
+        "notes": "",
+        "qty": 8.0,
+        "dtons": null,
+        "cost": 34404.6875,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "1.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 100,
+        "cost": 2000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Streamlined",
+        "notes": "No penalty in Atmosphere Operations.",
+        "qty": null,
+        "dtons": null,
+        "cost": 200000,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 100000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "A",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -2,
+        "cost": 4000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "A",
+        "notes": "20DT/jump Jump-2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 10000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "A",
+        "notes": "1DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -4,
+        "cost": 8000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 24.0,
+        "dtons": -24,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 2.0,
+        "dtons": -1,
+        "cost": 100000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Luxuries",
+        "notes": "Luxuries cost Cr100,000 per ton, and make life on board ship more pleasant. Each ton of luxuries counts as one level of the Steward skill for the purposes of carrying passengers, and therefore allows a ship to carry middle and high passage passengers without carrying a trained steward on board. CESRD p. 130",
+        "qty": 4.0,
+        "dtons": -4,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Pulse Laser",
+        "notes": "2D6 Close Range Weapon",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 12.0,
+        "dtons": -12,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Steward",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 15000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 28000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 184062.5,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 44175,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": "MONTH",
+        "cost": 275237.5,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 44175000
+  },
+  {
+    "excel_row": 125,
+    "name": "TL 9 YACHT 100DT ",
+    "tonnage": 100,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "1.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 100,
+        "cost": 2000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Streamlined",
+        "notes": "No penalty in Atmosphere Operations.",
+        "qty": null,
+        "dtons": null,
+        "cost": 200000,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 100000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "A",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -2,
+        "cost": 4000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "A",
+        "notes": "20DT/jump Jump-2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 10000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "A",
+        "notes": "1DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -4,
+        "cost": 8000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 24.0,
+        "dtons": -24,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 2.0,
+        "dtons": -1,
+        "cost": 100000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Luxuries",
+        "notes": "Luxuries cost Cr100,000 per ton, and make life on board ship more pleasant. Each ton of luxuries counts as one level of the Steward skill for the purposes of carrying passengers, and therefore allows a ship to carry middle and high passage passengers without carrying a trained steward on board. CESRD p. 130",
+        "qty": 4.0,
+        "dtons": -4,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Pulse Laser",
+        "notes": "2D6 Close Range Weapon",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 12.0,
+        "dtons": -12,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 40.0,
+        "dtons": 0,
+        "cost": 200000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 20000,
+        "tl": 7
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "STATEROOM",
+        "notes": "",
+        "qty": 8.0,
+        "dtons": null,
+        "cost": 26170.83333,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "2.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 200,
+        "cost": 8000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "A",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -2,
+        "cost": 4000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "A",
+        "notes": "20DT/jump Jump-1",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 10000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "A",
+        "notes": "1DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -4,
+        "cost": 8000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 24.0,
+        "dtons": -24,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 3.0,
+        "dtons": -0.75,
+        "cost": 75000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Laboratory",
+        "notes": "Space allocated to laboratories can be used for research and experimentation. Each four tons of lab space allows for one scientist to perform research on board ship. The cost for research equipment varies depending on the type of research undertaken, but is generally around MCr1.0 per 4 tons.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 6000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 2.0,
+        "dtons": 0,
+        "cost": 2000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 2000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 6.0,
+        "dtons": 0,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Bay, Launch",
+        "notes": "Holds a 20DT Launch",
+        "qty": 2.0,
+        "dtons": -52,
+        "cost": 10400000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 35.3,
+        "dtons": -35.3,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 15000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 24000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 134166.6667,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 32200,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": "MONTH",
+        "cost": 209366.6667,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 32200000
+  },
+  {
+    "excel_row": 178,
+    "name": "TL9 Research Vessel 200DT",
+    "tonnage": 200,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "2.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 200,
+        "cost": 8000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "A",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -2,
+        "cost": 4000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "A",
+        "notes": "20DT/jump Jump-1",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 10000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "A",
+        "notes": "1DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -4,
+        "cost": 8000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 24.0,
+        "dtons": -24,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 3.0,
+        "dtons": -0.75,
+        "cost": 75000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Laboratory",
+        "notes": "Space allocated to laboratories can be used for research and experimentation. Each four tons of lab space allows for one scientist to perform research on board ship. The cost for research equipment varies depending on the type of research undertaken, but is generally around MCr1.0 per 4 tons.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 6000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 2.0,
+        "dtons": 0,
+        "cost": 2000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 2000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 6.0,
+        "dtons": 0,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Bay, Launch",
+        "notes": "Holds a 20DT Launch",
+        "qty": 2.0,
+        "dtons": -52,
+        "cost": 10400000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 35.3,
+        "dtons": -35.3,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 5.0,
+        "dtons": -5,
+        "cost": 50000,
+        "tl": 7
+      },
+      {
+        "section": "VEHICLES",
+        "module": "20DT Launch",
+        "notes": "he Launch is designed to provide basic transportation needs, and is sometimes used as a lifeboat in the event of emergencies in deep space",
+        "qty": 2.0,
+        "dtons": -40,
+        "cost": 9594000,
+        "tl": 9
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "CARGO DTONS + STATEROOMS",
+        "notes": "",
+        "qty": 34.3,
+        "dtons": null,
+        "cost": 10004.34888,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "2.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 200,
+        "cost": 8000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "C",
+        "notes": "3",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 12000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "C",
+        "notes": "60DT/jump Jump-3",
+        "qty": 1.0,
+        "dtons": -20,
+        "cost": 30000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "C",
+        "notes": "3DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 24000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 72.0,
+        "dtons": -72,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 3.0,
+        "dtons": -12,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 5.0,
+        "dtons": -2.5,
+        "cost": 250000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Workshop",
+        "notes": "Machining Tools for Repair and Fabrication.",
+        "qty": 1.0,
+        "dtons": -8,
+        "cost": 2000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "MODULES",
+        "module": "Ore, Processor",
+        "notes": "Processes 1DT of material per hour",
+        "qty": 4.0,
+        "dtons": -4,
+        "cost": 200000,
+        "tl": 8
+      },
+      {
+        "section": "MODULES",
+        "module": "Bay, Escape Pod",
+        "notes": "",
+        "qty": 3.0,
+        "dtons": -1.5,
+        "cost": 300000,
+        "tl": 7
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Gunner/Marine",
+        "notes": "",
+        "qty": 2.0,
+        "dtons": null,
+        "cost": 2000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 23000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 24000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 235604.1667,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 56545,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 343149.1667,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 56545000
+  },
+  {
+    "excel_row": 234,
+    "name": "TL 9 200DT ASTEROID MINER +400DT ASTEROID",
+    "tonnage": 200,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "2.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 200,
+        "cost": 8000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "C",
+        "notes": "3",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 12000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "C",
+        "notes": "60DT/jump Jump-3",
+        "qty": 1.0,
+        "dtons": -20,
+        "cost": 30000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "C",
+        "notes": "3DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 24000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 72.0,
+        "dtons": -72,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 3.0,
+        "dtons": -12,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 5.0,
+        "dtons": -2.5,
+        "cost": 250000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Workshop",
+        "notes": "Machining Tools for Repair and Fabrication.",
+        "qty": 1.0,
+        "dtons": -8,
+        "cost": 2000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "MODULES",
+        "module": "Ore, Processor",
+        "notes": "Processes 1DT of material per hour",
+        "qty": 4.0,
+        "dtons": -4,
+        "cost": 200000,
+        "tl": 8
+      },
+      {
+        "section": "MODULES",
+        "module": "Bay, Escape Pod",
+        "notes": "",
+        "qty": 3.0,
+        "dtons": -1.5,
+        "cost": 300000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Bay, Mining Drone",
+        "notes": "",
+        "qty": 2.0,
+        "dtons": -20,
+        "cost": 4000000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 2000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Utility Laser",
+        "notes": "1D6, Close Range Laser",
+        "qty": 6.0,
+        "dtons": 0,
+        "cost": 600000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 20.0,
+        "dtons": -20,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 40.0,
+        "dtons": 0,
+        "cost": 200000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 20000,
+        "tl": 7
+      },
+      {
+        "section": "VEHICLES",
+        "module": "Mining Drones",
+        "notes": "Each set of mining drones takes up ten tons, and allows the ship to process 1D6x10 tons of asteroid per working day. The tonn",
+        "qty": 2.0,
+        "dtons": -20,
+        "cost": 4000000,
+        "tl": 9
+      },
+      {
+        "section": "VEHICLES",
+        "module": "Escape Pods",
+        "notes": "This covers the installation of rescue bubbles and other escape pods for the entire crew.",
+        "qty": 3.0,
+        "dtons": -1.5,
+        "cost": 300000,
+        "tl": 8
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "STATEROOM",
+        "notes": "",
+        "qty": 8.0,
+        "dtons": null,
+        "cost": 67866.04167,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "2.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 200,
+        "cost": 8000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "A",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -2,
+        "cost": 4000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "A",
+        "notes": "20DT/jump Jump-1",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 10000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "A",
+        "notes": "1DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -4,
+        "cost": 8000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 24.0,
+        "dtons": -24,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 10.0,
+        "dtons": -40,
+        "cost": 5000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 20.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 2.0,
+        "dtons": 0,
+        "cost": 2000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 2000000,
+        "tl": 9
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 15000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 72000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 364458.3333,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 87470,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": "MONTH",
+        "cost": 542928.3333,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 87470000
+  },
+  {
+    "excel_row": 293,
+    "name": "TL 9 MERCHANT TRADER 200DT ",
+    "tonnage": 200,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "2.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 200,
+        "cost": 8000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 400000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "A",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -2,
+        "cost": 4000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "A",
+        "notes": "20DT/jump Jump-1",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 10000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "A",
+        "notes": "1DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -4,
+        "cost": 8000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 24.0,
+        "dtons": -24,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 10.0,
+        "dtons": -40,
+        "cost": 5000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 20.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 2.0,
+        "dtons": 0,
+        "cost": 2000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 2000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 6.0,
+        "dtons": 0,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 86.0,
+        "dtons": -86,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 5.0,
+        "dtons": -5,
+        "cost": 50000,
+        "tl": 7
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "CARGO DTONS + STATEROOMS",
+        "notes": "",
+        "qty": 89,
+        "dtons": null,
+        "cost": 3073.35206,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "3.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 300,
+        "cost": 12000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 600000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 38.0,
+        "dtons": -38,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": 9
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 35.0,
+        "dtons": -140,
+        "cost": 17500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 20.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 59.0,
+        "dtons": -59,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 15.0,
+        "dtons": -15,
+        "cost": 150000,
+        "tl": 7
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Gunner/Marine",
+        "notes": "",
+        "qty": 2.0,
+        "dtons": null,
+        "cost": 2000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 23000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 24000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 179458.3333,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 43070,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 273528.3333,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 43070000
+  },
+  {
+    "excel_row": 346,
+    "name": "TL9 MERCHANT LINER 300DT",
+    "tonnage": 300,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "3.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 300,
+        "cost": 12000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 600000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 38.0,
+        "dtons": -38,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": 9
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 35.0,
+        "dtons": -140,
+        "cost": 17500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 20.0,
+        "dtons": -10,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 59.0,
+        "dtons": -59,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 15.0,
+        "dtons": -15,
+        "cost": 150000,
+        "tl": 7
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "CARGO DTONS + STATEROOMS",
+        "notes": "",
+        "qty": 78,
+        "dtons": null,
+        "cost": 978.3632479,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "3.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 300,
+        "cost": 12000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 600000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "C",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 12000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "C",
+        "notes": "3DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 24000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 42.0,
+        "dtons": -42,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 25.0,
+        "dtons": -100,
+        "cost": 12500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 12.0,
+        "dtons": -6,
+        "cost": 600000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 3.0,
+        "dtons": -3,
+        "cost": 150000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 3.0,
+        "dtons": -3,
+        "cost": 3000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Pulse Laser",
+        "notes": "2D6 Close Range Weapon",
+        "qty": 6.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 750000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 90.0,
+        "dtons": -90,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Steward",
+        "notes": "",
+        "qty": 4.0,
+        "dtons": null,
+        "cost": 12000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 33000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 38000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 1058.333333,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 254,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 76312.33333,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 78254000
+  },
+  {
+    "excel_row": 397,
+    "name": "TL9 FRONTIER TRADER 300DT 6-Pulse Laser, 3 Sand Casters TL9",
+    "tonnage": 300,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "3.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 300,
+        "cost": 12000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 600000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "C",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 12000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "C",
+        "notes": "3DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 24000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 42.0,
+        "dtons": -42,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M2, R10 Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 240000,
+        "tl": 9
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 25.0,
+        "dtons": -100,
+        "cost": 12500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 12.0,
+        "dtons": -6,
+        "cost": 600000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 3.0,
+        "dtons": -3,
+        "cost": 150000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 3.0,
+        "dtons": -3,
+        "cost": 3000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Pulse Laser",
+        "notes": "2D6 Close Range Weapon",
+        "qty": 6.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 750000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 90.0,
+        "dtons": -90,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 5.0,
+        "dtons": -5,
+        "cost": 50000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 15.0,
+        "dtons": -15,
+        "cost": 150000,
+        "tl": 7
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "CARGO DTONS + STATEROOMS",
+        "notes": "",
+        "qty": 94,
+        "dtons": null,
+        "cost": 825.2198582,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "1.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 100,
+        "cost": 2000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 100000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "Thrust-4 by itself, but Thrust-1 with 300DT Load",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "Jumps only at J-1, but can bring up to 300DT with 30DT of Payload",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Jumps by itself, with 2 weeks of operations. It needs external tanks of 30DT to jump.",
+        "qty": 14.0,
+        "dtons": -14,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 3.0,
+        "dtons": -12,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Grapplers",
+        "notes": "Every DT of Grappler can handle 100DT",
+        "qty": 30.0,
+        "dtons": -30,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 2.0,
+        "dtons": 0,
+        "cost": 500000,
+        "tl": 7
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Beam Laser",
+        "notes": "1D6 Medium Ranged Weapon",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": null,
+        "tl": null
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Steward",
+        "notes": "",
+        "qty": 2.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Gunner/Marine",
+        "notes": "",
+        "qty": 3.0,
+        "dtons": null,
+        "cost": 3000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 30000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 42000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 1266.666667,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 304,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 77570.66667,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 91944000
+  },
+  {
+    "excel_row": 453,
+    "name": "TL 9 TENDER 100+300DT ",
+    "tonnage": 300,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "1.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 100,
+        "cost": 2000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -5,
+        "cost": 100000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "Thrust-4 by itself, but Thrust-1 with 300DT Load",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "Jumps only at J-1, but can bring up to 300DT with 30DT of Payload",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Jumps by itself, with 2 weeks of operations. It needs external tanks of 30DT to jump.",
+        "qty": 14.0,
+        "dtons": -14,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 3.0,
+        "dtons": -12,
+        "cost": 1500000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Grapplers",
+        "notes": "Every DT of Grappler can handle 100DT",
+        "qty": 30.0,
+        "dtons": -30,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 2.0,
+        "dtons": 0,
+        "cost": 500000,
+        "tl": 7
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Beam Laser",
+        "notes": "1D6 Medium Ranged Weapon",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 1000000,
+        "tl": 9
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 0.5,
+        "dtons": -0.5,
+        "cost": 5000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 0.5,
+        "dtons": -0.5,
+        "cost": 5000,
+        "tl": 7
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "STATEROOM",
+        "notes": "",
+        "qty": 8.0,
+        "dtons": null,
+        "cost": 39465,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "3.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 300,
+        "cost": 12000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 600000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 20 Wks",
+        "qty": 40.0,
+        "dtons": -40,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 3.0,
+        "dtons": -0.75,
+        "cost": 75000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Laboratory",
+        "notes": "Space allocated to laboratories can be used for research and experimentation. Each four tons of lab space allows for one scientist to perform research on board ship. The cost for research equipment varies depending on the type of research undertaken, but is generally around MCr1.0 per 4 tons.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 6000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Workshop",
+        "notes": "Machining Tools for Repair and Fabrication.",
+        "qty": 3.0,
+        "dtons": -24,
+        "cost": 6000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Bay, Launch",
+        "notes": "Holds a 20DT Launch",
+        "qty": 2.0,
+        "dtons": -52,
+        "cost": 10400000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 100.0,
+        "dtons": -100,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 20.0,
+        "dtons": 0,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "VEHICLES",
+        "module": "20DT Launch",
+        "notes": "he Launch is designed to provide basic transportation needs, and is sometimes used as a lifeboat in the event of emergencies in deep space",
+        "qty": 2.0,
+        "dtons": -40,
+        "cost": 9594000,
+        "tl": 9
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 15000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 14000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 228000,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 54720,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": "MONTH",
+        "cost": 315720,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 54720000
+  },
+  {
+    "excel_row": 505,
+    "name": "TL9_HABITAT_RING_300DT ",
+    "tonnage": 300,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "3.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 300,
+        "cost": 12000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 600000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 20 Wks",
+        "qty": 40.0,
+        "dtons": -40,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 1500000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 3.0,
+        "dtons": -0.75,
+        "cost": 75000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Laboratory",
+        "notes": "Space allocated to laboratories can be used for research and experimentation. Each four tons of lab space allows for one scientist to perform research on board ship. The cost for research equipment varies depending on the type of research undertaken, but is generally around MCr1.0 per 4 tons.",
+        "qty": 6.0,
+        "dtons": -24,
+        "cost": 6000000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Workshop",
+        "notes": "Machining Tools for Repair and Fabrication.",
+        "qty": 3.0,
+        "dtons": -24,
+        "cost": 6000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Bay, Launch",
+        "notes": "Holds a 20DT Launch",
+        "qty": 2.0,
+        "dtons": -52,
+        "cost": 10400000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 100.0,
+        "dtons": -100,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 20.0,
+        "dtons": 0,
+        "cost": 100000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "VEHICLES",
+        "module": "20DT Launch",
+        "notes": "he Launch is designed to provide basic transportation needs, and is sometimes used as a lifeboat in the event of emergencies in deep space",
+        "qty": 2.0,
+        "dtons": -40,
+        "cost": 9594000,
+        "tl": 9
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "STATEROOM",
+        "notes": "",
+        "qty": 8.0,
+        "dtons": null,
+        "cost": 48729.0625,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "4.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 400,
+        "cost": 16000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -20,
+        "cost": 800000,
+        "tl": 7
+      },
+      {
+        "section": "HULL: OPTIONS",
+        "module": "None",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "40DT/jump Jump-1",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 48.0,
+        "dtons": -48,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 2000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 7.0,
+        "dtons": -28,
+        "cost": 3500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 2.0,
+        "dtons": -1,
+        "cost": 100000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 8.0,
+        "dtons": -2,
+        "cost": 200000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 3.0,
+        "dtons": -3,
+        "cost": 150000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 4.0,
+        "dtons": -4,
+        "cost": 4000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 12.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 260.0,
+        "dtons": -260,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 20000,
+        "tl": 7
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Gunner/Marine",
+        "notes": "",
+        "qty": 2.0,
+        "dtons": null,
+        "cost": 2000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Steward",
+        "notes": "",
+        "qty": 6.0,
+        "dtons": null,
+        "cost": 18000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 17000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 40000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 265187.5,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 63645,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": "MONTH",
+        "cost": 389832.5,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 63645000
+  },
+  {
+    "excel_row": 557,
+    "name": "TL9 MERCHANT FREIGHTER 400DT",
+    "tonnage": 400,
+    "tl": 9,
+    "components": [
+      {
+        "section": "HULL",
+        "module": "4.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 400,
+        "cost": 16000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "2",
+        "qty": 1.0,
+        "dtons": -20,
+        "cost": 800000,
+        "tl": 7
+      },
+      {
+        "section": "HULL: OPTIONS",
+        "module": "None",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "B",
+        "notes": "1",
+        "qty": 1.0,
+        "dtons": -3,
+        "cost": 8000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "40DT/jump Jump-1",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "B",
+        "notes": "2DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -7,
+        "cost": 16000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 48.0,
+        "dtons": -48,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 2000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 7.0,
+        "dtons": -28,
+        "cost": 3500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 2.0,
+        "dtons": -1,
+        "cost": 100000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 8.0,
+        "dtons": -2,
+        "cost": 200000,
+        "tl": 9
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 3.0,
+        "dtons": -3,
+        "cost": 150000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 4.0,
+        "dtons": -4,
+        "cost": 4000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Sand Caster",
+        "notes": "Reduces Beam damage by 1d6, 1 Damage",
+        "qty": 12.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 260.0,
+        "dtons": -260,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Regular Life Support Supplies",
+        "notes": "600 Man days of Supplies . CESRD p110",
+        "qty": 1.0,
+        "dtons": -1,
+        "cost": 54000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Repair Supplies",
+        "notes": "A ship needs maintenance, which costs 0.1% (1/1000th) of the total cost of the ship per year and requires a shipyard. Maintenance should be carried out each month. If maintenance is skipped or skimped on, roll 2D6 each month, with a +DM equal to the number of months skipped. On an 8+, the ship takes damage to a random system. Roll on the System Degradation table for the number of hits. Repair supplies cost Cr10,000/ton. CESRD p110",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 20000,
+        "tl": 7
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Vacc Suit TL8",
+        "notes": "6 hours Life Support, 1 Atm pressure, 40 rads protection",
+        "qty": 10.0,
+        "dtons": 0,
+        "cost": 50000,
+        "tl": 8
+      },
+      {
+        "section": "SUPPLIES",
+        "module": "Sand Package",
+        "notes": "20 barrels of Sand.",
+        "qty": 5.0,
+        "dtons": -5,
+        "cost": 50000,
+        "tl": 7
+      },
+      {
+        "section": "BREAK EVEN",
+        "module": "CARGO DTONS + STATEROOMS",
+        "notes": "",
+        "qty": 252,
+        "dtons": null,
+        "cost": 1884.136243,
+        "tl": null
+      },
+      {
+        "section": "HULL",
+        "module": "4.0",
+        "notes": "",
+        "qty": null,
+        "dtons": 400,
+        "cost": 16000000,
+        "tl": 8.0
+      },
+      {
+        "section": "HULL CONFIGURATION",
+        "module": "Standard",
+        "notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2.",
+        "qty": null,
+        "dtons": null,
+        "cost": 0,
+        "tl": 6.0
+      },
+      {
+        "section": "HULL ARMOR:",
+        "module": "Titanium Steel TL7+",
+        "notes": "8",
+        "qty": 4.0,
+        "dtons": -80,
+        "cost": 800000,
+        "tl": 7
+      },
+      {
+        "section": "M-DRIVE TL9+",
+        "module": "H",
+        "notes": "4",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 32000000,
+        "tl": 9.0
+      },
+      {
+        "section": "J-DRIVE TL9+",
+        "module": "B",
+        "notes": "40DT/jump Jump-1",
+        "qty": 1.0,
+        "dtons": -15,
+        "cost": 20000000,
+        "tl": 9.0
+      },
+      {
+        "section": "FUSION PLANT",
+        "module": "H",
+        "notes": "8DT of Fuel/Wk",
+        "qty": 1.0,
+        "dtons": -25,
+        "cost": 64000000,
+        "tl": 9
+      },
+      {
+        "section": "FUEL TANKS",
+        "module": "",
+        "notes": "Operate 4 Wks after jump",
+        "qty": 72.0,
+        "dtons": -72,
+        "cost": null,
+        "tl": null
+      },
+      {
+        "section": "CONTROLS",
+        "module": "10-ton Bridge",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": -10,
+        "cost": 2000000,
+        "tl": null
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 60000,
+        "tl": 7
+      },
+      {
+        "section": "COMPUTER",
+        "module": "M1, R5 J-Spec Hardened",
+        "notes": "",
+        "qty": 0.0,
+        "dtons": null,
+        "cost": 0,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Interface TL 7",
+        "notes": "Displays data. Using a computer without an interface is a Formidable (\u20136 DM) task.",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Database TL 7",
+        "notes": "A database is a large store of information on a topic that can be searched with a Computer check or using an Agent.",
+        "qty": null,
+        "dtons": null,
+        "cost": 10000,
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SOFTWARE",
+        "module": "Security TL 7",
+        "notes": "Security programs defend against intrusion. Rating 0 is Average (+0 DM).",
+        "qty": null,
+        "dtons": null,
+        "cost": "Included",
+        "tl": 7
+      },
+      {
+        "section": "SENSORS",
+        "module": "Standard (Included in bridge)TL 8",
+        "notes": "Radar, Lidar DM\u20134 used in Jamming",
+        "qty": 1.0,
+        "dtons": 0,
+        "cost": 0,
+        "tl": 8
+      },
+      {
+        "section": "SENSORS",
+        "module": "Basic Civilian TL 9",
+        "notes": "Radar, Lidar DM\u20132 used in Jamming",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 100000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Staterooms",
+        "notes": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive.",
+        "qty": 7.0,
+        "dtons": -28,
+        "cost": 3500000,
+        "tl": 7
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Low  Berths",
+        "notes": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton.",
+        "qty": 2.0,
+        "dtons": -1,
+        "cost": 100000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Emergency low Berth",
+        "notes": "will not carry passengers, only used for survival",
+        "qty": 8.0,
+        "dtons": -2,
+        "cost": 200000,
+        "tl": 9
+      },
+      {
+        "section": "LIFE SUPPORT",
+        "module": "Luxuries",
+        "notes": "Luxuries cost Cr100,000 per ton, and make life on board ship more pleasant. Each ton of luxuries counts as one level of the Steward skill for the purposes of carrying passengers, and therefore allows a ship to carry middle and high passage passengers without carrying a trained steward on board. CESRD p. 130",
+        "qty": 2.0,
+        "dtons": -2,
+        "cost": 200000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Scoops",
+        "notes": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage.",
+        "qty": 3.0,
+        "dtons": 0,
+        "cost": 3000000,
+        "tl": 7
+      },
+      {
+        "section": "MODULES",
+        "module": "Fuel Processors",
+        "notes": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000.",
+        "qty": 3.0,
+        "dtons": -3,
+        "cost": 150000,
+        "tl": 8
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Turret, Tripple",
+        "notes": "Holds 3 Turret Weapons",
+        "qty": 4.0,
+        "dtons": -4,
+        "cost": 4000000,
+        "tl": 9
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Missile Rack",
+        "notes": "Launches 1 missile per turn.",
+        "qty": 8.0,
+        "dtons": 0,
+        "cost": 6000000,
+        "tl": 6
+      },
+      {
+        "section": "WEAPONS",
+        "module": "Beam Laser",
+        "notes": "1D6 Medium Ranged Weapon",
+        "qty": 4.0,
+        "dtons": 0,
+        "cost": 4000000,
+        "tl": 9
+      },
+      {
+        "section": "CARGO",
+        "module": "",
+        "notes": "",
+        "qty": 141.0,
+        "dtons": -141,
+        "cost": null,
+        "tl": null
+      }
+    ],
+    "crew": [
+      {
+        "section": "CREW",
+        "module": "Ship's Master",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Navigator/ Comms-Sensor Operator",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 5000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Pilot",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 6000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Engineer",
+        "notes": "",
+        "qty": 1.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      {
+        "section": "CREW",
+        "module": "Gunner/Marine",
+        "notes": "",
+        "qty": 4.0,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      }
+    ],
+    "economics": {
+      "CREW SALARIES": {
+        "section": "CREW SALARIES",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 25000,
+        "tl": null
+      },
+      "FUEL PER MONTH": {
+        "section": "FUEL PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 48000,
+        "tl": null
+      },
+      "BERTH AND ADMIN FEES PER MONTH": {
+        "section": "BERTH AND ADMIN FEES PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 4000,
+        "tl": null
+      },
+      "MORTAGE": {
+        "section": "MORTAGE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 320808.3333,
+        "tl": null
+      },
+      "ROUTINE MAINTENANCE": {
+        "section": "ROUTINE MAINTENANCE",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 76994,
+        "tl": null
+      },
+      "COST PER MONTH": {
+        "section": "COST PER MONTH",
+        "module": "",
+        "notes": "",
+        "qty": null,
+        "dtons": null,
+        "cost": 474802.3333,
+        "tl": null
+      }
+    },
+    "total_cost_cr": 76994000
+  }
+]
