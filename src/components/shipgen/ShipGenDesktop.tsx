@@ -81,7 +81,7 @@ export function ShipGenDesktop({
             <ShNum size={26} color={colors.glow} style={{ letterSpacing: '0.32em' }}>CE · SHIPGEN</ShNum>
             <div style={{ marginTop: -2 }}>
               <ShData size={11} dim>
-                MAINFRAME · v0.03 · TL{ship.tl} · CYCLE {String(tick).padStart(5, '0')}
+                MAINFRAME · v0.04 · TL{ship.tl} · CYCLE {String(tick).padStart(5, '0')}
               </ShData>
             </div>
           </div>

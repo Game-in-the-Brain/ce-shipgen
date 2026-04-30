@@ -80,7 +80,7 @@ function AppContent() {
               CE · SHIPGEN
             </div>
             <div style={{ fontFamily: fonts.mono, fontSize: 10, color: colors.inkDim, letterSpacing: '0.12em', marginTop: 2 }}>
-              MAINFRAME · {version ? `v${version}` : 'v0.03'} · {layoutMode === 'phone' ? 'PHONE MODE' : 'DESKTOP'}
+              MAINFRAME · {version ? `v${version}` : 'v0.04'} · {layoutMode === 'phone' ? 'PHONE MODE' : 'DESKTOP'}
             </div>
           </div>
         </div>
