@@ -9,6 +9,8 @@
     "build": "tsc && vite build",
     "preview": "vite preview",
     "lint": "eslint . --ext ts,tsx --report-unused-disable-directives --max-warnings 0",
+    "test": "vitest run",
+    "test:ui": "vitest --ui",
     "build:wrapper": "tsc && vite build --base ./",
     "tauri:dev": "cargo tauri dev",
     "tauri:build": "cargo tauri build",
@@ -44,6 +46,7 @@
     "tailwindcss": "^3.4.1",
     "typescript": "^5.3.3",
     "vite": "^5.1.0",
-    "vite-plugin-pwa": "^0.19.0"
+    "vite-plugin-pwa": "^0.19.0",
+    "vitest": "^1.6.0"
   }
 }
