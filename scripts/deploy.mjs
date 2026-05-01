@@ -40,9 +40,10 @@ function inlineBuild() {
   if (cssMatch) {
     const cssFile = path.join(DIST, 'assets', cssMatch[1]);
     const css = fs.readFileSync(cssFile, 'utf8');
+    // Use replacement function to avoid $& footgun (see RCA-260501-Wall-of-Text.md)
     html = html.replace(
       `<link rel="stylesheet" crossorigin href="./assets/${cssMatch[1]}">`,
-      `<style>${css}</style>`
+      () => `<style>${css}</style>`
     );
     console.log(`→ Inlined CSS: ${cssMatch[1]} (${css.length} bytes)`);
   }
@@ -52,9 +53,15 @@ function inlineBuild() {
   if (jsMatch) {
     const jsFile = path.join(DIST, 'assets', jsMatch[1]);
     const js = fs.readFileSync(jsFile, 'utf8');
+    // CRITICAL: Use replacement function to avoid $& footgun.
+    // JS files often contain $& (regex replacement pattern).
+    // String.prototype.replace() treats $& as "insert matched substring",
+    // which would inject the original <script> tag into the JS code,
+    // causing </script> to prematurely close the HTML script element.
+    // See RCA-260501-Wall-of-Text.md for full analysis.
     html = html.replace(
       `<script type="module" crossorigin src="./assets/${jsMatch[1]}"></script>`,
-      `<script type="module">${js}</script>`
+      () => `<script type="module">${js}</script>`
     );
     console.log(`→ Inlined JS: ${jsMatch[1]} (${js.length} bytes)`);
   }
