@@ -88,19 +88,23 @@ async function main() {
     fs.rmSync(TMP, { recursive: true, force: true });
     fs.cpSync(DIST, TMP, { recursive: true });
 
-    // 5. Switch to static-pages
-    console.log('\n=== 4. Switch to static-pages ===');
+    // 5. Reset generated files to avoid checkout conflicts
+    console.log('\n=== 4. Reset generated files ===');
+    try { execSync('git checkout -- public/version.json public/version-history.json', { stdio: 'ignore' }); } catch { /* ignore if not tracked */ }
+
+    // 6. Switch to static-pages
+    console.log('\n=== 5. Switch to static-pages ===');
     run('git checkout static-pages');
 
-    // 6. Clean old files (keep .git)
-    console.log('\n=== 5. Clean old files ===');
+    // 7. Clean old files (keep .git)
+    console.log('\n=== 6. Clean old files ===');
     const files = fs.readdirSync('.').filter(f => f !== '.git');
     for (const f of files) {
       fs.rmSync(f, { recursive: true, force: true });
     }
 
-    // 7. Copy new build (without assets/ since they're inlined)
-    console.log('\n=== 6. Copy new build ===');
+    // 8. Copy new build (without assets/ since they're inlined)
+    console.log('\n=== 7. Copy new build ===');
     const entries = fs.readdirSync(TMP);
     for (const entry of entries) {
       const src = path.join(TMP, entry);
@@ -110,14 +114,14 @@ async function main() {
       fs.cpSync(src, dest, { recursive: true });
     }
 
-    // 8. Commit and push
-    console.log('\n=== 7. Commit and push ===');
+    // 9. Commit and push
+    console.log('\n=== 8. Commit and push ===');
     run('git add -A');
     run(`git commit -m "Deploy v${v.version}"`);
     run('git push origin static-pages --force');
 
-    // 9. Return to main
-    console.log('\n=== 8. Return to main ===');
+    // 10. Return to main
+    console.log('\n=== 9. Return to main ===');
     run('git checkout main');
 
     console.log('\n✅ Deploy complete');
