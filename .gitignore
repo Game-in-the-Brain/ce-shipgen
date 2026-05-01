@@ -42,6 +42,9 @@ coverage
 .env
 .env.local
 .env.*.local
+# Generated version files (built at deploy time)
+public/version.json
+
 # Wrapper build outputs
 /src-tauri/target
 /src-tauri/gen
