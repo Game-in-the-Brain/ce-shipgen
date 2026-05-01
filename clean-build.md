@@ -85,6 +85,37 @@ Refused to execute script from '.../assets/index-xxx.js' because its MIME type (
 
 ---
 
+### Challenge 0b: 🔴 CRITICAL — Wall of Text (The `$&` Footgun)
+**What happened:** After fixing the white page bug by inlining JS, the site displayed the entire 300KB minified JavaScript as visible text on the page instead of executing it.
+
+**Root cause:** The deploy script used `String.prototype.replace()` to inline JS:
+```javascript
+html = html.replace(search, '<script type="module">' + js + '</script>');
+```
+The minified JS contained `$&` (a legitimate regex replacement pattern in React DOM code). JavaScript's `String.prototype.replace()` treats `$&` as a **special replacement pattern** meaning "insert the matched substring". This injected the original `<script>` tag HTML into the middle of the JS code:
+```javascript
+// Original JS:
+n=e.replace(lc,"$&/")+"/"
+
+// After replace() corrupted it:
+n=e.replace(lc,"<script type="module" crossorigin src="./assets/index-xxx.js"></script>/")+"/"
+```
+The injected `</script>` caused the HTML parser to prematurely close the `<script type="module">` element. The remaining 300KB of JS became visible text.
+
+**Fix:** Use a **replacement function** instead of a string replacement:
+```javascript
+html = html.replace(search, () => '<script type="module">' + js + '</script>');
+```
+A replacement function returns the replacement verbatim — no `$` interpolation.
+
+**Prevention:**
+- Always use replacement functions when inserting file content into `String.prototype.replace()`
+- Add post-inline validation: verify `</script>` count inside the inlined block
+
+> **See also:** `RCA-260501-Wall-of-Text.md` for full analysis.
+
+---
+
 ### Challenge 1: Token Embedded in Remote URL (Security Risk)
 **What happened:** The Forgejo remote was configured as `https://justin-admin:TOKEN@git.gi7b.org/gi7b/ce-shipgen.git`. The token is visible in plaintext in `.git/config`.
 
