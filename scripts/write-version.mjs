@@ -1,8 +1,8 @@
 /**
- * Build-time version.json generator
+ * Build-time version.json + version-history.json generator
  * Run automatically via `npm run prebuild` before every Vite build.
  */
-import { readFileSync, writeFileSync } from 'fs';
+import { readFileSync, writeFileSync, existsSync } from 'fs';
 import { resolve } from 'path';
 
 const pkg = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json'), 'utf8'));
@@ -16,6 +16,33 @@ const version = {
   buildTime: now.toISOString(),
 };
 
+// ── Write current version ──
 const outPath = resolve(process.cwd(), 'public/version.json');
 writeFileSync(outPath, JSON.stringify(version, null, 2));
 console.log(`[write-version] Generated ${outPath} → v${pkg.version} (${date})`);
+
+// ── Update version history ──
+const historyPath = resolve(process.cwd(), 'public/version-history.json');
+let history = [];
+if (existsSync(historyPath)) {
+  try {
+    history = JSON.parse(readFileSync(historyPath, 'utf8'));
+    if (!Array.isArray(history)) history = [];
+  } catch {
+    history = [];
+  }
+}
+
+// Remove existing entry for this version (to update it)
+history = history.filter((entry) => entry.version !== pkg.version);
+
+// Add new entry at the top
+history.unshift({
+  version: pkg.version,
+  date,
+  buildTime: now.toISOString(),
+  changes: version.changelog || [],
+});
+
+writeFileSync(historyPath, JSON.stringify(history, null, 2));
+console.log(`[write-version] Updated ${historyPath} → ${history.length} version(s)`);

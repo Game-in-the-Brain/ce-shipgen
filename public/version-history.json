@@ -1,0 +1,52 @@
+[
+  {
+    "version": "0.04",
+    "date": "2026-05-01",
+    "buildTime": "2026-05-01T12:12:10.813Z",
+    "changes": [
+      "Fix ship import child-table round-trip (load/save/export)",
+      "Load all 43 Excel ships into Ship Library on startup",
+      "Add working file import UI to ShipLibrary",
+      "Fix armor lookup robustness (bidirectional matching)",
+      "Fix powerPlant filter bug in loadShip()",
+      "Add ship import integrity test suite (3-run validation)"
+    ]
+  },
+  {
+    "version": "0.03",
+    "date": "2026-04-30",
+    "buildTime": "2026-04-30T16:47:55.002Z",
+    "changes": [
+      "M2.6 version control system",
+      "Startup screen with update prompts",
+      "Settings panel with version display",
+      "Service worker prompt-based updates",
+      "Build-time version.json generation",
+      "Offline behavior handling"
+    ]
+  },
+  {
+    "version": "0.02",
+    "date": "2026-04-28",
+    "buildTime": "2026-04-28T00:00:00.000Z",
+    "changes": [
+      "ShipDesigner child-table architecture",
+      "BOQ view with component breakdown",
+      "Armor rating editable increments",
+      "Drive auto-population with performance",
+      "Load from Library workflow"
+    ]
+  },
+  {
+    "version": "0.01",
+    "date": "2026-04-25",
+    "buildTime": "2026-04-25T00:00:00.000Z",
+    "changes": [
+      "Initial PWA setup",
+      "Vite + React + TypeScript scaffold",
+      "Zustand state management",
+      "Tailwind CSS styling",
+      "Table editor for ship components"
+    ]
+  }
+]
