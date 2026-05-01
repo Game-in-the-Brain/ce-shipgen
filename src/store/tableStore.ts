@@ -78,6 +78,7 @@ interface TableActions {
   updateShip: (ship: ShipDesign) => void;
   deleteShip: (id: string) => void;
   setCurrentShip: (ship: ShipDesign | null) => void;
+  loadDefaultShips: () => Promise<void>;
   setActiveTable: (id: TableId, source: ActiveTableSource) => void;
   resetActiveTables: () => void;
 }
@@ -213,6 +214,27 @@ export const useTableStore = create<TableState & TableActions>()(
         },
 
         setCurrentShip: (ship) => set({ currentShip: ship }),
+
+        loadDefaultShips: async () => {
+          const state = get();
+          if (state.ships.length > 0) return; // Don't overwrite existing library
+          try {
+            const base = import.meta.env.BASE_URL || '/';
+            const response = await fetch(`${base}data/all_ships.json`);
+            if (!response.ok) throw new Error('Failed to load default ships');
+            const ships: ShipDesign[] = await response.json();
+            set((state) => {
+              for (const ship of ships) {
+                // Prevent duplicates by ID
+                if (!state.ships.find((s) => s.id === ship.id)) {
+                  state.ships.push(ship);
+                }
+              }
+            });
+          } catch (err) {
+            console.warn('Could not load default ship library:', err);
+          }
+        },
 
         setActiveTable: (id, source) => {
           set((state) => {

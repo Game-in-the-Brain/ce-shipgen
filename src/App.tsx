@@ -12,6 +12,7 @@ import { colors, fonts } from './components/shipgen/theme';
 
 function AppContent() {
   const loadTables = useTableStore((s) => s.loadTables);
+  const loadDefaultShips = useTableStore((s) => s.loadDefaultShips);
   const loaded = useTableStore((s) => s.loaded);
   const { scanlines, layoutMode, toggleScanlines, toggleLayout } = useSettings();
   const [version, setVersion] = useState<string>('');
@@ -19,6 +20,12 @@ function AppContent() {
   useEffect(() => {
     if (!loaded) loadTables();
   }, [loaded, loadTables]);
+
+  useEffect(() => {
+    if (loaded) {
+      loadDefaultShips();
+    }
+  }, [loaded, loadDefaultShips]);
 
   useEffect(() => {
     fetch(`${import.meta.env.BASE_URL}version.json`)

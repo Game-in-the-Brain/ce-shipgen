@@ -31,94 +31,6 @@ function generateShipName(hullDtons: number): string {
   return `${Math.round(hullDtons)}DT-${yy}${mm}${dd}-${rand}`;
 }
 
-function createDefaultShips(addShip: (ship: ShipDesign) => void) {
-  const now = new Date().toISOString();
-  const defaults: ShipDesign[] = [
-    {
-      id: `default-${Date.now()}-1`,
-      name: 'Shuttle',
-      tl: 9,
-      hullCode: '100',
-      hullDtons: 100,
-      configuration: 'Standard',
-      armor: 'None',
-      armorQty: 0,
-      mDrive: 'A',
-      jDrive: '',
-      powerPlant: 'A',
-      bridge: '10-ton Bridge',
-      computer: 'Model 1',
-      software: [],
-      sensors: 'Standard Sensors',
-      staterooms: 0,
-      lowBerths: 0,
-      crew: [],
-      modules: [],
-      weapons: [],
-      cargo: 10,
-      components: [],
-      totalCost: 0,
-      availableDtons: 0,
-      createdAt: now,
-    },
-    {
-      id: `default-${Date.now()}-2`,
-      name: 'Free Trader',
-      tl: 9,
-      hullCode: '200',
-      hullDtons: 200,
-      configuration: 'Standard',
-      armor: 'None',
-      armorQty: 0,
-      mDrive: 'A',
-      jDrive: 'A',
-      powerPlant: 'A',
-      bridge: '10-ton Bridge',
-      computer: 'Model 1',
-      software: [],
-      sensors: 'Standard Sensors',
-      staterooms: 10,
-      lowBerths: 0,
-      crew: [],
-      modules: [],
-      weapons: [],
-      cargo: 50,
-      components: [],
-      totalCost: 0,
-      availableDtons: 0,
-      createdAt: now,
-    },
-    {
-      id: `default-${Date.now()}-3`,
-      name: 'Patrol Cruiser',
-      tl: 9,
-      hullCode: '400',
-      hullDtons: 400,
-      configuration: 'Standard',
-      armor: 'Titanium Steel TL7+',
-      armorQty: 1,
-      mDrive: 'C',
-      jDrive: 'B',
-      powerPlant: 'C',
-      bridge: '20-ton Bridge',
-      computer: 'Model 2',
-      software: [],
-      sensors: 'Standard Sensors',
-      staterooms: 10,
-      lowBerths: 0,
-      crew: [],
-      modules: [],
-      weapons: [],
-      cargo: 20,
-      components: [],
-      totalCost: 0,
-      availableDtons: 0,
-      createdAt: now,
-    },
-  ];
-  defaults.forEach(addShip);
-}
-
 // ─── Step Accordion ───
 
 function Step({ num, title, kw, children, defaultOpen = true }: {
@@ -257,13 +169,6 @@ export function ShipDesigner() {
       setName(generateShipName(hullDtons));
     }
   }, [hullDtons]);
-
-  // Pre-populate default ships on mount if library is empty
-  useEffect(() => {
-    if (ships.length === 0) {
-      createDefaultShips(addShip);
-    }
-  }, []);
 
   // Auto-generate minimum bridge/cockpit when hull changes and command is empty
   useEffect(() => {
