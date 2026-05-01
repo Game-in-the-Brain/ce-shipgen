@@ -18,7 +18,7 @@ import { Save, Calculator, Trash2, AlertTriangle, CheckCircle } from 'lucide-rea
 import { colors, fonts } from './shipgen/theme';
 import { ShLabel, ShNum, ShData, ShPanel, ShField } from './shipgen/primitives';
 import { TonnageGauge } from './shipgen/TonnageGauge';
-import type { ShipComponent, ShipDesign, ChildItem } from '../types';
+import type { ShipComponent, ShipDesign, ChildItem, BridgeItem, ComputerItem, SoftwareItem, SensorItem, LifeSupportItem, WeaponMountItem, SupplyItem } from '../types';
 
 // ─── Helpers ───
 
@@ -393,7 +393,11 @@ export function ShipDesigner() {
     lastArmorRatings.current = currentRatings;
     lastHullForArmor.current = hullDtons;
     const updated = armorRows.map((row) => {
-      const a = armors.find((ar: Record<string, unknown>) => String(ar['Armor Type']).includes(row.name));
+      const a = armors.find((ar: Record<string, unknown>) => {
+        const armorName = String(ar['Armor Type'] || '').toLowerCase();
+        const rowName = String(row.name || '').toLowerCase();
+        return armorName.includes(rowName) || rowName.includes(armorName);
+      });
       if (!a) return { ...row, notes: 'Armor-?', dtons: 0, cost: 0 };
       const pct = Number(a['Cost Factor'] || 0.05);
       const prot = Number(a['Prot'] || a['Protection'] || 0);
@@ -690,7 +694,15 @@ export function ShipDesigner() {
       drives: [
         ...mDriveRows.map(r => ({ ...r, type: 'thrust' as const, driveCode: r.name })),
         ...jDriveRows.map(r => ({ ...r, type: 'jump' as const, driveCode: r.name })),
+        ...ppRows.map(r => ({ ...r, type: 'powerPlant' as const, driveCode: r.name })),
       ],
+      commandControl: commandRows as BridgeItem[],
+      computers: computerRows as ComputerItem[],
+      softwareList: softwareRows as SoftwareItem[],
+      sensorList: sensorRows as SensorItem[],
+      lifeSupport: lifeSupportRows as LifeSupportItem[],
+      weaponMounts: weaponMountRows as WeaponMountItem[],
+      supplies: supplyRows as SupplyItem[],
       modules: moduleComponents,
       weapons: weaponComponents,
       cargo,
@@ -722,6 +734,13 @@ export function ShipDesigner() {
         ...jDriveRows.map(r => ({ ...r, type: 'jump' as const, driveCode: r.name })),
         ...ppRows.map(r => ({ ...r, type: 'powerPlant' as const, driveCode: r.name })),
       ],
+      commandControl: commandRows as BridgeItem[],
+      computers: computerRows as ComputerItem[],
+      softwareList: softwareRows as SoftwareItem[],
+      sensorList: sensorRows as SensorItem[],
+      lifeSupport: lifeSupportRows as LifeSupportItem[],
+      weaponMounts: weaponMountRows as WeaponMountItem[],
+      supplies: supplyRows as SupplyItem[],
       modules: moduleComponents,
       weapons: weaponComponents,
       cargo, components, totalCost, availableDtons,
@@ -758,7 +777,7 @@ export function ShipDesigner() {
       qty: d.qty || 1,
     })));
     setPowerPlant(ship.powerPlant || '');
-    const powerRows = (ship.drives || []).filter((d: {type?: string}) => d.type === 'power');
+    const powerRows = (ship.drives || []).filter((d: {type?: string}) => d.type === 'powerPlant');
     setPpRows(powerRows.map((d: {id?: string; name?: string; driveCode?: string; dtons?: number; cost?: number; qty?: number; variant?: string}) => ({
       id: d.id || `pp-${Date.now()}`,
       name: d.name || d.driveCode || '',
@@ -767,6 +786,72 @@ export function ShipDesigner() {
       qty: d.qty || 1,
       variant: d.variant || 'Fusion',
     })));
+    // ── Restore child-table architecture (v0.02+) ──
+    setCommandRows((ship.commandControl || []).map((d) => ({
+      id: d.id || `cmd-${Date.now()}`,
+      name: d.name,
+      dtons: d.dtons || 0,
+      cost: d.cost || 0,
+      qty: d.qty || 1,
+      tl: d.tl,
+      notes: d.notes,
+      ...(d.stations !== undefined ? { stations: d.stations } : {}),
+    })));
+    setComputerRows((ship.computers || []).map((d) => ({
+      id: d.id || `computer-${Date.now()}`,
+      name: d.name,
+      dtons: d.dtons || 0,
+      cost: d.cost || 0,
+      qty: d.qty || 1,
+      tl: d.tl,
+      notes: d.notes,
+    })));
+    setSoftwareRows((ship.softwareList || []).map((d) => ({
+      id: d.id || `sw-${Date.now()}`,
+      name: d.name,
+      dtons: d.dtons || 0,
+      cost: d.cost || 0,
+      qty: d.qty || 1,
+      tl: d.tl,
+      notes: d.notes,
+    })));
+    setSensorRows((ship.sensorList || []).map((d) => ({
+      id: d.id || `sensor-${Date.now()}`,
+      name: d.name,
+      dtons: d.dtons || 0,
+      cost: d.cost || 0,
+      qty: d.qty || 1,
+      tl: d.tl,
+      notes: d.notes,
+    })));
+    setLifeSupportRows((ship.lifeSupport || []).map((d) => ({
+      id: d.id || `ls-${Date.now()}`,
+      name: d.name,
+      dtons: d.dtons || 0,
+      cost: d.cost || 0,
+      qty: d.qty || 1,
+      tl: d.tl,
+      notes: d.notes,
+    })));
+    setWeaponMountRows((ship.weaponMounts || []).map((d) => ({
+      id: d.id || `wm-${Date.now()}`,
+      name: d.name,
+      dtons: d.dtons || 0,
+      cost: d.cost || 0,
+      qty: d.qty || 1,
+      tl: d.tl,
+      notes: d.notes,
+    })));
+    setSupplyRows((ship.supplies || []).map((d) => ({
+      id: d.id || `sup-${Date.now()}`,
+      name: d.name,
+      dtons: d.dtons || 0,
+      cost: d.cost || 0,
+      qty: d.qty || 1,
+      tl: d.tl,
+      notes: d.notes,
+    })));
+    // ── Legacy flat fields ──
     setBridge(ship.bridge || '');
     setComputer(ship.computer || '');
     setSoftwareList(ship.software || []);
@@ -775,7 +860,7 @@ export function ShipDesigner() {
     setLowBerths(ship.lowBerths || 0);
     setSelectedModules((ship.modules || []).map(m => ({ id: m.module, qty: m.qty || 1 })));
     setSelectedWeapons((ship.weapons || []).map(w => ({ id: w.module, qty: w.qty || 1 })));
-    setCargo(ship.cargo);
+    setCargo(ship.cargo ?? 0);
   };
 
   const resetDesigner = () => {

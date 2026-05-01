@@ -1834,3 +1834,78 @@ All achievable requirements were implemented and the build passes with zero Type
 *Next milestone: M3 — 19-step Ship Design Wizard, BOQ, real-time calculations*
 
 ---
+
+## Day 8: Ship Import Bug Fix — May 1, 2026 (260501)
+
+### Context
+While preparing for M3 (Ship Design Wizard), we discovered that the ship import/load cycle was fundamentally broken. Sample ships (18 reference designs from the Excel master) were losing child-table data when loaded into `ShipDesigner`. Additionally, there was no working file import UI.
+
+### Investigation
+
+**Method:** Created `src/testing/shipImport.test.ts` to simulate the `loadShip()` / `saveShip()` cycle across all 20 sample ships, run 3 times.
+
+**Pre-fix results (100% reproducible):**
+| Run | Ships | Issues | Severity |
+|-----|-------|--------|----------|
+| 1 | 20 | 86 | All Major |
+| 2 | 20 | 86 | All Major |
+| 3 | 20 | 86 | All Major |
+
+**Root causes identified:**
+1. `loadShip()` restored legacy flat fields only — 7 child-table arrays were completely ignored
+2. `saveShip()` didn't persist child-table arrays either
+3. `exportShip()` was inconsistent with `saveShip()` (had `ppRows` in drives, `saveShip` didn't)
+4. Power plant filter used wrong type string: `'power'` instead of `'powerPlant'`
+5. Armor lookup was unidirectional — failed on partial name matches
+6. No file import UI existed (`LibraryView.tsx` Import button had no `onClick`)
+
+Full RCA documented in `SHIP_IMPORT_RCA_260501.md`.
+
+### Fixes Applied
+
+| # | Fix | File |
+|---|-----|------|
+| 1 | `loadShip()` now restores `commandControl`, `computers`, `softwareList`, `sensorList`, `lifeSupport`, `weaponMounts`, `supplies` | `ShipDesigner.tsx` |
+| 2 | `saveShip()` now persists all 7 child-table arrays + `ppRows` into `drives` | `ShipDesigner.tsx` |
+| 3 | `exportShip()` aligned with `saveShip()` | `ShipDesigner.tsx` |
+| 4 | Power plant filter: `d.type === 'powerPlant'` (was `'power'`) | `ShipDesigner.tsx` |
+| 5 | Armor lookup made bidirectional + case-insensitive | `ShipDesigner.tsx` |
+| 6 | `cargo` default: `ship.cargo ?? 0` (was `ship.cargo`) | `ShipDesigner.tsx` |
+| 7 | Added working Import button + file input + validation + error banner | `ShipLibrary.tsx` |
+| 8 | Removed unused import `SAMPLE_TL9_SHUTTLE_90DT_90` | `shipValidator.test.ts` |
+
+### Verification
+
+**Post-fix test results:**
+| Run | Ships | Issues | Status |
+|-----|-------|--------|--------|
+| 1 | 20 | **0** | ✅ PASS |
+| 2 | 20 | **0** | ✅ PASS |
+| 3 | 20 | **0** | ✅ PASS |
+
+- `npm test` — 54/54 tests pass
+- `npx tsc --noEmit` — 0 errors, 0 warnings
+
+### Files Changed This Session
+
+| File | Change |
+|------|--------|
+| `src/components/ShipDesigner.tsx` | `loadShip()` + `saveShip()` + `exportShip()` child-table support; powerPlant filter fix; armor lookup robustness; cargo default fix |
+| `src/components/ShipLibrary.tsx` | Added Import button, hidden file input, `importJsonFile` handler, minimal validation, error banner |
+| `src/testing/shipImport.test.ts` | NEW — 3-run import integrity test suite |
+| `src/testing/shipValidator.test.ts` | Removed unused import |
+| `SHIP_IMPORT_RCA_260501.md` | NEW — full root cause analysis + resolution log |
+
+### Remaining Technical Debt
+
+- `LibraryView.tsx` still has a non-functional Import button — screen is orphaned, `ShipLibrary.tsx` is the active library view
+- Strict `ShipDesign` schema validation for imports not yet implemented (only minimal `id`/`name`/`hullDtons` checks)
+- Full migration from legacy flat fields to child-table-only architecture is a breaking change for post-M4
+
+---
+
+*Session 8 notes written: May 1, 2026 (260501)*
+*Session 8 duration: ~45 minutes*
+*Files created: 2 (`shipImport.test.ts`, `SHIP_IMPORT_RCA_260501.md`)*
+*Files modified: 4 (`ShipDesigner.tsx`, `ShipLibrary.tsx`, `shipValidator.test.ts`, `PROJECT_NOTES.md`)*
+*Next: Resume M3 — Ship Design Wizard with import-safe data model*
