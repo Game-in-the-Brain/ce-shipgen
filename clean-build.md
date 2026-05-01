@@ -68,6 +68,23 @@ The Settings footer was never updated after M2.5. It should probably fetch `vers
 
 ## Deployment Challenges & Lessons Learned
 
+### Challenge 0: 🔴 CRITICAL — Forgejo Pages White Page Bug
+**What happened:** Deployed v0.04 to `static-pages`. Site showed a blank white screen. Console errors:
+```
+Refused to apply style from '.../assets/index-xxx.css' because its MIME type ('text/plain') is not supported.
+Refused to execute script from '.../assets/index-xxx.js' because its MIME type ('text/plain') is not executable.
+```
+
+**Root cause:** `ronmi/forgejo-pages` serves files via Forgejo raw API, which returns `Content-Type: text/plain` for **all** files, combined with `X-Content-Type-Options: nosniff`. Browsers block `<script>` and `<link rel="stylesheet">` tags → React never mounts → white page.
+
+**Fix:** Inline all CSS and JS into `index.html`. Remove the `assets/` folder from `static-pages`.
+
+**Prevention:** Use the automated deploy script (`npm run deploy`) which inlines automatically. See §7 below.
+
+> **See also:** `forgejo-tools.md` §4.2 for full RCA, `RCA-260501-White-Page-Deploy.md` for incident report.
+
+---
+
 ### Challenge 1: Token Embedded in Remote URL (Security Risk)
 **What happened:** The Forgejo remote was configured as `https://justin-admin:TOKEN@git.gi7b.org/gi7b/ce-shipgen.git`. The token is visible in plaintext in `.git/config`.
 
@@ -229,70 +246,37 @@ $ npm run build
 2. **No release tag** — Consider tagging `v0.04` on Forgejo.
 3. **ShipGenDesktop hardcodes version** — Still shows `v0.04` manually.
 4. **Foundry export version** — `exportImport.ts` embeds format version. Must bump independently if schema changes.
-5. **No deploy script** — Manual deploy is error-prone (see §7).
+5. **~~No deploy script~~** — ✅ Fixed: `scripts/deploy.mjs` + `npm run deploy` (2026-05-01).
 6. **`public/version.json` not in `.gitignore`** — Still pollutes working tree on every build.
 7. **Token in remote URL** — Security risk if `.git/config` is exposed.
+8. **Forgejo Pages white page risk** — ✅ Mitigated: deploy script auto-inlines CSS/JS. Still need to ensure no one bypasses the script.
 
 ---
 
 ## Best Practices — Commit, Push, Deploy, Version
 
-### 1. One-Command Deploy Script
-Create `scripts/deploy.mjs` (or `deploy.sh`):
+### 1. One-Command Deploy Script (Automated Inline)
 
-```javascript
-#!/usr/bin/env node
-// scripts/deploy.mjs
-import { execSync } from 'child_process';
-import fs from 'fs';
-
-const DIST = './dist';
-const TMP = '/tmp/ce-shipgen-deploy';
-
-// 1. Build
-console.log('→ Building...');
-execSync('npm run build', { stdio: 'inherit' });
-
-// 2. Verify version
-const v = JSON.parse(fs.readFileSync(`${DIST}/version.json`, 'utf8'));
-console.log(`→ Version: ${v.version}`);
-
-// 3. Save dist to temp
-fs.rmSync(TMP, { recursive: true, force: true });
-fs.cpSync(DIST, TMP, { recursive: true });
-
-// 4. Switch to static-pages
-console.log('→ Switching to static-pages...');
-execSync('git checkout static-pages', { stdio: 'inherit' });
-
-// 5. Clean old files (keep .git)
-const files = fs.readdirSync('.').filter(f => f !== '.git');
-for (const f of files) fs.rmSync(f, { recursive: true, force: true });
-
-// 6. Copy new build
-fs.cpSync(TMP, '.', { recursive: true });
-
-// 7. Commit and push
-execSync('git add -A', { stdio: 'inherit' });
-execSync(`git commit -m "Deploy v${v.version}"`, { stdio: 'inherit' });
-execSync('git push origin static-pages --force', { stdio: 'inherit' });
-
-// 8. Return to main
-execSync('git checkout main', { stdio: 'inherit' });
-console.log('✅ Deploy complete');
-```
+The deploy script **`scripts/deploy.mjs`** is checked into the repo. It handles everything including the **Forgejo Pages CSS/JS inlining fix** (see Challenge 0 above).
 
 **Usage:**
 ```bash
-node scripts/deploy.mjs
+npm run deploy
 ```
 
-**Add to `package.json`:**
-```json
-"scripts": {
-  "deploy": "node scripts/deploy.mjs"
-}
-```
+**What it does:**
+1. Builds the app (`npm run build`)
+2. Inlines CSS and JS into `index.html` (removes external asset references)
+3. Stages the build to a temp directory
+4. Switches to `static-pages`
+5. Cleans old files (keeps `.git`)
+6. Copies the inlined build (skips `assets/` since they're now inline)
+7. Commits and force-pushes
+8. Returns to `main`
+
+**Why it's critical:** If you skip the inline step and deploy a standard Vite build, the site will show a **white page** on Forgejo Pages. The script enforces this automatically.
+
+**Note:** `node_modules` is preserved because the script only cleans files in the working tree, not untracked directories. However, after returning to `main`, you may need to reinstall if `node_modules` was accidentally deleted during manual branch switching.
 
 ---
 
@@ -362,13 +346,13 @@ git config credential.helper store
 ## Recommended Next Clean-Build Actions
 
 1. [x] Fix all 13 pre-existing ESLint errors (mostly `any` → proper types)
-2. [ ] Create `scripts/deploy.mjs` one-command deploy script
+2. [x] Create `scripts/deploy.mjs` one-command deploy script (with auto-inline for Forgejo Pages)
 3. [ ] Add `public/version.json` to `.gitignore`
 4. [ ] Remove embedded token from remote URL
 5. [ ] Make SettingsScreen fetch version.json dynamically
 6. [ ] Tag `v0.04` release on Forgejo
 7. [ ] Add GitHub remote and set up mirroring if desired
-8. [ ] Create version history page (FRD-065)
+8. [x] Create version history page (FRD-065) — ✅ Implemented in SettingsScreen
 
 ---
 
