@@ -374,6 +374,39 @@ git config credential.helper store
 
 ---
 
+## Ship Library Audit (2026-05-01)
+
+**Scope:** All 43 Excel-converted ships in `public/data/all_ships.json`
+**Script:** `scripts/audit-all-ships.mjs`
+**Report:** `scripts/ship-audit-report.json`
+**RCA:** `RCA-260501-Ship-Library-Audit.md`
+
+### Findings
+
+| Metric | Count |
+|--------|-------|
+| Ships audited | 43 |
+| Schema errors | 0 |
+| Round-trip errors | 42 |
+| Round-trip warnings | 112 |
+| Ships with issues | 11 |
+| Ships clean | 32 |
+
+**Issue 1: Drive Reordering (42 errors)** — `saveShip` reconstructs `drives` array in fixed type order (thrust→jump→powerPlant), but original ships have mixed order. This breaks round-trip integrity.
+
+**Issue 2: Flat Fields vs Drives Mismatch (37 ships)** — Legacy `mDrive`/`jDrive`/`powerPlant` flat fields don't match the first drive of each type in the `drives` array.
+
+**Issue 3: Multiple drives of same type (11 ships)** — Valid by design; no fix needed.
+
+### Recommended Fix Priority
+
+1. **[P1]** Preserve drive order via `order` field in `saveShip`/`loadShip`
+2. **[P2]** Derive legacy flat fields from `drives[0]` instead of storing separately
+3. **[P3]** Update `convert_ships.py` to output canonical drive order or add `order` field
+4. **[P4]** Add `audit-all-ships.mjs` to CI/build pipeline
+
+---
+
 ## Recommended Next Clean-Build Actions
 
 1. [x] Fix all 13 pre-existing ESLint errors (mostly `any` → proper types)
@@ -384,6 +417,8 @@ git config credential.helper store
 6. [ ] Tag `v0.04` release on Forgejo
 7. [ ] Add GitHub remote and set up mirroring if desired
 8. [x] Create version history page (FRD-065) — ✅ Implemented in SettingsScreen
+9. [ ] Fix drive reordering in `saveShip`/`loadShip` (P1 from ship audit)
+10. [ ] Deprecate `mDrive`/`jDrive`/`powerPlant` flat fields (P2 from ship audit)
 
 ---
 
