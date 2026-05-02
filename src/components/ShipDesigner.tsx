@@ -820,6 +820,13 @@ export function ShipDesigner() {
     setCurrentShip(null);
   };
 
+  // ─── Load ship from library when currentShip changes ───
+  useEffect(() => {
+    if (currentShip) {
+      loadShip(currentShip);
+    }
+  }, [currentShip?.id]);
+
   // ─── Drive filtering helpers ───
   const validMDrives = drives.filter((d: Record<string, unknown>) => Number(d['M-Drive\n Tons']) > 0);
   const validJDrives = drives.filter((d: Record<string, unknown>) => Number(d['J-Drive\n Tons']) > 0);
