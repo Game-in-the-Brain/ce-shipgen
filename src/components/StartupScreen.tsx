@@ -110,7 +110,7 @@ export function StartupScreen({ onDismiss }: StartupScreenProps) {
               CHANGELOG
             </div>
             <ul style={{ display: 'flex', flexDirection: 'column', gap: 8, margin: 0, padding: 0, listStyle: 'none' }}>
-              {version.changelog.map((item, i) => (
+              {(version.changelog || []).map((item, i) => (
                 <li key={i} style={{ display: 'flex', alignItems: 'flex-start', gap: 10, fontFamily: fonts.mono, fontSize: 13, color: colors.inkSoft }}>
                   <span style={{ color: colors.glow, fontSize: 16, lineHeight: 1 }}>›</span>
                   <span>{item}</span>

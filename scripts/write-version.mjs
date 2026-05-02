@@ -9,19 +9,7 @@ const pkg = JSON.parse(readFileSync(resolve(process.cwd(), 'package.json'), 'utf
 const now = new Date();
 const date = now.toISOString().slice(0, 10);
 
-const version = {
-  version: pkg.version,
-  name: pkg.name,
-  date,
-  buildTime: now.toISOString(),
-};
-
-// ── Write current version ──
-const outPath = resolve(process.cwd(), 'public/version.json');
-writeFileSync(outPath, JSON.stringify(version, null, 2));
-console.log(`[write-version] Generated ${outPath} → v${pkg.version} (${date})`);
-
-// ── Update version history ──
+// ── Load version history to get changelog for current version ──
 const historyPath = resolve(process.cwd(), 'public/version-history.json');
 let history = [];
 if (existsSync(historyPath)) {
@@ -33,6 +21,23 @@ if (existsSync(historyPath)) {
   }
 }
 
+const currentEntry = history.find((entry) => entry.version === pkg.version);
+const changelog = currentEntry?.changes || currentEntry?.changelog || [];
+
+const version = {
+  version: pkg.version,
+  name: pkg.name,
+  date,
+  buildTime: now.toISOString(),
+  changelog,
+};
+
+// ── Write current version ──
+const outPath = resolve(process.cwd(), 'public/version.json');
+writeFileSync(outPath, JSON.stringify(version, null, 2));
+console.log(`[write-version] Generated ${outPath} → v${pkg.version} (${date})`);
+
+// ── Update version history ──
 // Remove existing entry for this version (to update it)
 history = history.filter((entry) => entry.version !== pkg.version);
 
@@ -41,7 +46,7 @@ history.unshift({
   version: pkg.version,
   date,
   buildTime: now.toISOString(),
-  changes: version.changelog || [],
+  changes: changelog,
 });
 
 writeFileSync(historyPath, JSON.stringify(history, null, 2));
