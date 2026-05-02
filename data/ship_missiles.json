@@ -1,5 +1,0 @@
-[
-  { "missileType": "Nuclear", "techLevel": 6, "damage": "2D6 + 1 radiation hit", "costPerMissileCr": 3750, "notes": "Radiation hit suffers a -DM equal to the ship's armor" },
-  { "missileType": "Standard", "techLevel": 6, "damage": "1D6", "costPerMissileCr": 1250, "notes": "" },
-  { "missileType": "Smart", "techLevel": 8, "damage": "1D6", "costPerMissileCr": 2500, "notes": "Attack roll is always 8+; may attack every turn if they miss until destroyed, jammed, or out of fuel" }
-]
