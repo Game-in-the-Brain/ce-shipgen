@@ -216,8 +216,6 @@ export const useTableStore = create<TableState & TableActions>()(
         setCurrentShip: (ship) => set({ currentShip: ship }),
 
         loadDefaultShips: async () => {
-          const state = get();
-          if (state.ships.length > 0) return; // Don't overwrite existing library
           try {
             const base = import.meta.env.BASE_URL || '/';
             const response = await fetch(`${base}data/all_ships.json`);
@@ -225,8 +223,9 @@ export const useTableStore = create<TableState & TableActions>()(
             const ships: ShipDesign[] = await response.json();
             set((state) => {
               for (const ship of ships) {
-                // Prevent duplicates by ID
-                if (!state.ships.find((s) => s.id === ship.id)) {
+                const existing = state.ships.find((s) => s.id === ship.id);
+                if (!existing) {
+                  // New ship — add it
                   state.ships.push(ship);
                 }
               }
