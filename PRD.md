@@ -996,10 +996,17 @@ Add `husky` + a pre-commit hook running `tsc --noEmit`. The `pwa.d.ts` structura
 | M2.5: Install UX & Settings System | FR-021 (install prompt), FR-022 (auto-save + reset), FR-023 (security), FR-024 (snapshots), FR-025 (CI/CD) | ✅ Complete — "Installed" badge and snapshots verified working |
 | M2.6: Installed Version Control | FR-026 — Version display, update detection (SW-based), user-controlled updates, offline behavior | ✅ Complete — Built and deployed |
 | M2.7: Tables In Play | FR-027 — Active table selector per component type; "Tables In Play" view in Settings lets user switch which table drives each design step | 🎯 Current |
-| M3.1: Hull & Foundation | FR-028 — Hull selection (18 sizes), configuration (3 types), armor selection, min/max constraints for M-Drive, J-Drive, Power Plant derived from hull tonnage | ⏳ Blocked on M2.7 |
+| M2.8: QA Ships | FDR-067 — Validate all 43 ships, fix merged/empty data, update taxonomy | 🎯 Current (parallel with M2.7) |
+| M3.1: Hull & Foundation | FR-028 — Hull selection (18 sizes), configuration (3 types), armor selection, min/max constraints for M-Drive, J-Drive, Power Plant derived from hull tonnage | ⏳ Blocked on M2.7 + M2.8 |
 | M3.2: Bridge to Crew | Steps 7–12: Bridge/Cockpit, Computer, Software, Sensors, Crew calculation | ⏳ Pending |
 | M3.3: Fittings to BOQ | Steps 13–19: Accommodations, Features, Weapons/Turrets, Vehicles, Cargo, Cost Summary (BOQ) | ⏳ Pending |
+| M3.4: Procedural Design | FDR-068 — Priority-based algorithm generates complete ship from sliders/presets | ⏳ Post-M3.3 |
+| M3.5: Procedural Presets | FDR-068b — 6 canonical presets + custom preset save/load | ⏳ Post-M3.4 |
 | M4: Persistence & Export | Ship library, JSON/CSV/text/print export | ⏳ Pending |
+| M4.1: TL10–11 Variants | FDR-069 — Generate 86 TL variants (43 ships × 2 TLs) | ⏳ Post-M3 |
+| M4.2: TL12–13 Variants | FDR-069 — Generate 86 variants + faction overrides | ⏳ Post-M4.1 |
+| M4.3: TL14–15 Variants | FDR-069 — Generate 86 variants + capital ships | ⏳ Post-M4.2 |
+| M4.4: Variant Browser UI | Library tab for TL comparison and faction filtering | ⏳ Post-M4.1 |
 
 ---
 
@@ -1056,15 +1063,17 @@ A version control system that treats the installed PWA like a package manager tr
 **Storage:** A `version.json` file is generated at build time and deployed with the app:
 ```json
 {
-  "version": "0.2.6",
-  "buildTimestamp": "2026-03-03T14:30:00Z",
+  "version": "0.04",
+  "buildTimestamp": "2026-05-02T12:16:44Z",
   "channel": "stable",
   "changelog": [
-    "Added version control system",
-    "Fixed table view race condition",
-    "Updated repository URLs"
+    "CRITICAL FIX: Drive performance formula replaced with Excel lookup table",
+    "Fixed tender push capacity calculations",
+    "Merged ships fix: split 12 merged ships",
+    "Rebuilt 6 empty SRD ships from CE formulas",
+    "Added pushCapacity field to all 40 ships"
   ],
-  "minimumCompatibleVersion": "0.2.5"
+  "minimumCompatibleVersion": "0.03"
 }
 ```
 
@@ -1445,8 +1454,8 @@ workbox: {
 ---
 
 **PRD Status:** LIVING DOCUMENT — updated per session
-**Last updated:** March 3, 2026 — M2.7 (FR-027) and M3 sub-milestones (FR-028) added
-**Next implementation target:** M2.7 — Tables In Play (FR-027), then M3.1 — Hull & Foundation (FR-028)
+**Last updated:** May 2, 2026 — M2.8 (FDR-067), M3.4–3.5 (FDR-068), and M4.1–4.4 (FDR-069) added
+**Next implementation target:** M2.7 — Tables In Play (FR-027), then M2.8 — QA Ships (FDR-067), then M3.1 — Hull & Foundation (FR-028)
 
 ---
 

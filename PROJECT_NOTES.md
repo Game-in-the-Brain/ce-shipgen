@@ -563,7 +563,35 @@ ce-shipgen/
 
 ## Version History
 
-- **v0.1.0 (Milestone 1)** - March 2, 2026
+- **v0.04 (Milestone 2.9)** - May 2, 2026
+  - CRITICAL FIX: Drive performance formula replaced with Excel lookup table — thrust values were ~50% too low for 19 of 40 ships
+  - Extracted complete drive performance table from Excel RAW SHIP TABLES (BG8:CQ53)
+  - Fixed tender push capacity calculations — Drive B max hull = 400 DT (was 200 DT)
+  - Merged ships fix: split 12 merged ships using HULL boundary detection
+  - Filtered vehicle entries from library (3 VEHICLES: records removed)
+  - Supplies folded into cargo space for ≤100 DT ships — fixed 11 over-tonnage ships
+  - Rebuilt 6 empty SRD ships from CE formulas (Tender, Yacht, Research Vessel, Asteroid Miner, Habitat Ring, Survey Vessel)
+  - Added pushCapacity field to all 40 ships
+  - Weapon calibration framework with Monte Carlo combat simulation
+  - Updated CE-Chapter-8-Ship-Design-and-Construction.md with complete drive tables
+  - Created MNEME-IMPROVEMENTS.md backlog for realistic enhancements
+
+- **v0.03 (Milestone 2.6)** - April 30, 2026
+  - Version control system (FR-026a–j)
+  - Startup screen with update prompts
+  - Settings panel with version display
+  - Service worker prompt-based updates
+  - Build-time version.json generation
+  - Offline behavior handling
+
+- **v0.02 (Milestone 2)** - April 28, 2026
+  - ShipDesigner child-table architecture
+  - BOQ view with component breakdown
+  - Armor rating editable increments
+  - Drive auto-population with performance
+  - Load from Library workflow
+
+- **v0.01 (Milestone 1)** - March 2, 2026
   - UI Layout & Tiling System
   - PWA setup
   - 6 demo tiles
@@ -573,7 +601,7 @@ ce-shipgen/
 ---
 
 *Document created by OpenCode Agent on March 2, 2026*
-*Last updated: March 2, 2026 (17:50 UTC)*
+*Last updated: May 2, 2026 (12:16 UTC)*
 
 ---
 
@@ -686,14 +714,31 @@ ce-shipgen/
 
 ## Updated Version History
 
-- **v0.2.0 (Milestone 2)** - March 2, 2026
-  - JSON Table Editor with 13 data tables
-  - Table/Grid view editor with cell editing
-  - Rule Settings (CE/Mneme/Custom)
-  - Save/Reset/Import/Export for tables
-  - GI7B branding integration
+- **v0.04 (Milestone 2.9)** - May 2, 2026
+  - CRITICAL FIX: Drive performance formula replaced with Excel lookup table
+  - Extracted complete drive performance table from Excel RAW SHIP TABLES
+  - Fixed tender push capacity calculations
+  - Merged ships fix: split 12 merged ships
+  - Rebuilt 6 empty SRD ships from CE formulas
+  - Added pushCapacity field to all 40 ships
+  - Weapon calibration framework
 
-- **v0.1.0 (Milestone 1)** - March 2, 2026
+- **v0.03 (Milestone 2.6)** - April 30, 2026
+  - Version control system (FR-026a–j)
+  - Startup screen with update prompts
+  - Settings panel with version display
+  - Service worker prompt-based updates
+  - Build-time version.json generation
+  - Offline behavior handling
+
+- **v0.02 (Milestone 2)** - April 28, 2026
+  - ShipDesigner child-table architecture
+  - BOQ view with component breakdown
+  - Armor rating editable increments
+  - Drive auto-population with performance
+  - Load from Library workflow
+
+- **v0.01 (Milestone 1)** - March 2, 2026
   - UI Layout & Tiling System
   - PWA setup
   - 6 demo tiles
@@ -702,7 +747,7 @@ ce-shipgen/
 
 ---
 
-## Current Status (End of Milestone 2)
+## Current Status (End of Milestone 2.9)
 
 ### Completed Features:
 ✅ Settings screen with JSON & Table editors  

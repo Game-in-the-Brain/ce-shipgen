@@ -411,14 +411,13 @@ git config credential.helper store
 
 1. [x] Fix all 13 pre-existing ESLint errors (mostly `any` → proper types)
 2. [x] Create `scripts/deploy.mjs` one-command deploy script (with auto-inline for Forgejo Pages)
-3. [ ] Add `public/version.json` to `.gitignore`
-4. [ ] Remove embedded token from remote URL
-5. [ ] Make SettingsScreen fetch version.json dynamically
-6. [ ] Tag `v0.04` release on Forgejo
-7. [ ] Add GitHub remote and set up mirroring if desired
-8. [x] Create version history page (FRD-065) — ✅ Implemented in SettingsScreen
-9. [ ] Fix drive reordering in `saveShip`/`loadShip` (P1 from ship audit)
-10. [ ] Deprecate `mDrive`/`jDrive`/`powerPlant` flat fields (P2 from ship audit)
+3. [x] Fix Ship Library data integrity (drive reordering, flat field sync, classification)
+4. [ ] Add `public/version.json` to `.gitignore`
+5. [ ] Remove embedded token from remote URL
+6. [ ] SettingsScreen hardcodes version — should fetch `version.json` dynamically
+7. [ ] Add `audit-all-ships.mjs` + `classify-ships.mjs` to CI/build pipeline
+8. [ ] Tag `v0.04` release on Forgejo
+9. [ ] Add GitHub remote and set up mirroring if desired
 
 ---
 

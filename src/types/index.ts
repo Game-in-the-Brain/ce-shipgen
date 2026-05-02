@@ -200,6 +200,7 @@ export interface DriveItem extends ChildItem {
   type: 'thrust' | 'powerPlant' | 'jump';
   driveCode: string;
   performance?: number;
+  order?: number; // Preserves original drives[] ordering through load/save round-trips
 }
 
 export interface BridgeItem extends ChildItem {
@@ -249,6 +250,97 @@ export interface ShipComponent {
   qty?: number;
 }
 
+export interface ShipClassification {
+  role: string;
+  roleId: string;
+  sizeClass: string;
+  sizeId: string;
+  className: string;
+  ratios: { s: number; a: number; p: number };
+  tons: { s: number; a: number; p: number; total: number };
+  tlShifted: boolean;
+}
+
+// ─── Ship Operations & Specs ───
+
+export interface CrewBreakdown {
+  command: number;
+  pilot: number;
+  navigator: number;
+  engineer: number;
+  medic: number;
+  gunner: number;
+  marine: number;
+  steward: number;
+  maintenance: number;
+  deckCrew: number;
+  total: number;
+}
+
+export interface OperatingCosts {
+  monthlyMortgage: number; // MCr
+  maintenance: number; // MCr per year
+  crewSalaries: number; // MCr per month
+  lifeSupport: number; // MCr per month
+  fuel: number; // MCr per jump
+  portFees: number; // MCr per port call
+  totalMonthly: number; // MCr
+  // Annual ledger breakdown (scaled from monthly + per-jump figures)
+  annual: AnnualOperatingCosts;
+}
+
+export interface AnnualOperatingCosts {
+  mortgage: number; // MCr
+  maintenance: number; // MCr
+  crewSalaries: number; // MCr
+  lifeSupport: number; // MCr
+  fixedCosts: number; // MCr (sum of above — incurred regardless of sorties)
+  variableAt12: number; // MCr (fuel+port @ 12 jumps/year)
+  variableAt24: number; // MCr (fuel+port @ 24 jumps/year)
+  variableAt36: number; // MCr (fuel+port @ 36 jumps/year)
+  totalAt12: number; // MCr
+  totalAt24: number; // MCr
+  totalAt36: number; // MCr
+}
+
+export interface RevenuePotential {
+  highPassengers: number;
+  midPassengers: number;
+  lowPassengers: number;
+  passengerRevenue: number; // MCr per jump
+  freightDtons: number;
+  freightRevenue: number; // MCr per jump
+  mailContracts: number; // MCr per jump
+  totalRevenue: number; // MCr per jump
+}
+
+export interface LifeSupportDetails {
+  staterooms: number;
+  lowBerths: number;
+  standardCapacity: number; // people
+  emergencyCapacity: number; // people (double occupancy)
+  durationWeeks: number; // with full load
+  lifeSupportTons: number;
+}
+
+export interface EscapeSystems {
+  lifePods: number;
+  escapePods: number;
+  lifeBoats: number;
+  totalCapacity: number; // people
+}
+
+export interface ShipOperations {
+  crew: CrewBreakdown;
+  costs: OperatingCosts;
+  revenue: RevenuePotential;
+  lifeSupport: LifeSupportDetails;
+  escapeSystems: EscapeSystems;
+  jumpRange: number; // parsecs
+  endurance: number; // weeks without resupply
+  annualOverhaul: number; // weeks per year
+}
+
 export interface ShipDesign {
   id: string;
   name: string;
@@ -286,6 +378,10 @@ export interface ShipDesign {
   totalCost: number;
   availableDtons: number;
   createdAt: string;
+  // Classification (ephemeral, derived from components, but cached for display)
+  classification?: ShipClassification;
+  // Detailed operations & specs (generated)
+  operations?: ShipOperations;
 }
 
 export interface VariantParams {

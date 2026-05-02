@@ -5,6 +5,7 @@ import { ChildTable } from './ChildTable';
 import { BOQView } from './BOQView';
 import { MnemeCombatPanel } from './MnemeCombatPanel';
 import { downloadJson, generateSnapshotName } from '../utils/exportImport';
+import { classifyShip } from '../utils/shipClassifier';
 import { fmtNumber, fmtCost, fmtTons } from '../utils/formatters';
 import {
   calcArmorTonnage, calcArmorCost, calcJumpFuel, calcPowerFuel,
@@ -577,6 +578,10 @@ export function ShipDesigner() {
 
   // ─── Actions ───
   const saveShip = () => {
+    // Derive flat fields from first drive of each type (authoritative source)
+    const _mDrive = mDriveRows[0]?.name || mDrive;
+    const _jDrive = jDriveRows[0]?.name || jDrive;
+    const _powerPlant = ppRows[0]?.name || powerPlant;
     const ship: ShipDesign = {
       id: currentShip?.id || `ship-${Date.now()}`,
       name: name || generateShipName(hullDtons),
@@ -586,9 +591,9 @@ export function ShipDesigner() {
       configuration: config,
       armor: armorRows.map(r => r.name).join(', ') || 'None',
       armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
-      mDrive,
-      jDrive,
-      powerPlant,
+      mDrive: _mDrive,
+      jDrive: _jDrive,
+      powerPlant: _powerPlant,
       bridge,
       computer,
       software: softwareList,
@@ -597,10 +602,10 @@ export function ShipDesigner() {
       lowBerths,
       crew: [],
       drives: [
-        ...mDriveRows.map(r => ({ ...r, type: 'thrust' as const, driveCode: r.name })),
-        ...jDriveRows.map(r => ({ ...r, type: 'jump' as const, driveCode: r.name })),
-        ...ppRows.map(r => ({ ...r, type: 'powerPlant' as const, driveCode: r.name })),
-      ],
+        ...mDriveRows.map((r, i) => ({ ...r, type: 'thrust' as const, driveCode: r.name, order: (r as unknown as Record<string, unknown>).order as number ?? i })),
+        ...jDriveRows.map((r, i) => ({ ...r, type: 'jump' as const, driveCode: r.name, order: (r as unknown as Record<string, unknown>).order as number ?? i + 1000 })),
+        ...ppRows.map((r, i) => ({ ...r, type: 'powerPlant' as const, driveCode: r.name, order: (r as unknown as Record<string, unknown>).order as number ?? i + 2000 })),
+      ].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
       commandControl: commandRows as BridgeItem[],
       computers: computerRows as ComputerItem[],
       softwareList: softwareRows as SoftwareItem[],
@@ -616,6 +621,7 @@ export function ShipDesigner() {
       availableDtons,
       createdAt: currentShip?.createdAt || new Date().toISOString(),
     };
+    ship.classification = classifyShip(ship);
     if (currentShip) {
       updateShip(ship);
     } else {
@@ -624,21 +630,26 @@ export function ShipDesigner() {
   };
 
   const exportShip = () => {
+    const _mDrive = mDriveRows[0]?.name || mDrive;
+    const _jDrive = jDriveRows[0]?.name || jDrive;
+    const _powerPlant = ppRows[0]?.name || powerPlant;
     const ship: ShipDesign = {
       id: `export-${Date.now()}`,
       name: name || generateShipName(hullDtons),
       tl, hullCode, hullDtons, configuration: config,
       armor: armorRows.map(r => r.name).join(', ') || 'None',
       armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
-      mDrive, jDrive, powerPlant,
+      mDrive: _mDrive,
+      jDrive: _jDrive,
+      powerPlant: _powerPlant,
       bridge, computer, software: softwareList,
       sensors, staterooms, lowBerths,
       crew: [],
       drives: [
-        ...mDriveRows.map(r => ({ ...r, type: 'thrust' as const, driveCode: r.name })),
-        ...jDriveRows.map(r => ({ ...r, type: 'jump' as const, driveCode: r.name })),
-        ...ppRows.map(r => ({ ...r, type: 'powerPlant' as const, driveCode: r.name })),
-      ],
+        ...mDriveRows.map((r, i) => ({ ...r, type: 'thrust' as const, driveCode: r.name, order: (r as unknown as Record<string, unknown>).order as number ?? i })),
+        ...jDriveRows.map((r, i) => ({ ...r, type: 'jump' as const, driveCode: r.name, order: (r as unknown as Record<string, unknown>).order as number ?? i + 1000 })),
+        ...ppRows.map((r, i) => ({ ...r, type: 'powerPlant' as const, driveCode: r.name, order: (r as unknown as Record<string, unknown>).order as number ?? i + 2000 })),
+      ].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
       commandControl: commandRows as BridgeItem[],
       computers: computerRows as ComputerItem[],
       softwareList: softwareRows as SoftwareItem[],
@@ -651,6 +662,7 @@ export function ShipDesigner() {
       cargo, components, totalCost, availableDtons,
       createdAt: new Date().toISOString(),
     };
+    ship.classification = classifyShip(ship);
     downloadJson(JSON.stringify(ship, null, 2), `ship-${name.replace(/\s+/g, '_')}-${generateSnapshotName()}.json`);
   };
 
@@ -664,32 +676,39 @@ export function ShipDesigner() {
     } else {
       setArmorRows([]);
     }
-    setMDrive(ship.mDrive || '');
-    setJDrive(ship.jDrive || '');
+    // Derive flat fields from drives array (authoritative source)
     const driveRows = ship.drives || [];
-    setMDriveRows(driveRows.filter((d: {type?: string; driveCode?: string}) => d.type === 'thrust').map((d: {id?: string; name?: string; driveCode?: string; dtons?: number; cost?: number; qty?: number}) => ({
+    const firstThrust = driveRows.find(d => d.type === 'thrust');
+    const firstJump = driveRows.find(d => d.type === 'jump');
+    const firstPower = driveRows.find(d => d.type === 'powerPlant');
+    setMDrive(firstThrust?.driveCode || firstThrust?.name || '');
+    setJDrive(firstJump?.driveCode || firstJump?.name || '');
+    setPowerPlant(firstPower?.driveCode || firstPower?.name || '');
+    setMDriveRows(driveRows.filter(d => d.type === 'thrust').map(d => ({
       id: d.id || `mdrive-${Date.now()}`,
       name: d.name || d.driveCode || '',
       dtons: d.dtons || 0,
       cost: d.cost || 0,
       qty: d.qty || 1,
+      order: d.order,
     })));
-    setJDriveRows(driveRows.filter((d: {type?: string; driveCode?: string}) => d.type === 'jump').map((d: {id?: string; name?: string; driveCode?: string; dtons?: number; cost?: number; qty?: number}) => ({
+    setJDriveRows(driveRows.filter(d => d.type === 'jump').map(d => ({
       id: d.id || `jdrive-${Date.now()}`,
       name: d.name || d.driveCode || '',
       dtons: d.dtons || 0,
       cost: d.cost || 0,
       qty: d.qty || 1,
+      order: d.order,
     })));
-    setPowerPlant(ship.powerPlant || '');
-    const powerRows = (ship.drives || []).filter((d: {type?: string}) => d.type === 'powerPlant');
-    setPpRows(powerRows.map((d: {id?: string; name?: string; driveCode?: string; dtons?: number; cost?: number; qty?: number; variant?: string}) => ({
+    const powerRows = driveRows.filter(d => d.type === 'powerPlant');
+    setPpRows(powerRows.map(d => ({
       id: d.id || `pp-${Date.now()}`,
       name: d.name || d.driveCode || '',
       dtons: d.dtons || 0,
       cost: d.cost || 0,
       qty: d.qty || 1,
-      variant: d.variant || 'Fusion',
+      variant: (d as unknown as Record<string, unknown>).variant as string || 'Fusion',
+      order: d.order,
     })));
     // ── Restore child-table architecture (v0.02+) ──
     setCommandRows((ship.commandControl || []).map((d) => ({

@@ -87,7 +87,11 @@ function validateSchema(ship, index) {
 // ─── Simulate loadShip → saveShip Round-Trip ───
 
 function simulateRoundTrip(original) {
-  // Simulate loadShip: extract child tables and flat fields
+  // Simulate loadShip: extract child tables and DERIVE flat fields from drives
+  const driveRows = original.drives || [];
+  const firstThrust = driveRows.find(d => d.type === 'thrust');
+  const firstJump = driveRows.find(d => d.type === 'jump');
+  const firstPower = driveRows.find(d => d.type === 'powerPlant');
   const state = {
     name: original.name,
     tl: original.tl,
@@ -96,9 +100,9 @@ function simulateRoundTrip(original) {
     configuration: original.configuration,
     armor: original.armor,
     armorQty: original.armorQty || 1,
-    mDrive: original.mDrive || '',
-    jDrive: original.jDrive || '',
-    powerPlant: original.powerPlant || '',
+    mDrive: firstThrust?.driveCode || firstThrust?.name || original.mDrive || '',
+    jDrive: firstJump?.driveCode || firstJump?.name || original.jDrive || '',
+    powerPlant: firstPower?.driveCode || firstPower?.name || original.powerPlant || '',
     bridge: original.bridge || '',
     computer: original.computer || '',
     software: original.software || [],
@@ -139,10 +143,10 @@ function simulateRoundTrip(original) {
     lowBerths: state.lowBerths,
     crew: [],
     drives: [
-      ...state.drives.filter(d => d.type === 'thrust').map(r => ({ ...r, type: 'thrust', driveCode: r.name })),
-      ...state.drives.filter(d => d.type === 'jump').map(r => ({ ...r, type: 'jump', driveCode: r.name })),
-      ...state.drives.filter(d => d.type === 'powerPlant').map(r => ({ ...r, type: 'powerPlant', driveCode: r.name })),
-    ],
+      ...state.drives.filter(d => d.type === 'thrust').map((r, i) => ({ ...r, type: 'thrust', driveCode: r.name, order: r.order ?? i })),
+      ...state.drives.filter(d => d.type === 'jump').map((r, i) => ({ ...r, type: 'jump', driveCode: r.name, order: r.order ?? i + 1000 })),
+      ...state.drives.filter(d => d.type === 'powerPlant').map((r, i) => ({ ...r, type: 'powerPlant', driveCode: r.name, order: r.order ?? i + 2000 })),
+    ].sort((a, b) => (a.order ?? 0) - (b.order ?? 0)),
     commandControl: state.commandControl,
     computers: state.computers,
     softwareList: state.softwareList,
@@ -185,14 +189,17 @@ function compareRoundTrip(original, reconstructed, index) {
     }
   }
 
-  // Compare drives in detail
+  // Compare drives in detail (order-sensitive)
   if (original.drives && reconstructed.drives) {
     if (original.drives.length !== reconstructed.drives.length) {
       recordError(original, 'ROUNDTRIP_DRIVE_COUNT', `Drives: original=${original.drives.length}, reconstructed=${reconstructed.drives.length}`);
     }
-    for (let i = 0; i < Math.min(original.drives.length, reconstructed.drives.length); i++) {
-      const od = original.drives[i];
-      const rd = reconstructed.drives[i];
+    // Sort both by order for comparison (saveShip sorts by order)
+    const origSorted = [...original.drives].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    const reconSorted = [...reconstructed.drives].sort((a, b) => (a.order ?? 0) - (b.order ?? 0));
+    for (let i = 0; i < Math.min(origSorted.length, reconSorted.length); i++) {
+      const od = origSorted[i];
+      const rd = reconSorted[i];
       if (od.name !== rd.name) {
         recordWarning(original, 'ROUNDTRIP_DRIVE_NAME', `Drive[${i}].name changed: "${od.name}" → "${rd.name}"`);
       }
@@ -202,16 +209,42 @@ function compareRoundTrip(original, reconstructed, index) {
       if ((od.dtons || 0) !== (rd.dtons || 0)) {
         recordWarning(original, 'ROUNDTRIP_DRIVE_DTONS', `Drive[${i}].dtons changed: ${od.dtons} → ${rd.dtons}`);
       }
+      if ((od.order ?? 0) !== (rd.order ?? 0)) {
+        recordError(original, 'ROUNDTRIP_DRIVE_ORDER', `Drive[${i}].order changed: ${od.order} → ${rd.order}`);
+      }
     }
   }
 
-  // Compare legacy flat fields
-  const flatFields = ['mDrive', 'jDrive', 'powerPlant', 'bridge', 'computer', 'sensors', 'staterooms', 'lowBerths', 'cargo'];
+  // Compare flat fields vs first drive of each type
+  const firstThrust = (original.drives || []).find(d => d.type === 'thrust');
+  const firstJump = (original.drives || []).find(d => d.type === 'jump');
+  const firstPower = (original.drives || []).find(d => d.type === 'powerPlant');
+  if (original.mDrive && firstThrust && original.mDrive !== firstThrust.driveCode && original.mDrive !== firstThrust.name) {
+    recordWarning(original, 'FLAT_FIELD_MISMATCH', `mDrive "${original.mDrive}" does not match first thrust drive "${firstThrust.driveCode || firstThrust.name}"`);
+  }
+  if (original.jDrive && firstJump && original.jDrive !== firstJump.driveCode && original.jDrive !== firstJump.name) {
+    recordWarning(original, 'FLAT_FIELD_MISMATCH', `jDrive "${original.jDrive}" does not match first jump drive "${firstJump.driveCode || firstJump.name}"`);
+  }
+  if (original.powerPlant && firstPower && original.powerPlant !== firstPower.driveCode && original.powerPlant !== firstPower.name) {
+    recordWarning(original, 'FLAT_FIELD_MISMATCH', `powerPlant "${original.powerPlant}" does not match first powerPlant "${firstPower.driveCode || firstPower.name}"`);
+  }
+
+  // Compare legacy flat fields (derive from drives, so may change intentionally)
+  const flatFields = ['bridge', 'computer', 'sensors', 'staterooms', 'lowBerths', 'cargo'];
   for (const field of flatFields) {
     const o = original[field];
     const r = reconstructed[field];
     if (o !== r) {
       recordWarning(original, 'ROUNDTRIP_FIELD_CHANGED', `${field}: original=${JSON.stringify(o)}, reconstructed=${JSON.stringify(r)}`);
+    }
+  }
+  // mDrive/jDrive/powerPlant are now derived from drives — expect them to sync
+  const derivedFlat = ['mDrive', 'jDrive', 'powerPlant'];
+  for (const field of derivedFlat) {
+    const o = original[field];
+    const r = reconstructed[field];
+    if (o !== r) {
+      recordWarning(original, 'ROUNDTRIP_FLAT_SYNC', `${field}: original=${JSON.stringify(o)}, reconstructed=${JSON.stringify(r)} (derived from drives)`);
     }
   }
 

@@ -8,8 +8,7 @@ export function exportShipsToJson(ships: ShipDesign[]): string {
   return JSON.stringify(ships, null, 2);
 }
 
-export function downloadJson(data: string, filename: string) {
-  const blob = new Blob([data], { type: 'application/json' });
+export function downloadBlob(blob: Blob, filename: string) {
   const url = URL.createObjectURL(blob);
   const a = document.createElement('a');
   a.href = url;
@@ -18,6 +17,11 @@ export function downloadJson(data: string, filename: string) {
   a.click();
   document.body.removeChild(a);
   URL.revokeObjectURL(url);
+}
+
+export function downloadJson(data: string, filename: string) {
+  const blob = new Blob([data], { type: 'application/json' });
+  downloadBlob(blob, filename);
 }
 
 export async function importJsonFile(file: File): Promise<unknown> {

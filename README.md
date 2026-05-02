@@ -20,8 +20,10 @@ https://pages.gi7b.org/gi7b/ce-shipgen/
 | **M2: Settings & Data Tables** | JSON editor + spreadsheet view for all 13 ship component tables, rule toggles (CE / Mneme / custom mix) | ✅ Complete |
 | **M2.5: Install UX & Settings System** | PWA install prompt + "Installed" badge (FR-021), auto-save table edits (FR-022), input sanitisation (FR-023), named settings snapshots save/load/export/import (FR-024), GitHub Actions CI/CD pipeline (FR-025) | ✅ Complete |
 | **M2.6: Installed Version Control** | Build-time `version.json` generation (FR-026a), version display in Settings (FR-026b), SW-based update detection — never forced (FR-026c), changelog viewer (FR-026d), user-controlled update via `updateServiceWorker` (FR-026e), offline guard (FR-026h), `registerType: prompt` SW integration (FR-026i), permanent Updating Instructions section in Settings (FR-026j) | ✅ Complete |
-| **M2.7: Tables In Play** | Active table selector per component type (FR-027a–d). Settings → "Tables In Play" shows all 13 component types with a dropdown to switch between built-in default and any custom tables. Feeds directly into M3 — the design wizard always reads from the active table, never hardcoded defaults. | 🎯 Current |
-| **M3.1: Hull & Foundation** | Steps 1–3: Hull selection (18 sizes, auto-calc HP/SP/hardpoints), Configuration (Standard / Distributed / Close Structure), Armor (tonnage = hull × % × config multiplier). Plus constraint display for Steps 4–6: valid M-Drive, J-Drive, and Power Plant letter ranges derived from hull tonnage. | ⏳ Blocked on M2.7 |
+| **M2.7: Tables In Play** | Active table selector per component type (FR-027a–d). Settings → "Tables In Play" shows all 13 component types with a dropdown to switch between built-in default and any custom tables. Feeds directly into M3 — the design wizard always reads from the active table, never hardcoded defaults. | ✅ Complete |
+| **M2.8: Ship Library Integrity** | Merged-ship fix, vehicle filtering, supplies→cargo, over-tonnage fixes, 6 empty SRD ships rebuilt, pushCapacity added to all 40 ships | ✅ Complete |
+| **M2.9: Engine Correctness** | Drive performance formula replaced with Excel lookup table (BG8:CQ53). Fixed ~50% incorrect thrust values on 19 of 40 ships. Corrected tender max-hull capacities (B=400, F=1200, etc.). | ✅ Complete |
+| **M3.1: Hull & Foundation** | Steps 1–3: Hull selection (18 sizes, auto-calc HP/SP/hardpoints), Configuration (Standard / Distributed / Close Structure), Armor (tonnage = hull × % × config multiplier). Plus constraint display for Steps 4–6: valid M-Drive, J-Drive, and Power Plant letter ranges derived from hull tonnage. | 🎯 Current |
 | **M3.2: Bridge to Crew** | Steps 7–12: Fuel calculation, Bridge/Cockpit, Computer, Software, Sensors, auto-calculated Crew requirement (summed from component selections, validated against bridge stations) | ⏳ Pending |
 | **M3.3: Fittings to BOQ** | Steps 13–19: Accommodations, Features, Turrets/Bays/Screens, Weapons, Vehicles, Cargo, Cost Summary. Key output: BOQ (Bill of Quantities) — full component breakdown with tonnage and cost per item | ⏳ Pending |
 | **M4: Persistence & Export** | Ship library with save/load/delete, JSON / CSV / text / print export, common ship templates | ⏳ Pending |
@@ -287,8 +289,13 @@ You are a Game Master trying to manage all the ships in your setting and accommo
 - **📥 Install Prompt** - "Install App" button with "Installed" badge when running standalone
 - **📸 Settings Snapshots** - Save and share custom rule configurations
 
-### In Progress (Milestone 2.6)
-- **🔄 Version Control** - User-controlled updates with rollback capability
+### Recently Completed (Milestone 2.9)
+- **🚀 Drive Performance Fix** - Replaced wrong formula with Excel lookup table; thrust values now correct for all 40 ships
+- **📦 Ship Library Integrity** - Split merged ships, filtered vehicles, fixed over-tonnage, rebuilt 6 empty SRD ships
+- **⚔️ Weapon Calibration** - Monte Carlo combat simulation framework for evaluating weapon effectiveness
+
+### In Progress (Milestone 3.1)
+- **🏗️ Hull & Foundation** - 19-step design wizard Steps 1–3: hull selection, configuration, armor
 
 ### Core Capabilities
 - **19-Step Ship Design** following Cepheus Engine Chapter 8 rules

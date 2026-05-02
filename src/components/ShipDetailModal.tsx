@@ -1,8 +1,9 @@
 import { BOQView } from './BOQView';
 import { MnemeCombatPanel } from './MnemeCombatPanel';
 import { calcHullPoints, calcStructurePoints, calcHardpoints } from '../calculations';
-import { exportShipToFoundryVTT } from '../utils/exportImport';
-import { X, Download, Edit3, Trash2, Gamepad2 } from 'lucide-react';
+import { exportShipToFoundryVTT, downloadBlob } from '../utils/exportImport';
+import { exportShipToDocx } from '../utils/exportDocx';
+import { X, Download, Edit3, Trash2, Gamepad2, FileText } from 'lucide-react';
 import { colors, fonts } from './shipgen/theme';
 import { ShLabel, ShNum } from './shipgen/primitives';
 import type { ShipDesign } from '../types';
@@ -71,6 +72,15 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
             {iconBtn(() => onEdit(ship), 'Edit', <Edit3 className="w-4 h-4" />, colors.glow)}
             {iconBtn(() => onExport(ship), 'Export JSON', <Download className="w-4 h-4" />, colors.good)}
+            {iconBtn(async () => {
+              try {
+                const blob = await exportShipToDocx(ship);
+                downloadBlob(blob, `${ship.name.replace(/[^a-zA-Z0-9]/g, '_')}.docx`);
+              } catch (err) {
+                console.error('Docx export failed:', err);
+                alert('Failed to export Docx. See console for details.');
+              }
+            }, 'Export Docx', <FileText className="w-4 h-4" />, colors.glow)},
             {iconBtn(() => {
               const data = exportShipToFoundryVTT(ship);
               const blob = new Blob([data], { type: 'application/json' });

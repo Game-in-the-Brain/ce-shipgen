@@ -136,6 +136,7 @@ def convert_ship(raw):
     # Accumulators
     total_cost = 0.0
     used_dtons = 0.0
+    drive_order = 0  # Preserves original drives[] ordering
 
     for c in components:
         section = (c.get("section") or "").strip()
@@ -200,9 +201,11 @@ def convert_ship(raw):
 
         # ── M-DRIVE ──
         elif section == "M-DRIVE TL9+":
-            ship["mDrive"] = module
+            if not ship["mDrive"]:
+                ship["mDrive"] = module
             total_cost += cost
             used_dtons += dt
+            drive_order += 1
             ship["drives"].append({
                 "id": f"mdrive-{module.lower()}",
                 "name": f"M-Drive {module}",
@@ -213,6 +216,7 @@ def convert_ship(raw):
                 "qty": qty,
                 "performance": 0,
                 "tl": tl,
+                "order": drive_order,
             })
             ship["components"].append({
                 "section": "M-Drive",
@@ -224,7 +228,8 @@ def convert_ship(raw):
 
         # ── J-DRIVE ──
         elif section == "J-DRIVE TL9+":
-            ship["jDrive"] = module
+            if not ship["jDrive"]:
+                ship["jDrive"] = module
             total_cost += cost
             used_dtons += dt
             # Infer jump number from drive letter
@@ -234,6 +239,7 @@ def convert_ship(raw):
                 jump = letters.index(module.upper()) + 1
             except ValueError:
                 pass
+            drive_order += 1
             ship["drives"].append({
                 "id": f"jdrive-{module.lower()}",
                 "name": f"J-Drive {module}",
@@ -244,6 +250,7 @@ def convert_ship(raw):
                 "qty": qty,
                 "performance": jump,
                 "tl": tl,
+                "order": drive_order,
             })
             ship["components"].append({
                 "section": "J-Drive",
@@ -255,9 +262,11 @@ def convert_ship(raw):
 
         # ── FUSION PLANT / POWER PLANT ──
         elif section in ("FUSION PLANT", "POWER PLANT"):
-            ship["powerPlant"] = module
+            if not ship["powerPlant"]:
+                ship["powerPlant"] = module
             total_cost += cost
             used_dtons += dt
+            drive_order += 1
             ship["drives"].append({
                 "id": f"pp-{module.lower()}",
                 "name": f"Fusion Plant {module}",
@@ -268,6 +277,7 @@ def convert_ship(raw):
                 "qty": qty,
                 "performance": 0,
                 "tl": tl,
+                "order": drive_order,
             })
             ship["components"].append({
                 "section": "Power Plant",
@@ -508,9 +518,11 @@ def convert_ship(raw):
             })
 
         # ── SUPPLIES ──
+        # Supplies are stored in cargo space per CE RAW; they do not consume
+        # additional hull volume beyond the cargo allocation.
         elif section == "SUPPLIES":
             total_cost += cost
-            used_dtons += dt
+            # Do NOT add to used_dtons — supplies are cargo
             ship["supplies"].append({
                 "id": f"sup-{module.lower().replace(' ', '-').replace(',', '')}",
                 "name": module,
@@ -519,12 +531,15 @@ def convert_ship(raw):
                 "qty": qty,
                 "tl": tl,
             })
+            # Show in BOQ with original dtons for reference, but volume is
+            # accounted for under cargo, not as separate used space.
             ship["components"].append({
                 "section": "Supplies",
                 "module": module,
                 "dtons": dt,
                 "cost": cost,
                 "qty": qty,
+                "notes": "Stored in cargo space",
             })
 
         # ── HULL OPTIONS ──
@@ -562,10 +577,17 @@ def main():
 
     print(f"Converting {len(raw_ships)} ships ...")
     converted = []
+    skipped = []
     for raw in raw_ships:
         ship = convert_ship(raw)
+        # Skip vehicle-unit entries (carried craft / bay records), not ships
+        if ship["name"].upper().startswith("VEHICLES"):
+            skipped.append(ship["name"])
+            continue
         converted.append(ship)
         print(f"  ✅ {ship['name']} ({ship['hullDtons']} DT, {len(ship['components'])} components)")
+    if skipped:
+        print(f"\n  ⏭️  Skipped {len(skipped)} vehicle-unit entries: {', '.join(skipped)}")
 
     OUTPUT.parent.mkdir(parents=True, exist_ok=True)
     with open(OUTPUT, "w") as f:
