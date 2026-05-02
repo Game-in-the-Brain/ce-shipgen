@@ -2,5 +2,18 @@
   "version": "0.04",
   "name": "ce-shipgen",
   "date": "2026-05-02",
-  "buildTime": "2026-05-02T10:11:17.497Z"
+  "buildTime": "2026-05-02T10:56:30.158Z",
+  "changelog": [
+    "CRITICAL FIX: Drive performance formula replaced with Excel lookup table — thrust values were ~50% too low for 19 of 40 ships",
+    "Extracted complete drive performance table from Excel RAW SHIP TABLES (BG8:CQ53) — covers hulls 10–5000 DT",
+    "Fixed tender push capacity calculations — e.g., Drive B max hull = 400 DT (was 200 DT)",
+    "Merged ships fix: split 12 merged ships using HULL boundary detection",
+    "Filtered vehicle entries from library (3 VEHICLES: records removed)",
+    "Supplies folded into cargo space for ≤100 DT ships — fixed 11 over-tonnage ships",
+    "Rebuilt 6 empty SRD ships from CE formulas (Tender, Yacht, Research Vessel, Asteroid Miner, Habitat Ring, Survey Vessel)",
+    "Added pushCapacity field to all 40 ships",
+    "Weapon calibration framework with Monte Carlo combat simulation",
+    "Updated CE-Chapter-8-Ship-Design-and-Construction.md with complete drive tables",
+    "Created MNEME-IMPROVEMENTS.md backlog for realistic enhancements"
+  ]
 }
