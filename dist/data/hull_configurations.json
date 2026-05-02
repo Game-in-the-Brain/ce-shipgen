@@ -1,0 +1,17 @@
+[
+  {
+    "Configuration": "Distributed",
+    "Hull Cost Modifier": -0.1,
+    "Notes": "Cannot mount fuel scoops. Atmospheric operations suffer -4 DM (failed checks inflict 2D6 damage)."
+  },
+  {
+    "Configuration": "Standard",
+    "Hull Cost Modifier": 0.0,
+    "Notes": "Atmospheric operations suffer a -2 DM. Can Mount Fuel Scoops but DM-2."
+  },
+  {
+    "Configuration": "Streamlined",
+    "Hull Cost Modifier": "0.1",
+    "Notes": "No penalty in Atmosphere Operations."
+  }
+]

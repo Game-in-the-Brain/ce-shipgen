@@ -1,0 +1,32 @@
+[
+  {
+    "col_0": "Middle Passage",
+    "per Day": 90.0,
+    "Income/Jump": 6500.0
+  },
+  {
+    "col_0": "High Passage",
+    "per Day": 120.0,
+    "Income/Jump": 8000.0
+  },
+  {
+    "col_0": "Low Passage",
+    "per Day": 3.333333333,
+    "Income/Jump": 1000.0
+  },
+  {
+    "col_0": "Hibernation",
+    "per Day": 10,
+    "Income/Jump": 1000.0
+  },
+  {
+    "col_0": "Freight",
+    "per Day": 0.0,
+    "Income/Jump": 1000.0
+  },
+  {
+    "col_0": "Mining",
+    "per Day": 0.0,
+    "Income/Jump": 2000.0
+  }
+]

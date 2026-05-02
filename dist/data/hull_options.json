@@ -1,0 +1,44 @@
+[
+  {
+    "Other Options": "Reflec TL 10",
+    "TL": 10.0,
+    "Cost per Dton of Hull": 100000.0,
+    "col_3": "Reflec coating on the hull increases the ship\u2019s armor against lasers by 3. Adding Reflec costs MCr0.1 per ton of hull and can only be added once."
+  },
+  {
+    "Other Options": "None",
+    "TL": 0.0,
+    "Cost per Dton of Hull": 0.0,
+    "col_3": null
+  },
+  {
+    "Other Options": "Self-Sealing TL 9",
+    "TL": 9.0,
+    "Cost per Dton of Hull": 10000.0,
+    "col_3": "A self-sealing hull automatically repairs minor breaches such as micrometeoroid impacts, and prevents hull hits from leading to explosive decompression. It costs MCr0.01 per ton of hull."
+  },
+  {
+    "Other Options": "Stealth TL 9",
+    "TL": 9.0,
+    "Cost per Dton of Hull": 100000.0,
+    "col_3": "Stealth armor applies a dice modifier (DM) penalty to the party attempting to detect the stealthed ship. The DM penalty is calculated as twice the difference in technology level (TL) between the sensor ship and the stealth ship, plus an additional 2. For example, if a TL9 sensor ship is trying to detect a stealth ship with TL10 armor, the DM penalty would be -4"
+  },
+  {
+    "Other Options": "Stealth TL 10",
+    "TL": 10.0,
+    "Cost per Dton of Hull": 1000000.0,
+    "col_3": "Stealth armor applies a dice modifier (DM) penalty to the party attempting to detect the stealthed ship. The DM penalty is calculated as twice the difference in technology level (TL) between the sensor ship and the stealth ship, plus an additional 2. For example, if a TL9 sensor ship is trying to detect a stealth ship with TL10 armor, the DM penalty would be -4"
+  },
+  {
+    "Other Options": "Stealth TL 11",
+    "TL": 11.0,
+    "Cost per Dton of Hull": 10000000.0,
+    "col_3": "Stealth armor applies a dice modifier (DM) penalty to the party attempting to detect the stealthed ship. The DM penalty is calculated as twice the difference in technology level (TL) between the sensor ship and the stealth ship, plus an additional 2. For example, if a TL9 sensor ship is trying to detect a stealth ship with TL10 armor, the DM penalty would be -4"
+  },
+  {
+    "Other Options": "Stealth TL 12",
+    "TL": 12.0,
+    "Cost per Dton of Hull": 100000000.0,
+    "col_3": "Stealth armor applies a dice modifier (DM) penalty to the party attempting to detect the stealthed ship. The DM penalty is calculated as twice the difference in technology level (TL) between the sensor ship and the stealth ship, plus an additional 2. For example, if a TL9 sensor ship is trying to detect a stealth ship with TL10 armor, the DM penalty would be -4"
+  }
+]
