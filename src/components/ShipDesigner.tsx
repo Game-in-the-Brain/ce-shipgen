@@ -23,6 +23,14 @@ import type { ShipComponent, ShipDesign, ChildItem, BridgeItem, ComputerItem, So
 
 // ─── Helpers ───
 
+const DRIVE_LETTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+
+/** Extract drive rating index from standard ('B') or small craft ('sB') codes */
+function driveRatingIndex(driveCode: string): number {
+  const clean = driveCode.toUpperCase().replace(/^S/, '');
+  return DRIVE_LETTERS.indexOf(clean);
+}
+
 function generateShipName(hullDtons: number): string {
   const now = new Date();
   const yy = String(now.getFullYear()).slice(2);
@@ -79,6 +87,12 @@ export function ShipDesigner() {
   // ─── Basic Info ───
   const [name, setName] = useState('');
   const [tl, setTl] = useState(9);
+
+  // ─── Library Filters ───
+  const [libTlFilter, setLibTlFilter] = useState<string>('');
+  const [libMinDtons, setLibMinDtons] = useState<string>('');
+  const [libMaxDtons, setLibMaxDtons] = useState<string>('');
+  const [libTagFilter, setLibTagFilter] = useState<string>('');
 
   // ─── Hull & Config ───
   const [hullCode, setHullCode] = useState('');
@@ -311,14 +325,17 @@ export function ShipDesigner() {
       const rating = (nameChanged && !ratingChanged && row.rating === prot) || row.rating === undefined || row.rating === 0
         ? prot
         : (row.rating || 1);
-      const efficiency = prot > 0 ? pct / prot : 0.025;
+      // Tonnage: always 5% of hull per full protection increment (rating/prot steps)
+      const tonsEfficiency = prot > 0 ? 0.05 / prot : 0.025;
+      // Cost: varies by armor type (pct per full protection increment)
+      const costEfficiency = prot > 0 ? pct / prot : 0.025;
       return {
         ...row,
         tl: Number(a['TL'] || 7),
         rating,
         notes: `Armor-${rating}`,
-        dtons: calcArmorTonnage(hullDtons, efficiency * rating, 1, 1.0),
-        cost: calcArmorCost(hullCost, efficiency * rating, 1),
+        dtons: calcArmorTonnage(hullDtons, tonsEfficiency * rating, 1, 1.0),
+        cost: calcArmorCost(hullCost, costEfficiency * rating, 1),
         qty: 1,
       };
     });
@@ -371,6 +388,30 @@ export function ShipDesigner() {
       commandRows.length,
     );
   }, [hullDtons, mDrive, mDriveRows, powerPlant, ppRows, jDrive, jDriveRows, jumpParsecs, sensors, sensorRows, selectedWeapons, weaponMountRows, staterooms, lifeSupportRows, lowBerths, commandRows]);
+
+  // ─── Filtered Library Ships ───
+  const filteredLibraryShips = useMemo(() => {
+    const min = libMinDtons ? Number(libMinDtons) : 0;
+    const max = libMaxDtons ? Number(libMaxDtons) : Infinity;
+    return ships.filter(ship => {
+      if (libTlFilter && String(ship.tl) !== libTlFilter) return false;
+      if (ship.hullDtons < min || ship.hullDtons > max) return false;
+      if (libTagFilter && !(ship.tags || []).includes(libTagFilter)) return false;
+      return true;
+    });
+  }, [ships, libTlFilter, libMinDtons, libMaxDtons, libTagFilter]);
+
+  const libUniqueTls = useMemo(() => {
+    const tls = new Set<number>();
+    ships.forEach(s => tls.add(s.tl));
+    return Array.from(tls).sort((a, b) => a - b);
+  }, [ships]);
+
+  const libUniqueTags = useMemo(() => {
+    const tags = new Set<string>();
+    ships.forEach(s => (s.tags || []).forEach(t => tags.add(t)));
+    return Array.from(tags).sort();
+  }, [ships]);
 
   // ─── Legacy Bridge ───
   const selectedBridge = bridges.find((b: Record<string, unknown>) => String(b['CONTROLS/BRidge'] || b['Bridge Size'] || b['WEAPONS']).includes(bridge));
@@ -448,20 +489,12 @@ export function ShipDesigner() {
     ? lifeSupportRows.reduce((s, r) => s + r.cost * r.qty, 0)
     : stateroomCost + lowBerthCost;
 
-  // ─── Weapon allocation (child table OR legacy fallback) ───
-  const weaponAllocated = weaponMountRows.length > 0
-    ? weaponMountRows.reduce((s, r) => s + r.dtons * r.qty, 0)
-    : weaponComponents.reduce((s, c) => s + c.dtons, 0);
+  // ─── Weapon cost (tonnage excluded — weapons are contents of mounts) ───
   const weaponCostAllocated = weaponMountRows.length > 0
     ? weaponMountRows.reduce((s, r) => s + r.cost * r.qty, 0)
     : weaponComponents.reduce((s, c) => s + c.cost, 0);
 
-  // ─── Module allocation (child table + legacy toggles) ───
-  const moduleAllocated = moduleComponents.reduce((s, c) => s + c.dtons, 0) +
-    selectedModules.reduce((s, m) => {
-      const mod = modules.find((mod: Record<string, unknown>) => String(mod['MODULES'] || mod['Module']) === m.id);
-      return s + (mod ? Number(mod['DTONS'] || mod['Dtons'] || 0) * m.qty : 0);
-    }, 0);
+  // ─── Module cost (tonnage excluded — modules are fittings/contents) ───
   const moduleCostAllocated = moduleComponents.reduce((s, c) => s + c.cost, 0) +
     selectedModules.reduce((s, m) => {
       const mod = modules.find((mod: Record<string, unknown>) => String(mod['MODULES'] || mod['Module']) === m.id);
@@ -469,12 +502,19 @@ export function ShipDesigner() {
     }, 0);
 
   // ─── Allocated Tons ───
+  // All installed components consume hull DT: structural, weapons, modules,
+  // and cargo space. Supplies are stored in cargo and do not count separately.
+  const weaponTonsAllocated = weaponMountRows.length > 0
+    ? weaponMountRows.reduce((s, r) => s + r.dtons * r.qty, 0)
+    : weaponComponents.reduce((s, c) => s + c.dtons, 0);
+  const moduleTonsAllocated = moduleComponents.reduce((s, c) => s + c.dtons, 0);
+
   const allocatedTons = (
     armorTons + mDriveAllocated + jDriveAllocated + ppAllocated + bridgeAllocated + totalFuel +
-    lifeSupportAllocated + moduleAllocated + weaponAllocated +
+    lifeSupportAllocated +
     computerRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
     sensorRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
-    supplyRows.reduce((s, r) => s + r.dtons * r.qty, 0)
+    weaponTonsAllocated + moduleTonsAllocated + cargo
   );
 
   const availableDtons = hullDtons - allocatedTons;
@@ -531,19 +571,6 @@ export function ShipDesigner() {
     }
     computerRows.forEach(r => list.push({ section: 'Computer', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
     sensorRows.forEach(r => list.push({ section: 'Sensors', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
-    // Modules: child table + legacy toggles
-    list.push(...moduleComponents);
-    selectedModules.forEach(m => {
-      const mod = modules.find((mod: Record<string, unknown>) => String(mod['MODULES'] || mod['Module']) === m.id);
-      if (mod) list.push({ section: 'Module', module: m.id, dtons: Number(mod['DTONS'] || mod['Dtons'] || 0) * m.qty, cost: Number(mod['COST'] || mod['Cost'] || 0) * m.qty, qty: m.qty });
-    });
-    // Weapons: child table OR legacy
-    if (weaponMountRows.length > 0) {
-      weaponMountRows.forEach(r => { if (r.qty > 0) list.push({ section: 'Weapon', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }); });
-    } else {
-      list.push(...weaponComponents);
-    }
-    supplyRows.forEach(r => list.push({ section: 'Supplies', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
     if (cargo > 0) list.push({ section: 'Cargo', module: 'Cargo Hold', dtons: cargo, cost: 0 });
     if (crewReqs) {
       list.push({ section: 'Crew', module: `Minimum Crew (${crewReqs.totalMinimum})`, dtons: 0, cost: 0 });
@@ -568,13 +595,19 @@ export function ShipDesigner() {
       bridge, computer, software: softwareList,
       sensors, staterooms, lowBerths,
       crew: [],
+      drives: [
+        ...mDriveRows.map((r, i) => ({ ...r, type: 'thrust' as const, driveCode: r.name, order: i })),
+        ...jDriveRows.map((r, i) => ({ ...r, type: 'jump' as const, driveCode: r.name, order: i + 1000 })),
+        ...ppRows.map((r, i) => ({ ...r, type: 'powerPlant' as const, driveCode: r.name, order: i + 2000 })),
+      ],
+      weaponMounts: weaponMountRows as WeaponMountItem[],
       modules: moduleComponents,
       weapons: weaponComponents,
       cargo, components, totalCost, availableDtons,
       createdAt: currentShip?.createdAt || new Date().toISOString(),
     };
     return validateShip(design);
-  }, [name, tl, hullCode, hullDtons, config, armorRows, mDrive, jDrive, mDriveRows, jDriveRows, powerPlant, bridge, computer, softwareList, sensors, staterooms, lowBerths, moduleComponents, weaponComponents, cargo, components, totalCost, availableDtons, currentShip]);
+  }, [name, tl, hullCode, hullDtons, config, armorRows, mDrive, jDrive, mDriveRows, jDriveRows, powerPlant, ppRows, bridge, computer, softwareList, sensors, staterooms, lowBerths, moduleComponents, weaponComponents, weaponMountRows, cargo, components, totalCost, availableDtons, currentShip]);
 
   // ─── Actions ───
   const saveShip = () => {
@@ -878,11 +911,111 @@ export function ShipDesigner() {
           </div>
         </div>
 
-        {/* Load from Library */}
+        {/* Load from Library with Filters */}
         {ships.length > 0 && (
           <div style={{ marginBottom: 14 }}>
+            <div style={{ display: 'flex', alignItems: 'center', gap: 8, marginBottom: 8 }}>
+              <ShLabel size={12} dim style={{ letterSpacing: '0.14em' }}>LOAD FROM LIBRARY</ShLabel>
+              <ShData size={11} dim>{filteredLibraryShips.length} of {ships.length}</ShData>
+            </div>
+
+            {/* Filter Controls */}
+            <div style={{ display: 'flex', gap: 8, marginBottom: 8, flexWrap: 'wrap' }}>
+              <select
+                value={libTlFilter}
+                onChange={(e) => setLibTlFilter(e.target.value)}
+                style={{
+                  background: colors.panelAlt,
+                  border: `1px solid ${colors.hair}`,
+                  color: colors.ink,
+                  fontFamily: fonts.mono,
+                  fontSize: 12,
+                  padding: '6px 8px',
+                  borderRadius: 4,
+                }}
+              >
+                <option value="">All TL</option>
+                {libUniqueTls.map(tl => (
+                  <option key={tl} value={String(tl)}>TL {tl}</option>
+                ))}
+              </select>
+
+              <select
+                value={libTagFilter}
+                onChange={(e) => setLibTagFilter(e.target.value)}
+                style={{
+                  background: colors.panelAlt,
+                  border: `1px solid ${colors.hair}`,
+                  color: colors.ink,
+                  fontFamily: fonts.mono,
+                  fontSize: 12,
+                  padding: '6px 8px',
+                  borderRadius: 4,
+                }}
+              >
+                <option value="">All Tags</option>
+                {libUniqueTags.map(tag => (
+                  <option key={tag} value={tag}>{tag}</option>
+                ))}
+              </select>
+
+              <input
+                type="number"
+                placeholder="Min DT"
+                value={libMinDtons}
+                onChange={(e) => setLibMinDtons(e.target.value)}
+                style={{
+                  background: colors.panelAlt,
+                  border: `1px solid ${colors.hair}`,
+                  color: colors.ink,
+                  fontFamily: fonts.mono,
+                  fontSize: 12,
+                  padding: '6px 8px',
+                  borderRadius: 4,
+                  width: 70,
+                }}
+              />
+              <input
+                type="number"
+                placeholder="Max DT"
+                value={libMaxDtons}
+                onChange={(e) => setLibMaxDtons(e.target.value)}
+                style={{
+                  background: colors.panelAlt,
+                  border: `1px solid ${colors.hair}`,
+                  color: colors.ink,
+                  fontFamily: fonts.mono,
+                  fontSize: 12,
+                  padding: '6px 8px',
+                  borderRadius: 4,
+                  width: 70,
+                }}
+              />
+
+              {(libTlFilter || libTagFilter || libMinDtons || libMaxDtons) && (
+                <button
+                  onClick={() => {
+                    setLibTlFilter('');
+                    setLibTagFilter('');
+                    setLibMinDtons('');
+                    setLibMaxDtons('');
+                  }}
+                  style={{
+                    background: 'transparent',
+                    border: 'none',
+                    color: colors.inkDim,
+                    fontFamily: fonts.mono,
+                    fontSize: 11,
+                    cursor: 'pointer',
+                  }}
+                >
+                  Clear
+                </button>
+              )}
+            </div>
+
             <ShField
-              label="LOAD FROM LIBRARY"
+              label=""
               value=""
               onChange={(v) => {
                 if (!v) return;
@@ -891,7 +1024,7 @@ export function ShipDesigner() {
               }}
               options={[
                 { value: '', label: '— SELECT SHIP —' },
-                ...ships.map((ship) => ({ value: ship.id, label: `${ship.name} · ${fmtTons(ship.hullDtons)} · TL${ship.tl}` })),
+                ...filteredLibraryShips.map((ship) => ({ value: ship.id, label: `${ship.name} · ${fmtTons(ship.hullDtons)} · TL${ship.tl}` })),
               ]}
             />
           </div>
@@ -1045,15 +1178,16 @@ export function ShipDesigner() {
               const a = armors[0];
               const prot = a ? Number(a['Prot'] || 0) : 2;
               const pct = a ? Number(a['Cost Factor'] || 0.05) : 0.05;
-              const efficiency = prot > 0 ? pct / prot : 0.025;
+              const tonsEfficiency = prot > 0 ? 0.05 / prot : 0.025;
+              const costEfficiency = prot > 0 ? pct / prot : 0.025;
               return {
                 id: `armor-${Date.now()}`,
                 name: a ? String(a['Armor Type']) : 'Titanium Steel TL7+',
                 tl: a ? Number(a['TL'] || 7) : 7,
                 rating: prot,
                 notes: `Armor-${prot}`,
-                dtons: calcArmorTonnage(hullDtons, efficiency * prot, 1, 1.0),
-                cost: calcArmorCost(hullCost, efficiency * prot, 1),
+                dtons: calcArmorTonnage(hullDtons, tonsEfficiency * prot, 1, 1.0),
+                cost: calcArmorCost(hullCost, costEfficiency * prot, 1),
                 qty: 1,
               };
             }}
@@ -1075,7 +1209,8 @@ export function ShipDesigner() {
                 if (a) {
                   const pct = Number(a['Cost Factor'] || 0.05);
                   const prot = Number(a['Prot'] || a['Protection'] || 0);
-                  const efficiency = prot > 0 ? pct / prot : 0.025;
+                  const tonsEfficiency = prot > 0 ? 0.05 / prot : 0.025;
+                  const costEfficiency = prot > 0 ? pct / prot : 0.025;
                   const rating = prot || 2;
                   setArmorRows(prev => [...prev, {
                     id: `armor-${Date.now()}`,
@@ -1083,8 +1218,8 @@ export function ShipDesigner() {
                     tl: Number(a['TL'] || 7),
                     rating,
                     notes: `Armor-${rating}`,
-                    dtons: calcArmorTonnage(hullDtons, efficiency * rating, 1, 1.0),
-                    cost: calcArmorCost(hullCost, efficiency * rating, 1),
+                    dtons: calcArmorTonnage(hullDtons, tonsEfficiency * rating, 1, 1.0),
+                    cost: calcArmorCost(hullCost, costEfficiency * rating, 1),
                     qty: 1,
                   }]);
                 }
@@ -1215,20 +1350,19 @@ export function ShipDesigner() {
 
             {/* Power Plant sizing hint */}
             {(() => {
-              const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
               const maxM = mDriveRows.length > 0
-                ? Math.max(...mDriveRows.map(r => letters.indexOf(r.name.toUpperCase())).filter(i => i >= 0))
-                : letters.indexOf(mDrive.toUpperCase());
+                ? Math.max(...mDriveRows.map(r => driveRatingIndex(r.name)).filter(i => i >= 0))
+                : driveRatingIndex(mDrive);
               const maxJ = jDriveRows.length > 0
-                ? Math.max(...jDriveRows.map(r => letters.indexOf(r.name.toUpperCase())).filter(i => i >= 0))
-                : letters.indexOf(jDrive.toUpperCase());
+                ? Math.max(...jDriveRows.map(r => driveRatingIndex(r.name)).filter(i => i >= 0))
+                : driveRatingIndex(jDrive);
               const maxIdx = Math.max(maxM, maxJ);
-              const minPP = maxIdx >= 0 ? letters[maxIdx] : '';
+              const minPP = maxIdx >= 0 ? DRIVE_LETTERS[maxIdx] : '';
               const maxPP = ppRows.length > 0
-                ? Math.max(...ppRows.map(r => letters.indexOf(r.name.toUpperCase())).filter(i => i >= 0))
-                : letters.indexOf(powerPlant.toUpperCase());
+                ? Math.max(...ppRows.map(r => driveRatingIndex(r.name)).filter(i => i >= 0))
+                : driveRatingIndex(powerPlant);
               const hasDrives = (mDriveRows.length > 0 || mDrive) || (jDriveRows.length > 0 || jDrive);
-              const ppOK = maxIdx < 0 || (ppRows.length > 0 ? maxPP >= maxIdx : letters.indexOf(powerPlant.toUpperCase()) >= maxIdx);
+              const ppOK = maxIdx < 0 || (ppRows.length > 0 ? maxPP >= maxIdx : driveRatingIndex(powerPlant) >= maxIdx);
               return hasDrives && minPP ? (
                 <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
                   {ppOK
@@ -1864,8 +1998,14 @@ export function ShipDesigner() {
         {/* Ship Library Quick List */}
         {ships.length > 0 && (
           <ShPanel no="SHEET 04" title="Ship Library" kw="LIB">
+            {filteredLibraryShips.length !== ships.length && (
+              <div style={{ marginBottom: 8, fontSize: 11, color: colors.inkDim, fontFamily: fonts.mono }}>
+                Showing {filteredLibraryShips.length} of {ships.length}
+                {(libTlFilter || libTagFilter || libMinDtons || libMaxDtons) && ' (filtered)'}
+              </div>
+            )}
             <div style={{ display: 'flex', flexDirection: 'column', gap: 8, maxHeight: 280, overflowY: 'auto' }}>
-              {ships.map((ship) => (
+              {filteredLibraryShips.map((ship) => (
                 <div key={ship.id} style={{
                   display: 'flex', alignItems: 'center', justifyContent: 'space-between',
                   padding: '8px 10px',

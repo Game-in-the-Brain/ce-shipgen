@@ -1,5 +1,12 @@
 import type { ShipDesign, ValidationResult, ValidationError } from '../types';
-import { getMinPowerPlantLetter } from '../calculations';
+
+const LETTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+
+/** Extract drive rating letter from standard ('B') or small craft ('sB') codes */
+function driveRatingIndex(driveCode: string): number {
+  const clean = driveCode.toUpperCase().replace(/^S/, '');
+  return LETTERS.indexOf(clean);
+}
 
 export function validateShip(design: ShipDesign): ValidationResult {
   const hardErrors: ValidationError[] = [];
@@ -8,7 +15,13 @@ export function validateShip(design: ShipDesign): ValidationResult {
   // ─── Hard Constraints ───
 
   // 1. Tonnage used ≤ Hull Dtons
-  const usedTons = design.components.reduce((s, c) => s + c.dtons, 0);
+  // NOTE: Modules and weapons are stored outside components array (they are
+  // fittings/contents, not structural hull items), but they still consume space.
+  const componentTons = design.components.reduce((s, c) => s + c.dtons, 0);
+  const moduleTons = (design.modules || []).reduce((s, m) => s + (m.dtons || 0), 0);
+  const weaponTons = (design.weapons || []).reduce((s, w) => s + (w.dtons || 0), 0);
+  const mountTons = (design.weaponMounts || []).reduce((s, w) => s + ((w.dtons || 0) * (w.qty || 1)), 0);
+  const usedTons = componentTons + moduleTons + weaponTons + mountTons;
   if (usedTons > design.hullDtons) {
     hardErrors.push({
       code: 'TONNAGE_OVERFLOW',
@@ -19,19 +32,31 @@ export function validateShip(design: ShipDesign): ValidationResult {
   }
 
   // 2. Power Plant ≥ max(M-Drive, J-Drive) letter
-  if (design.mDrive || design.jDrive) {
-    const minPP = getMinPowerPlantLetter(design.mDrive || '', design.jDrive || '');
-    const letters = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
-    const ppIndex = letters.indexOf((design.powerPlant || '').toUpperCase());
-    const minIndex = letters.indexOf(minPP);
-    if (minPP && (ppIndex < 0 || ppIndex < minIndex)) {
-      hardErrors.push({
-        code: 'POWER_PLANT_TOO_SMALL',
-        message: `Power Plant ${design.powerPlant} is too small. Minimum required: ${minPP}`,
-        section: 'Power Plant',
-        severity: 'hard',
-      });
-    }
+  // Use drives[] array (authoritative) with fallback to legacy flat fields
+  const thrustDrives = (design.drives || []).filter(d => d.type === 'thrust');
+  const jumpDrives = (design.drives || []).filter(d => d.type === 'jump');
+  const powerPlants = (design.drives || []).filter(d => d.type === 'powerPlant');
+
+  const maxThrustIndex = thrustDrives.length > 0
+    ? Math.max(...thrustDrives.map(d => driveRatingIndex(d.driveCode || '')).filter(i => i >= 0))
+    : driveRatingIndex(design.mDrive || '');
+  const maxJumpIndex = jumpDrives.length > 0
+    ? Math.max(...jumpDrives.map(d => driveRatingIndex(d.driveCode || '')).filter(i => i >= 0))
+    : driveRatingIndex(design.jDrive || '');
+  const maxDriveIndex = Math.max(maxThrustIndex, maxJumpIndex);
+  const minPP = maxDriveIndex >= 0 ? LETTERS[maxDriveIndex] : '';
+
+  const maxPPIndex = powerPlants.length > 0
+    ? Math.max(...powerPlants.map(d => driveRatingIndex(d.driveCode || '')).filter(i => i >= 0))
+    : driveRatingIndex(design.powerPlant || '');
+
+  if (minPP && (maxPPIndex < 0 || maxPPIndex < maxDriveIndex)) {
+    hardErrors.push({
+      code: 'POWER_PLANT_TOO_SMALL',
+      message: `Power Plant ${powerPlants[0]?.driveCode || design.powerPlant || 'None'} is too small. Minimum required: ${minPP}`,
+      section: 'Power Plant',
+      severity: 'hard',
+    });
   }
 
   // 3. Hardpoints ≤ floor(Hull/100)

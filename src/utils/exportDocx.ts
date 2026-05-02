@@ -371,13 +371,13 @@ function buildPage2(ship: ShipDesign, ops: ShipOperations): DocxChild[] {
   content.push(bodyText(`TOTAL CAPACITY: ${ship.cargo || 0} DT`));
   content.push(bodyText(`FREIGHT-CONFIGURED: ${ship.cargo || 0} DT`));
 
-  const supplies = (ship.components || []).filter(c => c.section === 'Supplies');
+  const supplies = ship.supplies || [];
   if (supplies.length > 0) {
     content.push(subHeader('SUPPLY INVENTORY'));
     const supHeader = makeHeaderRow(['ITEM', 'TONS', 'COST', 'QTY'], [50, 20, 20, 10]);
     const supRows: TableRow[] = [supHeader];
     for (const s of supplies) {
-      supRows.push(makeDataRow([s.module, String(s.dtons || 0), String(s.cost || 0), String(s.qty || 1)], [50, 20, 20, 10]));
+      supRows.push(makeDataRow([s.name, String((s.dtons || 0) * (s.qty || 1)), String((s.cost || 0) * (s.qty || 1)), String(s.qty || 1)], [50, 20, 20, 10]));
     }
     content.push(borderedTable(supRows, 4));
   }

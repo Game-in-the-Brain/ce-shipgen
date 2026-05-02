@@ -8,6 +8,7 @@ import { TableManager } from './components/TableManager';
 import { ShipDesigner } from './components/ShipDesigner';
 import { ShipLibrary } from './components/ShipLibrary';
 import { VariantGenerator } from './components/VariantGenerator';
+import { EngineeringReference } from './components/EngineeringReference';
 import { colors, fonts } from './components/shipgen/theme';
 
 function AppContent() {
@@ -87,7 +88,7 @@ function AppContent() {
               CE · SHIPGEN
             </div>
             <div style={{ fontFamily: fonts.mono, fontSize: 10, color: colors.inkDim, letterSpacing: '0.12em', marginTop: 2 }}>
-              MAINFRAME · {version ? `v${version}` : 'v0.04'} · {layoutMode === 'phone' ? 'PHONE MODE' : 'DESKTOP'}
+              MAINFRAME · {version ? `v${version}` : 'v0.08'} · {layoutMode === 'phone' ? 'PHONE MODE' : 'DESKTOP'}
             </div>
           </div>
         </div>
@@ -97,6 +98,7 @@ function AppContent() {
           <NavLink to="/design" style={({ isActive }) => isActive ? navActive : navInactive}>Design</NavLink>
           <NavLink to="/library" style={({ isActive }) => isActive ? navActive : navInactive}>Library</NavLink>
           <NavLink to="/variants" style={({ isActive }) => isActive ? navActive : navInactive}>Variants</NavLink>
+          <NavLink to="/engineering" style={({ isActive }) => isActive ? navActive : navInactive}>Engineering</NavLink>
 
           <div style={{ width: 1, height: 20, background: colors.hair, margin: '0 4px' }} />
 
@@ -141,6 +143,7 @@ function AppContent() {
           <Route path="/design" element={<ShipDesigner />} />
           <Route path="/library" element={<ShipLibrary />} />
           <Route path="/variants" element={<VariantGenerator />} />
+          <Route path="/engineering" element={<EngineeringReference />} />
         </Routes>
       </main>
     </div>

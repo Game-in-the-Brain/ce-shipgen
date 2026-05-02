@@ -239,6 +239,8 @@ export interface SupplyItem extends ChildItem {
   supplyType: string;
 }
 
+export interface VehicleItem extends ChildItem {}
+
 // Ship Design
 export interface ShipComponent {
   section: string;
@@ -359,6 +361,7 @@ export interface ShipDesign {
   lifeSupport?: LifeSupportItem[];
   weaponMounts?: WeaponMountItem[];
   supplies?: SupplyItem[];
+  vehicles?: VehicleItem[];
   // Legacy flat fields (pre-v0.02 compatibility)
   mDrive?: string;
   jDrive?: string;
@@ -382,6 +385,8 @@ export interface ShipDesign {
   classification?: ShipClassification;
   // Detailed operations & specs (generated)
   operations?: ShipOperations;
+  // Tags for categorization (civilian, warship, merchant, etc.)
+  tags?: string[];
 }
 
 export interface VariantParams {

@@ -12,6 +12,8 @@ INPUT = REPO / "public" / "data" / "all_ships.json"
 OUTPUT = REPO / "public" / "data" / "all_ships.json"
 
 
+C = 1_000_000  # Cost multiplier: all costs stored in Cr
+
 def make_id(name: str) -> str:
     return f"srd-{re.sub(r'[^a-z0-9]', '-', name.lower()).strip('-')}"
 
@@ -20,16 +22,17 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
                m_drive, j_drive, power_plant, bridge_tons, bridge_cost,
                computer, software_list, sensors, sensor_dt, sensor_cost,
                staterooms, low_berths, luxuries, labs, workshops, library,
-               fuel_tons, modules, weapons, cargo, supplies, vehicles):
+               fuel_tons, modules, weapons, supplies, vehicles, tags=None):
     """Assemble a ShipDesign dict from CE RAW components."""
 
     hull_code = str(hull_dtons)
-    hull_cost = {100: 2.0, 200: 8.0, 300: 12.0}.get(hull_dtons, hull_dtons * 0.04)
+    hull_cost = {100: 2.0, 200: 8.0, 300: 12.0}.get(hull_dtons, hull_dtons * 0.04) * C
     config_modifier = {"Distributed": 0.9, "Standard": 1.0, "Streamlined": 1.1}.get(config, 1.0)
     config_cost = hull_cost * (config_modifier - 1.0)
 
     armor_dt = hull_dtons * (armor_pct / 100)
-    armor_cost = hull_cost * (armor_pct / 100) * {"Titanium Steel": 0.05, "Crystaliron": 0.20, "Bonded Superdense": 0.50}.get(armor_type, 0.05)
+    # Cost is per 5% increment: e.g., 5% Titanium = 1×5% = 5% of hull cost
+    armor_cost = hull_cost * (armor_pct / 5) * {"Titanium Steel": 0.05, "Crystaliron": 0.20, "Bonded Superdense": 0.50}.get(armor_type, 0.05)
 
     components = []
     drives = []
@@ -40,6 +43,7 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
     lifeSupport = []
     weaponMounts = []
     supplyList = []
+    modulesList = []
     total_cost = 0.0
     used_dtons = 0.0
     drive_order = 0
@@ -62,11 +66,11 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
     # ── DRIVES ──
     # M-Drive
     m_drive_data = {
-        "A": (2, 4), "B": (3, 8), "C": (5, 12), "D": (7, 16), "E": (9, 20), "F": (11, 24),
-        "G": (13, 28), "H": (15, 32), "J": (17, 36), "K": (19, 40), "L": (21, 44),
-        "sA": (0.5, 1), "sB": (1, 2), "sC": (1.5, 3), "sD": (2, 3.5), "sE": (2.5, 4),
-        "sF": (3, 6), "sG": (3.5, 8), "sH": (4, 9), "sJ": (4.5, 10), "sK": (5, 11),
-        "sL": (6, 12), "sM": (7, 14), "sN": (8, 16),
+        "A": (2, 4*C), "B": (3, 8*C), "C": (5, 12*C), "D": (7, 16*C), "E": (9, 20*C), "F": (11, 24*C),
+        "G": (13, 28*C), "H": (15, 32*C), "J": (17, 36*C), "K": (19, 40*C), "L": (21, 44*C),
+        "sA": (0.5, 1*C), "sB": (1, 2*C), "sC": (1.5, 3*C), "sD": (2, 3.5*C), "sE": (2.5, 4*C),
+        "sF": (3, 6*C), "sG": (3.5, 8*C), "sH": (4, 9*C), "sJ": (4.5, 10*C), "sK": (5, 11*C),
+        "sL": (6, 12*C), "sM": (7, 14*C), "sN": (8, 16*C),
     }
     if m_drive:
         md_dt, md_cost = m_drive_data.get(m_drive, (0, 0))
@@ -82,8 +86,8 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
 
     # J-Drive
     j_drive_data = {
-        "A": (10, 10), "B": (15, 20), "C": (20, 30), "D": (25, 40), "E": (30, 50),
-        "F": (35, 60), "G": (40, 70), "H": (45, 80), "J": (50, 90),
+        "A": (10, 10*C), "B": (15, 20*C), "C": (20, 30*C), "D": (25, 40*C), "E": (30, 50*C),
+        "F": (35, 60*C), "G": (40, 70*C), "H": (45, 80*C), "J": (50, 90*C),
     }
     if j_drive:
         jd_dt, jd_cost = j_drive_data.get(j_drive, (0, 0))
@@ -100,12 +104,12 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
 
     # Power Plant
     pp_data = {
-        "A": (4, 8), "B": (7, 16), "C": (10, 24), "D": (13, 32), "E": (16, 40),
-        "F": (19, 48), "G": (22, 56), "H": (25, 64), "J": (28, 72),
-        "sA": (1.2, 3), "sB": (1.5, 3.5), "sC": (1.8, 4), "sD": (2.1, 4.5),
-        "sE": (2.4, 5), "sF": (2.7, 5.5), "sG": (3.0, 6), "sH": (3.3, 6.5),
-        "sJ": (3.6, 7), "sK": (3.9, 7.5), "sL": (4.5, 8), "sM": (5.1, 9),
-        "sN": (5.7, 10),
+        "A": (4, 8*C), "B": (7, 16*C), "C": (10, 24*C), "D": (13, 32*C), "E": (16, 40*C),
+        "F": (19, 48*C), "G": (22, 56*C), "H": (25, 64*C), "J": (28, 72*C),
+        "sA": (1.2, 3*C), "sB": (1.5, 3.5*C), "sC": (1.8, 4*C), "sD": (2.1, 4.5*C),
+        "sE": (2.4, 5*C), "sF": (2.7, 5.5*C), "sG": (3.0, 6*C), "sH": (3.3, 6.5*C),
+        "sJ": (3.6, 7*C), "sK": (3.9, 7.5*C), "sL": (4.5, 8*C), "sM": (5.1, 9*C),
+        "sN": (5.7, 10*C),
     }
     if power_plant:
         pp_dt, pp_cost = pp_data.get(power_plant, (0, 0))
@@ -150,7 +154,7 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
         if "J-Spec" in computer:
             options.append("J-Spec")
         comp_dt = 1
-        comp_cost = {"M1": 0.03, "M2": 0.16}.get(computer.split(",")[0].strip(), 0.03)
+        comp_cost = {"M1": 0.03*C, "M2": 0.16*C}.get(computer.split(",")[0].strip(), 0.03*C)
         if "Hardened" in computer:
             comp_cost *= 1.5
         if "J-Spec" in computer:
@@ -169,9 +173,9 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
     for prog in software_list:
         sw_cost = 0.0
         if "Jump Control" in prog:
-            sw_cost = 0.1
+            sw_cost = 0.1 * C
         elif "Database" in prog:
-            sw_cost = 0.01
+            sw_cost = 0.01 * C
         elif "Library" in prog:
             sw_cost = 0.0
         softwareList.append({
@@ -196,79 +200,77 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
 
     # ── LIFE SUPPORT ──
     if staterooms > 0:
-        ls_dt = staterooms * 4
-        ls_cost = staterooms * 0.5
         lifeSupport.append({
             "id": "ls-stateroom", "name": "Stateroom", "facilityType": "Stateroom",
-            "dtons": ls_dt, "cost": ls_cost, "qty": staterooms, "capacity": 2, "tl": tl,
+            "dtons": 4, "cost": 0.5 * C, "qty": staterooms, "capacity": 2, "tl": tl,
         })
-        components.append({"section": "Life Support", "module": f"{staterooms} Stateroom", "dtons": ls_dt, "cost": ls_cost, "qty": staterooms})
-        total_cost += ls_cost
-        used_dtons += ls_dt
+        components.append({"section": "Life Support", "module": f"{staterooms} Stateroom", "dtons": 4 * staterooms, "cost": 0.5 * C * staterooms, "qty": staterooms})
+        total_cost += staterooms * 0.5
+        used_dtons += staterooms * 4
 
     if low_berths > 0:
-        lb_dt = low_berths * 0.5
-        lb_cost = low_berths * 0.05
         lifeSupport.append({
             "id": "ls-low-berth", "name": "Low Berth", "facilityType": "Low Berth",
-            "dtons": lb_dt, "cost": lb_cost, "qty": low_berths, "capacity": 1, "tl": tl,
+            "dtons": 0.5, "cost": 0.05 * C, "qty": low_berths, "capacity": 1, "tl": tl,
         })
-        components.append({"section": "Life Support", "module": f"{low_berths} Low Berth", "dtons": lb_dt, "cost": lb_cost, "qty": low_berths})
-        total_cost += lb_cost
-        used_dtons += lb_dt
+        components.append({"section": "Life Support", "module": f"{low_berths} Low Berth", "dtons": 0.5 * low_berths, "cost": 0.05 * C * low_berths, "qty": low_berths})
+        total_cost += low_berths * 0.05
+        used_dtons += low_berths * 0.5
 
     if luxuries > 0:
-        lux_dt = luxuries
-        lux_cost = luxuries * 0.1
         lifeSupport.append({
             "id": "ls-luxuries", "name": "Luxuries", "facilityType": "Luxuries",
-            "dtons": lux_dt, "cost": lux_cost, "qty": luxuries, "capacity": 0, "tl": tl,
+            "dtons": 1, "cost": 0.1 * C, "qty": luxuries, "capacity": 0, "tl": tl,
         })
-        components.append({"section": "Life Support", "module": f"{luxuries} Luxuries", "dtons": lux_dt, "cost": lux_cost, "qty": luxuries})
-        total_cost += lux_cost
-        used_dtons += lux_dt
+        components.append({"section": "Life Support", "module": f"{luxuries} Luxuries", "dtons": 1 * luxuries, "cost": 0.1 * C * luxuries, "qty": luxuries})
+        total_cost += luxuries * 0.1
+        used_dtons += luxuries * 1
 
     if labs > 0:
-        lab_dt = labs * 4
-        lab_cost = labs * 1.0
         lifeSupport.append({
             "id": "ls-laboratory", "name": "Laboratory", "facilityType": "Laboratory",
-            "dtons": lab_dt, "cost": lab_cost, "qty": labs, "capacity": 0, "tl": tl,
+            "dtons": 4, "cost": 1.0 * C, "qty": labs, "capacity": 0, "tl": tl,
         })
-        components.append({"section": "Life Support", "module": f"{labs} Laboratory", "dtons": lab_dt, "cost": lab_cost, "qty": labs})
-        total_cost += lab_cost
-        used_dtons += lab_dt
+        components.append({"section": "Life Support", "module": f"{labs} Laboratory", "dtons": 4 * labs, "cost": 1.0 * C * labs, "qty": labs})
+        total_cost += labs * 1.0
+        used_dtons += labs * 4
 
     if workshops > 0:
-        ws_dt = workshops * 8
-        ws_cost = workshops * 0.5
         lifeSupport.append({
             "id": "ls-workshop", "name": "Workshop", "facilityType": "Workshop",
-            "dtons": ws_dt, "cost": ws_cost, "qty": workshops, "capacity": 0, "tl": tl,
+            "dtons": 8, "cost": 2.0 * C, "qty": workshops, "capacity": 0, "tl": tl,
         })
-        components.append({"section": "Life Support", "module": f"{workshops} Workshop", "dtons": ws_dt, "cost": ws_cost, "qty": workshops})
-        total_cost += ws_cost
-        used_dtons += ws_dt
+        components.append({"section": "Life Support", "module": f"{workshops} Workshop", "dtons": 8 * workshops, "cost": 2.0 * C * workshops, "qty": workshops})
+        total_cost += workshops * 2.0
+        used_dtons += workshops * 8
 
     if library > 0:
-        lib_dt = 4
-        lib_cost = 4.0
         lifeSupport.append({
             "id": "ls-library", "name": "Library", "facilityType": "Library",
-            "dtons": lib_dt, "cost": lib_cost, "qty": 1, "capacity": 0, "tl": tl,
+            "dtons": 4, "cost": 0.4 * C, "qty": 1, "capacity": 0, "tl": tl,
         })
-        components.append({"section": "Life Support", "module": "Library", "dtons": lib_dt, "cost": lib_cost, "qty": 1})
-        total_cost += lib_cost
-        used_dtons += lib_dt
+        components.append({"section": "Life Support", "module": "Library", "dtons": 4, "cost": 0.4 * C, "qty": 1})
+        total_cost += 0.4
+        used_dtons += 4
 
     # ── MODULES ──
     for mod in modules:
         mod_name = mod["name"]
-        mod_dt = mod.get("dtons", 0)
-        mod_cost = mod.get("cost", 0)
-        components.append({"section": "Module", "module": mod_name, "dtons": mod_dt, "cost": mod_cost, "qty": 1})
-        total_cost += mod_cost
-        used_dtons += mod_dt
+        mod_dt = mod.get("dtons", 0)  # per-unit dtons
+        mod_cost = mod.get("cost", 0)  # per-unit cost
+        mod_qty = mod.get("qty", 1)
+        # modules[] stores PER-UNIT values
+        modulesList.append({
+            "section": "Module", "module": mod_name,
+            "dtons": mod_dt, "cost": mod_cost, "qty": mod_qty
+        })
+        # components[] stores TOTALS
+        components.append({
+            "section": "Module", "module": f"{mod_qty} {mod_name}",
+            "dtons": mod_dt * mod_qty, "cost": mod_cost * mod_qty, "qty": mod_qty
+        })
+        total_cost += mod_cost * mod_qty
+        used_dtons += mod_dt * mod_qty
 
     # ── WEAPONS ──
     for w in weapons:
@@ -297,26 +299,36 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
         # Don't count vehicle tonnage against hull — they go in bays/hangars
 
     # ── CARGO ──
+    # Cargo is computed last as the remaining hull space.
+    cargo = max(0, hull_dtons - used_dtons)
     if cargo > 0:
         components.append({"section": "Cargo", "module": "Cargo Hold", "dtons": cargo, "cost": 0, "qty": 1})
 
     # ── SUPPLIES (stored in cargo, don't count against hull) ──
     for sup in supplies:
         sup_name = sup["name"]
-        sup_dt = sup.get("dtons", 0)
-        sup_cost = sup.get("cost", 0)
+        sup_dt = sup.get("dtons", 0)  # per-unit dtons
+        sup_cost = sup.get("cost", 0)  # per-unit cost
         sup_qty = sup.get("qty", 1)
         supplyList.append({
             "id": f"sup-{sup_name.lower().replace(' ', '-').replace(',', '')}",
             "name": sup_name, "dtons": sup_dt, "cost": sup_cost, "qty": sup_qty, "tl": tl,
         })
+        # components[] stores TOTALS (per convention)
         components.append({
-            "section": "Supplies", "module": sup_name, "dtons": sup_dt,
-            "cost": sup_cost, "qty": sup_qty, "notes": "Stored in cargo space",
+            "section": "Supplies", "module": f"{sup_qty} {sup_name}", "dtons": sup_dt * sup_qty,
+            "cost": sup_cost * sup_qty, "qty": sup_qty, "notes": "Stored in cargo space",
         })
-        total_cost += sup_cost
+        total_cost += sup_cost * sup_qty
 
-    available = max(0, hull_dtons - used_dtons)
+    available = hull_dtons - used_dtons - cargo
+
+    # ── Normalize components: qty=1 since dtons/cost are totals ──
+    for c in components:
+        if c.get("qty", 1) > 1:
+            if c["section"] == "Fuel" and c["module"] == "Fuel Tanks":
+                c["module"] = f"{int(c['qty'])}× Fuel Tanks"
+            c["qty"] = 1
 
     return {
         "id": make_id(name),
@@ -337,11 +349,11 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
         "staterooms": staterooms,
         "lowBerths": low_berths,
         "crew": [],
-        "modules": [{"section": "Module", "module": m["name"], "dtons": m.get("dtons", 0), "cost": m.get("cost", 0), "qty": 1} for m in modules],
+        "modules": modulesList,
         "weapons": [],
         "cargo": cargo,
         "components": components,
-        "totalCost": int(total_cost * 1_000_000),
+        "totalCost": int(total_cost),
         "availableDtons": available,
         "createdAt": "2026-05-02T12:00:00.000Z",
         "drives": drives,
@@ -352,6 +364,7 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
         "lifeSupport": lifeSupport,
         "weaponMounts": weaponMounts,
         "supplies": supplyList,
+        "tags": tags or [],
     }
 
 
@@ -372,22 +385,22 @@ def main():
         name="TL9 TENDER 100DT (B-M DRIVE, A-JDRIVE)",
         hull_dtons=100, tl=9, config="Streamlined", armor_pct=5, armor_type="Titanium Steel",
         m_drive="B", j_drive="A", power_plant="B",
-        bridge_tons=10, bridge_cost=0.5,
+        bridge_tons=10, bridge_cost=0.5*C,
         computer="M1, R5", software_list=["Database TL 7", "Jump Control/1"],
-        sensors="Basic Civilian TL 9", sensor_dt=1, sensor_cost=0.05,
+        sensors="Basic Civilian TL 9", sensor_dt=1, sensor_cost=0.05*C,
         staterooms=2, low_berths=0, luxuries=0, labs=0, workshops=1, library=0,
         fuel_tons=14,  # jump 10 + power 4
         modules=[
-            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0},
-            {"name": "Fuel Processors", "dtons": 1, "cost": 0.05},
+            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0*C},
+            {"name": "Fuel Processors", "dtons": 1, "cost": 0.05*C},
         ],
-        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2, "qty": 1, "type": "turret", "maxWeapons": 1}],
-        cargo=31,
+        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2*C, "qty": 1, "type": "turret", "maxWeapons": 1}],
         supplies=[
-            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054, "qty": 1},
-            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01, "qty": 1},
+            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054*C, "qty": 1},
+            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01*C, "qty": 1},
         ],
-        vehicles=[]
+        vehicles=[],
+        tags=["civilian", "tender"],
     )
     new_ships.append(tender_100)
 
@@ -397,19 +410,19 @@ def main():
         name="TL9 YACHT 100DT",
         hull_dtons=100, tl=9, config="Streamlined", armor_pct=5, armor_type="Titanium Steel",
         m_drive="A", j_drive="A", power_plant="A",
-        bridge_tons=10, bridge_cost=0.5,
+        bridge_tons=10, bridge_cost=0.5*C,
         computer="M2, R10 Hardened", software_list=["Database TL 7", "Library"],
-        sensors="Basic Civilian TL 9", sensor_dt=1, sensor_cost=0.05,
+        sensors="Basic Civilian TL 9", sensor_dt=1, sensor_cost=0.05*C,
         staterooms=4, low_berths=2, luxuries=4, labs=0, workshops=0, library=1,
         fuel_tons=12,  # jump 10 + power 2
-        modules=[{"name": "Fuel Scoops", "dtons": 0, "cost": 1.0}],
+        modules=[{"name": "Fuel Scoops", "dtons": 0, "cost": 1.0*C}],
         weapons=[],
-        cargo=20,
         supplies=[
-            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054, "qty": 1},
-            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01, "qty": 1},
+            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054*C, "qty": 1},
+            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01*C, "qty": 1},
         ],
-        vehicles=[]
+        vehicles=[],
+        tags=["civilian", "yacht"],
     )
     new_ships.append(yacht_100)
 
@@ -419,23 +432,23 @@ def main():
         name="TL9 RESEARCH VESSEL 200DT",
         hull_dtons=200, tl=9, config="Streamlined", armor_pct=5, armor_type="Titanium Steel",
         m_drive="B", j_drive="B", power_plant="B",
-        bridge_tons=10, bridge_cost=1.0,
+        bridge_tons=10, bridge_cost=1.0*C,
         computer="M2, R10 Hardened", software_list=["Database TL 7", "Library", "Jump Control/1"],
-        sensors="Advanced", sensor_dt=3, sensor_cost=2.0,
+        sensors="Advanced", sensor_dt=3, sensor_cost=2.0*C,
         staterooms=6, low_berths=2, luxuries=0, labs=3, workshops=0, library=1,
         fuel_tons=28,  # jump 20 + power 8
         modules=[
-            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0},
-            {"name": "Fuel Processors", "dtons": 1, "cost": 0.05},
-            {"name": "Probe Drones", "dtons": 2, "cost": 0.4},
+            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0*C},
+            {"name": "Fuel Processors", "dtons": 1, "cost": 0.05*C},
+            {"name": "Probe Drones", "dtons": 0.2, "cost": 0.04*C},
         ],
-        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2, "qty": 1, "type": "turret", "maxWeapons": 1}],
-        cargo=58,
+        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2*C, "qty": 1, "type": "turret", "maxWeapons": 1}],
         supplies=[
-            {"name": "Regular Life Support Supplies", "dtons": 2, "cost": 0.108, "qty": 1},
-            {"name": "Repair Supplies", "dtons": 2, "cost": 0.02, "qty": 1},
+            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054*C, "qty": 2},
+            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01*C, "qty": 2},
         ],
-        vehicles=[]
+        vehicles=[],
+        tags=["civilian", "exploration", "research"],
     )
     new_ships.append(research_200)
 
@@ -445,23 +458,23 @@ def main():
         name="TL9 ASTEROID MINER 200DT (able to move 400DT)",
         hull_dtons=200, tl=9, config="Standard", armor_pct=5, armor_type="Titanium Steel",
         m_drive="F", j_drive="", power_plant="F",
-        bridge_tons=10, bridge_cost=1.0,
+        bridge_tons=10, bridge_cost=1.0*C,
         computer="M1, R5", software_list=["Database TL 7"],
-        sensors="Basic Civilian TL 9", sensor_dt=1, sensor_cost=0.05,
+        sensors="Basic Civilian TL 9", sensor_dt=1, sensor_cost=0.05*C,
         staterooms=4, low_berths=4, luxuries=0, labs=0, workshops=1, library=0,
         fuel_tons=24,  # power plant F = 6/week × 4 weeks
         modules=[
-            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0},
-            {"name": "Fuel Processors", "dtons": 2, "cost": 0.1},
-            {"name": "Mining Drones", "dtons": 10, "cost": 2.0},
+            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0*C},
+            {"name": "Fuel Processors", "dtons": 1, "cost": 0.05*C, "qty": 2},
+            {"name": "Mining Drones", "dtons": 10, "cost": 2.0*C},
         ],
-        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2, "qty": 1, "type": "turret", "maxWeapons": 1}],
-        cargo=62,
+        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2*C, "qty": 1, "type": "turret", "maxWeapons": 1}],
         supplies=[
-            {"name": "Regular Life Support Supplies", "dtons": 2, "cost": 0.108, "qty": 1},
-            {"name": "Repair Supplies", "dtons": 2, "cost": 0.02, "qty": 1},
+            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054*C, "qty": 2},
+            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01*C, "qty": 2},
         ],
-        vehicles=[]
+        vehicles=[],
+        tags=["civilian", "mining"],
     )
     new_ships.append(miner_200)
 
@@ -471,21 +484,21 @@ def main():
         name="TL9 HABITAT RING 200DT",
         hull_dtons=200, tl=9, config="Distributed", armor_pct=5, armor_type="Titanium Steel",
         m_drive="A", j_drive="", power_plant="A",
-        bridge_tons=10, bridge_cost=1.0,
+        bridge_tons=10, bridge_cost=1.0*C,
         computer="M1, R5", software_list=["Database TL 7"],
         sensors="Standard", sensor_dt=0, sensor_cost=0,
         staterooms=20, low_berths=10, luxuries=5, labs=2, workshops=1, library=1,
         fuel_tons=4,  # power plant A = 1/week × 4 weeks
         modules=[
-            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0},
+            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0*C},
         ],
         weapons=[],
-        cargo=8,
         supplies=[
-            {"name": "Regular Life Support Supplies", "dtons": 4, "cost": 0.216, "qty": 1},
-            {"name": "Repair Supplies", "dtons": 2, "cost": 0.02, "qty": 1},
+            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054*C, "qty": 4},
+            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01*C, "qty": 2},
         ],
-        vehicles=[]
+        vehicles=[],
+        tags=["civilian", "habitat"],
     )
     new_ships.append(habitat_200)
 
@@ -495,23 +508,23 @@ def main():
         name="TL9 SURVEY VESSEL 300DT",
         hull_dtons=300, tl=9, config="Streamlined", armor_pct=5, armor_type="Titanium Steel",
         m_drive="C", j_drive="C", power_plant="C",
-        bridge_tons=20, bridge_cost=1.5,
+        bridge_tons=20, bridge_cost=1.5*C,
         computer="M2, R10 Hardened", software_list=["Database TL 7", "Library", "Jump Control/2"],
-        sensors="Advanced", sensor_dt=3, sensor_cost=2.0,
+        sensors="Advanced", sensor_dt=3, sensor_cost=2.0*C,
         staterooms=8, low_berths=4, luxuries=0, labs=2, workshops=0, library=1,
         fuel_tons=72,  # jump 60 + power 12
         modules=[
-            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0},
-            {"name": "Fuel Processors", "dtons": 2, "cost": 0.1},
-            {"name": "Probe Drones", "dtons": 2, "cost": 0.4},
+            {"name": "Fuel Scoops", "dtons": 0, "cost": 1.0*C},
+            {"name": "Fuel Processors", "dtons": 1, "cost": 0.05*C, "qty": 2},
+            {"name": "Probe Drones", "dtons": 0.2, "cost": 0.04*C},
         ],
-        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2, "qty": 1, "type": "turret", "maxWeapons": 1}],
-        cargo=76,
+        weapons=[{"name": "Turret, Single", "dtons": 1, "cost": 0.2*C, "qty": 1, "type": "turret", "maxWeapons": 1}],
         supplies=[
-            {"name": "Regular Life Support Supplies", "dtons": 2, "cost": 0.108, "qty": 1},
-            {"name": "Repair Supplies", "dtons": 2, "cost": 0.02, "qty": 1},
+            {"name": "Regular Life Support Supplies", "dtons": 1, "cost": 0.054*C, "qty": 2},
+            {"name": "Repair Supplies", "dtons": 1, "cost": 0.01*C, "qty": 2},
         ],
-        vehicles=[]
+        vehicles=[],
+        tags=["civilian", "exploration", "survey"],
     )
     new_ships.append(survey_300)
 

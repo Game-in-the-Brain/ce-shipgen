@@ -174,6 +174,23 @@ export function calculatePillars(ship: ShipDesign): { s: number; a: number; p: n
     }
   }
 
+  // Modules and weapons are stored outside components array but still count
+  // toward classification tonnages.
+  for (const m of ship.modules || []) {
+    const dt = Math.abs(m.dtons || 0);
+    if (isWeaponModule(m.module || '')) {
+      a += dt;
+    } else {
+      p += dt;
+    }
+  }
+  for (const w of ship.weapons || []) {
+    a += Math.abs(w.dtons || 0);
+  }
+  for (const w of ship.weaponMounts || []) {
+    a += Math.abs((w.dtons || 0) * (w.qty || 1));
+  }
+
   // Fallback: cargo from top-level field
   if (p === 0 && (ship.cargo || 0) > 0) {
     p += ship.cargo;

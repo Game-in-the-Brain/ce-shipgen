@@ -212,10 +212,10 @@ export function calculateLifeSupport(ship: ShipDesign): LifeSupportDetails {
   const staterooms = ship.staterooms || 0;
   const lowBerths = ship.lowBerths || 0;
 
-  // Life support supplies from components
-  const lifeSupportTons = (ship.components || [])
-    .filter(c => c.section === 'Supplies' && c.module?.toLowerCase().includes('life support'))
-    .reduce((s, c) => s + (c.dtons || 0), 0);
+  // Life support supplies from ship.supplies array
+  const lifeSupportTons = (ship.supplies || [])
+    .filter(s => s.name?.toLowerCase().includes('life support'))
+    .reduce((s, sup) => s + ((sup.dtons || 0) * (sup.qty || 1)), 0);
 
   // Default: 1 ton per 20 people per month
   const standardCapacity = staterooms;

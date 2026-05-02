@@ -1,5 +1,63 @@
 [
   {
+    "version": "0.09",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T16:22:35.577Z",
+    "changes": [
+      "Table-driven audit system — compare stored values against reference tables",
+      "Batch audit modal with severity levels and auto-correct from tables",
+      "Iron Triangle S/A/P ship classification with auto-tags",
+      "Library multi-filter search (TL, role, tags, hull DT range)",
+      "40 reconciled ships (34 Excel + 6 SRD) with table-correct values",
+      "Component normalization — qty:1 with totals in dtons",
+      "Emergency Low Berth properly distinguished from Low Berth",
+      "Cargo computed as hull remainder, not extracted from Excel"
+    ]
+  },
+  {
+    "version": "0.08",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T16:19:37.481Z",
+    "changes": [
+      "Vehicle bay modules now include vehicle DTons in name (e.g. '20DT Launch Bay', '10DT Fighter Bay')",
+      "Vehicle bays count against hull only when raw Excel dtons is negative (internal bays)",
+      "External vehicles (positive dtons in Excel) shown in BOQ but don't consume hull space",
+      "Fuzzy matching for bay→vehicle names (handles pluralization, 'Life Boat'→'Launch')"
+    ]
+  },
+  {
+    "version": "0.07",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T12:16:44.364Z",
+    "changes": [
+      "FIX: Vehicle/drone extraction — was silently dropped, now populates vehicles[] with names, dtons, cost, qty",
+      "FIX: Supplies qty=0 bug — clean_qty() rounded fractional quantities (0.5→0, 0.1→0); now preserves raw qty",
+      "Vehicle dtons inferred from name pattern (e.g. '20DT Launch'→20) when Excel omits value",
+      "Added VehicleItem type to ShipDesign interface"
+    ]
+  },
+  {
+    "version": "0.06",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T12:16:44.364Z",
+    "changes": [
+      "CRITICAL FIX: Armor cost calculation now follows SRD per-increment formula",
+      "SRD-built ships: armor cost was 0.25% of hull (20× too low), now 5% for Titanium Steel",
+      "ShipDesigner: separated tonsEfficiency from costEfficiency for non-Titanium armors",
+      "Crystaliron/Bonded Superdense tonnage now correctly 5% per increment (was 20%/50%)"
+    ]
+  },
+  {
+    "version": "0.05",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T12:16:44.364Z",
+    "changes": [
+      "CRITICAL FIX: SRD-built ships now use Cr cost units (was MCr) — BOQ no longer shows near-zero costs",
+      "Luxuries per-unit values verified: 1 DT, 100K Cr across all 40 ships",
+      "Library regeneration with corrected per-unit life support, weapons, modules, supplies"
+    ]
+  },
+  {
     "version": "0.04",
     "date": "2026-05-02",
     "buildTime": "2026-05-02T12:16:44.364Z",
