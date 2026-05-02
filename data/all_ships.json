@@ -3,16 +3,16 @@
     "id": "excel-1471-tl9-passenger-liner-1-000dt",
     "name": "TL9 PASSENGER LINER 1,000DT",
     "tl": 9,
-    "hullCode": "s3",
+    "hullCode": "A",
     "hullDtons": 1000,
-    "configuration": "Streamlined",
+    "configuration": "Standard",
     "armor": "Titanium Steel TL7+",
-    "armorQty": 0,
-    "mDrive": "sA",
+    "armorQty": 1,
+    "mDrive": "G",
     "jDrive": "G",
-    "powerPlant": "sA",
-    "bridge": "2-man Cabin Controls",
-    "computer": "M1, R5 Hardened",
+    "powerPlant": "G",
+    "bridge": "20-ton Bridge",
+    "computer": "M1, R5 J-Spec Hardened",
     "software": [
       "Interface TL 7",
       "Database TL 7",
@@ -192,181 +192,35 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 3.125,
-        "qty": 625
+        "qty": 625,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
-      },
-      {
-        "section": "Hull",
-        "module": "1000 DT Hull",
-        "dtons": 0,
-        "cost": 1.9
-      },
-      {
-        "section": "Config",
-        "module": "Streamlined",
-        "dtons": 0,
-        "cost": 0.19
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 0.0,
-        "cost": 0.095,
-        "qty": 0
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sN",
-        "dtons": 8.0,
-        "cost": 16.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sN",
-        "dtons": 5.7,
-        "cost": 10.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.9,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "2-man Cabin Controls",
-        "dtons": 6.0,
-        "cost": 0.45,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5",
-        "dtons": 1,
-        "cost": 0.03,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "1 Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "40 Seating Module",
-        "dtons": 40.0,
-        "cost": 0.96,
-        "qty": 40
-      },
-      {
-        "section": "OPS cost/Wk",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.00471635,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/Qtr",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0565962,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/Year",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.2263848,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/ 3Yr",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.6791544,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "1000 DT Hull",
-        "dtons": 0,
-        "cost": 1.1
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sA",
-        "dtons": 1.2,
-        "cost": 3.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.2,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5 Hardened",
-        "dtons": 1,
-        "cost": 0.045,
-        "qty": 1
-      },
-      {
-        "section": "MORTGAGE",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.02216833333,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "1000 DT Hull",
-        "dtons": 0,
-        "cost": 1.2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1
+        "qty": 5,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 413980020,
+    "totalCost": 375945999,
     "availableDtons": 0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
@@ -379,7 +233,8 @@
         "cost": 28.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-g",
@@ -390,7 +245,8 @@
         "cost": 70.0,
         "qty": 1,
         "performance": 7,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-g",
@@ -401,62 +257,8 @@
         "cost": 56.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sn",
-        "name": "M-Drive sN",
-        "type": "thrust",
-        "driveCode": "sN",
-        "dtons": 8.0,
-        "cost": 16.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sn",
-        "name": "Fusion Plant sN",
-        "type": "powerPlant",
-        "driveCode": "sN",
-        "dtons": 5.7,
-        "cost": 10.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sa",
-        "name": "M-Drive sA",
-        "type": "thrust",
-        "driveCode": "sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sa",
-        "name": "Fusion Plant sA",
-        "type": "powerPlant",
-        "driveCode": "sA",
-        "dtons": 1.2,
-        "cost": 3.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sa",
-        "name": "M-Drive sA",
-        "type": "thrust",
-        "driveCode": "sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -466,16 +268,6 @@
         "type": "bridge",
         "dtons": 20.0,
         "cost": 5.0,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-2-man-cabin-controls",
-        "name": "2-man Cabin Controls",
-        "type": "cabin",
-        "dtons": 6.0,
-        "cost": 0.45,
         "qty": 1,
         "stations": 2,
         "tl": 9
@@ -494,32 +286,6 @@
         "options": [
           "Hardened",
           "J-Spec"
-        ],
-        "tl": 7
-      },
-      {
-        "id": "computer-m1,-r5",
-        "name": "M1, R5",
-        "model": "M1, R5",
-        "dtons": 1,
-        "cost": 0.03,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [],
-        "tl": 7
-      },
-      {
-        "id": "computer-m1,-r5-hardened",
-        "name": "M1, R5 Hardened",
-        "model": "M1, R5 Hardened",
-        "dtons": 1,
-        "cost": 0.045,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [
-          "Hardened"
         ],
         "tl": 7
       }
@@ -619,26 +385,6 @@
         "qty": 25,
         "capacity": 1,
         "tl": 7
-      },
-      {
-        "id": "ls-additional-cabin",
-        "name": "Additional Cabin",
-        "facilityType": "Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1,
-        "capacity": 1,
-        "tl": 7
-      },
-      {
-        "id": "ls-seating-module",
-        "name": "Seating Module",
-        "facilityType": "Seating Module",
-        "dtons": 40.0,
-        "cost": 0.96,
-        "qty": 40,
-        "capacity": 1,
-        "tl": 7
       }
     ],
     "weaponMounts": [
@@ -698,64 +444,15 @@
         "qty": 5,
         "tl": 7
       }
-    ]
-  },
-  {
-    "id": "excel-1114-vehicles---10dt-fighter--2-units",
-    "name": "VEHICLES : 10DT Fighter, 2-Units",
-    "tl": 9,
-    "hullCode": "10",
-    "hullDtons": 10,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "VEHICLES",
-        "module": "30DT Ship's Boat",
-        "dtons": 30.0,
-        "cost": 16.677,
-        "qty": 1
-      },
-      {
-        "section": "LIFESUPPORT COSTS",
-        "module": "STATEROOM",
-        "dtons": 0.0,
-        "cost": 0.018,
-        "qty": 1
-      },
-      {
-        "section": "LIFESUPPORT COSTS",
-        "module": "LOW BERTH",
-        "dtons": 0.0,
-        "cost": 0.0006,
-        "qty": 1
-      }
     ],
-    "totalCost": 16695599,
-    "availableDtons": 0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
+    "pushCapacity": [
+      {
+        "driveCode": "G",
+        "maxHull": 1400,
+        "capacity": 400,
+        "thrustAtMax": 1.0
+      }
+    ]
   },
   {
     "id": "excel-1143-tl9-fighter-10dt--2man--1bl--2m",
@@ -885,32 +582,20 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.01166666667,
         "cost": 0.00063,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 0.5,
         "cost": 0.015,
-        "qty": 0
-      },
-      {
-        "section": "Weapon",
-        "module": "Sand Caster",
-        "dtons": 0.0,
-        "cost": 0.5,
-        "qty": 2
-      },
-      {
-        "section": "Supplies",
-        "module": "Sand Package",
-        "dtons": 0.5,
-        "cost": 0.005,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 13425630,
-    "availableDtons": 0,
+    "totalCost": 12920630,
+    "availableDtons": 0.5,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -922,7 +607,8 @@
         "cost": 3.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sg",
@@ -933,7 +619,8 @@
         "cost": 6.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -1044,17 +731,6 @@
         "maxWeapons": 1,
         "weapons": [],
         "slots": 0
-      },
-      {
-        "id": "wm-sand-caster",
-        "name": "Sand Caster",
-        "mountType": "hardpoint",
-        "dtons": 0.0,
-        "cost": 0.5,
-        "qty": 2,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
       }
     ],
     "supplies": [
@@ -1073,16 +749,9 @@
         "cost": 0.015,
         "qty": 0,
         "tl": 8
-      },
-      {
-        "id": "sup-sand-package",
-        "name": "Sand Package",
-        "dtons": 0.5,
-        "cost": 0.005,
-        "qty": 0,
-        "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1184-tl9-escort-fighter-10dt--2man--1bl--2sc",
@@ -1212,18 +881,20 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.01166666667,
         "cost": 0.00063,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 0.5,
         "cost": 0.005,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 11965630,
-    "availableDtons": 0,
+    "availableDtons": 0.5,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -1235,7 +906,8 @@
         "cost": 3.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sg",
@@ -1246,7 +918,8 @@
         "cost": 6.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -1376,47 +1049,33 @@
         "qty": 0,
         "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1226-tl9-fighter-10dt--2man--3m",
     "name": "TL9 FIGHTER 10DT, 2man, 3M",
     "tl": 9,
-    "hullCode": "4.0",
+    "hullCode": "s1",
     "hullDtons": 10,
-    "configuration": "Standard",
+    "configuration": "Streamlined",
     "armor": "Titanium Steel TL7+",
-    "armorQty": 1,
-    "mDrive": "B",
-    "jDrive": "B",
-    "powerPlant": "B",
-    "bridge": "10-ton Bridge",
-    "computer": "M1, R5 J-Spec Hardened",
+    "armorQty": 2,
+    "mDrive": "sC",
+    "jDrive": "",
+    "powerPlant": "sC",
+    "bridge": "2-man Cockpit",
+    "computer": "M1, R5 Hardened",
     "software": [
       "Interface TL 7",
       "Database TL 7",
       "Security TL 7"
     ],
-    "sensors": "Basic Civilian TL 9",
-    "staterooms": 20,
-    "lowBerths": 20,
+    "sensors": "Standard",
+    "staterooms": 0,
+    "lowBerths": 0,
     "crew": [],
-    "modules": [
-      {
-        "section": "Module",
-        "module": "Fuel Scoops",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2
-      },
-      {
-        "section": "Module",
-        "module": "Fuel Processors",
-        "dtons": 2.0,
-        "cost": 0.1,
-        "qty": 2
-      }
-    ],
+    "modules": [],
     "weapons": [],
     "cargo": 0.7,
     "components": [
@@ -1514,204 +1173,20 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.01166666667,
         "cost": 0.00063,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 0.7,
         "cost": 0.021,
-        "qty": 0
-      },
-      {
-        "section": "Hull",
-        "module": "10 DT Hull",
-        "dtons": 0,
-        "cost": 1.2
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 6.0,
-        "cost": 0.06,
-        "qty": 6
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sE",
-        "dtons": 2.5,
-        "cost": 4.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sE",
-        "dtons": 2.4,
-        "cost": 5.0,
-        "qty": 1
-      },
-      {
-        "section": "Weapon",
-        "module": "Particle Beam",
-        "dtons": 0.0,
-        "cost": 4.0,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "10 DT Hull",
-        "dtons": 0,
-        "cost": 8.0
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 10.0,
-        "cost": 0.4,
-        "qty": 1
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive A",
-        "dtons": 2.0,
-        "cost": 4.0,
-        "qty": 1
-      },
-      {
-        "section": "J-Drive",
-        "module": "J-Drive A",
-        "dtons": 10.0,
-        "cost": 10.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant A",
-        "dtons": 4.0,
-        "cost": 8.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 24.0,
-        "cost": 0.0,
-        "qty": 24
-      },
-      {
-        "section": "Command",
-        "module": "10-ton Bridge",
-        "dtons": 10.0,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5 J-Spec Hardened",
-        "dtons": 1,
-        "cost": 0.06,
-        "qty": 1
-      },
-      {
-        "section": "Sensors",
-        "module": "Basic Civilian TL 9",
-        "dtons": 1.0,
-        "cost": 0.05,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "20 Stateroom",
-        "dtons": 80.0,
-        "cost": 10.0,
-        "qty": 20
-      },
-      {
-        "section": "Life Support",
-        "module": "20 Low Berth",
-        "dtons": 10.0,
-        "cost": 1.0,
-        "qty": 20
-      },
-      {
-        "section": "Life Support",
-        "module": "2 Luxuries",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 2
-      },
-      {
-        "section": "Weapon",
-        "module": "Turret, Tripple",
-        "dtons": 2.0,
-        "cost": 2.0,
-        "qty": 2
-      },
-      {
-        "section": "Weapon",
-        "module": "Sand Caster",
-        "dtons": 0.0,
-        "cost": 1.5,
-        "qty": 6
-      },
-      {
-        "section": "Supplies",
-        "module": "Vacc Suit TL8",
-        "dtons": 0.0,
-        "cost": 0.2,
-        "qty": 40
-      },
-      {
-        "section": "Supplies",
-        "module": "Repair Supplies",
-        "dtons": 1.0,
-        "cost": 0.01,
-        "qty": 1
-      },
-      {
-        "section": "Supplies",
-        "module": "Sand Package",
-        "dtons": 5.0,
-        "cost": 0.05,
-        "qty": 5
-      },
-      {
-        "section": "Hull",
-        "module": "10 DT Hull",
-        "dtons": 0,
-        "cost": 16.0
-      },
-      {
-        "section": "Hull Option",
-        "module": "None",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 0
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive B",
-        "dtons": 3.0,
-        "cost": 8.0,
-        "qty": 1
-      },
-      {
-        "section": "J-Drive",
-        "module": "J-Drive B",
-        "dtons": 15.0,
-        "cost": 20.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant B",
-        "dtons": 7.0,
-        "cost": 16.0,
-        "qty": 1
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 131411630,
-    "availableDtons": 0,
+    "totalCost": 10731630,
+    "availableDtons": 0.6999999999999993,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -1723,7 +1198,8 @@
         "cost": 3.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sc",
@@ -1734,95 +1210,8 @@
         "cost": 4.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-se",
-        "name": "M-Drive sE",
-        "type": "thrust",
-        "driveCode": "sE",
-        "dtons": 2.5,
-        "cost": 4.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-se",
-        "name": "Fusion Plant sE",
-        "type": "powerPlant",
-        "driveCode": "sE",
-        "dtons": 2.4,
-        "cost": 5.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-a",
-        "name": "M-Drive A",
-        "type": "thrust",
-        "driveCode": "A",
-        "dtons": 2.0,
-        "cost": 4.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "jdrive-a",
-        "name": "J-Drive A",
-        "type": "jump",
-        "driveCode": "A",
-        "dtons": 10.0,
-        "cost": 10.0,
-        "qty": 1,
-        "performance": 1,
-        "tl": 9
-      },
-      {
-        "id": "pp-a",
-        "name": "Fusion Plant A",
-        "type": "powerPlant",
-        "driveCode": "A",
-        "dtons": 4.0,
-        "cost": 8.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-b",
-        "name": "M-Drive B",
-        "type": "thrust",
-        "driveCode": "B",
-        "dtons": 3.0,
-        "cost": 8.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "jdrive-b",
-        "name": "J-Drive B",
-        "type": "jump",
-        "driveCode": "B",
-        "dtons": 15.0,
-        "cost": 20.0,
-        "qty": 1,
-        "performance": 2,
-        "tl": 9
-      },
-      {
-        "id": "pp-b",
-        "name": "Fusion Plant B",
-        "type": "powerPlant",
-        "driveCode": "B",
-        "dtons": 7.0,
-        "cost": 16.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -1832,16 +1221,6 @@
         "type": "cockpit",
         "dtons": 3.0,
         "cost": 0.05,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-10-ton-bridge",
-        "name": "10-ton Bridge",
-        "type": "bridge",
-        "dtons": 10.0,
-        "cost": 1.0,
         "qty": 1,
         "stations": 2,
         "tl": 9
@@ -1859,21 +1238,6 @@
         "slots": 1,
         "options": [
           "Hardened"
-        ],
-        "tl": 7
-      },
-      {
-        "id": "computer-m1,-r5-j-spec-hardened",
-        "name": "M1, R5 J-Spec Hardened",
-        "model": "M1, R5 J-Spec Hardened",
-        "dtons": 1,
-        "cost": 0.06,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [
-          "Hardened",
-          "J-Spec"
         ],
         "tl": 7
       }
@@ -1922,49 +1286,9 @@
         "cost": 0.0,
         "qty": 1,
         "tl": 8
-      },
-      {
-        "id": "sensor-basic-civilian-tl-9",
-        "name": "Basic Civilian TL 9",
-        "sensorType": "Basic Civilian TL 9",
-        "dtons": 1.0,
-        "cost": 0.05,
-        "qty": 1,
-        "tl": 9
       }
     ],
-    "lifeSupport": [
-      {
-        "id": "ls-stateroom",
-        "name": "Stateroom",
-        "facilityType": "Stateroom",
-        "dtons": 80.0,
-        "cost": 10.0,
-        "qty": 20,
-        "capacity": 2,
-        "tl": 7
-      },
-      {
-        "id": "ls-low-berth",
-        "name": "Low Berth",
-        "facilityType": "Low Berth",
-        "dtons": 10.0,
-        "cost": 1.0,
-        "qty": 20,
-        "capacity": 1,
-        "tl": 9
-      },
-      {
-        "id": "ls-luxuries",
-        "name": "Luxuries",
-        "facilityType": "Luxuries",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 2,
-        "capacity": 1,
-        "tl": 7
-      }
-    ],
+    "lifeSupport": [],
     "weaponMounts": [
       {
         "id": "wm-fixed-mount-single",
@@ -1987,39 +1311,6 @@
         "maxWeapons": 1,
         "weapons": [],
         "slots": 0
-      },
-      {
-        "id": "wm-particle-beam",
-        "name": "Particle Beam",
-        "mountType": "hardpoint",
-        "dtons": 0.0,
-        "cost": 4.0,
-        "qty": 1,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      },
-      {
-        "id": "wm-turret-tripple",
-        "name": "Turret, Tripple",
-        "mountType": "turret",
-        "dtons": 2.0,
-        "cost": 2.0,
-        "qty": 2,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      },
-      {
-        "id": "wm-sand-caster",
-        "name": "Sand Caster",
-        "mountType": "hardpoint",
-        "dtons": 0.0,
-        "cost": 1.5,
-        "qty": 6,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
       }
     ],
     "supplies": [
@@ -2038,46 +1329,23 @@
         "cost": 0.021,
         "qty": 0,
         "tl": 8
-      },
-      {
-        "id": "sup-vacc-suit-tl8",
-        "name": "Vacc Suit TL8",
-        "dtons": 0.0,
-        "cost": 0.2,
-        "qty": 40,
-        "tl": 8
-      },
-      {
-        "id": "sup-repair-supplies",
-        "name": "Repair Supplies",
-        "dtons": 1.0,
-        "cost": 0.01,
-        "qty": 1,
-        "tl": 7
-      },
-      {
-        "id": "sup-sand-package",
-        "name": "Sand Package",
-        "dtons": 5.0,
-        "cost": 0.05,
-        "qty": 5,
-        "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1569-tl9-boat-10dt",
     "name": "TL9 BOAT 10DT",
     "tl": 9,
-    "hullCode": "s9",
+    "hullCode": "s1",
     "hullDtons": 10,
     "configuration": "Streamlined",
-    "armor": "Titanium Steel TL7+",
-    "armorQty": 2,
-    "mDrive": "sF",
+    "armor": "None",
+    "armorQty": 0,
+    "mDrive": "sA",
     "jDrive": "",
-    "powerPlant": "sJ",
-    "bridge": "1-man Cockpit",
+    "powerPlant": "sA",
+    "bridge": "2-man Cabin Controls",
     "computer": "M1, R5 Hardened",
     "software": [
       "Interface TL 7",
@@ -2165,7 +1433,8 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.1,
         "cost": 0.0054,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "MORTGAGE",
@@ -2173,112 +1442,10 @@
         "dtons": 0.0,
         "cost": 0.02216833333,
         "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "10 DT Hull",
-        "dtons": 0,
-        "cost": 1.2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 2.0,
-        "cost": 0.06,
-        "qty": 2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "1-man Cockpit",
-        "dtons": 1.5,
-        "cost": 0.1,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "1 Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1
-      },
-      {
-        "section": "Weapon",
-        "module": "Fixed-Mount, Double",
-        "dtons": 1.0,
-        "cost": 0.25,
-        "qty": 1
-      },
-      {
-        "section": "Weapon",
-        "module": "Beam Laser",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2
-      },
-      {
-        "section": "Hull",
-        "module": "10 DT Hull",
-        "dtons": 0,
-        "cost": 1.3
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sJ",
-        "dtons": 4.5,
-        "cost": 10.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sJ",
-        "dtons": 3.6,
-        "cost": 7.0,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "10 DT Hull",
-        "dtons": 0,
-        "cost": 1.5
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
       }
     ],
-    "totalCost": 47317568,
-    "availableDtons": 0,
+    "totalCost": 5332568,
+    "availableDtons": 1.0999999999999996,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -2290,7 +1457,8 @@
         "cost": 1.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sa",
@@ -2301,73 +1469,8 @@
         "cost": 3.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sa",
-        "name": "M-Drive sA",
-        "type": "thrust",
-        "driveCode": "sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sf",
-        "name": "Fusion Plant sF",
-        "type": "powerPlant",
-        "driveCode": "sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sj",
-        "name": "M-Drive sJ",
-        "type": "thrust",
-        "driveCode": "sJ",
-        "dtons": 4.5,
-        "cost": 10.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sj",
-        "name": "Fusion Plant sJ",
-        "type": "powerPlant",
-        "driveCode": "sJ",
-        "dtons": 3.6,
-        "cost": 7.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -2377,16 +1480,6 @@
         "type": "cabin",
         "dtons": 6.0,
         "cost": 0.05,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-1-man-cockpit",
-        "name": "1-man Cockpit",
-        "type": "cockpit",
-        "dtons": 1.5,
-        "cost": 0.1,
         "qty": 1,
         "stations": 2,
         "tl": 9
@@ -2454,42 +1547,8 @@
         "tl": 8
       }
     ],
-    "lifeSupport": [
-      {
-        "id": "ls-additional-cabin",
-        "name": "Additional Cabin",
-        "facilityType": "Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1,
-        "capacity": 1,
-        "tl": 7
-      }
-    ],
-    "weaponMounts": [
-      {
-        "id": "wm-fixed-mount-double",
-        "name": "Fixed-Mount, Double",
-        "mountType": "hardpoint",
-        "dtons": 1.0,
-        "cost": 0.25,
-        "qty": 1,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      },
-      {
-        "id": "wm-beam-laser",
-        "name": "Beam Laser",
-        "mountType": "hardpoint",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      }
-    ],
+    "lifeSupport": [],
+    "weaponMounts": [],
     "supplies": [
       {
         "id": "sup-regular-life-support-supplies",
@@ -2499,47 +1558,33 @@
         "qty": 0,
         "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1266-tl9-medium-fighter-20dt--2man--3m",
     "name": "TL9 MEDIUM FIGHTER 20DT, 2man, 3M",
     "tl": 9,
-    "hullCode": "4.0",
+    "hullCode": "s3",
     "hullDtons": 20,
-    "configuration": "Standard",
+    "configuration": "Streamlined",
     "armor": "Titanium Steel TL7+",
-    "armorQty": 1,
-    "mDrive": "B",
-    "jDrive": "B",
-    "powerPlant": "B",
-    "bridge": "10-ton Bridge",
-    "computer": "M1, R5 J-Spec Hardened",
+    "armorQty": 6,
+    "mDrive": "sE",
+    "jDrive": "",
+    "powerPlant": "sE",
+    "bridge": "2-man Cockpit",
+    "computer": "M1, R5 Hardened",
     "software": [
       "Interface TL 7",
       "Database TL 7",
       "Security TL 7"
     ],
-    "sensors": "Basic Civilian TL 9",
-    "staterooms": 20,
-    "lowBerths": 28,
+    "sensors": "Standard",
+    "staterooms": 0,
+    "lowBerths": 0,
     "crew": [],
-    "modules": [
-      {
-        "section": "Module",
-        "module": "Fuel Scoops",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2
-      },
-      {
-        "section": "Module",
-        "module": "Fuel Processors",
-        "dtons": 2.0,
-        "cost": 0.1,
-        "qty": 2
-      }
-    ],
+    "modules": [],
     "weapons": [],
     "cargo": 0.0,
     "components": [
@@ -2644,177 +1689,20 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.01166666667,
         "cost": 0.00063,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 0.7,
         "cost": 0.021,
-        "qty": 0
-      },
-      {
-        "section": "Hull",
-        "module": "20 DT Hull",
-        "dtons": 0,
-        "cost": 8.0
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 10.0,
-        "cost": 0.4,
-        "qty": 1
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive A",
-        "dtons": 2.0,
-        "cost": 4.0,
-        "qty": 1
-      },
-      {
-        "section": "J-Drive",
-        "module": "J-Drive A",
-        "dtons": 10.0,
-        "cost": 10.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant A",
-        "dtons": 4.0,
-        "cost": 8.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 24.0,
-        "cost": 0.0,
-        "qty": 24
-      },
-      {
-        "section": "Command",
-        "module": "10-ton Bridge",
-        "dtons": 10.0,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5 J-Spec Hardened",
-        "dtons": 1,
-        "cost": 0.06,
-        "qty": 1
-      },
-      {
-        "section": "Sensors",
-        "module": "Basic Civilian TL 9",
-        "dtons": 1.0,
-        "cost": 0.05,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "20 Stateroom",
-        "dtons": 80.0,
-        "cost": 10.0,
-        "qty": 20
-      },
-      {
-        "section": "Life Support",
-        "module": "20 Low Berth",
-        "dtons": 10.0,
-        "cost": 1.0,
-        "qty": 20
-      },
-      {
-        "section": "Life Support",
-        "module": "2 Luxuries",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 2
-      },
-      {
-        "section": "Weapon",
-        "module": "Turret, Tripple",
-        "dtons": 2.0,
-        "cost": 2.0,
-        "qty": 2
-      },
-      {
-        "section": "Weapon",
-        "module": "Sand Caster",
-        "dtons": 0.0,
-        "cost": 1.5,
-        "qty": 6
-      },
-      {
-        "section": "Supplies",
-        "module": "Vacc Suit TL8",
-        "dtons": 0.0,
-        "cost": 0.2,
-        "qty": 40
-      },
-      {
-        "section": "Supplies",
-        "module": "Repair Supplies",
-        "dtons": 1.0,
-        "cost": 0.01,
-        "qty": 1
-      },
-      {
-        "section": "Supplies",
-        "module": "Sand Package",
-        "dtons": 5.0,
-        "cost": 0.05,
-        "qty": 5
-      },
-      {
-        "section": "Hull",
-        "module": "20 DT Hull",
-        "dtons": 0,
-        "cost": 16.0
-      },
-      {
-        "section": "Hull Option",
-        "module": "None",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 0
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive B",
-        "dtons": 3.0,
-        "cost": 8.0,
-        "qty": 1
-      },
-      {
-        "section": "J-Drive",
-        "module": "J-Drive B",
-        "dtons": 15.0,
-        "cost": 20.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant B",
-        "dtons": 7.0,
-        "cost": 16.0,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "8 Low Berth",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 8
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 122766630,
-    "availableDtons": 0,
+    "totalCost": 16146630,
+    "availableDtons": 4.1,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -2826,7 +1714,8 @@
         "cost": 4.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-se",
@@ -2837,73 +1726,8 @@
         "cost": 5.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-a",
-        "name": "M-Drive A",
-        "type": "thrust",
-        "driveCode": "A",
-        "dtons": 2.0,
-        "cost": 4.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "jdrive-a",
-        "name": "J-Drive A",
-        "type": "jump",
-        "driveCode": "A",
-        "dtons": 10.0,
-        "cost": 10.0,
-        "qty": 1,
-        "performance": 1,
-        "tl": 9
-      },
-      {
-        "id": "pp-a",
-        "name": "Fusion Plant A",
-        "type": "powerPlant",
-        "driveCode": "A",
-        "dtons": 4.0,
-        "cost": 8.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-b",
-        "name": "M-Drive B",
-        "type": "thrust",
-        "driveCode": "B",
-        "dtons": 3.0,
-        "cost": 8.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "jdrive-b",
-        "name": "J-Drive B",
-        "type": "jump",
-        "driveCode": "B",
-        "dtons": 15.0,
-        "cost": 20.0,
-        "qty": 1,
-        "performance": 2,
-        "tl": 9
-      },
-      {
-        "id": "pp-b",
-        "name": "Fusion Plant B",
-        "type": "powerPlant",
-        "driveCode": "B",
-        "dtons": 7.0,
-        "cost": 16.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -2913,16 +1737,6 @@
         "type": "cockpit",
         "dtons": 3.0,
         "cost": 0.1,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-10-ton-bridge",
-        "name": "10-ton Bridge",
-        "type": "bridge",
-        "dtons": 10.0,
-        "cost": 1.0,
         "qty": 1,
         "stations": 2,
         "tl": 9
@@ -2940,21 +1754,6 @@
         "slots": 1,
         "options": [
           "Hardened"
-        ],
-        "tl": 7
-      },
-      {
-        "id": "computer-m1,-r5-j-spec-hardened",
-        "name": "M1, R5 J-Spec Hardened",
-        "model": "M1, R5 J-Spec Hardened",
-        "dtons": 1,
-        "cost": 0.06,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [
-          "Hardened",
-          "J-Spec"
         ],
         "tl": 7
       }
@@ -3003,59 +1802,9 @@
         "cost": 0.0,
         "qty": 1,
         "tl": 8
-      },
-      {
-        "id": "sensor-basic-civilian-tl-9",
-        "name": "Basic Civilian TL 9",
-        "sensorType": "Basic Civilian TL 9",
-        "dtons": 1.0,
-        "cost": 0.05,
-        "qty": 1,
-        "tl": 9
       }
     ],
-    "lifeSupport": [
-      {
-        "id": "ls-stateroom",
-        "name": "Stateroom",
-        "facilityType": "Stateroom",
-        "dtons": 80.0,
-        "cost": 10.0,
-        "qty": 20,
-        "capacity": 2,
-        "tl": 7
-      },
-      {
-        "id": "ls-low-berth",
-        "name": "Low Berth",
-        "facilityType": "Low Berth",
-        "dtons": 10.0,
-        "cost": 1.0,
-        "qty": 20,
-        "capacity": 1,
-        "tl": 9
-      },
-      {
-        "id": "ls-luxuries",
-        "name": "Luxuries",
-        "facilityType": "Luxuries",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 2,
-        "capacity": 1,
-        "tl": 7
-      },
-      {
-        "id": "ls-low-berth",
-        "name": "Low Berth",
-        "facilityType": "Low Berth",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 8,
-        "capacity": 1,
-        "tl": 9
-      }
-    ],
+    "lifeSupport": [],
     "weaponMounts": [
       {
         "id": "wm-fixed-mount-single",
@@ -3089,28 +1838,6 @@
         "maxWeapons": 1,
         "weapons": [],
         "slots": 0
-      },
-      {
-        "id": "wm-turret-tripple",
-        "name": "Turret, Tripple",
-        "mountType": "turret",
-        "dtons": 2.0,
-        "cost": 2.0,
-        "qty": 2,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      },
-      {
-        "id": "wm-sand-caster",
-        "name": "Sand Caster",
-        "mountType": "hardpoint",
-        "dtons": 0.0,
-        "cost": 1.5,
-        "qty": 6,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
       }
     ],
     "supplies": [
@@ -3129,46 +1856,23 @@
         "cost": 0.021,
         "qty": 0,
         "tl": 8
-      },
-      {
-        "id": "sup-vacc-suit-tl8",
-        "name": "Vacc Suit TL8",
-        "dtons": 0.0,
-        "cost": 0.2,
-        "qty": 40,
-        "tl": 8
-      },
-      {
-        "id": "sup-repair-supplies",
-        "name": "Repair Supplies",
-        "dtons": 1.0,
-        "cost": 0.01,
-        "qty": 1,
-        "tl": 7
-      },
-      {
-        "id": "sup-sand-package",
-        "name": "Sand Package",
-        "dtons": 5.0,
-        "cost": 0.05,
-        "qty": 5,
-        "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1604-tl9-boat-20dt",
     "name": "TL9 BOAT 20DT",
     "tl": 9,
-    "hullCode": "sD",
+    "hullCode": "s3",
     "hullDtons": 20,
     "configuration": "Streamlined",
-    "armor": "Titanium Steel TL7+",
-    "armorQty": 2,
-    "mDrive": "sF",
+    "armor": "None",
+    "armorQty": 0,
+    "mDrive": "sA",
     "jDrive": "",
-    "powerPlant": "sJ",
-    "bridge": "1-man Cockpit",
+    "powerPlant": "sA",
+    "bridge": "2-man Cabin Controls",
     "computer": "M1, R5 Hardened",
     "software": [
       "Interface TL 7",
@@ -3256,7 +1960,8 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.1,
         "cost": 0.0054,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "MORTGAGE",
@@ -3264,112 +1969,10 @@
         "dtons": 0.0,
         "cost": 0.022835,
         "qty": 1
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 2.0,
-        "cost": 0.06,
-        "qty": 2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "1-man Cockpit",
-        "dtons": 1.5,
-        "cost": 0.1,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "1 Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1
-      },
-      {
-        "section": "Weapon",
-        "module": "Fixed-Mount, Double",
-        "dtons": 1.0,
-        "cost": 0.25,
-        "qty": 1
-      },
-      {
-        "section": "Weapon",
-        "module": "Beam Laser",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2
-      },
-      {
-        "section": "Hull",
-        "module": "20 DT Hull",
-        "dtons": 0,
-        "cost": 1.3
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sJ",
-        "dtons": 4.5,
-        "cost": 10.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sJ",
-        "dtons": 3.6,
-        "cost": 7.0,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "20 DT Hull",
-        "dtons": 0,
-        "cost": 1.5
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "20 DT Hull",
-        "dtons": 0,
-        "cost": 1.7
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
       }
     ],
-    "totalCost": 52978235,
-    "availableDtons": 0,
+    "totalCost": 5493234,
+    "availableDtons": 11.1,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -3381,7 +1984,8 @@
         "cost": 1.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sa",
@@ -3392,73 +1996,8 @@
         "cost": 3.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sf",
-        "name": "Fusion Plant sF",
-        "type": "powerPlant",
-        "driveCode": "sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sj",
-        "name": "M-Drive sJ",
-        "type": "thrust",
-        "driveCode": "sJ",
-        "dtons": 4.5,
-        "cost": 10.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sj",
-        "name": "Fusion Plant sJ",
-        "type": "powerPlant",
-        "driveCode": "sJ",
-        "dtons": 3.6,
-        "cost": 7.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -3467,16 +2006,6 @@
         "name": "2-man Cabin Controls",
         "type": "cabin",
         "dtons": 6.0,
-        "cost": 0.1,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-1-man-cockpit",
-        "name": "1-man Cockpit",
-        "type": "cockpit",
-        "dtons": 1.5,
         "cost": 0.1,
         "qty": 1,
         "stations": 2,
@@ -3545,42 +2074,8 @@
         "tl": 8
       }
     ],
-    "lifeSupport": [
-      {
-        "id": "ls-additional-cabin",
-        "name": "Additional Cabin",
-        "facilityType": "Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1,
-        "capacity": 1,
-        "tl": 7
-      }
-    ],
-    "weaponMounts": [
-      {
-        "id": "wm-fixed-mount-double",
-        "name": "Fixed-Mount, Double",
-        "mountType": "hardpoint",
-        "dtons": 1.0,
-        "cost": 0.25,
-        "qty": 1,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      },
-      {
-        "id": "wm-beam-laser",
-        "name": "Beam Laser",
-        "mountType": "hardpoint",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      }
-    ],
+    "lifeSupport": [],
+    "weaponMounts": [],
     "supplies": [
       {
         "id": "sup-regular-life-support-supplies",
@@ -3590,70 +2085,21 @@
         "qty": 0,
         "tl": 7
       }
-    ]
-  },
-  {
-    "id": "excel-1115-vehicles---30dt-ship-s-boat--1-units",
-    "name": "VEHICLES : 30DT Ship's Boat, 1-Units",
-    "tl": 9,
-    "hullCode": "30",
-    "hullDtons": 30,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "LIFESUPPORT COSTS",
-        "module": "STATEROOM",
-        "dtons": 0.0,
-        "cost": 0.018,
-        "qty": 1
-      },
-      {
-        "section": "LIFESUPPORT COSTS",
-        "module": "LOW BERTH",
-        "dtons": 0.0,
-        "cost": 0.0006,
-        "qty": 1
-      }
     ],
-    "totalCost": 18600,
-    "availableDtons": 30.0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
+    "pushCapacity": []
   },
   {
     "id": "excel-1679-tl9-ship-s-boat-30dt",
     "name": "TL9 SHIP's BOAT 30DT",
     "tl": 9,
-    "hullCode": "sJ",
+    "hullCode": "s5",
     "hullDtons": 30,
     "configuration": "Streamlined",
     "armor": "None",
     "armorQty": 0,
-    "mDrive": "sF",
+    "mDrive": "sJ",
     "jDrive": "",
-    "powerPlant": "sF",
+    "powerPlant": "sJ",
     "bridge": "2-man Cabin Controls",
     "computer": "M1, R5 Hardened",
     "software": [
@@ -3742,50 +2188,12 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.3,
         "cost": 0.0162,
-        "qty": 0
-      },
-      {
-        "section": "Hull",
-        "module": "30 DT Hull",
-        "dtons": 0,
-        "cost": 1.5
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "30 DT Hull",
-        "dtons": 0,
-        "cost": 1.7
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "30 DT Hull",
-        "dtons": 0,
-        "cost": 1.95
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 41291200,
-    "availableDtons": 5.699999999999999,
+    "totalCost": 18641200,
+    "availableDtons": 14.700000000000001,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -3797,7 +2205,8 @@
         "cost": 10.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sj",
@@ -3808,40 +2217,8 @@
         "cost": 7.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sf",
-        "name": "Fusion Plant sF",
-        "type": "powerPlant",
-        "driveCode": "sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -3929,13 +2306,14 @@
         "qty": 0,
         "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1714-tl9-ship-s-boat-50dt",
     "name": "TL9 SHIP's BOAT 50DT",
     "tl": 9,
-    "hullCode": "sJ",
+    "hullCode": "s9",
     "hullDtons": 50,
     "configuration": "Streamlined",
     "armor": "None",
@@ -4031,30 +2409,12 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.3,
         "cost": 0.0162,
-        "qty": 0
-      },
-      {
-        "section": "Hull",
-        "module": "50 DT Hull",
-        "dtons": 0,
-        "cost": 1.7
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "50 DT Hull",
-        "dtons": 0,
-        "cost": 1.95
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 23111200,
-    "availableDtons": 33.8,
+    "totalCost": 13461200,
+    "availableDtons": 37.1,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -4066,7 +2426,8 @@
         "cost": 6.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sf",
@@ -4077,18 +2438,8 @@
         "cost": 5.5,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -4176,13 +2527,14 @@
         "qty": 0,
         "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1749-tl9-ship-s-boat-70dt",
     "name": "TL9 SHIP's BOAT 70DT",
     "tl": 9,
-    "hullCode": "sJ",
+    "hullCode": "sD",
     "hullDtons": 70,
     "configuration": "Streamlined",
     "armor": "None",
@@ -4278,17 +2630,12 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.3,
         "cost": 0.0162,
-        "qty": 0
-      },
-      {
-        "section": "Hull",
-        "module": "70 DT Hull",
-        "dtons": 0,
-        "cost": 1.95
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 15731200,
-    "availableDtons": 56.8,
+    "totalCost": 13781200,
+    "availableDtons": 57.1,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -4300,7 +2647,8 @@
         "cost": 6.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sf",
@@ -4311,7 +2659,8 @@
         "cost": 5.5,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -4399,22 +2748,23 @@
         "qty": 0,
         "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
-    "id": "excel-1501-vehicles---90dt-shuttle--1-units",
-    "name": "VEHICLES : 90DT Shuttle, 1-Units",
+    "id": "excel-1531-tl9-shuttle-90dt",
+    "name": "TL9 SHUTTLE 90DT",
     "tl": 9,
-    "hullCode": "s3",
+    "hullCode": "sH",
     "hullDtons": 90,
     "configuration": "Streamlined",
     "armor": "Titanium Steel TL7+",
-    "armorQty": 2,
-    "mDrive": "sF",
+    "armorQty": 0,
+    "mDrive": "sN",
     "jDrive": "",
-    "powerPlant": "sF",
-    "bridge": "1-man Cockpit",
-    "computer": "M1, R5 Hardened",
+    "powerPlant": "sN",
+    "bridge": "2-man Cabin Controls",
+    "computer": "M1, R5",
     "software": [
       "Interface TL 7",
       "Database TL 7",
@@ -4428,34 +2778,6 @@
     "weapons": [],
     "cargo": 26.9,
     "components": [
-      {
-        "section": "Supplies",
-        "module": "Regular Life Support Supplies",
-        "dtons": 1.0,
-        "cost": 0.054,
-        "qty": 1
-      },
-      {
-        "section": "Supplies",
-        "module": "Repair Supplies",
-        "dtons": 2.0,
-        "cost": 0.02,
-        "qty": 2
-      },
-      {
-        "section": "Supplies",
-        "module": "Vacc Suit TL8",
-        "dtons": 0.0,
-        "cost": 3.125,
-        "qty": 625
-      },
-      {
-        "section": "Supplies",
-        "module": "Sand Package",
-        "dtons": 5.0,
-        "cost": 0.05,
-        "qty": 5
-      },
       {
         "section": "Hull",
         "module": "90 DT Hull",
@@ -4546,6 +2868,14 @@
         "qty": 1
       },
       {
+        "section": "Supplies",
+        "module": "Regular Life Support Supplies",
+        "dtons": 0.1,
+        "cost": 0.0054,
+        "qty": 0,
+        "notes": "Stored in cargo space"
+      },
+      {
         "section": "OPS cost/Wk",
         "module": "",
         "dtons": 0.0,
@@ -4572,99 +2902,10 @@
         "dtons": 0.0,
         "cost": 0.6791544,
         "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "90 DT Hull",
-        "dtons": 0,
-        "cost": 1.1
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sA",
-        "dtons": 1.2,
-        "cost": 3.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.2,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5 Hardened",
-        "dtons": 1,
-        "cost": 0.045,
-        "qty": 1
-      },
-      {
-        "section": "MORTGAGE",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.02216833333,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "90 DT Hull",
-        "dtons": 0,
-        "cost": 1.2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 2.0,
-        "cost": 0.06,
-        "qty": 2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "1-man Cockpit",
-        "dtons": 1.5,
-        "cost": 0.1,
-        "qty": 1
       }
     ],
-    "totalCost": 52943020,
-    "availableDtons": 5.299999999999997,
+    "totalCost": 30672251,
+    "availableDtons": 26.9,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -4676,7 +2917,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sn",
@@ -4687,62 +2929,8 @@
         "cost": 10.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sa",
-        "name": "M-Drive sA",
-        "type": "thrust",
-        "driveCode": "sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sa",
-        "name": "Fusion Plant sA",
-        "type": "powerPlant",
-        "driveCode": "sA",
-        "dtons": 1.2,
-        "cost": 3.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sa",
-        "name": "M-Drive sA",
-        "type": "thrust",
-        "driveCode": "sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sf",
-        "name": "Fusion Plant sF",
-        "type": "powerPlant",
-        "driveCode": "sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -4752,16 +2940,6 @@
         "type": "cabin",
         "dtons": 6.0,
         "cost": 0.45,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-1-man-cockpit",
-        "name": "1-man Cockpit",
-        "type": "cockpit",
-        "dtons": 1.5,
-        "cost": 0.1,
         "qty": 1,
         "stations": 2,
         "tl": 9
@@ -4778,20 +2956,6 @@
         "rating": 5,
         "slots": 1,
         "options": [],
-        "tl": 7
-      },
-      {
-        "id": "computer-m1,-r5-hardened",
-        "name": "M1, R5 Hardened",
-        "model": "M1, R5 Hardened",
-        "dtons": 1,
-        "cost": 0.045,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [
-          "Hardened"
-        ],
         "tl": 7
       }
     ],
@@ -4868,526 +3032,13 @@
       {
         "id": "sup-regular-life-support-supplies",
         "name": "Regular Life Support Supplies",
-        "dtons": 1.0,
-        "cost": 0.054,
-        "qty": 1,
-        "tl": 7
-      },
-      {
-        "id": "sup-repair-supplies",
-        "name": "Repair Supplies",
-        "dtons": 2.0,
-        "cost": 0.02,
-        "qty": 2,
-        "tl": 7
-      },
-      {
-        "id": "sup-vacc-suit-tl8",
-        "name": "Vacc Suit TL8",
-        "dtons": 0.0,
-        "cost": 3.125,
-        "qty": 625,
-        "tl": 8
-      },
-      {
-        "id": "sup-sand-package",
-        "name": "Sand Package",
-        "dtons": 5.0,
-        "cost": 0.05,
-        "qty": 5,
-        "tl": 7
-      }
-    ]
-  },
-  {
-    "id": "excel-1531-tl9-shuttle-90dt",
-    "name": "TL9 SHUTTLE 90DT",
-    "tl": 9,
-    "hullCode": "s3",
-    "hullDtons": 90,
-    "configuration": "Streamlined",
-    "armor": "Titanium Steel TL7+",
-    "armorQty": 2,
-    "mDrive": "sF",
-    "jDrive": "",
-    "powerPlant": "sF",
-    "bridge": "1-man Cockpit",
-    "computer": "M1, R5 Hardened",
-    "software": [
-      "Interface TL 7",
-      "Database TL 7",
-      "Security TL 7"
-    ],
-    "sensors": "Standard",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 26.9,
-    "components": [
-      {
-        "section": "Hull",
-        "module": "90 DT Hull",
-        "dtons": 0,
-        "cost": 1.9
-      },
-      {
-        "section": "Config",
-        "module": "Streamlined",
-        "dtons": 0,
-        "cost": 0.19
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 0.0,
-        "cost": 0.095,
-        "qty": 0
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sN",
-        "dtons": 8.0,
-        "cost": 16.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sN",
-        "dtons": 5.7,
-        "cost": 10.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.9,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "2-man Cabin Controls",
-        "dtons": 6.0,
-        "cost": 0.45,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5",
-        "dtons": 1,
-        "cost": 0.03,
-        "qty": 1
-      },
-      {
-        "section": "Software",
-        "module": "Database TL 7",
-        "dtons": 0,
-        "cost": 0.01,
-        "qty": 1
-      },
-      {
-        "section": "Sensors",
-        "module": "Standard",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "1 Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "40 Seating Module",
-        "dtons": 40.0,
-        "cost": 0.96,
-        "qty": 40
-      },
-      {
-        "section": "Cargo",
-        "module": "Cargo Hold",
-        "dtons": 26.9,
-        "cost": 0,
-        "qty": 1
-      },
-      {
-        "section": "Supplies",
-        "module": "Regular Life Support Supplies",
-        "dtons": 0.1,
-        "cost": 0.0054,
-        "qty": 0
-      },
-      {
-        "section": "OPS cost/Wk",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.00471635,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/Qtr",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0565962,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/Year",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.2263848,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/ 3Yr",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.6791544,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "90 DT Hull",
-        "dtons": 0,
-        "cost": 1.1
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sA",
-        "dtons": 1.2,
-        "cost": 3.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.2,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5 Hardened",
-        "dtons": 1,
-        "cost": 0.045,
-        "qty": 1
-      },
-      {
-        "section": "MORTGAGE",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.02216833333,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "90 DT Hull",
-        "dtons": 0,
-        "cost": 1.2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 2.0,
-        "cost": 0.06,
-        "qty": 2
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "1-man Cockpit",
-        "dtons": 1.5,
-        "cost": 0.1,
-        "qty": 1
-      },
-      {
-        "section": "Weapon",
-        "module": "Fixed-Mount, Double",
-        "dtons": 1.0,
-        "cost": 0.25,
-        "qty": 1
-      },
-      {
-        "section": "Weapon",
-        "module": "Beam Laser",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2
-      }
-    ],
-    "totalCost": 51949420,
-    "availableDtons": 12.199999999999989,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [
-      {
-        "id": "mdrive-sn",
-        "name": "M-Drive sN",
-        "type": "thrust",
-        "driveCode": "sN",
-        "dtons": 8.0,
-        "cost": 16.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sn",
-        "name": "Fusion Plant sN",
-        "type": "powerPlant",
-        "driveCode": "sN",
-        "dtons": 5.7,
-        "cost": 10.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sa",
-        "name": "M-Drive sA",
-        "type": "thrust",
-        "driveCode": "sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sa",
-        "name": "Fusion Plant sA",
-        "type": "powerPlant",
-        "driveCode": "sA",
-        "dtons": 1.2,
-        "cost": 3.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sa",
-        "name": "M-Drive sA",
-        "type": "thrust",
-        "driveCode": "sA",
-        "dtons": 0.5,
-        "cost": 1.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sf",
-        "name": "M-Drive sF",
-        "type": "thrust",
-        "driveCode": "sF",
-        "dtons": 3.0,
-        "cost": 6.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sf",
-        "name": "Fusion Plant sF",
-        "type": "powerPlant",
-        "driveCode": "sF",
-        "dtons": 2.7,
-        "cost": 5.5,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      }
-    ],
-    "commandControl": [
-      {
-        "id": "cmd-2-man-cabin-controls",
-        "name": "2-man Cabin Controls",
-        "type": "cabin",
-        "dtons": 6.0,
-        "cost": 0.45,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-1-man-cockpit",
-        "name": "1-man Cockpit",
-        "type": "cockpit",
-        "dtons": 1.5,
-        "cost": 0.1,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      }
-    ],
-    "computers": [
-      {
-        "id": "computer-m1,-r5",
-        "name": "M1, R5",
-        "model": "M1, R5",
-        "dtons": 1,
-        "cost": 0.03,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [],
-        "tl": 7
-      },
-      {
-        "id": "computer-m1,-r5-hardened",
-        "name": "M1, R5 Hardened",
-        "model": "M1, R5 Hardened",
-        "dtons": 1,
-        "cost": 0.045,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [
-          "Hardened"
-        ],
-        "tl": 7
-      }
-    ],
-    "softwareList": [
-      {
-        "id": "sw-interface-tl-7",
-        "name": "Interface TL 7",
-        "program": "Interface TL 7",
-        "dtons": 0,
-        "cost": 0.0,
-        "qty": 1,
-        "rating": 0,
-        "active": true,
-        "tl": 7
-      },
-      {
-        "id": "sw-database-tl-7",
-        "name": "Database TL 7",
-        "program": "Database TL 7",
-        "dtons": 0,
-        "cost": 0.01,
-        "qty": 1,
-        "rating": 0,
-        "active": true,
-        "tl": 7
-      },
-      {
-        "id": "sw-security-tl-7",
-        "name": "Security TL 7",
-        "program": "Security TL 7",
-        "dtons": 0,
-        "cost": 0.0,
-        "qty": 1,
-        "rating": 0,
-        "active": true,
-        "tl": 7
-      }
-    ],
-    "sensorList": [
-      {
-        "id": "sensor-standard",
-        "name": "Standard",
-        "sensorType": "Standard",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1,
-        "tl": 8
-      }
-    ],
-    "lifeSupport": [
-      {
-        "id": "ls-additional-cabin",
-        "name": "Additional Cabin",
-        "facilityType": "Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1,
-        "capacity": 1,
-        "tl": 7
-      },
-      {
-        "id": "ls-seating-module",
-        "name": "Seating Module",
-        "facilityType": "Seating Module",
-        "dtons": 40.0,
-        "cost": 0.96,
-        "qty": 40,
-        "capacity": 1,
-        "tl": 7
-      }
-    ],
-    "weaponMounts": [
-      {
-        "id": "wm-fixed-mount-double",
-        "name": "Fixed-Mount, Double",
-        "mountType": "hardpoint",
-        "dtons": 1.0,
-        "cost": 0.25,
-        "qty": 1,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      },
-      {
-        "id": "wm-beam-laser",
-        "name": "Beam Laser",
-        "mountType": "hardpoint",
-        "dtons": 0.0,
-        "cost": 2.0,
-        "qty": 2,
-        "maxWeapons": 1,
-        "weapons": [],
-        "slots": 0
-      }
-    ],
-    "supplies": [
-      {
-        "id": "sup-regular-life-support-supplies",
-        "name": "Regular Life Support Supplies",
         "dtons": 0.1,
         "cost": 0.0054,
         "qty": 0,
         "tl": 7
       }
-    ]
+    ],
+    "pushCapacity": []
   },
   {
     "id": "excel-1784-tl9-ship-s-boat-95dt",
@@ -5489,11 +3140,12 @@
         "module": "Regular Life Support Supplies",
         "dtons": 0.3,
         "cost": 0.0162,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 14181199,
-    "availableDtons": 81.8,
+    "availableDtons": 82.1,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -5505,7 +3157,8 @@
         "cost": 6.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-sf",
@@ -5516,7 +3169,8 @@
         "cost": 5.5,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -5604,114 +3258,8 @@
         "qty": 0,
         "tl": 7
       }
-    ]
-  },
-  {
-    "id": "excel-9-tl9-tender-100dt--b-m-drive--a-jdrive-",
-    "name": "TL9 TENDER 100DT (B-M DRIVE, A-JDRIVE)",
-    "tl": 9,
-    "hullCode": "100",
-    "hullDtons": 100,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "Airframe - Streamlined hull. Its meant to fly from a 1G world, to space. It has modules for Reusable Boosters.  A prettier version of the Lockheed X-33. \nThis can work vertically, if needed.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Reuses the 300DT Frontier Hull.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "New Hull, Streamlined.  Hides near atmospheric worlds and gas giants for ambush and recon.  looks like LOGH Imperial designs.  You can use the 300DT Hull but with more lift body.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      }
     ],
-    "totalCost": 0,
-    "availableDtons": 100.0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
-  },
-  {
-    "id": "excel-10-tl9-yacht-100dt",
-    "name": "TL9 YACHT 100DT",
-    "tl": 9,
-    "hullCode": "100",
-    "hullDtons": 100,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "Reuses the 300DT Frontier Hull.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "New Hull, Streamlined.  Hides near atmospheric worlds and gas giants for ambush and recon.  looks like LOGH Imperial designs.  You can use the 300DT Hull but with more lift body.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      }
-    ],
-    "totalCost": 0,
-    "availableDtons": 100.0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
+    "pushCapacity": []
   },
   {
     "id": "excel-71-tl-9-courier-ship-100dt",
@@ -5877,32 +3425,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.2,
-        "qty": 40
+        "qty": 40,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 43349000,
-    "availableDtons": 15.75,
+    "availableDtons": 19.75,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -5914,7 +3466,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-a",
@@ -5925,7 +3478,8 @@
         "cost": 10.0,
         "qty": 1,
         "performance": 1,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-b",
@@ -5936,7 +3490,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -6100,6 +3655,14 @@
         "cost": 0.02,
         "qty": 2,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 300,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -6274,32 +3837,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.2,
-        "qty": 40
+        "qty": 40,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 31323999,
-    "availableDtons": 11.0,
+    "availableDtons": 15.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -6311,7 +3878,8 @@
         "cost": 4.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-a",
@@ -6322,7 +3890,8 @@
         "cost": 10.0,
         "qty": 1,
         "performance": 1,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-a",
@@ -6333,7 +3902,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -6508,178 +4078,15 @@
         "qty": 2,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "A",
+        "maxHull": 200,
+        "capacity": 100,
+        "thrustAtMax": 1.0
+      }
     ]
-  },
-  {
-    "id": "excel-6-tl9-research-vessel-200dt",
-    "name": "TL9 RESEARCH VESSEL 200DT",
-    "tl": 9,
-    "hullCode": "200",
-    "hullDtons": 200,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "Airframe - Streamlined hull. Its meant to fly from a 1G world, to space. It has modules for Reusable Boosters.  A prettier version of the Lockheed X-33. \nThis can work vertically, if needed.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Reuses the 300DT Frontier Hull.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "New Hull, Streamlined.  Hides near atmospheric worlds and gas giants for ambush and recon.  looks like LOGH Imperial designs.  You can use the 300DT Hull but with more lift body.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      }
-    ],
-    "totalCost": 0,
-    "availableDtons": 200.0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
-  },
-  {
-    "id": "excel-7-tl9-asteroid-miner-200dt--able-to-move-400dt-",
-    "name": "TL9 ASTEROID MINER 200DT (able to move 400DT)",
-    "tl": 9,
-    "hullCode": "200",
-    "hullDtons": 200,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "Airframe - Streamlined hull. Its meant to fly from a 1G world, to space. It has modules for Reusable Boosters.  A prettier version of the Lockheed X-33. \nThis can work vertically, if needed.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Reuses the 300DT Frontier Hull.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "New Hull, Streamlined.  Hides near atmospheric worlds and gas giants for ambush and recon.  looks like LOGH Imperial designs.  You can use the 300DT Hull but with more lift body.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      }
-    ],
-    "totalCost": 0,
-    "availableDtons": 200.0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
-  },
-  {
-    "id": "excel-8-tl9-habitat-ring-200dt",
-    "name": "TL9 HABITAT RING 200DT",
-    "tl": 9,
-    "hullCode": "200",
-    "hullDtons": 200,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "Airframe - Streamlined hull. Its meant to fly from a 1G world, to space. It has modules for Reusable Boosters.  A prettier version of the Lockheed X-33. \nThis can work vertically, if needed.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Reuses the 300DT Frontier Hull.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "New Hull, Streamlined.  Hides near atmospheric worlds and gas giants for ambush and recon.  looks like LOGH Imperial designs.  You can use the 300DT Hull but with more lift body.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      }
-    ],
-    "totalCost": 0,
-    "availableDtons": 200.0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
   },
   {
     "id": "excel-178-tl9-research-vessel-200dt",
@@ -6846,28 +4253,32 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
+        "qty": 5,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "VEHICLES",
@@ -6878,7 +4289,7 @@
       }
     ],
     "totalCost": 53792999,
-    "availableDtons": 42.25,
+    "availableDtons": 49.25,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -6890,7 +4301,8 @@
         "cost": 4.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-a",
@@ -6901,7 +4313,8 @@
         "cost": 10.0,
         "qty": 1,
         "performance": 1,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-a",
@@ -6912,7 +4325,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -7078,6 +4492,14 @@
         "cost": 0.05,
         "qty": 5,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "A",
+        "maxHull": 200,
+        "capacity": 0,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -7267,28 +4689,32 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.2,
-        "qty": 40
+        "qty": 40,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "VEHICLES",
@@ -7306,7 +4732,7 @@
       }
     ],
     "totalCost": 86394000,
-    "availableDtons": 23.0,
+    "availableDtons": 27.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -7318,7 +4744,8 @@
         "cost": 12.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-c",
@@ -7329,7 +4756,8 @@
         "cost": 30.0,
         "qty": 1,
         "performance": 3,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-c",
@@ -7340,7 +4768,8 @@
         "cost": 24.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -7516,6 +4945,14 @@
         "qty": 2,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "C",
+        "maxHull": 600,
+        "capacity": 400,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
@@ -7669,32 +5106,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
+        "qty": 5,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 41123999,
-    "availableDtons": 81.0,
+    "availableDtons": 88.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -7706,7 +5147,8 @@
         "cost": 4.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-a",
@@ -7717,7 +5159,8 @@
         "cost": 10.0,
         "qty": 1,
         "performance": 1,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-a",
@@ -7728,7 +5171,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -7884,6 +5328,14 @@
         "cost": 0.05,
         "qty": 5,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "A",
+        "maxHull": 200,
+        "capacity": 0,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -8073,28 +5525,32 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 10.0,
         "cost": 0.3,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "VEHICLES",
@@ -8112,7 +5568,7 @@
       }
     ],
     "totalCost": 81347999,
-    "availableDtons": 46.0,
+    "availableDtons": 58.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -8124,7 +5580,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -8135,7 +5592,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-b",
@@ -8146,7 +5604,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -8347,20 +5806,28 @@
         "qty": 1,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 200,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
     "id": "excel-1310-tl-9-passenger-ship-200dt",
     "name": "TL 9 PASSENGER SHIP 200DT",
     "tl": 9,
-    "hullCode": "4.0",
+    "hullCode": "2.0",
     "hullDtons": 200,
     "configuration": "Standard",
     "armor": "Titanium Steel TL7+",
     "armorQty": 1,
-    "mDrive": "B",
-    "jDrive": "B",
-    "powerPlant": "B",
+    "mDrive": "A",
+    "jDrive": "A",
+    "powerPlant": "A",
     "bridge": "10-ton Bridge",
     "computer": "M1, R5 J-Spec Hardened",
     "software": [
@@ -8370,7 +5837,7 @@
     ],
     "sensors": "Basic Civilian TL 9",
     "staterooms": 20,
-    "lowBerths": 28,
+    "lowBerths": 20,
     "crew": [],
     "modules": [
       {
@@ -8514,73 +5981,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.2,
-        "qty": 40
+        "qty": 40,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
-      },
-      {
-        "section": "Hull",
-        "module": "200 DT Hull",
-        "dtons": 0,
-        "cost": 16.0
-      },
-      {
-        "section": "Hull Option",
-        "module": "None",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 0
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive B",
-        "dtons": 3.0,
-        "cost": 8.0,
-        "qty": 1
-      },
-      {
-        "section": "J-Drive",
-        "module": "J-Drive B",
-        "dtons": 15.0,
-        "cost": 20.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant B",
-        "dtons": 7.0,
-        "cost": 16.0,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "8 Low Berth",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 8
+        "qty": 5,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 106673999,
-    "availableDtons": 12.0,
+    "totalCost": 46474000,
+    "availableDtons": 46.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -8592,7 +6022,8 @@
         "cost": 4.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-a",
@@ -8603,7 +6034,8 @@
         "cost": 10.0,
         "qty": 1,
         "performance": 1,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-a",
@@ -8614,40 +6046,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-b",
-        "name": "M-Drive B",
-        "type": "thrust",
-        "driveCode": "B",
-        "dtons": 3.0,
-        "cost": 8.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "jdrive-b",
-        "name": "J-Drive B",
-        "type": "jump",
-        "driveCode": "B",
-        "dtons": 15.0,
-        "cost": 20.0,
-        "qty": 1,
-        "performance": 2,
-        "tl": 9
-      },
-      {
-        "id": "pp-b",
-        "name": "Fusion Plant B",
-        "type": "powerPlant",
-        "driveCode": "B",
-        "dtons": 7.0,
-        "cost": 16.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -8764,16 +6164,6 @@
         "qty": 2,
         "capacity": 1,
         "tl": 7
-      },
-      {
-        "id": "ls-low-berth",
-        "name": "Low Berth",
-        "facilityType": "Low Berth",
-        "dtons": 2.0,
-        "cost": 0.2,
-        "qty": 8,
-        "capacity": 1,
-        "tl": 9
       }
     ],
     "weaponMounts": [
@@ -8833,50 +6223,15 @@
         "qty": 5,
         "tl": 7
       }
-    ]
-  },
-  {
-    "id": "excel-11-tl9-survey-vessel-300dt",
-    "name": "TL9 SURVEY VESSEL 300DT",
-    "tl": 9,
-    "hullCode": "300",
-    "hullDtons": 300,
-    "configuration": "Standard",
-    "armor": "None",
-    "armorQty": 0,
-    "mDrive": "",
-    "jDrive": "",
-    "powerPlant": "",
-    "bridge": "",
-    "computer": "",
-    "software": [],
-    "sensors": "",
-    "staterooms": 0,
-    "lowBerths": 0,
-    "crew": [],
-    "modules": [],
-    "weapons": [],
-    "cargo": 0,
-    "components": [
-      {
-        "section": "New Hull, Streamlined.  Hides near atmospheric worlds and gas giants for ambush and recon.  looks like LOGH Imperial designs.  You can use the 300DT Hull but with more lift body.",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0,
-        "qty": 1
-      }
     ],
-    "totalCost": 0,
-    "availableDtons": 300.0,
-    "createdAt": "2026-05-01T00:00:00.000Z",
-    "drives": [],
-    "commandControl": [],
-    "computers": [],
-    "softwareList": [],
-    "sensorList": [],
-    "lifeSupport": [],
-    "weaponMounts": [],
-    "supplies": []
+    "pushCapacity": [
+      {
+        "driveCode": "A",
+        "maxHull": 200,
+        "capacity": 0,
+        "thrustAtMax": 1.0
+      }
+    ]
   },
   {
     "id": "excel-346-tl9-merchant-liner-300dt",
@@ -9022,25 +6377,28 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 15.0,
         "cost": 0.15,
-        "qty": 15
+        "qty": 15,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 77094000,
-    "availableDtons": 46.0,
+    "availableDtons": 62.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -9052,7 +6410,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -9063,7 +6422,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-b",
@@ -9074,7 +6434,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -9207,6 +6568,14 @@
         "cost": 0.15,
         "qty": 15,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 100,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -9375,32 +6744,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
+        "qty": 5,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 15.0,
         "cost": 0.15,
-        "qty": 15
+        "qty": 15,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 90493999,
-    "availableDtons": 73.0,
+    "availableDtons": 94.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -9412,7 +6785,8 @@
         "cost": 12.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -9423,7 +6797,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-c",
@@ -9434,7 +6809,8 @@
         "cost": 24.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -9610,6 +6986,14 @@
         "qty": 15,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "C",
+        "maxHull": 600,
+        "capacity": 300,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
@@ -9770,32 +7154,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 0.5,
         "cost": 0.005,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 0.5,
         "cost": 0.005,
-        "qty": 0
+        "qty": 0,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 50774000,
-    "availableDtons": 231.0,
+    "availableDtons": 233.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -9807,7 +7195,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -9818,7 +7207,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-b",
@@ -9829,7 +7219,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -9987,6 +7378,14 @@
         "qty": 0,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 100,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
@@ -10126,21 +7525,24 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.1,
-        "qty": 20
+        "qty": 20,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "VEHICLES",
@@ -10151,7 +7553,7 @@
       }
     ],
     "totalCost": 62993000,
-    "availableDtons": 110.25,
+    "availableDtons": 112.25,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -10163,7 +7565,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-b",
@@ -10174,7 +7577,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -10319,6 +7723,14 @@
         "cost": 0.01,
         "qty": 1,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 100,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -10508,28 +7920,32 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 10.0,
         "cost": 0.3,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "VEHICLES",
@@ -10540,7 +7956,7 @@
       }
     ],
     "totalCost": 150035999,
-    "availableDtons": 45.0,
+    "availableDtons": 57.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -10552,7 +7968,8 @@
         "cost": 24.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -10563,7 +7980,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-f",
@@ -10574,7 +7992,8 @@
         "cost": 48.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -10765,6 +8184,14 @@
         "qty": 1,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "F",
+        "maxHull": 1200,
+        "capacity": 900,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
@@ -10952,32 +8379,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 10.0,
         "cost": 0.3,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL9",
         "dtons": 0.0,
         "cost": 0.225,
-        "qty": 25
+        "qty": 25,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
+        "qty": 5,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 168919000,
-    "availableDtons": 15.5,
+    "availableDtons": 31.5,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -10989,7 +8420,8 @@
         "cost": 36.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -11000,7 +8432,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-j",
@@ -11011,7 +8444,8 @@
         "cost": 72.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -11201,6 +8635,14 @@
         "cost": 0.05,
         "qty": 5,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "J",
+        "maxHull": 1800,
+        "capacity": 1500,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -11397,28 +8839,32 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 10.0,
         "cost": 0.3,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 1.0,
         "cost": 0.01,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "VEHICLES",
@@ -11436,7 +8882,7 @@
       }
     ],
     "totalCost": 102047999,
-    "availableDtons": 98.0,
+    "availableDtons": 110.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -11448,7 +8894,8 @@
         "cost": 12.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -11459,7 +8906,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-c",
@@ -11470,7 +8918,8 @@
         "cost": 24.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -11671,22 +9120,30 @@
         "qty": 1,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "C",
+        "maxHull": 600,
+        "capacity": 300,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
     "id": "excel-1418-tl9-frontier-passenger-300dt",
     "name": "TL9 FRONTIER PASSENGER 300DT",
     "tl": 9,
-    "hullCode": "sH",
+    "hullCode": "3.0",
     "hullDtons": 300,
-    "configuration": "Streamlined",
+    "configuration": "Standard",
     "armor": "Titanium Steel TL7+",
-    "armorQty": 0,
-    "mDrive": "sN",
-    "jDrive": "G",
-    "powerPlant": "sN",
-    "bridge": "2-man Cabin Controls",
-    "computer": "M1, R5",
+    "armorQty": 1,
+    "mDrive": "C",
+    "jDrive": "C",
+    "powerPlant": "C",
+    "bridge": "10-ton Bridge",
+    "computer": "M1, R5 J-Spec Hardened",
     "software": [
       "Interface TL 7",
       "Database TL 7",
@@ -11845,190 +9302,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
-      },
-      {
-        "section": "Hull",
-        "module": "300 DT Hull",
-        "dtons": 0,
-        "cost": 100.0
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 25.0,
-        "cost": 5.0,
-        "qty": 1
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive G",
-        "dtons": 13.0,
-        "cost": 28.0,
-        "qty": 1
-      },
-      {
-        "section": "J-Drive",
-        "module": "J-Drive G",
-        "dtons": 40.0,
-        "cost": 70.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant G",
-        "dtons": 22.0,
-        "cost": 56.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "20-ton Bridge",
-        "dtons": 20.0,
-        "cost": 5.0,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "25 Luxuries",
-        "dtons": 25.0,
-        "cost": 2.5,
-        "qty": 25
-      },
-      {
-        "section": "HULL: External Fuel Tank",
-        "module": "3.0",
-        "dtons": 300.0,
-        "cost": 0.3,
-        "qty": 1
-      },
-      {
-        "section": "VEHICLES",
-        "module": "90DT Shuttle",
-        "dtons": 90.0,
-        "cost": 25.587,
-        "qty": 1
-      },
-      {
-        "section": "Hull",
-        "module": "300 DT Hull",
-        "dtons": 0,
-        "cost": 1.9
-      },
-      {
-        "section": "Config",
-        "module": "Streamlined",
-        "dtons": 0,
-        "cost": 0.19
-      },
-      {
-        "section": "Armor",
-        "module": "Titanium Steel TL7+",
-        "dtons": 0.0,
-        "cost": 0.095,
-        "qty": 0
-      },
-      {
-        "section": "M-Drive",
-        "module": "M-Drive sN",
-        "dtons": 8.0,
-        "cost": 16.0,
-        "qty": 1
-      },
-      {
-        "section": "Power Plant",
-        "module": "Fusion Plant sN",
-        "dtons": 5.7,
-        "cost": 10.0,
-        "qty": 1
-      },
-      {
-        "section": "Fuel",
-        "module": "Fuel Tanks",
-        "dtons": 1.9,
-        "cost": 0.0,
-        "qty": 1
-      },
-      {
-        "section": "Command",
-        "module": "2-man Cabin Controls",
-        "dtons": 6.0,
-        "cost": 0.45,
-        "qty": 1
-      },
-      {
-        "section": "Computer",
-        "module": "M1, R5",
-        "dtons": 1,
-        "cost": 0.03,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "1 Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1
-      },
-      {
-        "section": "Life Support",
-        "module": "40 Seating Module",
-        "dtons": 40.0,
-        "cost": 0.96,
-        "qty": 40
-      },
-      {
-        "section": "OPS cost/Wk",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.00471635,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/Qtr",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.0565962,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/Year",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.2263848,
-        "qty": 1
-      },
-      {
-        "section": "OPS cost/ 3Yr",
-        "module": "",
-        "dtons": 0.0,
-        "cost": 0.6791544,
-        "qty": 1
+        "qty": 5,
+        "notes": "Stored in cargo space"
       }
     ],
-    "totalCost": 421937851,
-    "availableDtons": 0,
+    "totalCost": 98883999,
+    "availableDtons": 58.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -12040,7 +9343,8 @@
         "cost": 12.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-c",
@@ -12051,7 +9355,8 @@
         "cost": 30.0,
         "qty": 1,
         "performance": 3,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-c",
@@ -12062,62 +9367,8 @@
         "cost": 24.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-g",
-        "name": "M-Drive G",
-        "type": "thrust",
-        "driveCode": "G",
-        "dtons": 13.0,
-        "cost": 28.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "jdrive-g",
-        "name": "J-Drive G",
-        "type": "jump",
-        "driveCode": "G",
-        "dtons": 40.0,
-        "cost": 70.0,
-        "qty": 1,
-        "performance": 7,
-        "tl": 9
-      },
-      {
-        "id": "pp-g",
-        "name": "Fusion Plant G",
-        "type": "powerPlant",
-        "driveCode": "G",
-        "dtons": 22.0,
-        "cost": 56.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "mdrive-sn",
-        "name": "M-Drive sN",
-        "type": "thrust",
-        "driveCode": "sN",
-        "dtons": 8.0,
-        "cost": 16.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
-      },
-      {
-        "id": "pp-sn",
-        "name": "Fusion Plant sN",
-        "type": "powerPlant",
-        "driveCode": "sN",
-        "dtons": 5.7,
-        "cost": 10.0,
-        "qty": 1,
-        "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -12127,26 +9378,6 @@
         "type": "bridge",
         "dtons": 10.0,
         "cost": 1.5,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-20-ton-bridge",
-        "name": "20-ton Bridge",
-        "type": "bridge",
-        "dtons": 20.0,
-        "cost": 5.0,
-        "qty": 1,
-        "stations": 2,
-        "tl": 9
-      },
-      {
-        "id": "cmd-2-man-cabin-controls",
-        "name": "2-man Cabin Controls",
-        "type": "cabin",
-        "dtons": 6.0,
-        "cost": 0.45,
         "qty": 1,
         "stations": 2,
         "tl": 9
@@ -12166,18 +9397,6 @@
           "Hardened",
           "J-Spec"
         ],
-        "tl": 7
-      },
-      {
-        "id": "computer-m1,-r5",
-        "name": "M1, R5",
-        "model": "M1, R5",
-        "dtons": 1,
-        "cost": 0.03,
-        "qty": 1,
-        "rating": 5,
-        "slots": 1,
-        "options": [],
         "tl": 7
       }
     ],
@@ -12266,36 +9485,6 @@
         "qty": 8,
         "capacity": 1,
         "tl": 9
-      },
-      {
-        "id": "ls-luxuries",
-        "name": "Luxuries",
-        "facilityType": "Luxuries",
-        "dtons": 25.0,
-        "cost": 2.5,
-        "qty": 25,
-        "capacity": 1,
-        "tl": 7
-      },
-      {
-        "id": "ls-additional-cabin",
-        "name": "Additional Cabin",
-        "facilityType": "Additional Cabin",
-        "dtons": 1.5,
-        "cost": 0.075,
-        "qty": 1,
-        "capacity": 1,
-        "tl": 7
-      },
-      {
-        "id": "ls-seating-module",
-        "name": "Seating Module",
-        "facilityType": "Seating Module",
-        "dtons": 40.0,
-        "cost": 0.96,
-        "qty": 40,
-        "capacity": 1,
-        "tl": 7
       }
     ],
     "weaponMounts": [
@@ -12354,6 +9543,14 @@
         "cost": 0.05,
         "qty": 5,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "C",
+        "maxHull": 600,
+        "capacity": 300,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -12522,32 +9719,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
+        "qty": 5,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 73833999,
-    "availableDtons": 254.0,
+    "availableDtons": 262.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -12559,7 +9760,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -12570,7 +9772,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-b",
@@ -12581,7 +9784,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -12747,6 +9951,14 @@
         "cost": 0.05,
         "qty": 5,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 0,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -12929,18 +10141,20 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 152964000,
-    "availableDtons": 145.0,
+    "availableDtons": 146.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -12952,7 +10166,8 @@
         "cost": 32.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -12963,7 +10178,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-h",
@@ -12974,7 +10190,8 @@
         "cost": 64.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -13155,6 +10372,14 @@
         "qty": 10,
         "tl": 8
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "H",
+        "maxHull": 1600,
+        "capacity": 1200,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
@@ -13329,32 +10554,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL9",
         "dtons": 0.0,
         "cost": 0.09,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 20.0,
         "cost": 0.6,
-        "qty": 20
+        "qty": 20,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 183824000,
-    "availableDtons": 11.0,
+    "availableDtons": 34.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -13366,7 +10595,8 @@
         "cost": 48.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "pp-m",
@@ -13377,7 +10607,8 @@
         "cost": 96.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       }
     ],
     "commandControl": [
@@ -13564,6 +10795,14 @@
         "qty": 20,
         "tl": 8
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "M",
+        "maxHull": 2000,
+        "capacity": 1600,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
@@ -13731,21 +10970,24 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Missile Pack, Smart",
         "dtons": 10.0,
         "cost": 0.3,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "LIFESUPPORT COSTS",
@@ -13763,7 +11005,7 @@
       }
     ],
     "totalCost": 163078200,
-    "availableDtons": 15.0,
+    "availableDtons": 26.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -13775,7 +11017,8 @@
         "cost": 24.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -13786,7 +11029,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-f",
@@ -13797,7 +11041,8 @@
         "cost": 48.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -13962,6 +11207,14 @@
         "cost": 0.3,
         "qty": 10,
         "tl": 8
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "F",
+        "maxHull": 1200,
+        "capacity": 800,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -14151,21 +11404,24 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 10.0,
         "cost": 0.1,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "LIFESUPPORT COSTS",
@@ -14183,7 +11439,7 @@
       }
     ],
     "totalCost": 126886200,
-    "availableDtons": 59.0,
+    "availableDtons": 70.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -14195,7 +11451,8 @@
         "cost": 24.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -14206,7 +11463,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-f",
@@ -14217,7 +11475,8 @@
         "cost": 48.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -14405,6 +11664,14 @@
         "qty": 10,
         "tl": 7
       }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "F",
+        "maxHull": 1200,
+        "capacity": 800,
+        "thrustAtMax": 1.0
+      }
     ]
   },
   {
@@ -14579,32 +11846,36 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Repair Supplies",
         "dtons": 2.0,
         "cost": 0.02,
-        "qty": 2
+        "qty": 2,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Sand Package",
         "dtons": 5.0,
         "cost": 0.05,
-        "qty": 5
+        "qty": 5,
+        "notes": "Stored in cargo space"
       }
     ],
     "totalCost": 91333999,
-    "availableDtons": 114.0,
+    "availableDtons": 122.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -14616,7 +11887,8 @@
         "cost": 8.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-b",
@@ -14627,7 +11899,8 @@
         "cost": 20.0,
         "qty": 1,
         "performance": 2,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-b",
@@ -14638,7 +11911,8 @@
         "cost": 16.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -14813,6 +12087,14 @@
         "cost": 0.05,
         "qty": 5,
         "tl": 7
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 0,
+        "thrustAtMax": 1.0
       }
     ]
   },
@@ -15016,14 +12298,16 @@
         "module": "Regular Life Support Supplies",
         "dtons": 1.0,
         "cost": 0.054,
-        "qty": 1
+        "qty": 1,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "Supplies",
         "module": "Vacc Suit TL8",
         "dtons": 0.0,
         "cost": 0.05,
-        "qty": 10
+        "qty": 10,
+        "notes": "Stored in cargo space"
       },
       {
         "section": "VEHICLES",
@@ -15055,7 +12339,7 @@
       }
     ],
     "totalCost": 307421600,
-    "availableDtons": 99.0,
+    "availableDtons": 100.0,
     "createdAt": "2026-05-01T00:00:00.000Z",
     "drives": [
       {
@@ -15067,7 +12351,8 @@
         "cost": 48.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 1
       },
       {
         "id": "jdrive-d",
@@ -15078,7 +12363,8 @@
         "cost": 40.0,
         "qty": 1,
         "performance": 4,
-        "tl": 9
+        "tl": 9,
+        "order": 2
       },
       {
         "id": "pp-m",
@@ -15089,7 +12375,8 @@
         "cost": 96.0,
         "qty": 1,
         "performance": 0,
-        "tl": 9
+        "tl": 9,
+        "order": 3
       }
     ],
     "commandControl": [
@@ -15278,6 +12565,2194 @@
         "cost": 0.05,
         "qty": 10,
         "tl": 8
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "M",
+        "maxHull": 2000,
+        "capacity": 1400,
+        "thrustAtMax": 1.0
+      }
+    ]
+  },
+  {
+    "id": "srd-tl9-tender-100dt--b-m-drive--a-jdrive",
+    "name": "TL9 TENDER 100DT (B-M DRIVE, A-JDRIVE)",
+    "tl": 9,
+    "hullCode": "100",
+    "hullDtons": 100,
+    "configuration": "Streamlined",
+    "armor": "Titanium Steel",
+    "armorQty": 1,
+    "mDrive": "B",
+    "jDrive": "A",
+    "powerPlant": "B",
+    "bridge": "10-ton Bridge",
+    "computer": "M1, R5",
+    "software": [
+      "Database TL 7",
+      "Jump Control/1"
+    ],
+    "sensors": "Basic Civilian TL 9",
+    "staterooms": 2,
+    "lowBerths": 0,
+    "crew": [],
+    "modules": [
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1
+      }
+    ],
+    "weapons": [],
+    "cargo": 31,
+    "components": [
+      {
+        "section": "Hull",
+        "module": "100 DT Hull",
+        "dtons": 0,
+        "cost": 2.0
+      },
+      {
+        "section": "Config",
+        "module": "Streamlined",
+        "dtons": 0,
+        "cost": 0.2
+      },
+      {
+        "section": "Armor",
+        "module": "Titanium Steel TL7+",
+        "dtons": 5.0,
+        "cost": 0.005,
+        "qty": 1
+      },
+      {
+        "section": "M-Drive",
+        "module": "M-Drive B",
+        "dtons": 3,
+        "cost": 8,
+        "qty": 1
+      },
+      {
+        "section": "J-Drive",
+        "module": "J-Drive A",
+        "dtons": 10,
+        "cost": 10,
+        "qty": 1
+      },
+      {
+        "section": "Power Plant",
+        "module": "Fusion Plant B",
+        "dtons": 7,
+        "cost": 16,
+        "qty": 1
+      },
+      {
+        "section": "Fuel",
+        "module": "Fuel Tanks",
+        "dtons": 14,
+        "cost": 0,
+        "qty": 14
+      },
+      {
+        "section": "Command",
+        "module": "10-ton Bridge",
+        "dtons": 10,
+        "cost": 0.5,
+        "qty": 1
+      },
+      {
+        "section": "Computer",
+        "module": "M1, R5",
+        "dtons": 1,
+        "cost": 0.03,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Jump Control/1",
+        "dtons": 0,
+        "cost": 0.1,
+        "qty": 1
+      },
+      {
+        "section": "Sensors",
+        "module": "Basic Civilian TL 9",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1
+      },
+      {
+        "section": "Life Support",
+        "module": "2 Stateroom",
+        "dtons": 8,
+        "cost": 1.0,
+        "qty": 2
+      },
+      {
+        "section": "Life Support",
+        "module": "1 Workshop",
+        "dtons": 8,
+        "cost": 0.5,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1
+      },
+      {
+        "section": "Weapon",
+        "module": "Turret, Single",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1
+      },
+      {
+        "section": "Cargo",
+        "module": "Cargo Hold",
+        "dtons": 31,
+        "cost": 0,
+        "qty": 1
+      },
+      {
+        "section": "Supplies",
+        "module": "Regular Life Support Supplies",
+        "dtons": 1,
+        "cost": 0.054,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      },
+      {
+        "section": "Supplies",
+        "module": "Repair Supplies",
+        "dtons": 1,
+        "cost": 0.01,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      }
+    ],
+    "totalCost": 39708999,
+    "availableDtons": 31.0,
+    "createdAt": "2026-05-02T12:00:00.000Z",
+    "drives": [
+      {
+        "id": "mdrive-b",
+        "name": "M-Drive B",
+        "type": "thrust",
+        "driveCode": "B",
+        "dtons": 3,
+        "cost": 8,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 1
+      },
+      {
+        "id": "jdrive-a",
+        "name": "J-Drive A",
+        "type": "jump",
+        "driveCode": "A",
+        "dtons": 10,
+        "cost": 10,
+        "qty": 1,
+        "performance": 1,
+        "tl": 9,
+        "order": 2
+      },
+      {
+        "id": "pp-b",
+        "name": "Fusion Plant B",
+        "type": "powerPlant",
+        "driveCode": "B",
+        "dtons": 7,
+        "cost": 16,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 3
+      }
+    ],
+    "commandControl": [
+      {
+        "id": "cmd-10-ton-bridge",
+        "name": "10-ton Bridge",
+        "type": "bridge",
+        "dtons": 10,
+        "cost": 0.5,
+        "qty": 1,
+        "stations": 2,
+        "tl": 9
+      }
+    ],
+    "computers": [
+      {
+        "id": "computer-m1,-r5",
+        "name": "M1, R5",
+        "model": "M1, R5",
+        "dtons": 1,
+        "cost": 0.03,
+        "qty": 1,
+        "rating": 5,
+        "slots": 1,
+        "options": [],
+        "tl": 9
+      }
+    ],
+    "softwareList": [
+      {
+        "id": "sw-database-tl-7",
+        "name": "Database TL 7",
+        "program": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      },
+      {
+        "id": "sw-jump-control1",
+        "name": "Jump Control/1",
+        "program": "Jump Control/1",
+        "dtons": 0,
+        "cost": 0.1,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      }
+    ],
+    "sensorList": [
+      {
+        "id": "sensor-basic-civilian-tl-9",
+        "name": "Basic Civilian TL 9",
+        "sensorType": "Basic Civilian TL 9",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "lifeSupport": [
+      {
+        "id": "ls-stateroom",
+        "name": "Stateroom",
+        "facilityType": "Stateroom",
+        "dtons": 8,
+        "cost": 1.0,
+        "qty": 2,
+        "capacity": 2,
+        "tl": 9
+      },
+      {
+        "id": "ls-workshop",
+        "name": "Workshop",
+        "facilityType": "Workshop",
+        "dtons": 8,
+        "cost": 0.5,
+        "qty": 1,
+        "capacity": 0,
+        "tl": 9
+      }
+    ],
+    "weaponMounts": [
+      {
+        "id": "wm-turret-single",
+        "name": "Turret, Single",
+        "mountType": "turret",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1,
+        "maxWeapons": 1,
+        "weapons": [],
+        "slots": 0
+      }
+    ],
+    "supplies": [
+      {
+        "id": "sup-regular-life-support-supplies",
+        "name": "Regular Life Support Supplies",
+        "dtons": 1,
+        "cost": 0.054,
+        "qty": 1,
+        "tl": 9
+      },
+      {
+        "id": "sup-repair-supplies",
+        "name": "Repair Supplies",
+        "dtons": 1,
+        "cost": 0.01,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 300,
+        "thrustAtMax": 1.0
+      }
+    ]
+  },
+  {
+    "id": "srd-tl9-yacht-100dt",
+    "name": "TL9 YACHT 100DT",
+    "tl": 9,
+    "hullCode": "100",
+    "hullDtons": 100,
+    "configuration": "Streamlined",
+    "armor": "Titanium Steel",
+    "armorQty": 1,
+    "mDrive": "A",
+    "jDrive": "A",
+    "powerPlant": "A",
+    "bridge": "10-ton Bridge",
+    "computer": "M2, R10 Hardened",
+    "software": [
+      "Database TL 7",
+      "Library"
+    ],
+    "sensors": "Basic Civilian TL 9",
+    "staterooms": 4,
+    "lowBerths": 2,
+    "crew": [],
+    "modules": [
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      }
+    ],
+    "weapons": [],
+    "cargo": 20,
+    "components": [
+      {
+        "section": "Hull",
+        "module": "100 DT Hull",
+        "dtons": 0,
+        "cost": 2.0
+      },
+      {
+        "section": "Config",
+        "module": "Streamlined",
+        "dtons": 0,
+        "cost": 0.2
+      },
+      {
+        "section": "Armor",
+        "module": "Titanium Steel TL7+",
+        "dtons": 5.0,
+        "cost": 0.005,
+        "qty": 1
+      },
+      {
+        "section": "M-Drive",
+        "module": "M-Drive A",
+        "dtons": 2,
+        "cost": 4,
+        "qty": 1
+      },
+      {
+        "section": "J-Drive",
+        "module": "J-Drive A",
+        "dtons": 10,
+        "cost": 10,
+        "qty": 1
+      },
+      {
+        "section": "Power Plant",
+        "module": "Fusion Plant A",
+        "dtons": 4,
+        "cost": 8,
+        "qty": 1
+      },
+      {
+        "section": "Fuel",
+        "module": "Fuel Tanks",
+        "dtons": 12,
+        "cost": 0,
+        "qty": 12
+      },
+      {
+        "section": "Command",
+        "module": "10-ton Bridge",
+        "dtons": 10,
+        "cost": 0.5,
+        "qty": 1
+      },
+      {
+        "section": "Computer",
+        "module": "M2, R10 Hardened",
+        "dtons": 1,
+        "cost": 0.24,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1
+      },
+      {
+        "section": "Sensors",
+        "module": "Basic Civilian TL 9",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1
+      },
+      {
+        "section": "Life Support",
+        "module": "4 Stateroom",
+        "dtons": 16,
+        "cost": 2.0,
+        "qty": 4
+      },
+      {
+        "section": "Life Support",
+        "module": "2 Low Berth",
+        "dtons": 1.0,
+        "cost": 0.1,
+        "qty": 2
+      },
+      {
+        "section": "Life Support",
+        "module": "4 Luxuries",
+        "dtons": 4,
+        "cost": 0.4,
+        "qty": 4
+      },
+      {
+        "section": "Life Support",
+        "module": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Cargo",
+        "module": "Cargo Hold",
+        "dtons": 20,
+        "cost": 0,
+        "qty": 1
+      },
+      {
+        "section": "Supplies",
+        "module": "Regular Life Support Supplies",
+        "dtons": 1,
+        "cost": 0.054,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      },
+      {
+        "section": "Supplies",
+        "module": "Repair Supplies",
+        "dtons": 1,
+        "cost": 0.01,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      }
+    ],
+    "totalCost": 32568999,
+    "availableDtons": 30.0,
+    "createdAt": "2026-05-02T12:00:00.000Z",
+    "drives": [
+      {
+        "id": "mdrive-a",
+        "name": "M-Drive A",
+        "type": "thrust",
+        "driveCode": "A",
+        "dtons": 2,
+        "cost": 4,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 1
+      },
+      {
+        "id": "jdrive-a",
+        "name": "J-Drive A",
+        "type": "jump",
+        "driveCode": "A",
+        "dtons": 10,
+        "cost": 10,
+        "qty": 1,
+        "performance": 1,
+        "tl": 9,
+        "order": 2
+      },
+      {
+        "id": "pp-a",
+        "name": "Fusion Plant A",
+        "type": "powerPlant",
+        "driveCode": "A",
+        "dtons": 4,
+        "cost": 8,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 3
+      }
+    ],
+    "commandControl": [
+      {
+        "id": "cmd-10-ton-bridge",
+        "name": "10-ton Bridge",
+        "type": "bridge",
+        "dtons": 10,
+        "cost": 0.5,
+        "qty": 1,
+        "stations": 2,
+        "tl": 9
+      }
+    ],
+    "computers": [
+      {
+        "id": "computer-m2,-r10-hardened",
+        "name": "M2, R10 Hardened",
+        "model": "M2, R10 Hardened",
+        "dtons": 1,
+        "cost": 0.24,
+        "qty": 1,
+        "rating": 10,
+        "slots": 1,
+        "options": [
+          "Hardened"
+        ],
+        "tl": 9
+      }
+    ],
+    "softwareList": [
+      {
+        "id": "sw-database-tl-7",
+        "name": "Database TL 7",
+        "program": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      },
+      {
+        "id": "sw-library",
+        "name": "Library",
+        "program": "Library",
+        "dtons": 0,
+        "cost": 0.0,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      }
+    ],
+    "sensorList": [
+      {
+        "id": "sensor-basic-civilian-tl-9",
+        "name": "Basic Civilian TL 9",
+        "sensorType": "Basic Civilian TL 9",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "lifeSupport": [
+      {
+        "id": "ls-stateroom",
+        "name": "Stateroom",
+        "facilityType": "Stateroom",
+        "dtons": 16,
+        "cost": 2.0,
+        "qty": 4,
+        "capacity": 2,
+        "tl": 9
+      },
+      {
+        "id": "ls-low-berth",
+        "name": "Low Berth",
+        "facilityType": "Low Berth",
+        "dtons": 1.0,
+        "cost": 0.1,
+        "qty": 2,
+        "capacity": 1,
+        "tl": 9
+      },
+      {
+        "id": "ls-luxuries",
+        "name": "Luxuries",
+        "facilityType": "Luxuries",
+        "dtons": 4,
+        "cost": 0.4,
+        "qty": 4,
+        "capacity": 0,
+        "tl": 9
+      },
+      {
+        "id": "ls-library",
+        "name": "Library",
+        "facilityType": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1,
+        "capacity": 0,
+        "tl": 9
+      }
+    ],
+    "weaponMounts": [],
+    "supplies": [
+      {
+        "id": "sup-regular-life-support-supplies",
+        "name": "Regular Life Support Supplies",
+        "dtons": 1,
+        "cost": 0.054,
+        "qty": 1,
+        "tl": 9
+      },
+      {
+        "id": "sup-repair-supplies",
+        "name": "Repair Supplies",
+        "dtons": 1,
+        "cost": 0.01,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "A",
+        "maxHull": 200,
+        "capacity": 100,
+        "thrustAtMax": 1.0
+      }
+    ]
+  },
+  {
+    "id": "srd-tl9-research-vessel-200dt",
+    "name": "TL9 RESEARCH VESSEL 200DT",
+    "tl": 9,
+    "hullCode": "200",
+    "hullDtons": 200,
+    "configuration": "Streamlined",
+    "armor": "Titanium Steel",
+    "armorQty": 1,
+    "mDrive": "B",
+    "jDrive": "B",
+    "powerPlant": "B",
+    "bridge": "10-ton Bridge",
+    "computer": "M2, R10 Hardened",
+    "software": [
+      "Database TL 7",
+      "Library",
+      "Jump Control/1"
+    ],
+    "sensors": "Advanced",
+    "staterooms": 6,
+    "lowBerths": 2,
+    "crew": [],
+    "modules": [
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Probe Drones",
+        "dtons": 2,
+        "cost": 0.4,
+        "qty": 1
+      }
+    ],
+    "weapons": [],
+    "cargo": 58,
+    "components": [
+      {
+        "section": "Hull",
+        "module": "200 DT Hull",
+        "dtons": 0,
+        "cost": 8.0
+      },
+      {
+        "section": "Config",
+        "module": "Streamlined",
+        "dtons": 0,
+        "cost": 0.8
+      },
+      {
+        "section": "Armor",
+        "module": "Titanium Steel TL7+",
+        "dtons": 10.0,
+        "cost": 0.02,
+        "qty": 1
+      },
+      {
+        "section": "M-Drive",
+        "module": "M-Drive B",
+        "dtons": 3,
+        "cost": 8,
+        "qty": 1
+      },
+      {
+        "section": "J-Drive",
+        "module": "J-Drive B",
+        "dtons": 15,
+        "cost": 20,
+        "qty": 1
+      },
+      {
+        "section": "Power Plant",
+        "module": "Fusion Plant B",
+        "dtons": 7,
+        "cost": 16,
+        "qty": 1
+      },
+      {
+        "section": "Fuel",
+        "module": "Fuel Tanks",
+        "dtons": 28,
+        "cost": 0,
+        "qty": 28
+      },
+      {
+        "section": "Command",
+        "module": "10-ton Bridge",
+        "dtons": 10,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Computer",
+        "module": "M2, R10 Hardened",
+        "dtons": 1,
+        "cost": 0.24,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Jump Control/1",
+        "dtons": 0,
+        "cost": 0.1,
+        "qty": 1
+      },
+      {
+        "section": "Sensors",
+        "module": "Advanced",
+        "dtons": 3,
+        "cost": 2.0,
+        "qty": 1
+      },
+      {
+        "section": "Life Support",
+        "module": "6 Stateroom",
+        "dtons": 24,
+        "cost": 3.0,
+        "qty": 6
+      },
+      {
+        "section": "Life Support",
+        "module": "2 Low Berth",
+        "dtons": 1.0,
+        "cost": 0.1,
+        "qty": 2
+      },
+      {
+        "section": "Life Support",
+        "module": "3 Laboratory",
+        "dtons": 12,
+        "cost": 3.0,
+        "qty": 3
+      },
+      {
+        "section": "Life Support",
+        "module": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Probe Drones",
+        "dtons": 2,
+        "cost": 0.4,
+        "qty": 1
+      },
+      {
+        "section": "Weapon",
+        "module": "Turret, Single",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1
+      },
+      {
+        "section": "Cargo",
+        "module": "Cargo Hold",
+        "dtons": 58,
+        "cost": 0,
+        "qty": 1
+      },
+      {
+        "section": "Supplies",
+        "module": "Regular Life Support Supplies",
+        "dtons": 2,
+        "cost": 0.108,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      },
+      {
+        "section": "Supplies",
+        "module": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      }
+    ],
+    "totalCost": 68048000,
+    "availableDtons": 78.0,
+    "createdAt": "2026-05-02T12:00:00.000Z",
+    "drives": [
+      {
+        "id": "mdrive-b",
+        "name": "M-Drive B",
+        "type": "thrust",
+        "driveCode": "B",
+        "dtons": 3,
+        "cost": 8,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 1
+      },
+      {
+        "id": "jdrive-b",
+        "name": "J-Drive B",
+        "type": "jump",
+        "driveCode": "B",
+        "dtons": 15,
+        "cost": 20,
+        "qty": 1,
+        "performance": 2,
+        "tl": 9,
+        "order": 2
+      },
+      {
+        "id": "pp-b",
+        "name": "Fusion Plant B",
+        "type": "powerPlant",
+        "driveCode": "B",
+        "dtons": 7,
+        "cost": 16,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 3
+      }
+    ],
+    "commandControl": [
+      {
+        "id": "cmd-10-ton-bridge",
+        "name": "10-ton Bridge",
+        "type": "bridge",
+        "dtons": 10,
+        "cost": 1.0,
+        "qty": 1,
+        "stations": 2,
+        "tl": 9
+      }
+    ],
+    "computers": [
+      {
+        "id": "computer-m2,-r10-hardened",
+        "name": "M2, R10 Hardened",
+        "model": "M2, R10 Hardened",
+        "dtons": 1,
+        "cost": 0.24,
+        "qty": 1,
+        "rating": 10,
+        "slots": 1,
+        "options": [
+          "Hardened"
+        ],
+        "tl": 9
+      }
+    ],
+    "softwareList": [
+      {
+        "id": "sw-database-tl-7",
+        "name": "Database TL 7",
+        "program": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      },
+      {
+        "id": "sw-library",
+        "name": "Library",
+        "program": "Library",
+        "dtons": 0,
+        "cost": 0.0,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      },
+      {
+        "id": "sw-jump-control1",
+        "name": "Jump Control/1",
+        "program": "Jump Control/1",
+        "dtons": 0,
+        "cost": 0.1,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      }
+    ],
+    "sensorList": [
+      {
+        "id": "sensor-advanced",
+        "name": "Advanced",
+        "sensorType": "Advanced",
+        "dtons": 3,
+        "cost": 2.0,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "lifeSupport": [
+      {
+        "id": "ls-stateroom",
+        "name": "Stateroom",
+        "facilityType": "Stateroom",
+        "dtons": 24,
+        "cost": 3.0,
+        "qty": 6,
+        "capacity": 2,
+        "tl": 9
+      },
+      {
+        "id": "ls-low-berth",
+        "name": "Low Berth",
+        "facilityType": "Low Berth",
+        "dtons": 1.0,
+        "cost": 0.1,
+        "qty": 2,
+        "capacity": 1,
+        "tl": 9
+      },
+      {
+        "id": "ls-laboratory",
+        "name": "Laboratory",
+        "facilityType": "Laboratory",
+        "dtons": 12,
+        "cost": 3.0,
+        "qty": 3,
+        "capacity": 0,
+        "tl": 9
+      },
+      {
+        "id": "ls-library",
+        "name": "Library",
+        "facilityType": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1,
+        "capacity": 0,
+        "tl": 9
+      }
+    ],
+    "weaponMounts": [
+      {
+        "id": "wm-turret-single",
+        "name": "Turret, Single",
+        "mountType": "turret",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1,
+        "maxWeapons": 1,
+        "weapons": [],
+        "slots": 0
+      }
+    ],
+    "supplies": [
+      {
+        "id": "sup-regular-life-support-supplies",
+        "name": "Regular Life Support Supplies",
+        "dtons": 2,
+        "cost": 0.108,
+        "qty": 1,
+        "tl": 9
+      },
+      {
+        "id": "sup-repair-supplies",
+        "name": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "B",
+        "maxHull": 400,
+        "capacity": 200,
+        "thrustAtMax": 1.0
+      }
+    ]
+  },
+  {
+    "id": "srd-tl9-asteroid-miner-200dt--able-to-move-400dt",
+    "name": "TL9 ASTEROID MINER 200DT (able to move 400DT)",
+    "tl": 9,
+    "hullCode": "200",
+    "hullDtons": 200,
+    "configuration": "Standard",
+    "armor": "Titanium Steel",
+    "armorQty": 1,
+    "mDrive": "F",
+    "jDrive": "",
+    "powerPlant": "F",
+    "bridge": "10-ton Bridge",
+    "computer": "M1, R5",
+    "software": [
+      "Database TL 7"
+    ],
+    "sensors": "Basic Civilian TL 9",
+    "staterooms": 4,
+    "lowBerths": 4,
+    "crew": [],
+    "modules": [
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 2,
+        "cost": 0.1,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Mining Drones",
+        "dtons": 10,
+        "cost": 2.0,
+        "qty": 1
+      }
+    ],
+    "weapons": [],
+    "cargo": 62,
+    "components": [
+      {
+        "section": "Hull",
+        "module": "200 DT Hull",
+        "dtons": 0,
+        "cost": 8.0
+      },
+      {
+        "section": "Armor",
+        "module": "Titanium Steel TL7+",
+        "dtons": 10.0,
+        "cost": 0.02,
+        "qty": 1
+      },
+      {
+        "section": "M-Drive",
+        "module": "M-Drive F",
+        "dtons": 11,
+        "cost": 24,
+        "qty": 1
+      },
+      {
+        "section": "Power Plant",
+        "module": "Fusion Plant F",
+        "dtons": 19,
+        "cost": 48,
+        "qty": 1
+      },
+      {
+        "section": "Fuel",
+        "module": "Fuel Tanks",
+        "dtons": 24,
+        "cost": 0,
+        "qty": 24
+      },
+      {
+        "section": "Command",
+        "module": "10-ton Bridge",
+        "dtons": 10,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Computer",
+        "module": "M1, R5",
+        "dtons": 1,
+        "cost": 0.03,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1
+      },
+      {
+        "section": "Sensors",
+        "module": "Basic Civilian TL 9",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1
+      },
+      {
+        "section": "Life Support",
+        "module": "4 Stateroom",
+        "dtons": 16,
+        "cost": 2.0,
+        "qty": 4
+      },
+      {
+        "section": "Life Support",
+        "module": "4 Low Berth",
+        "dtons": 2.0,
+        "cost": 0.2,
+        "qty": 4
+      },
+      {
+        "section": "Life Support",
+        "module": "1 Workshop",
+        "dtons": 8,
+        "cost": 0.5,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 2,
+        "cost": 0.1,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Mining Drones",
+        "dtons": 10,
+        "cost": 2.0,
+        "qty": 1
+      },
+      {
+        "section": "Weapon",
+        "module": "Turret, Single",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1
+      },
+      {
+        "section": "Cargo",
+        "module": "Cargo Hold",
+        "dtons": 62,
+        "cost": 0,
+        "qty": 1
+      },
+      {
+        "section": "Supplies",
+        "module": "Regular Life Support Supplies",
+        "dtons": 2,
+        "cost": 0.108,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      },
+      {
+        "section": "Supplies",
+        "module": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      }
+    ],
+    "totalCost": 87238000,
+    "availableDtons": 85.0,
+    "createdAt": "2026-05-02T12:00:00.000Z",
+    "drives": [
+      {
+        "id": "mdrive-f",
+        "name": "M-Drive F",
+        "type": "thrust",
+        "driveCode": "F",
+        "dtons": 11,
+        "cost": 24,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 1
+      },
+      {
+        "id": "pp-f",
+        "name": "Fusion Plant F",
+        "type": "powerPlant",
+        "driveCode": "F",
+        "dtons": 19,
+        "cost": 48,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 2
+      }
+    ],
+    "commandControl": [
+      {
+        "id": "cmd-10-ton-bridge",
+        "name": "10-ton Bridge",
+        "type": "bridge",
+        "dtons": 10,
+        "cost": 1.0,
+        "qty": 1,
+        "stations": 2,
+        "tl": 9
+      }
+    ],
+    "computers": [
+      {
+        "id": "computer-m1,-r5",
+        "name": "M1, R5",
+        "model": "M1, R5",
+        "dtons": 1,
+        "cost": 0.03,
+        "qty": 1,
+        "rating": 5,
+        "slots": 1,
+        "options": [],
+        "tl": 9
+      }
+    ],
+    "softwareList": [
+      {
+        "id": "sw-database-tl-7",
+        "name": "Database TL 7",
+        "program": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      }
+    ],
+    "sensorList": [
+      {
+        "id": "sensor-basic-civilian-tl-9",
+        "name": "Basic Civilian TL 9",
+        "sensorType": "Basic Civilian TL 9",
+        "dtons": 1,
+        "cost": 0.05,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "lifeSupport": [
+      {
+        "id": "ls-stateroom",
+        "name": "Stateroom",
+        "facilityType": "Stateroom",
+        "dtons": 16,
+        "cost": 2.0,
+        "qty": 4,
+        "capacity": 2,
+        "tl": 9
+      },
+      {
+        "id": "ls-low-berth",
+        "name": "Low Berth",
+        "facilityType": "Low Berth",
+        "dtons": 2.0,
+        "cost": 0.2,
+        "qty": 4,
+        "capacity": 1,
+        "tl": 9
+      },
+      {
+        "id": "ls-workshop",
+        "name": "Workshop",
+        "facilityType": "Workshop",
+        "dtons": 8,
+        "cost": 0.5,
+        "qty": 1,
+        "capacity": 0,
+        "tl": 9
+      }
+    ],
+    "weaponMounts": [
+      {
+        "id": "wm-turret-single",
+        "name": "Turret, Single",
+        "mountType": "turret",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1,
+        "maxWeapons": 1,
+        "weapons": [],
+        "slots": 0
+      }
+    ],
+    "supplies": [
+      {
+        "id": "sup-regular-life-support-supplies",
+        "name": "Regular Life Support Supplies",
+        "dtons": 2,
+        "cost": 0.108,
+        "qty": 1,
+        "tl": 9
+      },
+      {
+        "id": "sup-repair-supplies",
+        "name": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "F",
+        "maxHull": 1200,
+        "capacity": 1000,
+        "thrustAtMax": 1.0
+      }
+    ]
+  },
+  {
+    "id": "srd-tl9-habitat-ring-200dt",
+    "name": "TL9 HABITAT RING 200DT",
+    "tl": 9,
+    "hullCode": "200",
+    "hullDtons": 200,
+    "configuration": "Distributed",
+    "armor": "Titanium Steel",
+    "armorQty": 1,
+    "mDrive": "A",
+    "jDrive": "",
+    "powerPlant": "A",
+    "bridge": "10-ton Bridge",
+    "computer": "M1, R5",
+    "software": [
+      "Database TL 7"
+    ],
+    "sensors": "Standard",
+    "staterooms": 20,
+    "lowBerths": 10,
+    "crew": [],
+    "modules": [
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      }
+    ],
+    "weapons": [],
+    "cargo": 8,
+    "components": [
+      {
+        "section": "Hull",
+        "module": "200 DT Hull",
+        "dtons": 0,
+        "cost": 8.0
+      },
+      {
+        "section": "Config",
+        "module": "Distributed",
+        "dtons": 0,
+        "cost": -0.8
+      },
+      {
+        "section": "Armor",
+        "module": "Titanium Steel TL7+",
+        "dtons": 10.0,
+        "cost": 0.02,
+        "qty": 1
+      },
+      {
+        "section": "M-Drive",
+        "module": "M-Drive A",
+        "dtons": 2,
+        "cost": 4,
+        "qty": 1
+      },
+      {
+        "section": "Power Plant",
+        "module": "Fusion Plant A",
+        "dtons": 4,
+        "cost": 8,
+        "qty": 1
+      },
+      {
+        "section": "Fuel",
+        "module": "Fuel Tanks",
+        "dtons": 4,
+        "cost": 0,
+        "qty": 4
+      },
+      {
+        "section": "Command",
+        "module": "10-ton Bridge",
+        "dtons": 10,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Computer",
+        "module": "M1, R5",
+        "dtons": 1,
+        "cost": 0.03,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1
+      },
+      {
+        "section": "Sensors",
+        "module": "Standard",
+        "dtons": 0,
+        "cost": 0,
+        "qty": 1
+      },
+      {
+        "section": "Life Support",
+        "module": "20 Stateroom",
+        "dtons": 80,
+        "cost": 10.0,
+        "qty": 20
+      },
+      {
+        "section": "Life Support",
+        "module": "10 Low Berth",
+        "dtons": 5.0,
+        "cost": 0.5,
+        "qty": 10
+      },
+      {
+        "section": "Life Support",
+        "module": "5 Luxuries",
+        "dtons": 5,
+        "cost": 0.5,
+        "qty": 5
+      },
+      {
+        "section": "Life Support",
+        "module": "2 Laboratory",
+        "dtons": 8,
+        "cost": 2.0,
+        "qty": 2
+      },
+      {
+        "section": "Life Support",
+        "module": "1 Workshop",
+        "dtons": 8,
+        "cost": 0.5,
+        "qty": 1
+      },
+      {
+        "section": "Life Support",
+        "module": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Cargo",
+        "module": "Cargo Hold",
+        "dtons": 8,
+        "cost": 0,
+        "qty": 1
+      },
+      {
+        "section": "Supplies",
+        "module": "Regular Life Support Supplies",
+        "dtons": 4,
+        "cost": 0.216,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      },
+      {
+        "section": "Supplies",
+        "module": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      }
+    ],
+    "totalCost": 38996000,
+    "availableDtons": 59.0,
+    "createdAt": "2026-05-02T12:00:00.000Z",
+    "drives": [
+      {
+        "id": "mdrive-a",
+        "name": "M-Drive A",
+        "type": "thrust",
+        "driveCode": "A",
+        "dtons": 2,
+        "cost": 4,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 1
+      },
+      {
+        "id": "pp-a",
+        "name": "Fusion Plant A",
+        "type": "powerPlant",
+        "driveCode": "A",
+        "dtons": 4,
+        "cost": 8,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 2
+      }
+    ],
+    "commandControl": [
+      {
+        "id": "cmd-10-ton-bridge",
+        "name": "10-ton Bridge",
+        "type": "bridge",
+        "dtons": 10,
+        "cost": 1.0,
+        "qty": 1,
+        "stations": 2,
+        "tl": 9
+      }
+    ],
+    "computers": [
+      {
+        "id": "computer-m1,-r5",
+        "name": "M1, R5",
+        "model": "M1, R5",
+        "dtons": 1,
+        "cost": 0.03,
+        "qty": 1,
+        "rating": 5,
+        "slots": 1,
+        "options": [],
+        "tl": 9
+      }
+    ],
+    "softwareList": [
+      {
+        "id": "sw-database-tl-7",
+        "name": "Database TL 7",
+        "program": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      }
+    ],
+    "sensorList": [
+      {
+        "id": "sensor-standard",
+        "name": "Standard",
+        "sensorType": "Standard",
+        "dtons": 0,
+        "cost": 0,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "lifeSupport": [
+      {
+        "id": "ls-stateroom",
+        "name": "Stateroom",
+        "facilityType": "Stateroom",
+        "dtons": 80,
+        "cost": 10.0,
+        "qty": 20,
+        "capacity": 2,
+        "tl": 9
+      },
+      {
+        "id": "ls-low-berth",
+        "name": "Low Berth",
+        "facilityType": "Low Berth",
+        "dtons": 5.0,
+        "cost": 0.5,
+        "qty": 10,
+        "capacity": 1,
+        "tl": 9
+      },
+      {
+        "id": "ls-luxuries",
+        "name": "Luxuries",
+        "facilityType": "Luxuries",
+        "dtons": 5,
+        "cost": 0.5,
+        "qty": 5,
+        "capacity": 0,
+        "tl": 9
+      },
+      {
+        "id": "ls-laboratory",
+        "name": "Laboratory",
+        "facilityType": "Laboratory",
+        "dtons": 8,
+        "cost": 2.0,
+        "qty": 2,
+        "capacity": 0,
+        "tl": 9
+      },
+      {
+        "id": "ls-workshop",
+        "name": "Workshop",
+        "facilityType": "Workshop",
+        "dtons": 8,
+        "cost": 0.5,
+        "qty": 1,
+        "capacity": 0,
+        "tl": 9
+      },
+      {
+        "id": "ls-library",
+        "name": "Library",
+        "facilityType": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1,
+        "capacity": 0,
+        "tl": 9
+      }
+    ],
+    "weaponMounts": [],
+    "supplies": [
+      {
+        "id": "sup-regular-life-support-supplies",
+        "name": "Regular Life Support Supplies",
+        "dtons": 4,
+        "cost": 0.216,
+        "qty": 1,
+        "tl": 9
+      },
+      {
+        "id": "sup-repair-supplies",
+        "name": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "A",
+        "maxHull": 200,
+        "capacity": 0,
+        "thrustAtMax": 1.0
+      }
+    ]
+  },
+  {
+    "id": "srd-tl9-survey-vessel-300dt",
+    "name": "TL9 SURVEY VESSEL 300DT",
+    "tl": 9,
+    "hullCode": "300",
+    "hullDtons": 300,
+    "configuration": "Streamlined",
+    "armor": "Titanium Steel",
+    "armorQty": 1,
+    "mDrive": "C",
+    "jDrive": "C",
+    "powerPlant": "C",
+    "bridge": "20-ton Bridge",
+    "computer": "M2, R10 Hardened",
+    "software": [
+      "Database TL 7",
+      "Library",
+      "Jump Control/2"
+    ],
+    "sensors": "Advanced",
+    "staterooms": 8,
+    "lowBerths": 4,
+    "crew": [],
+    "modules": [
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 2,
+        "cost": 0.1,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Probe Drones",
+        "dtons": 2,
+        "cost": 0.4,
+        "qty": 1
+      }
+    ],
+    "weapons": [],
+    "cargo": 76,
+    "components": [
+      {
+        "section": "Hull",
+        "module": "300 DT Hull",
+        "dtons": 0,
+        "cost": 12.0
+      },
+      {
+        "section": "Config",
+        "module": "Streamlined",
+        "dtons": 0,
+        "cost": 1.2
+      },
+      {
+        "section": "Armor",
+        "module": "Titanium Steel TL7+",
+        "dtons": 15.0,
+        "cost": 0.03,
+        "qty": 1
+      },
+      {
+        "section": "M-Drive",
+        "module": "M-Drive C",
+        "dtons": 5,
+        "cost": 12,
+        "qty": 1
+      },
+      {
+        "section": "J-Drive",
+        "module": "J-Drive C",
+        "dtons": 20,
+        "cost": 30,
+        "qty": 1
+      },
+      {
+        "section": "Power Plant",
+        "module": "Fusion Plant C",
+        "dtons": 10,
+        "cost": 24,
+        "qty": 1
+      },
+      {
+        "section": "Fuel",
+        "module": "Fuel Tanks",
+        "dtons": 72,
+        "cost": 0,
+        "qty": 72
+      },
+      {
+        "section": "Command",
+        "module": "20-ton Bridge",
+        "dtons": 20,
+        "cost": 1.5,
+        "qty": 1
+      },
+      {
+        "section": "Computer",
+        "module": "M2, R10 Hardened",
+        "dtons": 1,
+        "cost": 0.24,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1
+      },
+      {
+        "section": "Software",
+        "module": "Jump Control/2",
+        "dtons": 0,
+        "cost": 0.1,
+        "qty": 1
+      },
+      {
+        "section": "Sensors",
+        "module": "Advanced",
+        "dtons": 3,
+        "cost": 2.0,
+        "qty": 1
+      },
+      {
+        "section": "Life Support",
+        "module": "8 Stateroom",
+        "dtons": 32,
+        "cost": 4.0,
+        "qty": 8
+      },
+      {
+        "section": "Life Support",
+        "module": "4 Low Berth",
+        "dtons": 2.0,
+        "cost": 0.2,
+        "qty": 4
+      },
+      {
+        "section": "Life Support",
+        "module": "2 Laboratory",
+        "dtons": 8,
+        "cost": 2.0,
+        "qty": 2
+      },
+      {
+        "section": "Life Support",
+        "module": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Scoops",
+        "dtons": 0,
+        "cost": 1.0,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Fuel Processors",
+        "dtons": 2,
+        "cost": 0.1,
+        "qty": 1
+      },
+      {
+        "section": "Module",
+        "module": "Probe Drones",
+        "dtons": 2,
+        "cost": 0.4,
+        "qty": 1
+      },
+      {
+        "section": "Weapon",
+        "module": "Turret, Single",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1
+      },
+      {
+        "section": "Cargo",
+        "module": "Cargo Hold",
+        "dtons": 76,
+        "cost": 0,
+        "qty": 1
+      },
+      {
+        "section": "Supplies",
+        "module": "Regular Life Support Supplies",
+        "dtons": 2,
+        "cost": 0.108,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      },
+      {
+        "section": "Supplies",
+        "module": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "notes": "Stored in cargo space"
+      }
+    ],
+    "totalCost": 95108000,
+    "availableDtons": 103.0,
+    "createdAt": "2026-05-02T12:00:00.000Z",
+    "drives": [
+      {
+        "id": "mdrive-c",
+        "name": "M-Drive C",
+        "type": "thrust",
+        "driveCode": "C",
+        "dtons": 5,
+        "cost": 12,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 1
+      },
+      {
+        "id": "jdrive-c",
+        "name": "J-Drive C",
+        "type": "jump",
+        "driveCode": "C",
+        "dtons": 20,
+        "cost": 30,
+        "qty": 1,
+        "performance": 3,
+        "tl": 9,
+        "order": 2
+      },
+      {
+        "id": "pp-c",
+        "name": "Fusion Plant C",
+        "type": "powerPlant",
+        "driveCode": "C",
+        "dtons": 10,
+        "cost": 24,
+        "qty": 1,
+        "performance": 0,
+        "tl": 9,
+        "order": 3
+      }
+    ],
+    "commandControl": [
+      {
+        "id": "cmd-20-ton-bridge",
+        "name": "20-ton Bridge",
+        "type": "bridge",
+        "dtons": 20,
+        "cost": 1.5,
+        "qty": 1,
+        "stations": 2,
+        "tl": 9
+      }
+    ],
+    "computers": [
+      {
+        "id": "computer-m2,-r10-hardened",
+        "name": "M2, R10 Hardened",
+        "model": "M2, R10 Hardened",
+        "dtons": 1,
+        "cost": 0.24,
+        "qty": 1,
+        "rating": 10,
+        "slots": 1,
+        "options": [
+          "Hardened"
+        ],
+        "tl": 9
+      }
+    ],
+    "softwareList": [
+      {
+        "id": "sw-database-tl-7",
+        "name": "Database TL 7",
+        "program": "Database TL 7",
+        "dtons": 0,
+        "cost": 0.01,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      },
+      {
+        "id": "sw-library",
+        "name": "Library",
+        "program": "Library",
+        "dtons": 0,
+        "cost": 0.0,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      },
+      {
+        "id": "sw-jump-control2",
+        "name": "Jump Control/2",
+        "program": "Jump Control/2",
+        "dtons": 0,
+        "cost": 0.1,
+        "qty": 1,
+        "rating": 0,
+        "active": true,
+        "tl": 9
+      }
+    ],
+    "sensorList": [
+      {
+        "id": "sensor-advanced",
+        "name": "Advanced",
+        "sensorType": "Advanced",
+        "dtons": 3,
+        "cost": 2.0,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "lifeSupport": [
+      {
+        "id": "ls-stateroom",
+        "name": "Stateroom",
+        "facilityType": "Stateroom",
+        "dtons": 32,
+        "cost": 4.0,
+        "qty": 8,
+        "capacity": 2,
+        "tl": 9
+      },
+      {
+        "id": "ls-low-berth",
+        "name": "Low Berth",
+        "facilityType": "Low Berth",
+        "dtons": 2.0,
+        "cost": 0.2,
+        "qty": 4,
+        "capacity": 1,
+        "tl": 9
+      },
+      {
+        "id": "ls-laboratory",
+        "name": "Laboratory",
+        "facilityType": "Laboratory",
+        "dtons": 8,
+        "cost": 2.0,
+        "qty": 2,
+        "capacity": 0,
+        "tl": 9
+      },
+      {
+        "id": "ls-library",
+        "name": "Library",
+        "facilityType": "Library",
+        "dtons": 4,
+        "cost": 4.0,
+        "qty": 1,
+        "capacity": 0,
+        "tl": 9
+      }
+    ],
+    "weaponMounts": [
+      {
+        "id": "wm-turret-single",
+        "name": "Turret, Single",
+        "mountType": "turret",
+        "dtons": 1,
+        "cost": 0.2,
+        "qty": 1,
+        "maxWeapons": 1,
+        "weapons": [],
+        "slots": 0
+      }
+    ],
+    "supplies": [
+      {
+        "id": "sup-regular-life-support-supplies",
+        "name": "Regular Life Support Supplies",
+        "dtons": 2,
+        "cost": 0.108,
+        "qty": 1,
+        "tl": 9
+      },
+      {
+        "id": "sup-repair-supplies",
+        "name": "Repair Supplies",
+        "dtons": 2,
+        "cost": 0.02,
+        "qty": 1,
+        "tl": 9
+      }
+    ],
+    "pushCapacity": [
+      {
+        "driveCode": "C",
+        "maxHull": 600,
+        "capacity": 300,
+        "thrustAtMax": 1.0
       }
     ]
   }
