@@ -2,7 +2,7 @@
   "version": "0.04",
   "name": "ce-shipgen",
   "date": "2026-05-02",
-  "buildTime": "2026-05-02T10:56:30.158Z",
+  "buildTime": "2026-05-02T11:04:14.984Z",
   "changelog": [
     "CRITICAL FIX: Drive performance formula replaced with Excel lookup table — thrust values were ~50% too low for 19 of 40 ships",
     "Extracted complete drive performance table from Excel RAW SHIP TABLES (BG8:CQ53) — covers hulls 10–5000 DT",
