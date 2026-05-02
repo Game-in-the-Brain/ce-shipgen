@@ -586,7 +586,7 @@ export function ShipDesigner() {
       id: currentShip?.id || `ship-${Date.now()}`,
       name: name || generateShipName(hullDtons),
       tl,
-      hullCode,
+      hullCode: String(hullDtons),
       hullDtons,
       configuration: config,
       armor: armorRows.map(r => r.name).join(', ') || 'None',
@@ -636,7 +636,10 @@ export function ShipDesigner() {
     const ship: ShipDesign = {
       id: `export-${Date.now()}`,
       name: name || generateShipName(hullDtons),
-      tl, hullCode, hullDtons, configuration: config,
+      tl,
+      hullCode: String(hullDtons),
+      hullDtons,
+      configuration: config,
       armor: armorRows.map(r => r.name).join(', ') || 'None',
       armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
       mDrive: _mDrive,
@@ -669,7 +672,9 @@ export function ShipDesigner() {
   const loadShip = (ship: ShipDesign) => {
     setName(ship.name);
     setTl(ship.tl);
-    setHullCode(ship.hullCode);
+    // Use hullDtons (actual tonnage) as the dropdown key, not hullCode
+    // hullCode in legacy data may be a performance column letter like 'A' or 's1'
+    setHullCode(String(ship.hullDtons || ship.hullCode || ''));
     setConfig(ship.configuration);
     if (ship.armor && ship.armor !== 'None') {
       setArmorRows([{ id: `armor-${Date.now()}`, name: ship.armor, dtons: 0, cost: 0, qty: ship.armorQty || 1 }]);
