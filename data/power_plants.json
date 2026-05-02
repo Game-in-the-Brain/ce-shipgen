@@ -1,0 +1,20 @@
+[
+  {
+    "Plant Type": "FUSION PLANT",
+    "Modifier": null,
+    "Notes": "DEFAULT",
+    "TL": 9.0,
+    "COST MODIFIER": 1.0,
+    "DT MODIFIER": 1.0,
+    "ANNUAL MAINTENANCE": 0.005
+  },
+  {
+    "Plant Type": "FISSION PLANT",
+    "Modifier": null,
+    "Notes": null,
+    "TL": 8.0,
+    "COST MODIFIER": 2.0,
+    "DT MODIFIER": 2.0,
+    "ANNUAL MAINTENANCE": 0.01
+  }
+]

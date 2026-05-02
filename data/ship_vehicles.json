@@ -1,0 +1,114 @@
+[
+  {
+    "Vehicle": "Air/Raft, ATV",
+    "TL": 12.0,
+    "DTONS": 10.0,
+    "COST": 2600000.0,
+    "Description": "These are vehicles, stored in or on the ship."
+  },
+  {
+    "Vehicle": "50Dton Cutter",
+    "TL": 9.0,
+    "DTONS": 50.0,
+    "COST": 24300000.0,
+    "Description": "These are all small craft, hangered either in or on the ship\u2019s hull."
+  },
+  {
+    "Vehicle": "10DT Fighter",
+    "TL": 9.0,
+    "DTONS": 10.0,
+    "COST": 10841000.0,
+    "Description": "he Fighter is a short-range combat vessel primarily used in system defense and large scale naval engagements"
+  },
+  {
+    "Vehicle": "20DT Launch",
+    "TL": 9.0,
+    "DTONS": 20.0,
+    "COST": 4797000.0,
+    "Description": "he Launch is designed to provide basic transportation needs, and is sometimes used as a lifeboat in the event of emergencies in deep space"
+  },
+  {
+    "Vehicle": "40DT Pinnace",
+    "TL": 9.0,
+    "DTONS": 40.0,
+    "COST": 18567000.0,
+    "Description": "the Pinnace primarily serves as cargo transport on an interplanetary scale"
+  },
+  {
+    "Vehicle": "30DT Ship's Boat",
+    "TL": 9.0,
+    "DTONS": 30.0,
+    "COST": 16677000.0,
+    "Description": "the Ship's Boat is a general-purpose small craft designed to cover a range of tasks"
+  },
+  {
+    "Vehicle": "90DT Shuttle",
+    "TL": 9.0,
+    "DTONS": 90.0,
+    "COST": 25587000.0,
+    "Description": "the Shuttle provides significantly more cargo transport capacity than the less expensive pinnace, at the cost of slower performance"
+  },
+  {
+    "Vehicle": "1DT Ground Car",
+    "TL": 5.0,
+    "DTONS": 1.0,
+    "COST": 6300.0,
+    "Description": "1 driver, 4 psgr"
+  },
+  {
+    "Vehicle": "4DT Air Raft",
+    "TL": 9.0,
+    "DTONS": 4.0,
+    "COST": 95000.0,
+    "Description": "1 pilot, 3 psgr "
+  },
+  {
+    "Vehicle": "2DT Van",
+    "TL": 5.0,
+    "DTONS": 2.0,
+    "COST": 3550.0,
+    "Description": "1 driver, 1 psgr, 9 Cubic Meters of Cargo"
+  },
+  {
+    "Vehicle": "Repair Drone",
+    "TL": 11.0,
+    "DTONS": 0.1,
+    "COST": 10000.0,
+    "Description": null
+  },
+  {
+    "Vehicle": "Escape Pods",
+    "TL": 8.0,
+    "DTONS": 0.5,
+    "COST": 100000.0,
+    "Description": "This covers the installation of rescue bubbles and other escape pods for the entire crew."
+  },
+  {
+    "Vehicle": "Mining Drones",
+    "TL": 9.0,
+    "DTONS": 10.0,
+    "COST": 2000000,
+    "Description": "Each set of mining drones takes up ten tons, and allows the ship to process 1D6x10 tons of asteroid per working day. The tonn"
+  },
+  {
+    "Vehicle": "Probe Drones",
+    "TL": 9.0,
+    "DTONS": 0.2,
+    "COST": 40000,
+    "Description": "Probe drones are for surveying planetary surfaces. Each ton of probe drones contains five drones. Probe drones can be dropped from orbit in disposable entry shells but must be recovered manually. Probe drones are also capable of surveying orbiting satellites, derelicts and other space debris. They can also be used as communications relays."
+  },
+  {
+    "Vehicle": "Repair Drones",
+    "TL": 9.0,
+    "DTONS": 1.0,
+    "COST": 200000,
+    "Description": "Repair Drone "
+  },
+  {
+    "Vehicle": "20DT Fighter, Medium",
+    "TL": 9.0,
+    "DTONS": 20.0,
+    "COST": 16200000,
+    "Description": null
+  }
+]

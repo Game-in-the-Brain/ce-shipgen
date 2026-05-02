@@ -1,0 +1,135 @@
+[
+  {
+    "MODULES": "Fuel Scoops",
+    "TL": 7.0,
+    "DTONS": 0.0,
+    "COST": 1000000.0,
+    "Descirption": "Fuel scoops allow an unstreamlined ship to gather unrefined fuel from a gas giant. Streamlined ships have fuel scoops built in. Adding scoops costs MCr1 and requires no tonnage."
+  },
+  {
+    "MODULES": "Fuel Processors",
+    "TL": 8.0,
+    "DTONS": 1.0,
+    "COST": 50000.0,
+    "Descirption": "Fuel processors convert unrefined fuel into refined fuel. One ton of fuel processors can convert 20 tons of unrefined hydrogen into refined fuel per day. A ton of fuel processing equipment costs Cr50,000."
+  },
+  {
+    "MODULES": "Bay/Hangar",
+    "TL": 7.0,
+    "DTONS": 1.0,
+    "COST": 200000.0,
+    "Descirption": "The tonnage and cost outlined in the Hangar Cost and Tonnage for Vehicles and Drones table covers full-scale hangar space, which allows for repairs and maintenance of small craft when they are back on the ship. The hangar includes spare parts and specialized testing and repair equipment for the stored craft. It does not include the cost of the vehicles or drones. A custom hangar takes up tonnage equal to the tonnage of the vehicle to be stored, plus 30% and costs MCr0.2 per ton."
+  },
+  {
+    "MODULES": "Bay, Fighter",
+    "TL": 7.0,
+    "DTONS": 13.0,
+    "COST": 2600000,
+    "Descirption": "Holds a 10DT Fighter"
+  },
+  {
+    "MODULES": "Bay, Launch",
+    "TL": 7.0,
+    "DTONS": 26,
+    "COST": 5200000,
+    "Descirption": "Holds a 20DT Launch"
+  },
+  {
+    "MODULES": "Bay, Pinnace",
+    "TL": 7.0,
+    "DTONS": 52,
+    "COST": 10400000,
+    "Descirption": "Holds a 40DT Pinnace"
+  },
+  {
+    "MODULES": "Bay, Ship's Boat",
+    "TL": 7.0,
+    "DTONS": 39,
+    "COST": 7800000,
+    "Descirption": "Holds a 30DT Ships Boat"
+  },
+  {
+    "MODULES": "Bay, Shuttle",
+    "TL": 7.0,
+    "DTONS": 122.0,
+    "COST": 24400000,
+    "Descirption": "Holds a 90DT Shuttle"
+  },
+  {
+    "MODULES": "Bay, Cutter",
+    "TL": 7.0,
+    "DTONS": 65,
+    "COST": 13000000,
+    "Descirption": "Holds a 50 DT Cutter"
+  },
+  {
+    "MODULES": "Bay, Escape Pod",
+    "TL": 7.0,
+    "DTONS": 0.5,
+    "COST": 100000.0,
+    "Descirption": null
+  },
+  {
+    "MODULES": "Bay, Life Boat",
+    "TL": 7.0,
+    "DTONS": 26.0,
+    "COST": 5200000.0,
+    "Descirption": null
+  },
+  {
+    "MODULES": "Bay, Mining Drone",
+    "TL": 8.0,
+    "DTONS": 10.0,
+    "COST": 2000000.0,
+    "Descirption": null
+  },
+  {
+    "MODULES": "Bay, Probe Drones",
+    "TL": 7.0,
+    "DTONS": 0.2,
+    "COST": 40000.0,
+    "Descirption": null
+  },
+  {
+    "MODULES": "Bay, Repair Drones",
+    "TL": 7.0,
+    "DTONS": 1.0,
+    "COST": 200000.0,
+    "Descirption": null
+  },
+  {
+    "MODULES": "Bay, Medium Fighter",
+    "TL": 7.0,
+    "DTONS": 26.0,
+    "COST": 5200000,
+    "Descirption": "Holds a 20DT Fighter"
+  },
+  {
+    "MODULES": "Bay, Heavy Fighter",
+    "TL": 7.0,
+    "DTONS": 65,
+    "COST": 13000000,
+    "Descirption": "Holds a 50DT Fighter"
+  },
+  {
+    "MODULES": "Ore, Processor",
+    "TL": 8.0,
+    "DTONS": 1.0,
+    "COST": 50000.0,
+    "Descirption": "Processes 1DT of material per hour"
+  },
+  {
+    "MODULES": "Grapplers",
+    "TL": 7.0,
+    "DTONS": 1.0,
+    "COST": 100000.0,
+    "Descirption": "Every DT of Grappler can handle 100DT"
+  },
+  {
+    "MODULES": "Launch Tube",
+    "TL": 8.0,
+    "DTONS": 1.0,
+    "COST": 500000.0,
+    "Descirption": "10 small craft per round, 25x bigger in dtons than the object launched"
+  }
+]

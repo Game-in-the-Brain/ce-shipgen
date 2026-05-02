@@ -1,0 +1,20 @@
+[
+  {
+    "Armor Type": "Titanium Steel TL7+",
+    "TL": 7.0,
+    "Prot": 2.0,
+    "Cost Factor": 0.05
+  },
+  {
+    "Armor Type": "Crystaliron TL10+",
+    "TL": 10.0,
+    "Prot": 4.0,
+    "Cost Factor": 0.2
+  },
+  {
+    "Armor Type": "Bonded Superdense TL14+",
+    "TL": 14.0,
+    "Prot": 6.0,
+    "Cost Factor": 0.5
+  }
+]

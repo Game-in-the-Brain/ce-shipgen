@@ -1,0 +1,115 @@
+[
+  {
+    "version": "0.09",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T16:37:21.615Z",
+    "changes": [
+      "Table-driven audit system — compare stored values against reference tables",
+      "Batch audit modal with severity levels and auto-correct from tables",
+      "Iron Triangle S/A/P ship classification with auto-tags",
+      "Library multi-filter search (TL, role, tags, hull DT range)",
+      "40 reconciled ships (34 Excel + 6 SRD) with table-correct values",
+      "Component normalization — qty:1 with totals in dtons",
+      "Emergency Low Berth properly distinguished from Low Berth",
+      "Cargo computed as hull remainder, not extracted from Excel"
+    ]
+  },
+  {
+    "version": "0.08",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T16:19:37.481Z",
+    "changes": [
+      "Vehicle bay modules now include vehicle DTons in name (e.g. '20DT Launch Bay', '10DT Fighter Bay')",
+      "Vehicle bays count against hull only when raw Excel dtons is negative (internal bays)",
+      "External vehicles (positive dtons in Excel) shown in BOQ but don't consume hull space",
+      "Fuzzy matching for bay→vehicle names (handles pluralization, 'Life Boat'→'Launch')"
+    ]
+  },
+  {
+    "version": "0.07",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T12:16:44.364Z",
+    "changes": [
+      "FIX: Vehicle/drone extraction — was silently dropped, now populates vehicles[] with names, dtons, cost, qty",
+      "FIX: Supplies qty=0 bug — clean_qty() rounded fractional quantities (0.5→0, 0.1→0); now preserves raw qty",
+      "Vehicle dtons inferred from name pattern (e.g. '20DT Launch'→20) when Excel omits value",
+      "Added VehicleItem type to ShipDesign interface"
+    ]
+  },
+  {
+    "version": "0.06",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T12:16:44.364Z",
+    "changes": [
+      "CRITICAL FIX: Armor cost calculation now follows SRD per-increment formula",
+      "SRD-built ships: armor cost was 0.25% of hull (20× too low), now 5% for Titanium Steel",
+      "ShipDesigner: separated tonsEfficiency from costEfficiency for non-Titanium armors",
+      "Crystaliron/Bonded Superdense tonnage now correctly 5% per increment (was 20%/50%)"
+    ]
+  },
+  {
+    "version": "0.05",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T12:16:44.364Z",
+    "changes": [
+      "CRITICAL FIX: SRD-built ships now use Cr cost units (was MCr) — BOQ no longer shows near-zero costs",
+      "Luxuries per-unit values verified: 1 DT, 100K Cr across all 40 ships",
+      "Library regeneration with corrected per-unit life support, weapons, modules, supplies"
+    ]
+  },
+  {
+    "version": "0.04",
+    "date": "2026-05-02",
+    "buildTime": "2026-05-02T12:16:44.364Z",
+    "changes": [
+      "CRITICAL FIX: Drive performance formula replaced with Excel lookup table — thrust values were ~50% too low for 19 of 40 ships",
+      "Extracted complete drive performance table from Excel RAW SHIP TABLES (BG8:CQ53) — covers hulls 10–5000 DT",
+      "Fixed tender push capacity calculations — e.g., Drive B max hull = 400 DT (was 200 DT)",
+      "Merged ships fix: split 12 merged ships using HULL boundary detection",
+      "Filtered vehicle entries from library (3 VEHICLES: records removed)",
+      "Supplies folded into cargo space for ≤100 DT ships — fixed 11 over-tonnage ships",
+      "Rebuilt 6 empty SRD ships from CE formulas (Tender, Yacht, Research Vessel, Asteroid Miner, Habitat Ring, Survey Vessel)",
+      "Added pushCapacity field to all 40 ships",
+      "Weapon calibration framework with Monte Carlo combat simulation",
+      "Updated CE-Chapter-8-Ship-Design-and-Construction.md with complete drive tables",
+      "Created MNEME-IMPROVEMENTS.md backlog for realistic enhancements"
+    ]
+  },
+  {
+    "version": "0.03",
+    "date": "2026-04-30",
+    "buildTime": "2026-04-30T16:47:55.002Z",
+    "changes": [
+      "M2.6 version control system",
+      "Startup screen with update prompts",
+      "Settings panel with version display",
+      "Service worker prompt-based updates",
+      "Build-time version.json generation",
+      "Offline behavior handling"
+    ]
+  },
+  {
+    "version": "0.02",
+    "date": "2026-04-28",
+    "buildTime": "2026-04-28T00:00:00.000Z",
+    "changes": [
+      "ShipDesigner child-table architecture",
+      "BOQ view with component breakdown",
+      "Armor rating editable increments",
+      "Drive auto-population with performance",
+      "Load from Library workflow"
+    ]
+  },
+  {
+    "version": "0.01",
+    "date": "2026-04-25",
+    "buildTime": "2026-04-25T00:00:00.000Z",
+    "changes": [
+      "Initial PWA setup",
+      "Vite + React + TypeScript scaffold",
+      "Zustand state management",
+      "Tailwind CSS styling",
+      "Table editor for ship components"
+    ]
+  }
+]

@@ -1,0 +1,44 @@
+[
+  {
+    "Model": "Model 1",
+    "TL": 7,
+    "Rating": 5,
+    "Cost": 30000
+  },
+  {
+    "Model": "Model 2",
+    "TL": 9,
+    "Rating": 10,
+    "Cost": 160000
+  },
+  {
+    "Model": "Model 3",
+    "TL": 11,
+    "Rating": 15,
+    "Cost": 2000000
+  },
+  {
+    "Model": "Model 4",
+    "TL": 12,
+    "Rating": 20,
+    "Cost": 5000000
+  },
+  {
+    "Model": "Model 5",
+    "TL": 13,
+    "Rating": 25,
+    "Cost": 10000000
+  },
+  {
+    "Model": "Model 6",
+    "TL": 14,
+    "Rating": 30,
+    "Cost": 20000000
+  },
+  {
+    "Model": "Model 7",
+    "TL": 15,
+    "Rating": 35,
+    "Cost": 30000000
+  }
+]

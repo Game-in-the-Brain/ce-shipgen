@@ -1,0 +1,114 @@
+[
+  {
+    "LIFE SUPPORT": "Staterooms",
+    "TL": 7.0,
+    "DTONS": 4.0,
+    "COST": 500000.0,
+    "Descirption": "No stateroom can contain more than two persons, such as for middle passengers, as it would strain the ship\u2019s life support equipment. The tonnage and cost of the staterooms includes the life support systems needed to keep the crew alive."
+  },
+  {
+    "LIFE SUPPORT": "Low  Berths",
+    "TL": 9.0,
+    "DTONS": 0.5,
+    "COST": 50000.0,
+    "Descirption": "One low passage berth carries one low passenger, costs Cr50,000, and displaces one-half ton."
+  },
+  {
+    "LIFE SUPPORT": "Additional Cabin",
+    "TL": 7.0,
+    "DTONS": 1.5,
+    "COST": 75000,
+    "Descirption": "One Passenger per Cabin."
+  },
+  {
+    "LIFE SUPPORT": "Briefing Room",
+    "TL": 7.0,
+    "DTONS": 4.0,
+    "COST": 500000.0,
+    "Descirption": "A specialized briefing room is useful on mercenary cruisers and other adventuring ships, where teams can discuss plans or meet with clients privately. A briefing room gives a +1 DM to Tactics checks made when planning missions on board ship. Ships with command bridges and fighter squadrons require additional briefing rooms and facilities. Capital ships must therefore have one briefing room per ship section, and one briefing room for every 20 fighter or bomber crew."
+  },
+  {
+    "LIFE SUPPORT": "Detention Cells",
+    "TL": 7.0,
+    "DTONS": 2.0,
+    "COST": 250000.0,
+    "Descirption": "Found primarily on military and government vessels, a detention cell is used to keep prisoners. A detention cell displaces 2 tons and costs MCr0.25."
+  },
+  {
+    "LIFE SUPPORT": "Luxuries",
+    "TL": 7.0,
+    "DTONS": 1.0,
+    "COST": 100000.0,
+    "Descirption": "Luxuries cost Cr100,000 per ton, and make life on board ship more pleasant. Each ton of luxuries counts as one level of the Steward skill for the purposes of carrying passengers, and therefore allows a ship to carry middle and high passage passengers without carrying a trained steward on board. CESRD p. 130"
+  },
+  {
+    "LIFE SUPPORT": "Laboratory",
+    "TL": 7.0,
+    "DTONS": 4.0,
+    "COST": 1000000.0,
+    "Descirption": "Space allocated to laboratories can be used for research and experimentation. Each four tons of lab space allows for one scientist to perform research on board ship. The cost for research equipment varies depending on the type of research undertaken, but is generally around MCr1.0 per 4 tons."
+  },
+  {
+    "LIFE SUPPORT": "Vault",
+    "TL": 7.0,
+    "DTONS": 12.0,
+    "COST": 6000000.0,
+    "Descirption": "A vault is a special armored chamber in the heart of a spacecraft, designed to survive attacks that would annihilate the rest of the ship. A vault has another four Hull and Structure points that only come into play when the ship housing the vault is destroyed. A vault can contain cargo, staterooms or any other internal components equivalent up to 6 tons. A vault requires 12 tons of space and costs MCr6."
+  },
+  {
+    "LIFE SUPPORT": "Barracks",
+    "TL": 7.0,
+    "DTONS": 0.2,
+    "COST": 100000.0,
+    "Descirption": "A barracks takes up 2 tons per marine, and costs MCr0.1 per marine. Barracks can only be used to accommodate troops intended for boarding or assault operations. Troops accommodated in barracks cannot be used to reduce the number of service crew embarked."
+  },
+  {
+    "LIFE SUPPORT": "Armory",
+    "TL": 7.0,
+    "DTONS": 2.0,
+    "COST": 500000.0,
+    "Descirption": "Ships carrying a large number of marines or soldiers can benefit from an armory, a specialized weapons store. An armory can only be accessed by those with the correct codes (usually the ship\u2019s senior officers and security team) and contains a wide variety of weapons. In game terms, an armory has enough snub pistols for the crew, enough accelerator or gauss rifles for any marines, and a selection of other military equipment like grenades, combat drug packs, combat armor and communications equipment. A general armory for a spacecraft costs MCr0.5 and takes up 2 tons of space. Where military vessels are concerned, the number of armories built into the ship\u2019s design is based on crew size. One armory is installed for either every 50 crew members, or every 10 marines, in order to provide adequate storage for equipment, weapons and ammunition."
+  },
+  {
+    "LIFE SUPPORT": "Library",
+    "TL": 7.0,
+    "DTONS": 4.0,
+    "COST": 400000.0,
+    "Descirption": "A library room contains computer files as well as lecterns, display screens, holotanks and even hard copies of books. A good library is useful for both research and passing time in jump space. Having a library on board a ship gives one extra week of training time for new skills per week spent in jump space. A library for a spacecraft costs MCr4 and takes up 4 tons of space."
+  },
+  {
+    "LIFE SUPPORT": "Additional Airlocks",
+    "TL": 7.0,
+    "DTONS": 1.0,
+    "COST": 200000.0,
+    "Descirption": "A ship or craft needs an airlock so that it can be accessed without depressuring the entire craft."
+  },
+  {
+    "LIFE SUPPORT": "Ship\u2019s Locker",
+    "TL": 7.0,
+    "DTONS": 0.5,
+    "COST": null,
+    "Descirption": "Every ship has a ship\u2019s locker. Typical equipment carried aboard will include protective clothing, vacc suits, weapons such as shotguns or pistols, ammunition, compasses and survival aids, and portable shelters. The contents of the locker are defined only when they need to be but always contains vacc suits and other useful items. The ship\u2019s locker is usually protected by a biometric lock keyed to the ship\u2019s officers."
+  },
+  {
+    "LIFE SUPPORT": "Workshop",
+    "TL": 7.0,
+    "DTONS": 8.0,
+    "COST": 2000000.0,
+    "Descirption": "Machining Tools for Repair and Fabrication."
+  },
+  {
+    "LIFE SUPPORT": "Seating Module",
+    "TL": 7.0,
+    "DTONS": 1.0,
+    "COST": 24000.0,
+    "Descirption": "4 Seats. Sealed Seating modular unit."
+  },
+  {
+    "LIFE SUPPORT": "Emergency low Berth",
+    "TL": 9.0,
+    "DTONS": 0.25,
+    "COST": 25000.0,
+    "Descirption": "will not carry passengers, only used for survival"
+  }
+]

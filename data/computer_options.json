@@ -1,0 +1,22 @@
+[
+  {
+    "COMPUTER OPTIONS": "Standard",
+    "col_1": 1.0,
+    "col_2": "Standard"
+  },
+  {
+    "COMPUTER OPTIONS": "Specialized",
+    "col_1": 1.5,
+    "col_2": "Jump Control Specialization (bis): A computer\u2019s rating can be increased by 5 for the purposes of running Jump Control programs only. This increases the computer\u2019s cost by 50%."
+  },
+  {
+    "COMPUTER OPTIONS": "Hardened",
+    "col_1": 1.5,
+    "col_2": "Hardened Systems (fib): A computer and its connections can be hardened against attack by electromagnetic pulse weapons. A hardened system is immune to EMP, but costs 50% more."
+  },
+  {
+    "COMPUTER OPTIONS": "Specialized and Hardened",
+    "col_1": 2.0,
+    "col_2": "Both options can be applied to the same computer by doubling its cost (+100%)."
+  }
+]

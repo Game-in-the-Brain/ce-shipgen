@@ -1,0 +1,210 @@
+[
+  {
+    "WEAPONS": "Turret, Single",
+    "TL": 7.0,
+    "DTONS": 1.0,
+    "COST": 200000.0,
+    "Descirption": "Holds One Turret Weapon",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Turret, Double",
+    "TL": 8.0,
+    "DTONS": 1.0,
+    "COST": 500000.0,
+    "Descirption": "Holds 2 Turret Weapons",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Turret, Tripple",
+    "TL": 9.0,
+    "DTONS": 1.0,
+    "COST": 1000000.0,
+    "Descirption": "Holds 3 Turret Weapons",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Pop-up Turret, Single",
+    "TL": 10.0,
+    "DTONS": 3.0,
+    "COST": 1200000.0,
+    "Descirption": "Can hide and Holds 1 Turret Weapons",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Pop-up Turret, Double",
+    "TL": 10.0,
+    "DTONS": 3.0,
+    "COST": 1500000.0,
+    "Descirption": "Can Hide and Holds 2 Turret Weapons",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Pop-up Turret, Tripple",
+    "TL": 10.0,
+    "DTONS": 3.0,
+    "COST": 2000000.0,
+    "Descirption": "Can Hide and Holds 3 Turret Weapons",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Fixed-Mount, Single",
+    "TL": 6.0,
+    "DTONS": 1.0,
+    "COST": 100000.0,
+    "Descirption": "weapons cannot move, are limited to firing in one direction (normally straight ahead), and are found mainly on fighters.",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Fixed-Mount, Double",
+    "TL": 6.0,
+    "DTONS": 1.0,
+    "COST": 250000.0,
+    "Descirption": "weapons cannot move, are limited to firing in one direction (normally straight ahead), and are found mainly on fighters.",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Fixed-Mount, Tripple",
+    "TL": 6.0,
+    "DTONS": 1.0,
+    "COST": 500000.0,
+    "Descirption": "weapons cannot move, are limited to firing in one direction (normally straight ahead), and are found mainly on fighters.",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Pop-up Single Fixed Mount",
+    "TL": 10.0,
+    "DTONS": 3.0,
+    "COST": 600000,
+    "Descirption": "Can be hidden away, fixed weapon holder",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Pop-up Double Fixed Mount",
+    "TL": 10.0,
+    "DTONS": 3.0,
+    "COST": 750000,
+    "Descirption": "Can be hidden away, fixed weapon holder",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Pop-up Tripple Fixed Mount",
+    "TL": 10.0,
+    "DTONS": 3.0,
+    "COST": 1000000,
+    "Descirption": "Can be hidden away, fixed weapon holder",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Missile Rack",
+    "TL": 6.0,
+    "DTONS": 0.0,
+    "COST": 750000.0,
+    "Descirption": "Launches 1 missile per turn.",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Pulse Laser",
+    "TL": 7.0,
+    "DTONS": 0.0,
+    "COST": 500000.0,
+    "Descirption": "2D6 Close Range Weapon",
+    "EW": 1.0
+  },
+  {
+    "WEAPONS": "Beam Laser",
+    "TL": 9.0,
+    "DTONS": 0.0,
+    "COST": 1000000.0,
+    "Descirption": "1D6 Medium Ranged Weapon",
+    "EW": 1.0
+  },
+  {
+    "WEAPONS": "Sand Caster",
+    "TL": 7.0,
+    "DTONS": 0.0,
+    "COST": 250000.0,
+    "Descirption": "Reduces Beam damage by 1d6, 1 Damage",
+    "EW": 0.0
+  },
+  {
+    "WEAPONS": "Particle Beam",
+    "TL": 8.0,
+    "DTONS": 0.0,
+    "COST": 4000000.0,
+    "Descirption": "3D6 + RAD, Short Ranged",
+    "EW": 1.0
+  },
+  {
+    "WEAPONS": "Bay Turret, Missile Bank",
+    "TL": 6.0,
+    "DTONS": 51.0,
+    "COST": 12000000.0,
+    "Descirption": "12 missiles salvo.",
+    "EW": 0.0
+  },
+  {
+    "WEAPONS": "Bay Turret, Particle Beam",
+    "TL": 8.0,
+    "DTONS": 51.0,
+    "COST": 20000000.0,
+    "Descirption": "6D6 +1 RAD, Short Range",
+    "EW": 5.0
+  },
+  {
+    "WEAPONS": "Bay Turret, Meson Gun",
+    "TL": 11.0,
+    "DTONS": 51.0,
+    "COST": 50000000.0,
+    "Descirption": "5D6 + 1 RAD, Ignores Armor, Medium Range",
+    "EW": 5.0
+  },
+  {
+    "WEAPONS": "Bay Turret, Fusion Gun",
+    "TL": 12.0,
+    "DTONS": 51.0,
+    "COST": 8000000.0,
+    "Descirption": "5D6, Short Range",
+    "EW": 5.0
+  },
+  {
+    "WEAPONS": "Meson Screen",
+    "TL": 12.0,
+    "DTONS": 50.0,
+    "COST": 60000000.0,
+    "Descirption": "Protects against meson weapon damage, reducing damage by 2D6. Meson screens reduce radiation damage from meson guns and meson flicker weapons. Radiation hits from these weapons suffer a \u2013DM equal to twice the active number of screens.",
+    "EW": 5.0
+  },
+  {
+    "WEAPONS": "Nuclear Dampers",
+    "TL": 12.0,
+    "DTONS": 50.0,
+    "COST": 50000000.0,
+    "Descirption": "Reduces fusion gun damage and nuclear missile damage by 2D6, removes automatic radiation hit from nuclear missile attacks",
+    "EW": 5.0
+  },
+  {
+    "WEAPONS": "Autocannon, 20mm",
+    "TL": 6.0,
+    "DTONS": 0.0,
+    "COST": 10000.0,
+    "Descirption": "1D6, Adjacent Range",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Utility Laser",
+    "TL": 7.0,
+    "DTONS": 0.0,
+    "COST": 100000.0,
+    "Descirption": "1D6, Close Range Laser",
+    "EW": null
+  },
+  {
+    "WEAPONS": "Hi-Cap Lasers",
+    "TL": 9.0,
+    "DTONS": 0.0,
+    "COST": 2000000.0,
+    "Descirption": "2D6, Medium Ranged Laser",
+    "EW": 1.0
+  }
+]

@@ -1,0 +1,254 @@
+[
+  {
+    "DTONS": 10.0,
+    "COST": 1100000.0,
+    "Construction Time (weeks)": 28.0,
+    "Performance Column": 2.0,
+    "Price/Dton": 110000
+  },
+  {
+    "DTONS": 15.0,
+    "COST": 1150000.0,
+    "Construction Time (weeks)": 29.0,
+    "Performance Column": 3.0,
+    "Price/Dton": 76666.66667
+  },
+  {
+    "DTONS": 20.0,
+    "COST": 1200000.0,
+    "Construction Time (weeks)": 29.0,
+    "Performance Column": 4.0,
+    "Price/Dton": 60000
+  },
+  {
+    "DTONS": 25.0,
+    "COST": 1250000.0,
+    "Construction Time (weeks)": 30.0,
+    "Performance Column": 5.0,
+    "Price/Dton": 50000
+  },
+  {
+    "DTONS": 30.0,
+    "COST": 1300000.0,
+    "Construction Time (weeks)": 30.0,
+    "Performance Column": 6.0,
+    "Price/Dton": 43333.33333
+  },
+  {
+    "DTONS": 35.0,
+    "COST": 1350000.0,
+    "Construction Time (weeks)": 30.0,
+    "Performance Column": 7.0,
+    "Price/Dton": 38571.42857
+  },
+  {
+    "DTONS": 40.0,
+    "COST": 1400000.0,
+    "Construction Time (weeks)": 31.0,
+    "Performance Column": 8.0,
+    "Price/Dton": 35000
+  },
+  {
+    "DTONS": 45.0,
+    "COST": 1450000.0,
+    "Construction Time (weeks)": 31.0,
+    "Performance Column": 9.0,
+    "Price/Dton": 32222.22222
+  },
+  {
+    "DTONS": 50.0,
+    "COST": 1500000.0,
+    "Construction Time (weeks)": 32.0,
+    "Performance Column": 10.0,
+    "Price/Dton": 30000
+  },
+  {
+    "DTONS": 55.0,
+    "COST": 1550000.0,
+    "Construction Time (weeks)": 32.0,
+    "Performance Column": 11.0,
+    "Price/Dton": 28181.81818
+  },
+  {
+    "DTONS": 60.0,
+    "COST": 1600000.0,
+    "Construction Time (weeks)": 32.0,
+    "Performance Column": 12.0,
+    "Price/Dton": 26666.66667
+  },
+  {
+    "DTONS": 65.0,
+    "COST": 1650000.0,
+    "Construction Time (weeks)": 33.0,
+    "Performance Column": 13.0,
+    "Price/Dton": 25384.61538
+  },
+  {
+    "DTONS": 70.0,
+    "COST": 1700000.0,
+    "Construction Time (weeks)": 33.0,
+    "Performance Column": 14.0,
+    "Price/Dton": 24285.71429
+  },
+  {
+    "DTONS": 75.0,
+    "COST": 1750000.0,
+    "Construction Time (weeks)": 34.0,
+    "Performance Column": 15.0,
+    "Price/Dton": 23333.33333
+  },
+  {
+    "DTONS": 80.0,
+    "COST": 1800000.0,
+    "Construction Time (weeks)": 34.0,
+    "Performance Column": 16.0,
+    "Price/Dton": 22500
+  },
+  {
+    "DTONS": 85.0,
+    "COST": 1850000.0,
+    "Construction Time (weeks)": 34.0,
+    "Performance Column": 17.0,
+    "Price/Dton": 21764.70588
+  },
+  {
+    "DTONS": 90.0,
+    "COST": 1900000.0,
+    "Construction Time (weeks)": 35.0,
+    "Performance Column": 18.0,
+    "Price/Dton": 21111.11111
+  },
+  {
+    "DTONS": 95.0,
+    "COST": 1950000.0,
+    "Construction Time (weeks)": 35.0,
+    "Performance Column": 19.0,
+    "Price/Dton": 20526.31579
+  },
+  {
+    "DTONS": 100.0,
+    "COST": 2000000.0,
+    "Construction Time (weeks)": 36.0,
+    "Performance Column": 2.0,
+    "Price/Dton": 20000
+  },
+  {
+    "DTONS": 200.0,
+    "COST": 8000000.0,
+    "Construction Time (weeks)": 44.0,
+    "Performance Column": 3.0,
+    "Price/Dton": 40000
+  },
+  {
+    "DTONS": 300.0,
+    "COST": 12000000.0,
+    "Construction Time (weeks)": 52.0,
+    "Performance Column": 4.0,
+    "Price/Dton": 40000
+  },
+  {
+    "DTONS": 400.0,
+    "COST": 16000000.0,
+    "Construction Time (weeks)": 60.0,
+    "Performance Column": 5.0,
+    "Price/Dton": 40000
+  },
+  {
+    "DTONS": 500.0,
+    "COST": 32000000.0,
+    "Construction Time (weeks)": 68.0,
+    "Performance Column": 6.0,
+    "Price/Dton": 64000
+  },
+  {
+    "DTONS": 600.0,
+    "COST": 48000000.0,
+    "Construction Time (weeks)": 76.0,
+    "Performance Column": 7.0,
+    "Price/Dton": 80000.0
+  },
+  {
+    "DTONS": 700.0,
+    "COST": 64000000.0,
+    "Construction Time (weeks)": 84.0,
+    "Performance Column": 8.0,
+    "Price/Dton": 91429.0
+  },
+  {
+    "DTONS": 800.0,
+    "COST": 80000000.0,
+    "Construction Time (weeks)": 92.0,
+    "Performance Column": 9.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 900.0,
+    "COST": 90000000.0,
+    "Construction Time (weeks)": 100.0,
+    "Performance Column": 10.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 1000.0,
+    "COST": 100000000.0,
+    "Construction Time (weeks)": 108.0,
+    "Performance Column": 11.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 1200.0,
+    "COST": 120000000.0,
+    "Construction Time (weeks)": 124.0,
+    "Performance Column": 12.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 1400.0,
+    "COST": 140000000.0,
+    "Construction Time (weeks)": 140.0,
+    "Performance Column": 13.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 1600.0,
+    "COST": 160000000.0,
+    "Construction Time (weeks)": 156.0,
+    "Performance Column": 14.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 1800.0,
+    "COST": 180000000.0,
+    "Construction Time (weeks)": 172.0,
+    "Performance Column": 15.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 2000.0,
+    "COST": 200000000.0,
+    "Construction Time (weeks)": 188.0,
+    "Performance Column": 16.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 3000.0,
+    "COST": 300000000.0,
+    "Construction Time (weeks)": 268.0,
+    "Performance Column": 17.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 4000.0,
+    "COST": 400000000.0,
+    "Construction Time (weeks)": 348.0,
+    "Performance Column": 18.0,
+    "Price/Dton": 100000.0
+  },
+  {
+    "DTONS": 5000.0,
+    "COST": 500000000.0,
+    "Construction Time (weeks)": 428.0,
+    "Performance Column": 19.0,
+    "Price/Dton": 100000.0
+  }
+]
