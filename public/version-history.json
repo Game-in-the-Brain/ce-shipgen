@@ -2,7 +2,7 @@
   {
     "version": "0.09",
     "date": "2026-05-02",
-    "buildTime": "2026-05-02T16:22:35.577Z",
+    "buildTime": "2026-05-02T16:35:42.180Z",
     "changes": [
       "Table-driven audit system — compare stored values against reference tables",
       "Batch audit modal with severity levels and auto-correct from tables",
