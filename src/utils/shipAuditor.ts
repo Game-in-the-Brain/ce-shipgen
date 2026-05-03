@@ -10,6 +10,7 @@
  */
 
 import type { ShipDesign, DataTable, TableRow } from '../types';
+import { calculateFuelProfile } from './shipOperations';
 
 // ─── Violation Types ───
 
@@ -540,9 +541,141 @@ export function correctShip(ship: ShipDesign, tables: Record<string, DataTable>)
 
 // ─── Main Audit Function ───
 
+function auditHullOverflow(ship: ShipDesign): AuditViolation[] {
+  const violations: AuditViolation[] = [];
+  const hull = ship.hullDtons || 0;
+  const used = ship.components.reduce((s, c) => s + (c.dtons || 0), 0);
+  if (used > hull) {
+    violations.push({
+      category: 'Hull',
+      item: ship.name,
+      field: 'tonnage',
+      expected: hull,
+      actual: used,
+      delta: used - hull,
+      severity: 'critical',
+      message: `HULL OVERFLOW: ${used.toFixed(1)} DT used vs ${hull} DT capacity (+${(used - hull).toFixed(1)} DT)`,
+    });
+  }
+  return violations;
+}
+
+function auditPowerPlant(ship: ShipDesign): AuditViolation[] {
+  const violations: AuditViolation[] = [];
+  const drives = ship.drives || [];
+  const thrust = drives.filter((d) => d.type === 'thrust');
+  const power = drives.filter((d) => d.type === 'powerPlant');
+  const jump = drives.filter((d) => d.type === 'jump');
+
+  if (!power.length) {
+    violations.push({
+      category: 'Power Plant',
+      item: ship.name,
+      field: 'powerPlant',
+      expected: 1,
+      actual: 0,
+      delta: 1,
+      severity: 'critical',
+      message: 'No power plant installed',
+    });
+    return violations;
+  }
+
+  // Extract letter rating (handles 'sB' → 'B')
+  const ratingLetter = (code: string) => code.toUpperCase().replace(/^S/, '');
+
+  let maxDriveRating = '';
+  for (const d of [...thrust, ...jump]) {
+    const letter = ratingLetter(d.driveCode || '');
+    if (letter && (maxDriveRating === '' || letter > maxDriveRating)) {
+      maxDriveRating = letter;
+    }
+  }
+
+  const ppCode = power[0].driveCode || '';
+  const ppLetter = ratingLetter(ppCode);
+
+  if (maxDriveRating && ppLetter !== maxDriveRating) {
+    const LETTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
+    violations.push({
+      category: 'Power Plant',
+      item: `Fusion Plant ${ppCode}`,
+      field: 'driveCode',
+      expected: LETTERS.indexOf(maxDriveRating),
+      actual: LETTERS.indexOf(ppLetter),
+      delta: 0,
+      severity: 'critical',
+      message: `PP rating mismatch: ${ppCode} vs drive requiring ${maxDriveRating}`,
+    });
+  }
+
+  return violations;
+}
+
+function auditFuel(ship: ShipDesign): AuditViolation[] {
+  const violations: AuditViolation[] = [];
+  const hull = ship.hullDtons || 0;
+  const fuel = ship.components
+    .filter((c) => c.module?.includes('Fuel') && !c.module?.includes('Scoops') && !c.module?.includes('Processors'))
+    .reduce((s, c) => s + (c.dtons || 0), 0);
+
+  const profile = calculateFuelProfile(ship);
+  const hasJumpDrive = profile.jumpRange > 0 && profile.jumpFuelPerJump > 0;
+
+  // Minimum fuel check: ships with jump drives need jump fuel + 2 weeks power
+  // Crafts (no jump drive) have no minimum requirement
+  if (hasJumpDrive) {
+    const minFuel = profile.jumpFuelPerJump + profile.weeklyPowerFuel * 2;
+    if (fuel < minFuel - 0.01) {
+      violations.push({
+        category: 'Fuel',
+        item: 'Fuel Tanks',
+        field: 'dtons',
+        expected: minFuel,
+        actual: fuel,
+        delta: fuel - minFuel,
+        severity: 'warning',
+        message: `Insufficient fuel: ${fuel.toFixed(1)} DT below minimum ${minFuel.toFixed(1)} DT (Jump-${profile.jumpRange} ${profile.jumpFuelPerJump.toFixed(1)} DT + ${(profile.weeklyPowerFuel * 2).toFixed(1)} DT for 2 weeks power). Operational: ${profile.notation}`,
+      });
+    }
+  }
+
+  if (fuel > hull * 0.6) {
+    violations.push({
+      category: 'Fuel',
+      item: 'Fuel Tanks',
+      field: 'dtons',
+      expected: hull * 0.4,
+      actual: fuel,
+      delta: fuel - hull * 0.4,
+      severity: 'warning',
+      message: `Excessive fuel: ${fuel.toFixed(1)} DT (${Math.round((fuel / hull) * 100)}% of hull). Operational: ${profile.notation}`,
+    });
+  }
+
+  // Always show operational duration if fuel exists
+  if (fuel > 0 && violations.length === 0) {
+    violations.push({
+      category: 'Fuel',
+      item: 'Fuel Tanks',
+      field: 'dtons',
+      expected: fuel,
+      actual: fuel,
+      delta: 0,
+      severity: 'info',
+      message: `Operational duration: ${profile.notation}`,
+    });
+  }
+
+  return violations;
+}
+
 export function auditShip(ship: ShipDesign, tables: Record<string, DataTable>): AuditReport {
   const violations: AuditViolation[] = [];
 
+  violations.push(...auditHullOverflow(ship));
+  violations.push(...auditPowerPlant(ship));
+  violations.push(...auditFuel(ship));
   violations.push(...auditLifeSupport(ship, tables['life_support']));
   violations.push(...auditModules(ship, tables['ship_modules']));
   violations.push(...auditWeapons(ship, tables['ship_weapons']));

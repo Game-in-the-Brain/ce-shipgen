@@ -80,7 +80,7 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
             "type": "thrust", "driveCode": m_drive, "dtons": md_dt, "cost": md_cost,
             "qty": 1, "performance": 0, "tl": tl, "order": drive_order,
         })
-        components.append({"section": "M-Drive", "module": f"M-Drive {m_drive}", "dtons": md_dt, "cost": md_cost, "qty": 1})
+        components.append({"section": "Drives and Power", "module": f"M-Drive {m_drive}", "dtons": md_dt, "cost": md_cost, "qty": 1})
         total_cost += md_cost
         used_dtons += md_dt
 
@@ -98,7 +98,7 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
             "type": "jump", "driveCode": j_drive, "dtons": jd_dt, "cost": jd_cost,
             "qty": 1, "performance": jump, "tl": tl, "order": drive_order,
         })
-        components.append({"section": "J-Drive", "module": f"J-Drive {j_drive}", "dtons": jd_dt, "cost": jd_cost, "qty": 1})
+        components.append({"section": "Drives and Power", "module": f"J-Drive {j_drive}", "dtons": jd_dt, "cost": jd_cost, "qty": 1})
         total_cost += jd_cost
         used_dtons += jd_dt
 
@@ -119,13 +119,13 @@ def build_ship(name, hull_dtons, tl, config, armor_pct, armor_type,
             "type": "powerPlant", "driveCode": power_plant, "dtons": pp_dt, "cost": pp_cost,
             "qty": 1, "performance": 0, "tl": tl, "order": drive_order,
         })
-        components.append({"section": "Power Plant", "module": f"Fusion Plant {power_plant}", "dtons": pp_dt, "cost": pp_cost, "qty": 1})
+        components.append({"section": "Drives and Power", "module": f"Fusion Plant {power_plant}", "dtons": pp_dt, "cost": pp_cost, "qty": 1})
         total_cost += pp_cost
         used_dtons += pp_dt
 
     # ── FUEL ──
     if fuel_tons > 0:
-        components.append({"section": "Fuel", "module": "Fuel Tanks", "dtons": fuel_tons, "cost": 0, "qty": fuel_tons})
+        components.append({"section": "Drives and Power", "module": "Fuel Tanks", "dtons": fuel_tons, "cost": 0, "qty": fuel_tons})
         used_dtons += fuel_tons
 
     # ── BRIDGE ──

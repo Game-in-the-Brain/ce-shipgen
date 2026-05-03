@@ -1,4 +1,5 @@
 import type { ShipDesign, ValidationResult, ValidationError } from '../types';
+import { calculateFuelProfile } from '../utils/shipOperations';
 
 const LETTERS = 'ABCDEFGHJKLMNPQRSTUVWXYZ';
 
@@ -54,7 +55,7 @@ export function validateShip(design: ShipDesign): ValidationResult {
     hardErrors.push({
       code: 'POWER_PLANT_TOO_SMALL',
       message: `Power Plant ${powerPlants[0]?.driveCode || design.powerPlant || 'None'} is too small. Minimum required: ${minPP}`,
-      section: 'Power Plant',
+      section: 'Drives and Power',
       severity: 'hard',
     });
   }
@@ -66,7 +67,7 @@ export function validateShip(design: ShipDesign): ValidationResult {
     softWarnings.push({
       code: 'POWER_PLANT_OVERSIZED',
       message: `Power Plant ${oversizedBy} is larger than required ${required}. Excess capacity wastes ${((maxPPIndex - maxDriveIndex) * 3).toFixed(0)} DT and ${((maxPPIndex - maxDriveIndex) * 8).toFixed(0)} MCr`,
-      section: 'Power Plant',
+      section: 'Drives and Power',
       severity: 'soft',
     });
   }
@@ -112,20 +113,32 @@ export function validateShip(design: ShipDesign): ValidationResult {
 
   // ─── Soft Warnings ───
 
-  // Fuel < 2 weeks operation
-  const fuelComponent = design.components.find(c => c.section === 'Fuel');
-  if (fuelComponent) {
-    const ppComponent = design.components.find(c => c.section === 'Power Plant');
-    if (ppComponent) {
-      const minFuel = (ppComponent.dtons / 3) * 2;
-      if (fuelComponent.dtons < minFuel) {
-        softWarnings.push({
-          code: 'LOW_FUEL',
-          message: `Fuel capacity (${fuelComponent.dtons.toFixed(1)} DT) is below 2-week minimum (${minFuel.toFixed(1)} DT)`,
-          section: 'Fuel',
-          severity: 'soft',
+  // Fuel checks
+  const profile = calculateFuelProfile(design);
+  const hasJumpDrive = profile.jumpRange > 0 && profile.jumpFuelPerJump > 0;
+
+  if (profile.totalFuel > 0) {
+    // Minimum fuel: ships with jump drives need jump fuel + 2 weeks power
+    // Crafts (no jump drive) have no minimum
+    if (hasJumpDrive) {
+      const minFuel = profile.jumpFuelPerJump + profile.weeklyPowerFuel * 2;
+      if (profile.totalFuel < minFuel - 0.01) {
+        hardErrors.push({
+          code: 'INSUFFICIENT_FUEL',
+          message: `Fuel capacity (${profile.totalFuel.toFixed(1)} DT) is below minimum ${minFuel.toFixed(1)} DT (Jump-${profile.jumpRange} ${profile.jumpFuelPerJump.toFixed(1)} DT + ${(profile.weeklyPowerFuel * 2).toFixed(1)} DT for 2 weeks power). Operational: ${profile.notation}`,
+          section: 'Drives and Power',
+          severity: 'hard',
         });
       }
+    }
+    // Excessive fuel: more than 60% of hull is suspicious
+    if (profile.totalFuel > design.hullDtons * 0.6) {
+      softWarnings.push({
+        code: 'EXCESSIVE_FUEL',
+        message: `Fuel capacity (${profile.totalFuel.toFixed(1)} DT) is ${Math.round((profile.totalFuel / design.hullDtons) * 100)}% of hull — check if qty is double-counted. Operational: ${profile.notation}`,
+        section: 'Drives and Power',
+        severity: 'soft',
+      });
     }
   }
 

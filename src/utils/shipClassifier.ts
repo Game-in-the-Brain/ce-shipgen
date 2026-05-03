@@ -120,7 +120,7 @@ export function clearRulesCache() {
 
 // ─── Section → Pillar Mapping ───
 
-const S_SECTIONS = new Set(['M-Drive', 'J-Drive', 'Power Plant', 'Fuel']);
+const S_SECTIONS = new Set(['Drives and Power']);
 const A_SECTIONS = new Set(['Weapon', 'Armor']);
 const P_SECTIONS = new Set([
   'Cargo',

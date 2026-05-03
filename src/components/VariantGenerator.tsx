@@ -179,11 +179,11 @@ export function VariantGenerator() {
         { section: 'Config', module: baseShip.configuration, dtons: 0, cost: actualHullCost * configMod },
       ];
       if (armorTons > 0) components.push({ section: 'Armor', module: armorType, dtons: armorTons, cost: armorCost });
-      if (mDriveTons > 0) components.push({ section: 'M-Drive', module: newMDrive, dtons: mDriveTons, cost: mDriveCost });
-      if (jDriveTons > 0) components.push({ section: 'J-Drive', module: newJDrive, dtons: jDriveTons, cost: jDriveCost });
-      if (ppTons > 0) components.push({ section: 'Power Plant', module: newPP, dtons: ppTons, cost: ppCost });
+      if (mDriveTons > 0) components.push({ section: 'Drives and Power', module: newMDrive, dtons: mDriveTons, cost: mDriveCost });
+      if (jDriveTons > 0) components.push({ section: 'Drives and Power', module: newJDrive, dtons: jDriveTons, cost: jDriveCost });
+      if (ppTons > 0) components.push({ section: 'Drives and Power', module: newPP, dtons: ppTons, cost: ppCost });
       if (bridgeTons > 0) components.push({ section: 'Bridge', module: baseShip.bridge || '', dtons: bridgeTons, cost: bridgeCost });
-      if (totalFuel > 0) components.push({ section: 'Fuel', module: 'Jump + Power Plant', dtons: totalFuel, cost: 0 });
+      if (totalFuel > 0) components.push({ section: 'Drives and Power', module: 'Fuel Tanks (Jump + Power Plant)', dtons: totalFuel, cost: 0 });
       if (stateroomTons > 0) components.push({ section: 'Life Support', module: `${baseShip.staterooms || 0} Staterooms`, dtons: stateroomTons, cost: stateroomCost });
       if (lowBerthTons > 0) components.push({ section: 'Life Support', module: `${baseShip.lowBerths || 0} Low Berths`, dtons: lowBerthTons, cost: lowBerthCost });
       components.push(...newModules, ...newWeapons);

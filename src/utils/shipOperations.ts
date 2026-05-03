@@ -128,7 +128,7 @@ export function calculateOperatingCosts(ship: ShipDesign, crew: CrewBreakdown): 
   const lifeSupport = (crew.total * LIFE_SUPPORT_COST_PER_PERSON) / 1_000_000; // MCr
 
   // Fuel cost per jump (simplified: 500 Cr per DT of fuel)
-  const fuelTons = (ship.components || []).filter(c => c.section === 'Fuel').reduce((s, c) => s + (c.dtons || 0), 0);
+  const fuelTons = (ship.components || []).filter(c => c.module?.includes('Fuel') && !c.module?.includes('Scoops') && !c.module?.includes('Processors')).reduce((s, c) => s + (c.dtons || 0), 0);
   const fuel = fuelTons * 0.0005; // MCr
 
   // Port fees: based on hull size
@@ -265,7 +265,18 @@ export function calculateEscapeSystems(ship: ShipDesign, crew: CrewBreakdown): E
 
 // ─── Jump Range & Endurance ───
 
-export function calculatePerformance(ship: ShipDesign): { jumpRange: number; endurance: number } {
+export interface FuelProfile {
+  jumpRange: number;
+  jumpFuelPerJump: number;
+  weeklyPowerFuel: number;
+  totalFuel: number;
+  maxJumps: number;
+  remainingWeeks: number;
+  notation: string;
+  endurance: number; // total weeks if used for power only
+}
+
+export function calculateFuelProfile(ship: ShipDesign): FuelProfile {
   // Jump range from J-Drive
   const jumpDrive = (ship.drives || []).find(d => d.type === 'jump');
   let jumpRange = 1;
@@ -283,13 +294,35 @@ export function calculatePerformance(ship: ShipDesign): { jumpRange: number; end
     }
   }
 
-  // Endurance: fuel tons / (fuel per week + jump fuel)
-  const fuelTons = (ship.components || []).filter(c => c.section === 'Fuel').reduce((s, c) => s + (c.dtons || 0), 0);
-  const powerFuel = (ship.drives || []).filter(d => d.type === 'powerPlant').reduce((s, d) => s + (d.dtons || 0), 0);
-  const weeklyBurn = Math.max(1, powerFuel * 0.1); // simplified
-  const endurance = fuelTons > 0 ? Math.floor(fuelTons / weeklyBurn) : 0;
+  const hullDtons = ship.hullDtons || 0;
+  const totalFuel = (ship.components || []).filter(c => c.module?.includes('Fuel') && !c.module?.includes('Scoops') && !c.module?.includes('Processors')).reduce((s, c) => s + (c.dtons || 0), 0);
+  const powerPlants = (ship.drives || []).filter(d => d.type === 'powerPlant');
+  const powerPlantTons = powerPlants.reduce((s, d) => s + (d.dtons || 0), 0);
+  const weeklyPowerFuel = powerPlantTons / 3;
+  const jumpFuelPerJump = hullDtons * 0.1 * jumpRange;
 
-  return { jumpRange, endurance };
+  let maxJumps = 0;
+  let remainingWeeks = 0;
+  let notation = '';
+
+  if (jumpRange > 0 && jumpFuelPerJump > 0) {
+    maxJumps = Math.floor(totalFuel / jumpFuelPerJump);
+    const remainingFuel = totalFuel - maxJumps * jumpFuelPerJump;
+    remainingWeeks = weeklyPowerFuel > 0 ? remainingFuel / weeklyPowerFuel : 0;
+    notation = `J${jumpRange}x${maxJumps} + ${remainingWeeks.toFixed(1)}wk`;
+  } else if (weeklyPowerFuel > 0) {
+    remainingWeeks = totalFuel / weeklyPowerFuel;
+    notation = `${remainingWeeks.toFixed(1)}wk`;
+  }
+
+  const endurance = weeklyPowerFuel > 0 ? Math.floor(totalFuel / weeklyPowerFuel) : 0;
+
+  return { jumpRange, jumpFuelPerJump, weeklyPowerFuel, totalFuel, maxJumps, remainingWeeks, notation, endurance };
+}
+
+export function calculatePerformance(ship: ShipDesign): { jumpRange: number; endurance: number } {
+  const profile = calculateFuelProfile(ship);
+  return { jumpRange: profile.jumpRange, endurance: profile.endurance };
 }
 
 // ─── Main Entry Point ───

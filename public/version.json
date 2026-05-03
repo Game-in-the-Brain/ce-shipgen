@@ -2,7 +2,7 @@
   "version": "0.09",
   "name": "ce-shipgen",
   "date": "2026-05-03",
-  "buildTime": "2026-05-03T07:08:34.876Z",
+  "buildTime": "2026-05-03T09:27:38.599Z",
   "changelog": [
     "Table-driven audit system — compare stored values against reference tables",
     "Batch audit modal with severity levels and auto-correct from tables",

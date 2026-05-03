@@ -14,6 +14,7 @@ import { determineRangeBand } from '../engine/mnemeCombat';
 import type { EncounterState, EncounterShip } from '../types/encounter';
 import type { ShipDesign } from '../types';
 import { Swords, Play, RotateCcw, ChevronRight, Shield, Zap, ArrowLeft, Activity, Crosshair, Target, Radio, Wrench, Plane, Crosshair as GunIcon, Users, AlertTriangle } from 'lucide-react';
+import HexMap from './encounter/HexMap';
 import { colors, fonts } from './shipgen/theme';
 import { ShLabel, ShNum, ShData, ShPanel } from './shipgen/primitives';
 import type { CombatPhase } from '../types/encounter';
@@ -197,87 +198,6 @@ function EncounterSetup({
           <Play className="w-5 h-5" /> START ENCOUNTER
         </button>
       </div>
-    </div>
-  );
-}
-
-// ─── Ship Token ───
-
-function ShipToken({
-  ship,
-  isSelected,
-  onClick,
-}: {
-  ship: EncounterShip;
-  isSelected: boolean;
-  onClick: () => void;
-}) {
-  const isPlayer = ship.side === 'player';
-
-  if (ship.tokenImage) {
-    return (
-      <div
-        onClick={onClick}
-        style={{
-          position: 'absolute',
-          left: ship.position.x * 24 - 20,
-          top: ship.position.y * 24 - 20,
-          width: 40,
-          height: 40,
-          cursor: 'pointer',
-          zIndex: isSelected ? 10 : 5,
-        }}
-        title={`${ship.name} (${ship.currentHull}/${ship.hullPoints} HP)`}
-      >
-        <img
-          src={ship.tokenImage}
-          alt={ship.name}
-          style={{
-            width: '100%',
-            height: '100%',
-            objectFit: 'contain',
-            filter: isSelected ? `drop-shadow(0 0 6px ${colors.glow})` : 'none',
-            transform: `rotate(${ship.heading}deg)`,
-            transition: 'all 0.2s',
-          }}
-        />
-        {isSelected && (
-          <div style={{
-            position: 'absolute',
-            inset: -4,
-            border: `2px solid ${colors.glow}`,
-            borderRadius: '50%',
-            pointerEvents: 'none',
-          }} />
-        )}
-      </div>
-    );
-  }
-
-  return (
-    <div
-      onClick={onClick}
-      style={{
-        position: 'absolute',
-        left: ship.position.x * 24,
-        top: ship.position.y * 24,
-        width: 40,
-        height: 40,
-        borderRadius: '50%',
-        border: `2px solid ${isSelected ? colors.glow : isPlayer ? colors.good : colors.warn}`,
-        background: isSelected ? `${colors.glow}30` : `${isPlayer ? colors.good : colors.warn}20`,
-        display: 'flex',
-        alignItems: 'center',
-        justifyContent: 'center',
-        cursor: 'pointer',
-        zIndex: isSelected ? 10 : 5,
-        boxShadow: isSelected ? `0 0 12px ${colors.glow}55` : 'none',
-      }}
-      title={`${ship.name} (${ship.currentHull}/${ship.hullPoints} HP)`}
-    >
-      <span style={{ fontFamily: fonts.mono, fontSize: 10, color: isPlayer ? colors.good : colors.warn, fontWeight: 600 }}>
-        {isPlayer ? 'P' : 'E'}
-      </span>
     </div>
   );
 }
@@ -555,47 +475,16 @@ export function EncounterView() {
         </div>
 
         {/* Tactical Map */}
-        <div style={{
-          position: 'relative',
-          width: '100%',
-          height: 400,
-          background: colors.panelAlt,
-          border: `1px solid ${colors.hair}`,
-          overflow: 'hidden',
-        }}>
-          {/* Grid */}
-          <div style={{
-            position: 'absolute',
-            inset: 0,
-            backgroundImage: `linear-gradient(${colors.hair} 1px, transparent 1px), linear-gradient(90deg, ${colors.hair} 1px, transparent 1px)`,
-            backgroundSize: '24px 24px',
-            opacity: 0.5,
-          }} />
-
-          {/* Range circles from selected ship */}
-          {selectedShip && (
-            <div style={{
-              position: 'absolute',
-              left: selectedShip.position.x * 24 - 144,
-              top: selectedShip.position.y * 24 - 144,
-              width: 288,
-              height: 288,
-              borderRadius: '50%',
-              border: `1px dashed ${colors.glow}33`,
-              pointerEvents: 'none',
-            }} />
-          )}
-
-          {/* Ship tokens */}
-          {encounter.ships.filter(s => s.status === 'active' || s.status === 'disabled').map((ship) => (
-            <ShipToken
-              key={ship.id}
-              ship={ship}
-              isSelected={ship.id === selectedShipId}
-              onClick={() => setSelectedShipId(ship.id)}
-            />
-          ))}
-        </div>
+        <HexMap
+          ships={encounter.ships.filter(s => s.status === 'active' || s.status === 'disabled')}
+          selectedShipId={selectedShipId}
+          onShipClick={(ship) => setSelectedShipId(ship.id)}
+          width={560}
+          height={400}
+          hexSize={22}
+          gridRadius={15}
+          showControls={true}
+        />
 
         {/* Combat Log */}
         <div style={{ marginTop: 16 }}>

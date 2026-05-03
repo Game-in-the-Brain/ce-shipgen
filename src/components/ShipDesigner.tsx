@@ -130,6 +130,7 @@ export function ShipDesigner() {
   const [mDriveRows, setMDriveRows] = useState<ChildItem[]>([]);
   const [jDriveRows, setJDriveRows] = useState<ChildItem[]>([]);
   const [ppRows, setPpRows] = useState<ChildItem[]>([]);
+  const [fuelRows, setFuelRows] = useState<ChildItem[]>([]);
 
   // ─── Cargo ───
   const [cargo, setCargo] = useState(0);
@@ -471,9 +472,39 @@ export function ShipDesigner() {
     : ppFuelWk;
 
   // ─── Fuel ───
-  const jumpFuel = calcJumpFuel(hullDtons, jumpParsecs);
-  const powerFuel = calcPowerFuel(ppAllocated, 2);
-  const totalFuel = jumpFuel + powerFuel;
+  const fuelTonnage = fuelRows.reduce((s, r) => s + r.dtons * (r.name?.includes('Modular') ? 1.1 : 1.0) * r.qty, 0);
+  const jumpFuelPerJump = calcJumpFuel(hullDtons, jumpParsecs);
+  const weeklyPowerFuel = ppAllocated / 3;
+
+  // ─── Auto-populate fuel tanks when hull, drives, or jump changes ───
+  useEffect(() => {
+    if (hullDtons > 0 && (ppAllocated > 0 || jumpParsecs > 0)) {
+      const minFuel = calcJumpFuel(hullDtons, jumpParsecs) + calcPowerFuel(ppAllocated, 2);
+      if (fuelRows.length === 0) {
+        setFuelRows([{
+          id: `fuel-${Date.now()}`,
+          name: 'Fuel Tanks',
+          dtons: parseFloat(minFuel.toFixed(2)),
+          cost: 0,
+          qty: 1,
+          notes: `Min: Jump-${jumpParsecs} + 2wk power`,
+        }]);
+      } else {
+        // Update first row if it still looks like the minimum auto-row
+        const first = fuelRows[0];
+        if (first && first.notes?.includes('Min:')) {
+          const updated = [...fuelRows];
+          updated[0] = {
+            ...first,
+            dtons: parseFloat(minFuel.toFixed(2)),
+            notes: `Min: Jump-${jumpParsecs} + 2wk power`,
+          };
+          setFuelRows(updated);
+        }
+      }
+    }
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [hullDtons, ppAllocated, jumpParsecs, fuelRows.length]);
 
   // ─── Bridge allocation (child table OR legacy fallback) ───
   const bridgeAllocated = commandRows.length > 0
@@ -512,7 +543,7 @@ export function ShipDesigner() {
   const moduleTonsAllocated = moduleComponents.reduce((s, c) => s + c.dtons, 0);
 
   const allocatedTons = (
-    armorTons + mDriveAllocated + jDriveAllocated + ppAllocated + bridgeAllocated + totalFuel +
+    armorTons + mDriveAllocated + jDriveAllocated + ppAllocated + bridgeAllocated + fuelTonnage +
     lifeSupportAllocated +
     computerRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
     sensorRows.reduce((s, r) => s + r.dtons * r.qty, 0) +
@@ -541,21 +572,21 @@ export function ShipDesigner() {
     });
     // M-Drive: child table OR legacy
     if (mDriveRows.length > 0) {
-      mDriveRows.forEach(r => { if (r.qty > 0) list.push({ section: 'M-Drive', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }); });
+      mDriveRows.forEach(r => { if (r.qty > 0) list.push({ section: 'Drives and Power', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }); });
     } else if (mDriveTons > 0) {
-      list.push({ section: 'M-Drive', module: mDrive, dtons: mDriveTons, cost: mDriveCost });
+      list.push({ section: 'Drives and Power', module: mDrive, dtons: mDriveTons, cost: mDriveCost });
     }
     // J-Drive: child table OR legacy
     if (jDriveRows.length > 0) {
-      jDriveRows.forEach(r => { if (r.qty > 0) list.push({ section: 'J-Drive', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }); });
+      jDriveRows.forEach(r => { if (r.qty > 0) list.push({ section: 'Drives and Power', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }); });
     } else if (jDriveTons > 0) {
-      list.push({ section: 'J-Drive', module: jDrive, dtons: jDriveTons, cost: jDriveCost });
+      list.push({ section: 'Drives and Power', module: jDrive, dtons: jDriveTons, cost: jDriveCost });
     }
     // Power Plant: child table OR legacy
     if (ppRows.length > 0) {
-      ppRows.forEach(r => { if (r.qty > 0) list.push({ section: 'Power Plant', module: `${r.name}${r.variant ? ` · ${r.variant}` : ''}`, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }); });
+      ppRows.forEach(r => { if (r.qty > 0) list.push({ section: 'Drives and Power', module: `${r.name}${r.variant ? ` · ${r.variant}` : ''}`, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }); });
     } else if (ppTons > 0) {
-      list.push({ section: 'Power Plant', module: powerPlant, dtons: ppTons, cost: ppCost });
+      list.push({ section: 'Drives and Power', module: powerPlant, dtons: ppTons, cost: ppCost });
     }
     // Bridge: child table OR legacy
     if (commandRows.length > 0) {
@@ -563,7 +594,13 @@ export function ShipDesigner() {
     } else if (bridgeTons > 0) {
       list.push({ section: 'Bridge', module: bridge, dtons: bridgeTons, cost: bridgeCost });
     }
-    if (totalFuel > 0) list.push({ section: 'Fuel', module: `Jump-${jumpParsecs} + Power`, dtons: totalFuel, cost: 0 });
+    // Fuel Tanks: child table
+    fuelRows.forEach(r => {
+      if (r.qty > 0 && r.dtons > 0) {
+        const multiplier = r.name?.includes('Modular') ? 1.1 : 1.0;
+        list.push({ section: 'Drives and Power', module: `${r.name} · ${(r.dtons * r.qty).toFixed(1)} DT`, dtons: r.dtons * multiplier * r.qty, cost: 0, qty: r.qty });
+      }
+    });
     // Life Support: child table OR legacy
     if (lifeSupportRows.length > 0) {
       lifeSupportRows.forEach(r => list.push({ section: 'Life Support', module: r.name, dtons: r.dtons * r.qty, cost: r.cost * r.qty, qty: r.qty }));
@@ -583,7 +620,7 @@ export function ShipDesigner() {
       });
     }
     return list;
-  }, [hullDtons, hullCost, config, configMod, armorTons, armorRows, armorCost, mDriveTons, mDrive, mDriveCost, mDriveRows, jDriveTons, jDrive, jDriveCost, jDriveRows, ppTons, powerPlant, ppCost, ppRows, bridgeTons, bridge, bridgeCost, commandRows, totalFuel, jumpParsecs, stateroomTons, staterooms, stateroomCost, lowBerthTons, lowBerths, lowBerthCost, lifeSupportRows, computerRows, sensorRows, moduleComponents, selectedModules, modules, weaponComponents, weaponMountRows, supplyRows, cargo]);
+  }, [hullDtons, hullCost, config, configMod, armorTons, armorRows, armorCost, mDriveTons, mDrive, mDriveCost, mDriveRows, jDriveTons, jDrive, jDriveCost, jDriveRows, ppTons, powerPlant, ppCost, ppRows, bridgeTons, bridge, bridgeCost, commandRows, fuelRows, fuelTonnage, jumpParsecs, stateroomTons, staterooms, stateroomCost, lowBerthTons, lowBerths, lowBerthCost, lifeSupportRows, computerRows, sensorRows, moduleComponents, selectedModules, modules, weaponComponents, weaponMountRows, supplyRows, cargo]);
 
   // ─── Validation ───
   const validation = useMemo(() => {
@@ -882,6 +919,22 @@ ${(ship.crew || []).map(c => `<tr><td>${c.module}</td><td>${c.qty || 1}</td><td>
       tl: d.tl,
       notes: d.notes,
     })));
+    // Fuel tanks from components
+    const fuelComps = (ship.components || []).filter(c =>
+      c.section === 'Drives and Power' && c.module?.includes('Fuel')
+    );
+    if (fuelComps.length > 0) {
+      setFuelRows(fuelComps.map(c => ({
+        id: `fuel-${Date.now()}-${Math.random().toString(36).slice(2, 7)}`,
+        name: c.module?.includes('Modular') ? 'Modular Fuel Tanks' : 'Fuel Tanks',
+        dtons: c.dtons || 0,
+        cost: c.cost || 0,
+        qty: c.qty || 1,
+        notes: '',
+      })));
+    } else {
+      setFuelRows([]);
+    }
     // ── Legacy flat fields ──
     setBridge(ship.bridge || '');
     setComputer(ship.computer || '');
@@ -923,6 +976,7 @@ ${(ship.crew || []).map(c => `<tr><td>${c.module}</td><td>${c.qty || 1}</td><td>
     setMDriveRows([]);
     setJDriveRows([]);
     setPpRows([]);
+    setFuelRows([]);
     setSupplyRows([]);
     setCurrentShip(null);
   };
@@ -1454,6 +1508,46 @@ ${(ship.crew || []).map(c => `<tr><td>${c.module}</td><td>${c.qty || 1}</td><td>
                 </div>
               ) : null;
             })()}
+
+            {/* Fuel Tanks Child Table */}
+            <ChildTable
+              title="FUEL TANKS"
+              items={fuelRows}
+              onChange={setFuelRows}
+              columns={[
+                { key: 'name', label: 'TYPE', editable: true, type: 'select', width: 'w-32', options: [{ value: 'Fuel Tanks', label: 'Fuel Tanks' }, { value: 'Modular Fuel Tanks', label: 'Modular Fuel Tanks' }] },
+                { key: 'dtons', label: 'CAPACITY', editable: true, type: 'number', width: 'w-20' },
+                { key: 'qty', label: 'QTY', editable: true, type: 'number', width: 'w-14' },
+              ]}
+              createNewItem={() => ({
+                id: `fuel-${Date.now()}`,
+                name: 'Fuel Tanks',
+                dtons: 0,
+                cost: 0,
+                qty: 1,
+                notes: '',
+              })}
+              addButtonLabel="ADD FUEL TANKS"
+              summary={(() => {
+                const totalCapacity = fuelRows.reduce((s, r) => s + r.dtons * r.qty, 0);
+                const totalTonnage = fuelRows.reduce((s, r) => s + r.dtons * (r.name?.includes('Modular') ? 1.1 : 1.0) * r.qty, 0);
+                let notation = '';
+                if (jumpParsecs > 0 && jumpFuelPerJump > 0) {
+                  const jumps = Math.floor(totalCapacity / jumpFuelPerJump);
+                  const remaining = totalCapacity - jumps * jumpFuelPerJump;
+                  const weeks = weeklyPowerFuel > 0 ? remaining / weeklyPowerFuel : 0;
+                  notation = `J${jumpParsecs}x${jumps} + ${weeks.toFixed(1)}wk`;
+                } else if (weeklyPowerFuel > 0) {
+                  const weeks = totalCapacity / weeklyPowerFuel;
+                  notation = `${weeks.toFixed(1)}wk`;
+                }
+                return (
+                  <ShData size={12} dim>
+                    {totalCapacity.toFixed(1)} DT CAP · {totalTonnage.toFixed(1)} DT HULL · {notation}
+                  </ShData>
+                );
+              })()}
+            />
           </div>
         </Step>
 

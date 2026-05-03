@@ -245,7 +245,7 @@ def process_ship(raw):
 
         elif "fuel" in section.lower():
             ship["components"].append({
-                "section": "Fuel", "module": module or "Fuel Tanks",
+                "section": "Drives and Power", "module": module or "Fuel Tanks",
                 "dtons": dt, "cost": cost, "qty": qty
             })
             used_dtons += dt
@@ -541,7 +541,7 @@ def process_ship(raw):
     for c in ship["components"]:
         if c.get("qty", 1) > 1:
             # For fuel, prepend qty to module name for display
-            if c["section"] == "Fuel" and c["module"] == "Fuel Tanks":
+            if c["section"] == "Drives and Power" and c["module"] == "Fuel Tanks":
                 c["module"] = f"{int(c['qty'])}× Fuel Tanks"
             c["qty"] = 1
 

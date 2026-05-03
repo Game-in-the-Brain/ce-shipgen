@@ -62,28 +62,28 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive G",
         "dtons": 13,
         "cost": 28,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive G",
         "dtons": 40,
         "cost": 70,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant G",
         "dtons": 22,
         "cost": 56,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 128,
         "cost": 0,
@@ -527,21 +527,21 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sC",
         "dtons": 1.5,
         "cost": 3,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sG",
         "dtons": 3,
         "cost": 6,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1,
         "cost": 0,
@@ -845,21 +845,21 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sC",
         "dtons": 1.5,
         "cost": 3,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sG",
         "dtons": 3,
         "cost": 6,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1,
         "cost": 0,
@@ -1163,21 +1163,21 @@
         "qty": 2
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sC",
         "dtons": 1.5,
         "cost": 3,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sC",
         "dtons": 1.8,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1,
         "cost": 0,
@@ -1456,21 +1456,21 @@
         "cost": 0.11
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sA",
         "dtons": 0.5,
         "cost": 1,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sA",
         "dtons": 1.2,
         "cost": 3,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1.2,
         "cost": 0,
@@ -1710,21 +1710,21 @@
         "qty": 6
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sE",
         "dtons": 2.5,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sE",
         "dtons": 2.4,
         "cost": 5,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1,
         "cost": 0,
@@ -2021,21 +2021,21 @@
         "cost": 0.12
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sA",
         "dtons": 0.5,
         "cost": 1,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sA",
         "dtons": 1.2,
         "cost": 3,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1.2,
         "cost": 0,
@@ -2268,21 +2268,21 @@
         "cost": 0.13
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sJ",
         "dtons": 4.5,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sJ",
         "dtons": 3.6,
         "cost": 7,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1.2,
         "cost": 0,
@@ -2508,21 +2508,21 @@
         "cost": 0.15
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sF",
         "dtons": 3,
         "cost": 6,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sF",
         "dtons": 2.7,
         "cost": 5.5,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1.2,
         "cost": 0,
@@ -2748,21 +2748,21 @@
         "cost": 0.17
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sF",
         "dtons": 3,
         "cost": 6,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sF",
         "dtons": 2.7,
         "cost": 5.5,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1.2,
         "cost": 0,
@@ -2995,21 +2995,21 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sN",
         "dtons": 8,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sN",
         "dtons": 5.7,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1.9,
         "cost": 0,
@@ -3296,21 +3296,21 @@
         "cost": 0.195
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive sF",
         "dtons": 3,
         "cost": 6,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant sF",
         "dtons": 2.7,
         "cost": 5.5,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 1.2,
         "cost": 0,
@@ -3558,28 +3558,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive A",
         "dtons": 10,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 28,
         "cost": 0,
@@ -3996,28 +3996,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive A",
         "dtons": 2,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive A",
         "dtons": 10,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant A",
         "dtons": 4,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 24,
         "cost": 0,
@@ -4452,28 +4452,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive A",
         "dtons": 2,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive A",
         "dtons": 10,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant A",
         "dtons": 4,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 24,
         "cost": 0,
@@ -4914,28 +4914,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive C",
         "dtons": 5,
         "cost": 12,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive C",
         "dtons": 20,
         "cost": 30,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant C",
         "dtons": 10,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 72,
         "cost": 0,
@@ -5385,28 +5385,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive A",
         "dtons": 2,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive A",
         "dtons": 10,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant A",
         "dtons": 4,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 24,
         "cost": 0,
@@ -5809,28 +5809,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 50,
         "cost": 0,
@@ -6305,28 +6305,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive A",
         "dtons": 2,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive A",
         "dtons": 10,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant A",
         "dtons": 4,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 24,
         "cost": 0,
@@ -6755,28 +6755,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 38,
         "cost": 0,
@@ -7134,28 +7134,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive C",
         "dtons": 5,
         "cost": 12,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant C",
         "dtons": 10,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 42,
         "cost": 0,
@@ -7591,28 +7591,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 14,
         "cost": 0,
@@ -8009,21 +8009,21 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 40,
         "cost": 0,
@@ -8395,28 +8395,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive F",
         "dtons": 11,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant F",
         "dtons": 19,
         "cost": 48,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 84,
         "cost": 0,
@@ -8887,28 +8887,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive J",
         "dtons": 17,
         "cost": 36,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant J",
         "dtons": 28,
         "cost": 72,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 87,
         "cost": 0,
@@ -9373,28 +9373,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive C",
         "dtons": 5,
         "cost": 12,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant C",
         "dtons": 10,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 72,
         "cost": 0,
@@ -9883,28 +9883,28 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive C",
         "dtons": 5,
         "cost": 12,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive C",
         "dtons": 20,
         "cost": 30,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant C",
         "dtons": 10,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 72,
         "cost": 0,
@@ -10340,28 +10340,28 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 48,
         "cost": 0,
@@ -10774,28 +10774,28 @@
         "qty": 4
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive H",
         "dtons": 15,
         "cost": 32,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant H",
         "dtons": 25,
         "cost": 64,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 72,
         "cost": 0,
@@ -11234,21 +11234,21 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive M",
         "dtons": 23,
         "cost": 48,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant M",
         "dtons": 37,
         "cost": 96,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 48,
         "cost": 0,
@@ -11683,28 +11683,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive F",
         "dtons": 11,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant F",
         "dtons": 19,
         "cost": 48,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 64,
         "cost": 0,
@@ -12136,28 +12136,28 @@
         "qty": 8
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive F",
         "dtons": 11,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant F",
         "dtons": 19,
         "cost": 48,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 64,
         "cost": 0,
@@ -12632,28 +12632,28 @@
         "qty": 0
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 48,
         "cost": 0,
@@ -13096,28 +13096,28 @@
         "qty": 4
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive M",
         "dtons": 23,
         "cost": 48,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive D",
         "dtons": 25,
         "cost": 40,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant M",
         "dtons": 37,
         "cost": 96,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 168,
         "cost": 0,
@@ -13598,28 +13598,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive A",
         "dtons": 10,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 14,
         "cost": 0,
@@ -13956,28 +13956,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive A",
         "dtons": 2,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive A",
         "dtons": 10,
         "cost": 10,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant A",
         "dtons": 4,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 12,
         "cost": 0,
@@ -14332,28 +14332,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive B",
         "dtons": 3,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive B",
         "dtons": 15,
         "cost": 20,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant B",
         "dtons": 7,
         "cost": 16,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 28,
         "cost": 0,
@@ -14751,21 +14751,21 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive F",
         "dtons": 11,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant F",
         "dtons": 19,
         "cost": 48,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 24,
         "cost": 0,
@@ -15095,21 +15095,21 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive A",
         "dtons": 2,
         "cost": 4,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant A",
         "dtons": 4,
         "cost": 8,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 4,
         "cost": 0,
@@ -15473,28 +15473,28 @@
         "qty": 1
       },
       {
-        "section": "M-Drive",
+        "section": "Drives and Power",
         "module": "M-Drive C",
         "dtons": 5,
         "cost": 12,
         "qty": 1
       },
       {
-        "section": "J-Drive",
+        "section": "Drives and Power",
         "module": "J-Drive C",
         "dtons": 20,
         "cost": 30,
         "qty": 1
       },
       {
-        "section": "Power Plant",
+        "section": "Drives and Power",
         "module": "Fusion Plant C",
         "dtons": 10,
         "cost": 24,
         "qty": 1
       },
       {
-        "section": "Fuel",
+        "section": "Drives and Power",
         "module": "Fuel Tanks",
         "dtons": 72,
         "cost": 0,

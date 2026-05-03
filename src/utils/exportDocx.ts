@@ -63,18 +63,6 @@ function getPowerPlant(ship: ShipDesign) {
   return (ship.drives || []).find(d => d.type === 'powerPlant');
 }
 
-function extractDriveRating(code: string): number {
-  if (!code) return 1;
-  const match = code.match(/([A-V])/i);
-  if (!match) return 1;
-  const ratings: Record<string, number> = {
-    A: 1, B: 2, C: 3, D: 4, E: 5, F: 6, G: 7, H: 8,
-    J: 9, K: 10, L: 11, M: 12, N: 13, P: 14, Q: 15,
-    R: 16, S: 17, T: 18, U: 19, V: 20,
-  };
-  return ratings[match[1].toUpperCase()] || 1;
-}
-
 function calculateThrustG(ship: ShipDesign): { thrustG: number; weightClass: string } {
   const drive = getThrustDrive(ship);
   if (!drive) return { thrustG: 0, weightClass: 'None' };
@@ -118,7 +106,7 @@ function getArmorLimit(roleId: string, isNonJump: boolean): number {
 
 function calculateFuelCapacity(ship: ShipDesign): number {
   return (ship.components || [])
-    .filter(c => c.section === 'Fuel')
+    .filter(c => c.module?.includes('Fuel') && !c.module?.includes('Scoops') && !c.module?.includes('Processors'))
     .reduce((s, c) => s + (c.dtons || 0), 0);
 }
 
@@ -130,8 +118,7 @@ function calculateEndurance(ship: ShipDesign): number {
   const fuel = calculateFuelCapacity(ship);
   const pp = getPowerPlant(ship);
   if (!pp) return 0;
-  const rating = extractDriveRating(pp.driveCode || pp.name);
-  const weeklyBurn = rating * 0.5;
+  const weeklyBurn = (pp.dtons || 0) / 3;
   return weeklyBurn > 0 ? Math.floor(fuel / weeklyBurn) : 0;
 }
 

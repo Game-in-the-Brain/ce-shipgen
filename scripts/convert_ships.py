@@ -219,7 +219,7 @@ def convert_ship(raw):
                 "order": drive_order,
             })
             ship["components"].append({
-                "section": "M-Drive",
+                "section": "Drives and Power",
                 "module": f"M-Drive {module}",
                 "dtons": dt,
                 "cost": cost,
@@ -253,7 +253,7 @@ def convert_ship(raw):
                 "order": drive_order,
             })
             ship["components"].append({
-                "section": "J-Drive",
+                "section": "Drives and Power",
                 "module": f"J-Drive {module}",
                 "dtons": dt,
                 "cost": cost,
@@ -280,7 +280,7 @@ def convert_ship(raw):
                 "order": drive_order,
             })
             ship["components"].append({
-                "section": "Power Plant",
+                "section": "Drives and Power",
                 "module": f"Fusion Plant {module}",
                 "dtons": dt,
                 "cost": cost,
@@ -292,7 +292,7 @@ def convert_ship(raw):
             total_cost += cost
             used_dtons += dt
             ship["components"].append({
-                "section": "Fuel",
+                "section": "Drives and Power",
                 "module": "Fuel Tanks",
                 "dtons": dt,
                 "cost": cost,

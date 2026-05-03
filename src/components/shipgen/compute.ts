@@ -89,7 +89,7 @@ export function computeShip(s: ShipSpec): ComputedShip {
   const fuel = (jd ? hull.dt * 0.10 * jd.jump : 0) + (pp ? pp.dt * 0.5 : 0);
   if (fuel > 0) {
     dtUsed += fuel;
-    items.push({ kind: 'fuel', label: 'Fuel', dt: fuel, cost: 0 });
+    items.push({ kind: 'fuel', label: 'Fuel Tanks', dt: fuel, cost: 0 });
   }
 
   const crew  = (br?.crew || 0) + (md ? 1 : 0) + (jd ? 1 : 0) + (pp ? 1 : 0);
