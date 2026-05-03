@@ -5,6 +5,7 @@ import {
   HULLS, CONFIGS, ARMOR, MDRIVES, JDRIVES, POWER, BRIDGES, COMPUTERS,
   STARTER_LIBRARY, type ShipSpec,
 } from './data';
+import { ceToMnemeTL } from '../../utils/tlMapping';
 import type { ComputedShip } from './compute';
 
 interface Props {
@@ -75,8 +76,16 @@ export function DesignSteps({ ship, computed, onChange, onLoad }: Props) {
       <Step num={1} title="Basic Info" kw="ID">
         <div style={{ display: 'flex', gap: 14 }}>
           <ShField label="Ship Designation" value={ship.name} onChange={v => onChange({ name: v ?? '' })} />
-          <ShField label="Tech Level" value={ship.tl} type="number" flex={0.4}
-            onChange={v => onChange({ tl: Number(v) || 0 })} />
+          <div style={{ display: 'flex', gap: 14, flex: 0.6 }}>
+            <ShField label="CE TL" value={ship.tl} type="number" flex={0.5}
+              onChange={v => onChange({ tl: Number(v) || 0 })} />
+            <div style={{ flex: 0.5, padding: '12px 14px', background: colors.panelAlt, border: `1px solid ${colors.hair}` }}>
+              <ShLabel size={12} dim>Mneme TL</ShLabel>
+              <div style={{ marginTop: 4 }}>
+                <ShNum size={20} color={colors.glow}>{ceToMnemeTL(ship.tl).toFixed(1)}</ShNum>
+              </div>
+            </div>
+          </div>
         </div>
       </Step>
 

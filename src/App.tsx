@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react';
-import { Routes, Route, NavLink, Navigate } from 'react-router-dom';
+import { Routes, Route, NavLink, Navigate, useLocation, useNavigate } from 'react-router-dom';
 import { useTableStore } from './store/tableStore';
 import { SettingsProvider, useSettings } from './components/ThemeProvider';
 import { SettingsPanel } from './components/SettingsPanel';
@@ -9,14 +9,17 @@ import { ShipDesigner } from './components/ShipDesigner';
 import { ShipLibrary } from './components/ShipLibrary';
 import { VariantGenerator } from './components/VariantGenerator';
 import { EngineeringReference } from './components/EngineeringReference';
+import { EncounterView } from './components/EncounterView';
 import { colors, fonts } from './components/shipgen/theme';
 
 function AppContent() {
   const loadTables = useTableStore((s) => s.loadTables);
   const loadDefaultShips = useTableStore((s) => s.loadDefaultShips);
   const loaded = useTableStore((s) => s.loaded);
-  const { scanlines, layoutMode, toggleScanlines, toggleLayout } = useSettings();
+  const { scanlines, layoutMode, ruleSet, setRuleSet, setTheme, toggleScanlines, toggleLayout } = useSettings();
   const [version, setVersion] = useState<string>('');
+  const location = useLocation();
+  const navigate = useNavigate();
 
   useEffect(() => {
     if (!loaded) loadTables();
@@ -34,6 +37,13 @@ function AppContent() {
       .then((data: { version: string }) => setVersion(data.version))
       .catch(() => setVersion(''));
   }, []);
+
+  // Redirect away from Encounter if CE combat selected (Encounter only for Mneme)
+  useEffect(() => {
+    if (ruleSet === 'ce' && location.pathname === '/encounter') {
+      navigate('/design', { replace: true });
+    }
+  }, [ruleSet, location.pathname, navigate]);
 
   const navBase: React.CSSProperties = {
     padding: '6px 14px',
@@ -88,7 +98,7 @@ function AppContent() {
               CE · SHIPGEN
             </div>
             <div style={{ fontFamily: fonts.mono, fontSize: 10, color: colors.inkDim, letterSpacing: '0.12em', marginTop: 2 }}>
-              MAINFRAME · {version ? `v${version}` : 'v0.08'} · {layoutMode === 'phone' ? 'PHONE MODE' : 'DESKTOP'}
+              {ruleSet === 'mneme' ? 'MNEME COMBAT' : 'CE SPACE COMBAT'} · {version ? `v${version}` : 'v0.08'} · {layoutMode === 'phone' ? 'PHONE MODE' : 'DESKTOP'}
             </div>
           </div>
         </div>
@@ -99,6 +109,67 @@ function AppContent() {
           <NavLink to="/library" style={({ isActive }) => isActive ? navActive : navInactive}>Library</NavLink>
           <NavLink to="/variants" style={({ isActive }) => isActive ? navActive : navInactive}>Variants</NavLink>
           <NavLink to="/engineering" style={({ isActive }) => isActive ? navActive : navInactive}>Engineering</NavLink>
+          {ruleSet === 'mneme' ? (
+            <NavLink to="/encounter" style={({ isActive }) => isActive ? navActive : navInactive}>Encounter</NavLink>
+          ) : (
+            <span
+              title="Encounter mode requires Mneme Combat"
+              style={{
+                ...navInactive,
+                opacity: 0.35,
+                cursor: 'not-allowed',
+                textDecoration: 'line-through',
+              }}
+            >
+              Encounter
+            </span>
+          )}
+
+          <div style={{ width: 1, height: 20, background: colors.hair, margin: '0 4px' }} />
+
+          {/* Combat Mode Toggle */}
+          <div style={{ display: 'flex', gap: 2 }}>
+            <button
+              onClick={() => {
+                setRuleSet('ce');
+                setTheme('mainframe');
+              }}
+              title="CE Space Combat"
+              style={{
+                padding: '6px 10px',
+                fontFamily: fonts.mono,
+                fontSize: 10,
+                letterSpacing: '0.06em',
+                background: ruleSet === 'ce' ? colors.glow : 'transparent',
+                color: ruleSet === 'ce' ? colors.bg : colors.inkDim,
+                border: `1px solid ${ruleSet === 'ce' ? colors.glow : colors.hair}`,
+                cursor: 'pointer',
+                fontWeight: 600,
+              }}
+            >
+              CE
+            </button>
+            <button
+              onClick={() => {
+                setRuleSet('mneme');
+                setTheme('mneme');
+              }}
+              title="Mneme Combat"
+              style={{
+                padding: '6px 10px',
+                fontFamily: fonts.mono,
+                fontSize: 10,
+                letterSpacing: '0.06em',
+                background: ruleSet === 'mneme' ? colors.glow : 'transparent',
+                color: ruleSet === 'mneme' ? colors.bg : colors.inkDim,
+                border: `1px solid ${ruleSet === 'mneme' ? colors.glow : colors.hair}`,
+                cursor: 'pointer',
+                fontWeight: 600,
+              }}
+            >
+              MSC
+            </button>
+          </div>
 
           <div style={{ width: 1, height: 20, background: colors.hair, margin: '0 4px' }} />
 
@@ -144,6 +215,7 @@ function AppContent() {
           <Route path="/library" element={<ShipLibrary />} />
           <Route path="/variants" element={<VariantGenerator />} />
           <Route path="/engineering" element={<EngineeringReference />} />
+          <Route path="/encounter" element={<EncounterView />} />
         </Routes>
       </main>
     </div>

@@ -1,11 +1,14 @@
 import { useState } from 'react';
 import { useSettings } from './ThemeProvider';
-import { Settings, Monitor, Smartphone, X } from 'lucide-react';
+import { Settings, Monitor, Smartphone, X, Palette } from 'lucide-react';
 import { colors, fonts } from './shipgen/theme';
 
 export function SettingsPanel() {
   const [open, setOpen] = useState(false);
-  const { scanlines, layoutMode, setScanlines, setLayoutMode } = useSettings();
+  const {
+    scanlines, layoutMode, theme,
+    setScanlines, setLayoutMode, setTheme,
+  } = useSettings();
 
   const btnBase: React.CSSProperties = {
     padding: '8px 12px',
@@ -55,7 +58,7 @@ export function SettingsPanel() {
             style={{
               background: colors.panel,
               border: `1px solid ${colors.hair}`,
-              maxWidth: 420,
+              maxWidth: 480,
               width: '100%',
               position: 'relative',
             }}
@@ -91,8 +94,33 @@ export function SettingsPanel() {
             </div>
 
             <div style={{ padding: 18, display: 'flex', flexDirection: 'column', gap: 20 }}>
-              {/* Scanlines */}
+
+              {/* Theme */}
               <div>
+                <div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 600, color: colors.inkSoft, letterSpacing: '0.14em', marginBottom: 10 }}>
+                  <Palette className="w-3 h-3 inline mr-2" />
+                  THEME
+                </div>
+                <div style={{ display: 'flex', gap: 8, flexWrap: 'wrap' }}>
+                  {([
+                    { key: 'mainframe', label: 'Mainframe' },
+                    { key: 'mneme', label: 'Mneme' },
+                    { key: 'amber', label: 'Amber' },
+                    { key: 'blueprint', label: 'Blueprint' },
+                  ] as const).map((t) => (
+                    <button
+                      key={t.key}
+                      onClick={() => setTheme(t.key)}
+                      style={theme === t.key ? btnActive : btnBase}
+                    >
+                      {t.label.toUpperCase()}
+                    </button>
+                  ))}
+                </div>
+              </div>
+
+              {/* Display */}
+              <div style={{ paddingTop: 14, borderTop: `1px solid ${colors.hair}` }}>
                 <div style={{ fontFamily: fonts.mono, fontSize: 12, fontWeight: 600, color: colors.inkSoft, letterSpacing: '0.14em', marginBottom: 10 }}>
                   DISPLAY
                 </div>

@@ -52,11 +52,16 @@ export const JDRIVES: JDrive[] = [
 ];
 
 export const POWER: Power[] = [
+  // Fusion plants (standard)
   { code: 'A', dt: 4,  cost: 8 },
   { code: 'B', dt: 7,  cost: 16 },
   { code: 'C', dt: 10, cost: 24 },
   { code: 'D', dt: 13, cost: 32 },
   { code: 'E', dt: 16, cost: 40 },
+  // Battery / chemical options for small craft (Mneme-derived)
+  { code: 'sA', dt: 1,  cost: 0.5 },  // Small-craft battery pack
+  { code: 'sB', dt: 2,  cost: 1.0 },  // Fuel cell array
+  { code: 'sC', dt: 3,  cost: 2.0 },  // Chemical generator
 ];
 
 export const BRIDGES: Bridge[] = [

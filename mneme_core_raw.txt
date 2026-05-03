@@ -1,0 +1,144 @@
+  CORE TASK RESOLUTION CHANGES.................................................................................................................................. 7
+           Target Number (TN).............................................................................................................................................7
+           One Roll Opposed Checks Mechanics..................................................................................................................8
+           How It Works....................................................................................................................................................... 8
+           Types of Opposed Rolls........................................................................................................................................8
+           Reactions and Difficulty Modifiers...................................................................................................................... 8
+           Speeding Up Play: Players roll for Adversaries.................................................................................................... 8
+           Minimum Success Effect of 1...............................................................................................................................8
+           Double Effect Rolling 2 and 12.............................................................................................................................8
+           Superiority...........................................................................................................................................................9
+           Superiority Table..................................................................................................................................................9
+           TL Superiority.................................................................................................................................................... 10
+           Multiple Actions Clarified (CESRD48)................................................................................................................ 10
+           Attack Success Effect......................................................................................................................................... 10
+  MNEME SHIP DESIGN CHANGES FROM CE.....................................................................................................................10
+CORE TASK RESOLUTION CHANGES
+Core task resolutions in CESRD12 will have some minor changes. These changes will speed things up, like the Opposed
+Checks, and will clarify some mechanics, as well as make some outcomes a bit more unpredictable.
+
+Target Number (TN)
+Die Rolls in CESRD page 14, the target number typically is 8+, but this can vary example: character creation CESRD34 for
+Qualification, Survival, Commission, Advancement, and re-Enlistment and throughout the book (Examples are some skill
+checks), there are different TN. It helps for the Character’s modifiers to be separated, and the circumstance DM and the
+task affect the TN instead. It helps also when the Refereecan omit the TN if they cannot let the PC know if they succeed
+or fail.
+
+
+
+
+7 of 75
+One Roll Opposed Checks Mechanics
+In Mneme Space Combat, opposed rolls are streamlined to speed up gameplay. Unlike in CESRD page 15 where both
+parties roll, here only the players roll. The Referee doesn't need to roll for NPCs. Players roll against a Target Number
+(TN), which is typically 8 or higher, plus any Difficulty Modifiers (DM) that the adversary might have.
+How It Works
+Players roll a 2d6 and add their relevant skill modifier against a TN that is calculated as follows:
+                                               TN= 8(Base TN) + Adversary’s DM
+For example, if an opponent has a Gunner DM of +2, the player would roll against a TN of 10 (8+2).
+Types of Opposed Rolls
+● Point Defense Roll: Players roll against a TN calculated as 8 + the Gunner's DM of the attacker.
+● Dodge Roll: Players roll against a TN calculated as 8 + the Gunner's DM of the attacker.
+● Electronic Warfare (EW) and Break Lock Check: Players roll against a TN calculated as 8 + the adversary’s
+    Comms-Sensor or Gunner DM.
+● Range Check: Players roll an opposed Navigation Check against a TN calculated as 8 + the adversary’s Navigation DM.
+Reactions and Difficulty Modifiers
+● Reactions that Increase Difficulty: If players take certain reactions, they receive a bonus to their opposed roll result.
+    Conversely, if the enemy takes a reaction, it increases the TN for the roll.
+● Minor Actions or Reactions: Parties wishing to oppose a roll must use up a Minor Action or Reaction to do so. If they
+    choose not to oppose, the difficulty is reduced by 2. For example, Missile Attack rolls without any Point Defense or
+    Pilot Dodging would be against a TN of 6+ instead of 8+.
+Speeding Up Play: Players roll for Adversaries
+Players have the option to roll for their adversaries and NPCs, effectively reducing the number of rolls the Referee has to
+make during space combat to zero. However, Referees still have the option to roll for NPCs if they choose to.
+
+Minimum Success Effect of 1
+See Difficulty and Effect CESRD page 15 which puts success at an effect of 0, a Success should have at least an effect of 1.
+Degree of Success equals the difference of check results minus the target number (typically 8) plus 1.
+● Example: A 2d6 and DM+1 Roll that rolls a 7 plus DM+1 = 8, against a Target number of 8: 8 minus 8 = 0 + 1. So the
+    effect is at least 1.
+● this is a rules clarification:
+   ○ Effects determine additional Initiative, a Successful Tactics Roll doesn't grant any Effect and thus no Initiative
+       Advantage.
+   ○ Effects determine additional DM+1s a successful Coordinate Crew action will grant, an effect 0 will grant none.
+   ○ This will add to all Successful Attacks to have a damage of 1.
+
+Double Effect Rolling 2 and 12
+Upon rolling a 12 on the Dice (6 on each die, naturally, before any modifications are applied), double the effect of the roll
+if it is positive (good) and halve it if it is negative (bad). Likewise, upon rolling a 2 (1 on each die, naturally), double the
+effect of the roll if it is negative and halve it if it is positive.
+For Example, a 2d6 DM+1 roll of 12 against a TN 8 has a total check result of 13 minus 8 for 5 effects (not enough for an
+Exceptional Success despite a roll of 12). Rolling a 12 makes the 5 a 10 effect. Rolling a 2 with a 2D6 DM+1 against a TN of
+8 equals a 3 minus 8 for a -5 (not an exceptional failure), doubling for a -10 effect.
+● With Opposed Check mechanics, apply the modification to the Effect before doubling.
+● Weapon Damage which adds the roll’s Effect is affected by this rule.
+● With these rules, Critical Hits and Misses will have a higher effect on the game. These rules increase the odds of
+      having an effect of 6 or -6 as compared to the regular rules. Currently because of the TN 8, in a D20 system where
+      the extremes are rolled 5% of the time, in 2D6 these are rolled at 2.77% (either 2 or 12).
+8 of 75
+Superiority
+This rule set is for situations where multiple people/characters are working on the same task and where it would be
+inconvenient or absurd to roll for each of them separately or to add up the results directly. With this, it is assumed that,
+for many tasks, whether or not these involve spaceships, the number of people performing the tasks does not add to the
+effectiveness of those tasks in a linear manner and it takes more and more people to effectively help at the exact same
+action. The rules are as follows:
+
+Any other additional parties beyond the main characters aiding in a roll can be considered as adding to “Superiority”.
+● A Superiority dice modifier is added as a bonus to the PC’s roll result if they have superior numbers and resources,
+    compared to the target or opposition to the action.
+   ○ These resources are Stations and Manpower counted against the other party. Example: A ship with 2 Sensors
+       with 1 NavComm officer against a Squadron with 4 Sensors and 2 Officers, the squadron will have superiority: 2 vs
+       1. a DM+2 or Raising the TN by 2.
+● A Superiority dice modifier is a penalty to the PC’s roll if the target or opposition has superior numbers and resources
+    compared to the target or opposition to the action.
+This means that if all other circumstances are equal, the side that has the superior significant resources has an
+advantage, measured in DM. Typically the Refereeconsiders ships and their resources: Ships, Turrets/Bays, Multiple
+Electronic Suites and Stations as adding to Superiority.
+● The table below is used to determine the size of the Superiority bonus or penalty.
+
+Superiority Table
+    Superiority       Difficulty Modifier         Examples
+     1 ½+ vs 1               DM+1                 A 400DT corvette and 400DT merchant, against 800DT of Raiders
+      2+ vs 1                DM+2                 A pair of 20DT fighters against a 100DT scout.
+                                                  An Q-ship (400DT Merchant with pop-up Particle Beams), against a
+      3+ vs 1                 DM+3
+                                                  6 Armed FreeTrader 200DT Merchants.
+      5+ vs 1                 DM+4                A carrier strike group against a lone carrier.
+      7+ vs 1                 DM+5                A missile squadron, and their escorts, against a battered Raider.
+     10+ vs 1                 DM+6                A full Battle Group against a single Destroyer.
+This applies as a ratio, meaning that 4 vs 2 is as good as 2 vs 1 and 5 vs 3 is roughly equivalent to 1 ½ vs 1.
+At the Referee’s discretion, certain qualitative advantages can be considered to make one side count for more than their
+numbers, just as a machine gun may count for much more than a pistol and an armed warship more than a cargo ship
+with guns. Despite the adversarial nature of Superiority rules, it’s best to use these for rolls unrelated to Attacking or
+Defense, using multiple Attack rules instead for those.
+
+●    In CE Space combat Hard Points (per 100DT) is one of the key constraints of the mechanics as designed that keep
+     ships from having ridiculous amounts of weaponry on them. Bay and Turret Weapons are constrained by Hardpoints.
+    ○ Example: So a 200DT ship with 2 hard points is roughly equal to two Small Craft. Of course the quality of the small
+         craft can change this, as 2 Fighters 10-50DT will not take as much damage as two 95DT armed shuttles.
+
+Do not Limit Superiority to the Number of People or Forces or Ships. Consider also Time to prepare as a metric of
+Superiority. Two forces being equal, but one party had 3 times more time to prepare than the other party and change
+the circumstance can be counted. You can also consider the Asymmetric Objectives as well - if One side had to put in 3x
+the amount of work, than the other Party to win then the party that needs less work would be superior.
+
+
+
+
+9 of 75
+TL Superiority
+If two Sensor or Electronics Systems are being used against each, the Difference in their TL is a DM modifier. Apply this
+modifier to only one of the parties. Since the RefereeFocuses on the Players, the DM applies a TL Superiority Penalty to
+the Players if the Adversary is of a Higher TL or a Bonus if the Players have the superior TL.
+
+Multiple Actions Clarified (CESRD48)
+Multiple Actions occur when a Character uses more than one Action in a Round or Turn. This means the character
+Performs a Minor Action (For example, positioning the ship as a pilot) and a Significant Action (For example, an Attack).
+Consider applying a penalty when different Skills are used for Multiple actions. Characters cannot perform more actions
+than their 3 Minor Actions or 1 significant action and Minor action.
+
+Attack Success Effect
+On a Successful Attack, the Effect of the roll adds additional Damage.
+
+
+MNEME SHIP DESIGN CHANGES FROM CE

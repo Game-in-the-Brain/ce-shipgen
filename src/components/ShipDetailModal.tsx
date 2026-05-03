@@ -1,9 +1,12 @@
+import React from 'react';
 import { BOQView } from './BOQView';
 import { MnemeCombatPanel } from './MnemeCombatPanel';
 import { calcHullPoints, calcStructurePoints, calcHardpoints } from '../calculations';
 import { exportShipToFoundryVTT, downloadBlob } from '../utils/exportImport';
 import { exportShipToDocx } from '../utils/exportDocx';
-import { X, Download, Edit3, Trash2, Gamepad2, FileText } from 'lucide-react';
+import { X, Download, Edit3, Trash2, Gamepad2, FileText, Image } from 'lucide-react';
+import { getShipImages } from '../utils/shipImages';
+import { ShipImageViewer } from './ShipImageViewer';
 import { colors, fonts } from './shipgen/theme';
 import { ShLabel, ShNum } from './shipgen/primitives';
 import type { ShipDesign } from '../types';
@@ -17,10 +20,13 @@ interface ShipDetailModalProps {
 }
 
 export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: ShipDetailModalProps) {
+  const [showImageViewer, setShowImageViewer] = React.useState(false);
   const hullPoints = calcHullPoints(ship.hullDtons);
   const structurePoints = calcStructurePoints(ship.hullDtons);
   const hardpoints = calcHardpoints(ship.hullDtons);
   const usedHardpoints = (ship.weapons || []).reduce((s, w) => s + (w.qty || 1), 0);
+  const shipImages = getShipImages(ship.name, ship.hullDtons);
+  const hasImages = shipImages.hasToken || shipImages.hasDeckplan;
 
   const iconBtn = (onClick: () => void, title: string, icon: React.ReactNode, hoverColor: string) => (
     <button
@@ -70,6 +76,7 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
             </p>
           </div>
           <div style={{ display: 'flex', alignItems: 'center', gap: 6 }}>
+            {hasImages && iconBtn(() => setShowImageViewer(true), 'View Images', <Image className="w-4 h-4" />, colors.glow)}
             {iconBtn(() => onEdit(ship), 'Edit', <Edit3 className="w-4 h-4" />, colors.glow)}
             {iconBtn(() => onExport(ship), 'Export JSON', <Download className="w-4 h-4" />, colors.good)}
             {iconBtn(async () => {
@@ -106,6 +113,50 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
 
         {/* Content */}
         <div style={{ overflowY: 'auto', padding: '16px 20px', display: 'flex', flexDirection: 'column', gap: 16 }}>
+          {/* Token Preview */}
+          {shipImages.hasToken && (
+            <div style={{ display: 'flex', gap: 12, alignItems: 'center' }}>
+              <img
+                src={shipImages.tokens[0]}
+                alt={`${ship.name} token`}
+                style={{
+                  width: 120,
+                  height: 120,
+                  objectFit: 'contain',
+                  background: colors.panelAlt,
+                  border: `1px solid ${colors.hair}`,
+                  padding: 8,
+                }}
+              />
+              <div>
+                <div style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.inkDim }}>
+                  {shipImages.tokens.length} TOKEN VARIANTS
+                </div>
+                {shipImages.hasDeckplan && (
+                  <div style={{ fontFamily: fonts.mono, fontSize: 11, color: colors.inkDim, marginTop: 4 }}>
+                    {shipImages.deckplans.length} DECKPLAN VIEW{shipImages.deckplans.length !== 1 ? 'S' : ''}
+                  </div>
+                )}
+                <button
+                  onClick={() => setShowImageViewer(true)}
+                  style={{
+                    marginTop: 8,
+                    padding: '6px 12px',
+                    fontFamily: fonts.mono,
+                    fontSize: 11,
+                    letterSpacing: '0.08em',
+                    background: 'transparent',
+                    border: `1px solid ${colors.glow}`,
+                    color: colors.glow,
+                    cursor: 'pointer',
+                  }}
+                >
+                  VIEW ALL IMAGES
+                </button>
+              </div>
+            </div>
+          )}
+
           {/* Stats Grid */}
           <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr 1fr 1fr', gap: 10 }}>
             {statBox('HULL POINTS', hullPoints, colors.glow)}
@@ -184,6 +235,13 @@ export function ShipDetailModal({ ship, onClose, onEdit, onDelete, onExport }: S
           </div>
         </div>
       </div>
+      {showImageViewer && (
+        <ShipImageViewer
+          shipName={ship.name}
+          images={shipImages}
+          onClose={() => setShowImageViewer(false)}
+        />
+      )}
     </div>
   );
 }

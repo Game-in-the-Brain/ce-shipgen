@@ -59,6 +59,18 @@ export function validateShip(design: ShipDesign): ValidationResult {
     });
   }
 
+  // 2b. Power Plant oversized — PP > max drive rating wastes tonnage/cost
+  if (maxPPIndex >= 0 && maxPPIndex > maxDriveIndex) {
+    const oversizedBy = LETTERS[maxPPIndex];
+    const required = minPP || LETTERS[maxDriveIndex];
+    softWarnings.push({
+      code: 'POWER_PLANT_OVERSIZED',
+      message: `Power Plant ${oversizedBy} is larger than required ${required}. Excess capacity wastes ${((maxPPIndex - maxDriveIndex) * 3).toFixed(0)} DT and ${((maxPPIndex - maxDriveIndex) * 8).toFixed(0)} MCr`,
+      section: 'Power Plant',
+      severity: 'soft',
+    });
+  }
+
   // 3. Hardpoints ≤ floor(Hull/100)
   const maxHardpoints = Math.floor(design.hullDtons / 100);
   const usedHardpoints = (design.weapons || []).reduce((s, w) => s + (w.qty || 1), 0);

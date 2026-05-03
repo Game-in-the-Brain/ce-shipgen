@@ -209,42 +209,44 @@ https://pages.gi7b.org/gi7b/ce-shipgen/
 | JSON export / import | FR-005 | 🔲 |
 | CSV export | FR-005 | 🔲 |
 | Universal Ship Description text format | FR-005 | 🔲 |
-| Mneme Space Combat stat block | FR-005 | 🔲 |
+| Mneme Space Combat stat block | FR-005 | ✅ |
 | Print-friendly view | FR-005 | 🔲 |
 | Markdown / Wikitext export | FR-005 | 🔲 |
 | Common ship templates (Free Trader, Scout, Patrol Cruiser…) | FR-004 | 🔲 |
 
 ---
 
-### MSC Simulator — Space Combat Mini-Game *(Phase 2 flagship)*
+### Encounter System — Mneme Space Combat *(Phase 2 flagship)*
 
-An automated space combat simulator using Mneme rules. CE RAW is not built for this extent of combat — Mneme's streamlined damage, MAC, and opposed-roll mechanics make大规模 simulation feasible.
+A tactical encounter simulator using Mneme Space Combat rules. MSC is the **only** combat system — CE RAW space combat is explicitly unavailable because MSC was built to fill gaps in CE rules that required playtesting and rulings.
 
-**Bots & Scenarios:**
-- AI-driven bots pilot ships using Mneme action economy (3 MA, 1 SA, 1 RA per turn)
-- Pre-set encounter scenarios: convoy ambush, system patrol, pirate interception, fleet battle
-- Bots evaluate range bands, thrust budgets, and MAC thresholds to decide attacks/evasions
-- Configurable AI aggression/tactics profiles
+**Core Features (Implemented):**
+- **Encounter Setup:** Select your ship from the library, choose a scenario, set difficulty
+- **Scenarios:** Pirate Intercept, Raider Ambush, System Patrol, Convoy Defense
+- **Tactical Map:** 2D grid with ship tokens, range bands, and movement
+- **Turn-Based Combat:** Mneme action economy — maneuver, fire, ECM, repair, sensor, brace, board, flee
+- **AI Pilots:** Bot decision tree with scenario-driven aggression profiles
+- **Auto-Resolve:** Run full encounters automatically for playtesting
+- **Post-Assessment:** Damage dealt/taken, hit rate, salvage, repair costs, notable events
 
-**TL Factions with Fractions:**
-- Ships are grouped by TL faction (TL7, TL8, TL9, TL10…)
-- Each faction's weapon values drift based on aggregate simulator results
-- TLs have fractional granularity (e.g. TL 9.3) — performance data from thousands of simulated battles re fines weapon damage, armor penetration, and sensor DM
-- Data-driven balancing: weapons that underperform in sims get buffed; overperformers get dialed back
+**Combat Mechanics:**
+- Attack = missiles + weapons that can fire
+- Total Damage = average dice of all attacks × Range Modifier (Long ×1.0, Medium ×0.5, Short ×0.2)
+- Defense = interceptor missiles + active turrets/bays
+- MAC (Multiple Attack Consolidation): 2+ weapons = +1 DM, 5+ = +1D6, 10+ = +2D6
+- Armor absorbs damage first, then hull, then structure
 
-**Solo Campaign Mode:**
-- Load a crew from CE Character Generation (skills, stats, background)
-- Play solo against a gauntlet of encounters
-- After each battle: auto-refresh resources (fuel, ammo, life support), salvage wreckage for parts/credits, loot enemy ships
-- Persistent crew progression — skills improve through use (Mneme skill system)
-- Ship upgrades purchased from salvage proceeds
-- Run until the crew retires, dies, or makes enough to buy their dream ship
+**Bot Behavior:**
+- Pirates: aggressive, prefer medium range (lasers), flee at 20% hull
+- Raiders: very aggressive, prefer short range (boarding), flee at 10% hull
+- Patrol: medium aggression, prefer long range (missiles), flee at 40% hull
+- Merchants: defensive, prefer long range (evasion), flee at 50% hull
 
-**Simulation Engine:**
-- Headless batch mode: run 10,000 fleet-vs-fleet engagements overnight to tune TL faction stats
-- Per-battle log: initiative order, action choices, damage rolls, crew casualties, morales outcomes
-- Aggregate statistics: win rates by TL, weapon efficiency ratings, survival curves
-- Feeds back into the TL fraction system for dynamic campaign balancing
+**Future Work:**
+- Solo campaign mode with persistent crew progression
+- Headless batch simulation (10,000 encounters) for balance tuning
+- TL faction fractions based on aggregate simulator results
+- Crew generation from CE Character Generation repo
 
 ### Other Future *(Phase 2+)*
 

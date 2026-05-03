@@ -4,8 +4,10 @@ import { useTableStore } from '../store/tableStore';
 import { downloadJson, generateSnapshotName, importJsonFile } from '../utils/exportImport';
 import { classifyShip } from '../utils/shipClassifier';
 import { auditShip, correctShip, type AuditReport } from '../utils/shipAuditor';
+import { getShipImages, type ShipImageSet } from '../utils/shipImages';
 import { ShipDetailModal } from './ShipDetailModal';
-import { Download, Trash2, Edit3, FileJson, Eye, Upload, AlertCircle, Search, Filter, X, ShieldAlert, Check } from 'lucide-react';
+import { ShipImageViewer } from './ShipImageViewer';
+import { Download, Trash2, Edit3, FileJson, Eye, Upload, AlertCircle, Search, Filter, X, ShieldAlert, Check, Image } from 'lucide-react';
 import type { ShipDesign } from '../types';
 
 export function ShipLibrary() {
@@ -16,6 +18,7 @@ export function ShipLibrary() {
   const updateShip = useTableStore((s) => s.updateShip);
   const setCurrentShip = useTableStore((s) => s.setCurrentShip);
   const [detailShip, setDetailShip] = useState<ShipDesign | null>(null);
+  const [imageViewerShip, setImageViewerShip] = useState<{ ship: ShipDesign; images: ShipImageSet } | null>(null);
   const [auditShipDetail, setAuditShipDetail] = useState<AuditReport | null>(null);
   const [batchAuditOpen, setBatchAuditOpen] = useState(false);
   const [reconcileResult, setReconcileResult] = useState<{ updated: number; message: string } | null>(null);
@@ -486,7 +489,7 @@ export function ShipLibrary() {
                     })()}
                   </div>
                   <div className="flex gap-1 flex-shrink-0 ml-2">
-                    <button 
+                    <button
                       onClick={() => setDetailShip(ship)}
                       className="p-1.5 rounded"
                       style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='var(--sh-panel-alt)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-glow)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
@@ -494,6 +497,20 @@ export function ShipLibrary() {
                     >
                       <Eye className="w-4 h-4" />
                     </button>
+                    {(() => {
+                      const images = getShipImages(ship.name, ship.hullDtons);
+                      if (!images.hasToken && !images.hasDeckplan) return null;
+                      return (
+                        <button
+                          onClick={() => setImageViewerShip({ ship, images })}
+                          className="p-1.5 rounded"
+                          style={{ color: 'var(--sh-ink-dim)' }} onMouseEnter={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='var(--sh-panel-alt)';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-glow)'}} onMouseLeave={(e)=>{(e.currentTarget as HTMLButtonElement).style.background='transparent';(e.currentTarget as HTMLButtonElement).style.color='var(--sh-ink-dim)'}}
+                          title={`View Images (${images.tokens.length} token${images.tokens.length !== 1 ? 's' : ''}, ${images.deckplans.length} deckplan${images.deckplans.length !== 1 ? 's' : ''})`}
+                        >
+                          <Image className="w-4 h-4" />
+                        </button>
+                      );
+                    })()}
                     <button 
                       onClick={() => {
                         setCurrentShip(ship);
@@ -563,6 +580,14 @@ export function ShipLibrary() {
           }}
           onDelete={deleteShip}
           onExport={exportShip}
+        />
+      )}
+
+      {imageViewerShip && (
+        <ShipImageViewer
+          shipName={imageViewerShip.ship.name}
+          images={imageViewerShip.images}
+          onClose={() => setImageViewerShip(null)}
         />
       )}
 

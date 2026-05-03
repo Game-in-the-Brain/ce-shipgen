@@ -7,6 +7,7 @@ import { OperatingEconomics } from './OperatingEconomics';
 import { ComponentManifest } from './ComponentManifest';
 import { DeckPlan } from './DeckPlan';
 import { computeShip } from './compute';
+import { ceToMnemeTL } from '../../utils/tlMapping';
 import { DEFAULT_SHIP, STARTER_LIBRARY, type ShipSpec } from './data';
 
 export interface ShipGenDesktopProps {
@@ -81,7 +82,7 @@ export function ShipGenDesktop({
             <ShNum size={26} color={colors.glow} style={{ letterSpacing: '0.32em' }}>CE · SHIPGEN</ShNum>
             <div style={{ marginTop: -2 }}>
               <ShData size={11} dim>
-                MAINFRAME · v0.08 · TL{ship.tl} · CYCLE {String(tick).padStart(5, '0')}
+                MAINFRAME · v0.08 · CTL{ship.tl} · MTL{ceToMnemeTL(ship.tl).toFixed(1)} · CYCLE {String(tick).padStart(5, '0')}
               </ShData>
             </div>
           </div>

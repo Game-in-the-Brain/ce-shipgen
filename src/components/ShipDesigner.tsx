@@ -4,7 +4,9 @@ import { useSettings } from './ThemeProvider';
 import { ChildTable } from './ChildTable';
 import { BOQView } from './BOQView';
 import { MnemeCombatPanel } from './MnemeCombatPanel';
+import { CeCombatPanel } from './CeCombatPanel';
 import { downloadJson, generateSnapshotName } from '../utils/exportImport';
+import { exportShipToDocx } from '../utils/exportDocx';
 import { classifyShip } from '../utils/shipClassifier';
 import { fmtNumber, fmtCost, fmtTons } from '../utils/formatters';
 import {
@@ -15,7 +17,7 @@ import {
 import { validateShip } from '../validations';
 import { getActiveTableById } from '../utils/getActiveTable';
 import type { TableId } from '../types';
-import { Save, Calculator, Trash2, AlertTriangle, CheckCircle } from 'lucide-react';
+import { Save, Calculator, Trash2, AlertTriangle, CheckCircle, Printer, FileText } from 'lucide-react';
 import { colors, fonts } from './shipgen/theme';
 import { ShLabel, ShNum, ShData, ShPanel, ShField } from './shipgen/primitives';
 import { TonnageGauge } from './shipgen/TonnageGauge';
@@ -82,7 +84,7 @@ export function ShipDesigner() {
   const deleteShip = useTableStore((s) => s.deleteShip);
   const setCurrentShip = useTableStore((s) => s.setCurrentShip);
   const currentShip = useTableStore((s) => s.currentShip);
-  const { layoutMode } = useSettings();
+  const { layoutMode, ruleSet } = useSettings();
 
   // ─── Basic Info ───
   const [name, setName] = useState('');
@@ -662,12 +664,12 @@ export function ShipDesigner() {
     }
   };
 
-  const exportShip = () => {
+  const buildCurrentShip = (): ShipDesign => {
     const _mDrive = mDriveRows[0]?.name || mDrive;
     const _jDrive = jDriveRows[0]?.name || jDrive;
     const _powerPlant = ppRows[0]?.name || powerPlant;
     const ship: ShipDesign = {
-      id: `export-${Date.now()}`,
+      id: currentShip?.id || `ship-${Date.now()}`,
       name: name || generateShipName(hullDtons),
       tl,
       hullCode: String(hullDtons),
@@ -696,10 +698,77 @@ export function ShipDesigner() {
       modules: moduleComponents,
       weapons: weaponComponents,
       cargo, components, totalCost, availableDtons,
-      createdAt: new Date().toISOString(),
+      createdAt: currentShip?.createdAt || new Date().toISOString(),
     };
     ship.classification = classifyShip(ship);
+    return ship;
+  };
+
+  const exportShip = () => {
+    const ship = buildCurrentShip();
     downloadJson(JSON.stringify(ship, null, 2), `ship-${name.replace(/\s+/g, '_')}-${generateSnapshotName()}.json`);
+  };
+
+  const exportDocx = async () => {
+    const ship = buildCurrentShip();
+    const blob = await exportShipToDocx(ship);
+    const url = URL.createObjectURL(blob);
+    const a = document.createElement('a');
+    a.href = url;
+    a.download = `${ship.name.replace(/[^a-zA-Z0-9]/g, '_')}.docx`;
+    a.click();
+    URL.revokeObjectURL(url);
+  };
+
+  const printShip = () => {
+    const ship = buildCurrentShip();
+    const printWindow = window.open('', '_blank');
+    if (!printWindow) return;
+
+    const html = `
+<!DOCTYPE html>
+<html>
+<head>
+<title>${ship.name} — Ship Spec</title>
+<style>
+body { font-family: 'JetBrains Mono', monospace; background: #fff; color: #000; padding: 40px; max-width: 800px; margin: 0 auto; }
+h1 { font-size: 28px; border-bottom: 2px solid #333; padding-bottom: 8px; }
+h2 { font-size: 18px; margin-top: 24px; border-bottom: 1px solid #ccc; padding-bottom: 4px; }
+table { width: 100%; border-collapse: collapse; margin-top: 12px; }
+th, td { border: 1px solid #ccc; padding: 6px 10px; text-align: left; font-size: 13px; }
+th { background: #f4f4f4; font-weight: 600; }
+.summary { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; margin-top: 12px; }
+.summary-item { background: #f9f9f9; padding: 10px; border: 1px solid #ddd; }
+.summary-label { font-size: 11px; color: #666; text-transform: uppercase; }
+.summary-value { font-size: 16px; font-weight: 600; margin-top: 4px; }
+@media print { body { padding: 0; } }
+</style>
+</head>
+<body>
+<h1>${ship.name}</h1>
+<p>TL ${ship.tl} · ${ship.hullDtons} DT · ${ship.configuration || 'Standard'} Configuration</p>
+<div class="summary">
+  <div class="summary-item"><div class="summary-label">Total Cost</div><div class="summary-value">${(ship.totalCost / 1e6).toFixed(3)} MCr</div></div>
+  <div class="summary-item"><div class="summary-label">Cargo</div><div class="summary-value">${ship.cargo} DT</div></div>
+  <div class="summary-item"><div class="summary-label">Armor</div><div class="summary-value">${ship.armor || 'None'}</div></div>
+  <div class="summary-item"><div class="summary-label">Available Tons</div><div class="summary-value">${ship.availableDtons} DT</div></div>
+</div>
+<h2>Bill of Quantities</h2>
+<table>
+<tr><th>Section</th><th>Module</th><th>Tons</th><th>Cost</th><th>Qty</th></tr>
+${(ship.components || []).map(c => `<tr><td>${c.section}</td><td>${c.module}</td><td>${c.dtons}</td><td>${c.cost.toLocaleString()}</td><td>${c.qty || 1}</td></tr>`).join('')}
+</table>
+<h2>Crew</h2>
+<table>
+<tr><th>Position</th><th>Count</th><th>Salary</th></tr>
+${(ship.crew || []).map(c => `<tr><td>${c.module}</td><td>${c.qty || 1}</td><td>${c.notes || '-'}</td></tr>`).join('')}
+</table>
+<script>window.onload = () => { setTimeout(() => window.print(), 300); };</script>
+</body>
+</html>`;
+
+    printWindow.document.write(html);
+    printWindow.document.close();
   };
 
   const loadShip = (ship: ShipDesign) => {
@@ -898,9 +967,19 @@ export function ShipDesigner() {
                 <button onClick={saveShip} className="btn-primary flex items-center gap-2">
                   <Save className="w-4 h-4" /> {currentShip ? 'UPDATE' : 'SAVE'}
                 </button>
+                {hullDtons > 0 && (
+                  <button onClick={exportDocx} className="btn-secondary flex items-center gap-2">
+                    <FileText className="w-4 h-4" /> DOCX
+                  </button>
+                )}
+                {hullDtons > 0 && (
+                  <button onClick={printShip} className="btn-secondary flex items-center gap-2">
+                    <Printer className="w-4 h-4" /> PRINT
+                  </button>
+                )}
                 {currentShip && (
                   <button onClick={exportShip} className="btn-secondary flex items-center gap-2">
-                    <Calculator className="w-4 h-4" /> EXPORT
+                    <Calculator className="w-4 h-4" /> JSON
                   </button>
                 )}
               </>
@@ -1981,17 +2060,30 @@ export function ShipDesigner() {
         />
 
         {hullDtons > 0 && (
-          <ShPanel no="SHEET 03" title="Mneme Combat" kw="MAC">
-            <MnemeCombatPanel ship={{
-              id: 'preview', name, tl, hullCode, hullDtons, configuration: config,
-              armor: armorRows.map(r => r.name).join(', ') || 'None',
-              armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
-              bridge, computer, software: softwareList,
-              sensors, staterooms, lowBerths,
-              crew: [], modules: moduleComponents, weapons: weaponComponents,
-              cargo, components, totalCost, availableDtons,
-              createdAt: new Date().toISOString(),
-            }} />
+          <ShPanel no="SHEET 03" title={ruleSet === 'mneme' ? 'Mneme Combat' : 'CE Space Combat'} kw={ruleSet === 'mneme' ? 'MAC' : 'CE'}>
+            {ruleSet === 'mneme' ? (
+              <MnemeCombatPanel ship={{
+                id: 'preview', name, tl, hullCode, hullDtons, configuration: config,
+                armor: armorRows.map(r => r.name).join(', ') || 'None',
+                armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
+                bridge, computer, software: softwareList,
+                sensors, staterooms, lowBerths,
+                crew: [], modules: moduleComponents, weapons: weaponComponents,
+                cargo, components, totalCost, availableDtons,
+                createdAt: new Date().toISOString(),
+              }} />
+            ) : (
+              <CeCombatPanel ship={{
+                id: 'preview', name, tl, hullCode, hullDtons, configuration: config,
+                armor: armorRows.map(r => r.name).join(', ') || 'None',
+                armorQty: armorRows.reduce((s, r) => s + r.qty, 0),
+                bridge, computer, software: softwareList,
+                sensors, staterooms, lowBerths,
+                crew: [], modules: moduleComponents, weapons: weaponComponents,
+                cargo, components, totalCost, availableDtons,
+                createdAt: new Date().toISOString(),
+              }} />
+            )}
           </ShPanel>
         )}
 

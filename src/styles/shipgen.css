@@ -45,6 +45,24 @@
   --sh-amber:     #ffcb6f;
 }
 
+/* Mneme Space Combat theme — amber-cyan variant */
+[data-shipgen-theme="mneme"] {
+  --sh-bg:        #100c08;
+  --sh-panel:     #1a1410;
+  --sh-panel-alt: #0a0806;
+  --sh-ink:       #ffe9d0;
+  --sh-ink-soft:  #d9b890;
+  --sh-ink-dim:   #8a7050;
+  --sh-glow:      #ffaf5a;
+  --sh-glow-soft: #ffc890;
+  --sh-amber:     #5affff;
+  --sh-warn:      #ff7a5a;
+  --sh-good:      #7ad99a;
+  --sh-hair:      rgba(255, 233, 208, 0.16);
+  --sh-hair-faint:  rgba(255, 233, 208, 0.08);
+  --sh-hair-bright: rgba(255, 175, 90, 0.35);
+}
+
 /* Scanline overlay — apply with class="sh-scanlines" */
 .sh-scanlines::before {
   content: '';
