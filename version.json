@@ -1,12 +1,16 @@
 {
-  "version": "0.02",
-  "name": "CE ShipGen",
-  "date": "2026-04-27",
+  "version": "0.09",
+  "name": "ce-shipgen",
+  "date": "2026-05-10",
+  "buildTime": "2026-05-10T12:18:42.534Z",
   "changelog": [
-    "Phase 1: Foundation Hardening — calculation engine extracted",
-    "Jump parsecs selector (1-6) with accurate fuel calculation",
-    "Power Plant validation (PP ≥ max M-drive, J-drive)",
-    "Validation summary panel with hard error detection",
-    "TypeScript strict mode compliance"
+    "Table-driven audit system — compare stored values against reference tables",
+    "Batch audit modal with severity levels and auto-correct from tables",
+    "Iron Triangle S/A/P ship classification with auto-tags",
+    "Library multi-filter search (TL, role, tags, hull DT range)",
+    "40 reconciled ships (34 Excel + 6 SRD) with table-correct values",
+    "Component normalization — qty:1 with totals in dtons",
+    "Emergency Low Berth properly distinguished from Low Berth",
+    "Cargo computed as hull remainder, not extracted from Excel"
   ]
 }

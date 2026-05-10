@@ -1,0 +1,3482 @@
+[
+  {
+    "id": "excel-1471-tl9-passenger-liner-1-000dt",
+    "name": "TL9 PASSENGER LINER 1,000DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Line Ship",
+      "sizeId": "lineShip",
+      "className": "Bulk Transport",
+      "ratios": {
+        "s": 0.169,
+        "a": 0.113,
+        "p": 0.718
+      },
+      "tons": {
+        "s": 203,
+        "a": 135,
+        "p": 861,
+        "total": 1199
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 7,
+        "medic": 1,
+        "gunner": 10,
+        "marine": 0,
+        "steward": 16,
+        "maintenance": 1,
+        "deckCrew": 1,
+        "total": 39
+      },
+      "costs": {
+        "monthlyMortgage": 1.566,
+        "maintenance": 0.376,
+        "crewSalaries": 0.105,
+        "lifeSupport": 0.078,
+        "fuel": 0,
+        "portFees": 0.038,
+        "totalMonthly": 1.818,
+        "annual": {
+          "mortgage": 18.797,
+          "maintenance": 0.376,
+          "crewSalaries": 1.26,
+          "lifeSupport": 0.936,
+          "fixedCosts": 21.369,
+          "variableAt12": 0.451,
+          "variableAt24": 0.902,
+          "variableAt36": 1.353,
+          "totalAt12": 21.82,
+          "totalAt24": 22.272,
+          "totalAt36": 22.723
+        }
+      },
+      "revenue": {
+        "highPassengers": 25,
+        "midPassengers": 100,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.455,
+        "freightDtons": 210.5,
+        "freightRevenue": 0.21,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.691
+      },
+      "lifeSupport": {
+        "staterooms": 125,
+        "lowBerths": 10,
+        "standardCapacity": 125,
+        "emergencyCapacity": 250,
+        "durationWeeks": 0,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 41,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 164
+      },
+      "jumpRange": 7,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1143-tl9-fighter-10dt--2man--1bl--2m",
+    "name": "TL9 FIGHTER 10DT, 2man, 1BL, 2M",
+    "classification": {
+      "role": "Vanguard",
+      "roleId": "vanguard",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Cutter",
+      "ratios": {
+        "s": 0.44,
+        "a": 0.16,
+        "p": 0.401
+      },
+      "tons": {
+        "s": 5.5,
+        "a": 2,
+        "p": 5,
+        "total": 12.5
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 21
+      },
+      "costs": {
+        "monthlyMortgage": 0.054,
+        "maintenance": 0.013,
+        "crewSalaries": 0.084,
+        "lifeSupport": 0.042,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.182,
+        "annual": {
+          "mortgage": 0.646,
+          "maintenance": 0.013,
+          "crewSalaries": 1.008,
+          "lifeSupport": 0.504,
+          "fixedCosts": 2.171,
+          "variableAt12": 0.016,
+          "variableAt24": 0.031,
+          "variableAt36": 0.047,
+          "totalAt12": 2.186,
+          "totalAt24": 2.202,
+          "totalAt36": 2.217
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 0.5,
+        "freightRevenue": 0.001,
+        "mailContracts": 0,
+        "totalRevenue": 0.001
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 6,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 24
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1184-tl9-escort-fighter-10dt--2man--1bl--2sc",
+    "name": "TL9 ESCORT FIGHTER 10DT, 2man, 1BL, 2SC",
+    "classification": {
+      "role": "Vanguard",
+      "roleId": "vanguard",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Cutter",
+      "ratios": {
+        "s": 0.44,
+        "a": 0.16,
+        "p": 0.401
+      },
+      "tons": {
+        "s": 5.5,
+        "a": 2,
+        "p": 5,
+        "total": 12.5
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 21
+      },
+      "costs": {
+        "monthlyMortgage": 0.05,
+        "maintenance": 0.012,
+        "crewSalaries": 0.084,
+        "lifeSupport": 0.042,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.178,
+        "annual": {
+          "mortgage": 0.598,
+          "maintenance": 0.012,
+          "crewSalaries": 1.008,
+          "lifeSupport": 0.504,
+          "fixedCosts": 2.122,
+          "variableAt12": 0.014,
+          "variableAt24": 0.029,
+          "variableAt36": 0.043,
+          "totalAt12": 2.137,
+          "totalAt24": 2.151,
+          "totalAt36": 2.165
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 0.5,
+        "freightRevenue": 0.001,
+        "mailContracts": 0,
+        "totalRevenue": 0.001
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 6,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 24
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1226-tl9-fighter-10dt--2man--3m",
+    "name": "TL9 FIGHTER 10DT, 2man, 3M",
+    "classification": {
+      "role": "Vanguard",
+      "roleId": "vanguard",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Cutter",
+      "ratios": {
+        "s": 0.338,
+        "a": 0.236,
+        "p": 0.426
+      },
+      "tons": {
+        "s": 4.3,
+        "a": 3,
+        "p": 5.4,
+        "total": 12.7
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 20
+      },
+      "costs": {
+        "monthlyMortgage": 0.045,
+        "maintenance": 0.011,
+        "crewSalaries": 0.082,
+        "lifeSupport": 0.04,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.168,
+        "annual": {
+          "mortgage": 0.537,
+          "maintenance": 0.011,
+          "crewSalaries": 0.978,
+          "lifeSupport": 0.48,
+          "fixedCosts": 2.005,
+          "variableAt12": 0.013,
+          "variableAt24": 0.026,
+          "variableAt36": 0.039,
+          "totalAt12": 2.018,
+          "totalAt24": 2.031,
+          "totalAt36": 2.044
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 0.7,
+        "freightRevenue": 0.001,
+        "mailContracts": 0,
+        "totalRevenue": 0.001
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1569-tl9-boat-10dt",
+    "name": "TL9 BOAT 10DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Lighter",
+      "ratios": {
+        "s": 0.261,
+        "a": 0,
+        "p": 0.739
+      },
+      "tons": {
+        "s": 2.9,
+        "a": 0,
+        "p": 8.2,
+        "total": 11.1
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.022,
+        "maintenance": 0.005,
+        "crewSalaries": 0.079,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.14,
+        "annual": {
+          "mortgage": 0.267,
+          "maintenance": 0.005,
+          "crewSalaries": 0.948,
+          "lifeSupport": 0.456,
+          "fixedCosts": 1.676,
+          "variableAt12": 0.006,
+          "variableAt24": 0.013,
+          "variableAt36": 0.019,
+          "totalAt12": 1.682,
+          "totalAt24": 1.689,
+          "totalAt36": 1.695
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 1.1,
+        "freightRevenue": 0.001,
+        "mailContracts": 0,
+        "totalRevenue": 0.001
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1266-tl9-medium-fighter-20dt--2man--3m",
+    "name": "TL9 MEDIUM FIGHTER 20DT, 2man, 3M",
+    "classification": {
+      "role": "Striker",
+      "roleId": "striker",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Interceptor",
+      "ratios": {
+        "s": 0.317,
+        "a": 0.43,
+        "p": 0.253
+      },
+      "tons": {
+        "s": 5.9,
+        "a": 8,
+        "p": 4.7,
+        "total": 18.6
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 21
+      },
+      "costs": {
+        "monthlyMortgage": 0.067,
+        "maintenance": 0.016,
+        "crewSalaries": 0.084,
+        "lifeSupport": 0.042,
+        "fuel": 0,
+        "portFees": 0.002,
+        "totalMonthly": 0.196,
+        "annual": {
+          "mortgage": 0.807,
+          "maintenance": 0.016,
+          "crewSalaries": 1.008,
+          "lifeSupport": 0.504,
+          "fixedCosts": 2.335,
+          "variableAt12": 0.019,
+          "variableAt24": 0.039,
+          "variableAt36": 0.058,
+          "totalAt12": 2.355,
+          "totalAt24": 2.374,
+          "totalAt36": 2.394
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 0,
+        "freightRevenue": 0,
+        "mailContracts": 0,
+        "totalRevenue": 0
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 6,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 24
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1604-tl9-boat-20dt",
+    "name": "TL9 BOAT 20DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Lighter",
+      "ratios": {
+        "s": 0.137,
+        "a": 0,
+        "p": 0.863
+      },
+      "tons": {
+        "s": 2.9,
+        "a": 0,
+        "p": 18.2,
+        "total": 21.1
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.023,
+        "maintenance": 0.005,
+        "crewSalaries": 0.079,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.141,
+        "annual": {
+          "mortgage": 0.275,
+          "maintenance": 0.005,
+          "crewSalaries": 0.948,
+          "lifeSupport": 0.456,
+          "fixedCosts": 1.684,
+          "variableAt12": 0.007,
+          "variableAt24": 0.013,
+          "variableAt36": 0.02,
+          "totalAt12": 1.691,
+          "totalAt24": 1.697,
+          "totalAt36": 1.704
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 11.1,
+        "freightRevenue": 0.011,
+        "mailContracts": 0,
+        "totalRevenue": 0.011
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1679-tl9-ship-s-boat-30dt",
+    "name": "TL9 SHIP's BOAT 30DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Lighter",
+      "ratios": {
+        "s": 0.297,
+        "a": 0,
+        "p": 0.703
+      },
+      "tons": {
+        "s": 9.3,
+        "a": 0,
+        "p": 22,
+        "total": 31.3
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.078,
+        "maintenance": 0.019,
+        "crewSalaries": 0.079,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.002,
+        "totalMonthly": 0.198,
+        "annual": {
+          "mortgage": 0.932,
+          "maintenance": 0.019,
+          "crewSalaries": 0.948,
+          "lifeSupport": 0.456,
+          "fixedCosts": 2.355,
+          "variableAt12": 0.022,
+          "variableAt24": 0.045,
+          "variableAt36": 0.067,
+          "totalAt12": 2.377,
+          "totalAt24": 2.399,
+          "totalAt36": 2.422
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 14.7,
+        "freightRevenue": 0.015,
+        "mailContracts": 0,
+        "totalRevenue": 0.015
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1714-tl9-ship-s-boat-50dt",
+    "name": "TL9 SHIP's BOAT 50DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Lighter",
+      "ratios": {
+        "s": 0.135,
+        "a": 0,
+        "p": 0.865
+      },
+      "tons": {
+        "s": 6.9,
+        "a": 0,
+        "p": 44.4,
+        "total": 51.3
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.056,
+        "maintenance": 0.013,
+        "crewSalaries": 0.079,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.176,
+        "annual": {
+          "mortgage": 0.673,
+          "maintenance": 0.013,
+          "crewSalaries": 0.948,
+          "lifeSupport": 0.456,
+          "fixedCosts": 2.091,
+          "variableAt12": 0.016,
+          "variableAt24": 0.032,
+          "variableAt36": 0.048,
+          "totalAt12": 2.107,
+          "totalAt24": 2.123,
+          "totalAt36": 2.139
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 37.1,
+        "freightRevenue": 0.037,
+        "mailContracts": 0,
+        "totalRevenue": 0.037
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1749-tl9-ship-s-boat-70dt",
+    "name": "TL9 SHIP's BOAT 70DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Lighter",
+      "ratios": {
+        "s": 0.486,
+        "a": 0,
+        "p": 0.514
+      },
+      "tons": {
+        "s": 6.9,
+        "a": 0,
+        "p": 7.3,
+        "total": 14.2
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.057,
+        "maintenance": 0.014,
+        "crewSalaries": 0.079,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.177,
+        "annual": {
+          "mortgage": 0.689,
+          "maintenance": 0.014,
+          "crewSalaries": 0.948,
+          "lifeSupport": 0.456,
+          "fixedCosts": 2.107,
+          "variableAt12": 0.017,
+          "variableAt24": 0.033,
+          "variableAt36": 0.05,
+          "totalAt12": 2.123,
+          "totalAt24": 2.14,
+          "totalAt36": 2.156
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 0,
+        "freightRevenue": 0,
+        "mailContracts": 0,
+        "totalRevenue": 0
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1531-tl9-shuttle-90dt",
+    "name": "TL9 SHUTTLE 90DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Lighter",
+      "ratios": {
+        "s": 0.171,
+        "a": 0,
+        "p": 0.829
+      },
+      "tons": {
+        "s": 15.6,
+        "a": 0,
+        "p": 75.5,
+        "total": 91.1
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.128,
+        "maintenance": 0.031,
+        "crewSalaries": 0.079,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.003,
+        "totalMonthly": 0.25,
+        "annual": {
+          "mortgage": 1.534,
+          "maintenance": 0.031,
+          "crewSalaries": 0.948,
+          "lifeSupport": 0.456,
+          "fixedCosts": 2.968,
+          "variableAt12": 0.037,
+          "variableAt24": 0.074,
+          "variableAt36": 0.11,
+          "totalAt12": 3.005,
+          "totalAt24": 3.042,
+          "totalAt36": 3.079
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 26.9,
+        "freightRevenue": 0.027,
+        "mailContracts": 0,
+        "totalRevenue": 0.027
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1784-tl9-ship-s-boat-95dt",
+    "name": "TL9 SHIP's BOAT 95DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Craft",
+      "sizeId": "craft",
+      "className": "Lighter",
+      "ratios": {
+        "s": 0.486,
+        "a": 0,
+        "p": 0.514
+      },
+      "tons": {
+        "s": 6.9,
+        "a": 0,
+        "p": 7.3,
+        "total": 14.2
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 17,
+        "medic": 0,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 0,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.059,
+        "maintenance": 0.014,
+        "crewSalaries": 0.079,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.001,
+        "totalMonthly": 0.179,
+        "annual": {
+          "mortgage": 0.709,
+          "maintenance": 0.014,
+          "crewSalaries": 0.948,
+          "lifeSupport": 0.456,
+          "fixedCosts": 2.127,
+          "variableAt12": 0.017,
+          "variableAt24": 0.034,
+          "variableAt36": 0.051,
+          "totalAt12": 2.144,
+          "totalAt24": 2.161,
+          "totalAt36": 2.178
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 0,
+        "lowPassengers": 0,
+        "passengerRevenue": 0,
+        "freightDtons": 0,
+        "freightRevenue": 0,
+        "mailContracts": 0,
+        "totalRevenue": 0
+      },
+      "lifeSupport": {
+        "staterooms": 0,
+        "lowBerths": 0,
+        "standardCapacity": 0,
+        "emergencyCapacity": 0,
+        "durationWeeks": 80,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-71-tl-9-courier-ship-100dt",
+    "name": "TL 9 COURIER SHIP 100DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.453,
+        "a": 0.066,
+        "p": 0.481
+      },
+      "tons": {
+        "s": 48,
+        "a": 7,
+        "p": 51,
+        "total": 106
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 1,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 9
+      },
+      "costs": {
+        "monthlyMortgage": 0.181,
+        "maintenance": 0.043,
+        "crewSalaries": 0.033,
+        "lifeSupport": 0.018,
+        "fuel": 0,
+        "portFees": 0.004,
+        "totalMonthly": 0.24,
+        "annual": {
+          "mortgage": 2.167,
+          "maintenance": 0.043,
+          "crewSalaries": 0.396,
+          "lifeSupport": 0.216,
+          "fixedCosts": 2.823,
+          "variableAt12": 0.052,
+          "variableAt24": 0.104,
+          "variableAt36": 0.156,
+          "totalAt12": 2.875,
+          "totalAt24": 2.927,
+          "totalAt36": 2.979
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 3,
+        "lowPassengers": 1,
+        "passengerRevenue": 0.006,
+        "freightDtons": 17.7,
+        "freightRevenue": 0.018,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.049
+      },
+      "lifeSupport": {
+        "staterooms": 4,
+        "lowBerths": 1,
+        "standardCapacity": 4,
+        "emergencyCapacity": 8,
+        "durationWeeks": 20,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 4,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 16
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-125-tl-9-yacht-100dt",
+    "name": "TL 9 YACHT 100DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.377,
+        "a": 0.066,
+        "p": 0.557
+      },
+      "tons": {
+        "s": 40,
+        "a": 7,
+        "p": 59,
+        "total": 106
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 1,
+        "medic": 1,
+        "gunner": 1,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 8
+      },
+      "costs": {
+        "monthlyMortgage": 0.131,
+        "maintenance": 0.031,
+        "crewSalaries": 0.029,
+        "lifeSupport": 0.016,
+        "fuel": 0,
+        "portFees": 0.003,
+        "totalMonthly": 0.181,
+        "annual": {
+          "mortgage": 1.566,
+          "maintenance": 0.031,
+          "crewSalaries": 0.348,
+          "lifeSupport": 0.192,
+          "fixedCosts": 2.138,
+          "variableAt12": 0.038,
+          "variableAt24": 0.075,
+          "variableAt36": 0.113,
+          "totalAt12": 2.175,
+          "totalAt24": 2.213,
+          "totalAt36": 2.25
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 4,
+        "lowPassengers": 2,
+        "passengerRevenue": 0.019,
+        "freightDtons": 12,
+        "freightRevenue": 0.012,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.056
+      },
+      "lifeSupport": {
+        "staterooms": 6,
+        "lowBerths": 2,
+        "standardCapacity": 6,
+        "emergencyCapacity": 12,
+        "durationWeeks": 12,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 4,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 16
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-178-tl9-research-vessel-200dt",
+    "name": "TL9 Research Vessel 200DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.159,
+        "a": 0.27,
+        "p": 0.572
+      },
+      "tons": {
+        "s": 40,
+        "a": 68,
+        "p": 144.1,
+        "total": 252.1
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 1,
+        "medic": 1,
+        "gunner": 2,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 9
+      },
+      "costs": {
+        "monthlyMortgage": 0.224,
+        "maintenance": 0.054,
+        "crewSalaries": 0.032,
+        "lifeSupport": 0.018,
+        "fuel": 0,
+        "portFees": 0.005,
+        "totalMonthly": 0.284,
+        "annual": {
+          "mortgage": 2.69,
+          "maintenance": 0.054,
+          "crewSalaries": 0.384,
+          "lifeSupport": 0.216,
+          "fixedCosts": 3.343,
+          "variableAt12": 0.065,
+          "variableAt24": 0.129,
+          "variableAt36": 0.194,
+          "totalAt12": 3.408,
+          "totalAt24": 3.473,
+          "totalAt36": 3.537
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 4,
+        "lowPassengers": 3,
+        "passengerRevenue": 0.019,
+        "freightDtons": 35.3,
+        "freightRevenue": 0.035,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.08
+      },
+      "lifeSupport": {
+        "staterooms": 6,
+        "lowBerths": 3,
+        "standardCapacity": 6,
+        "emergencyCapacity": 12,
+        "durationWeeks": 12,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 4,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 16
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-234-tl-9-200dt-asteroid-miner--400dt-asteroid",
+    "name": "TL 9 200DT ASTEROID MINER +400DT ASTEROID",
+    "classification": {
+      "role": "Vanguard",
+      "roleId": "vanguard",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Patrol Corvette",
+      "ratios": {
+        "s": 0.464,
+        "a": 0.163,
+        "p": 0.373
+      },
+      "tons": {
+        "s": 107,
+        "a": 37.5,
+        "p": 86,
+        "total": 230.5
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 3,
+        "medic": 1,
+        "gunner": 2,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 11
+      },
+      "costs": {
+        "monthlyMortgage": 0.36,
+        "maintenance": 0.086,
+        "crewSalaries": 0.04,
+        "lifeSupport": 0.022,
+        "fuel": 0,
+        "portFees": 0.009,
+        "totalMonthly": 0.438,
+        "annual": {
+          "mortgage": 4.32,
+          "maintenance": 0.086,
+          "crewSalaries": 0.48,
+          "lifeSupport": 0.264,
+          "fixedCosts": 5.15,
+          "variableAt12": 0.104,
+          "variableAt24": 0.207,
+          "variableAt36": 0.311,
+          "totalAt12": 5.254,
+          "totalAt24": 5.357,
+          "totalAt36": 5.461
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 2,
+        "lowPassengers": 5,
+        "passengerRevenue": 0.006,
+        "freightDtons": 20,
+        "freightRevenue": 0.02,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.051
+      },
+      "lifeSupport": {
+        "staterooms": 3,
+        "lowBerths": 5,
+        "standardCapacity": 3,
+        "emergencyCapacity": 6,
+        "durationWeeks": 24,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 4,
+        "escapePods": 1,
+        "lifeBoats": 0,
+        "totalCapacity": 17
+      },
+      "jumpRange": 3,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-293-tl-9-merchant-trader-200dt",
+    "name": "TL 9 MERCHANT TRADER 200DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.189,
+        "a": 0.075,
+        "p": 0.736
+      },
+      "tons": {
+        "s": 40,
+        "a": 16,
+        "p": 156,
+        "total": 212
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 1,
+        "medic": 1,
+        "gunner": 2,
+        "marine": 0,
+        "steward": 2,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 10
+      },
+      "costs": {
+        "monthlyMortgage": 0.171,
+        "maintenance": 0.041,
+        "crewSalaries": 0.034,
+        "lifeSupport": 0.02,
+        "fuel": 0,
+        "portFees": 0.004,
+        "totalMonthly": 0.232,
+        "annual": {
+          "mortgage": 2.056,
+          "maintenance": 0.041,
+          "crewSalaries": 0.402,
+          "lifeSupport": 0.24,
+          "fixedCosts": 2.739,
+          "variableAt12": 0.049,
+          "variableAt24": 0.099,
+          "variableAt36": 0.148,
+          "totalAt12": 2.789,
+          "totalAt24": 2.838,
+          "totalAt36": 2.887
+        }
+      },
+      "revenue": {
+        "highPassengers": 2,
+        "midPassengers": 8,
+        "lowPassengers": 20,
+        "passengerRevenue": 0.046,
+        "freightDtons": 86,
+        "freightRevenue": 0.086,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.157
+      },
+      "lifeSupport": {
+        "staterooms": 10,
+        "lowBerths": 20,
+        "standardCapacity": 10,
+        "emergencyCapacity": 20,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-844-tl9-survey-vessel-200dt",
+    "name": "TL9 SURVEY VESSEL 200DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.338,
+        "a": 0.117,
+        "p": 0.545
+      },
+      "tons": {
+        "s": 75,
+        "a": 26,
+        "p": 121,
+        "total": 222
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 3,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 12
+      },
+      "costs": {
+        "monthlyMortgage": 0.339,
+        "maintenance": 0.081,
+        "crewSalaries": 0.042,
+        "lifeSupport": 0.024,
+        "fuel": 0,
+        "portFees": 0.008,
+        "totalMonthly": 0.419,
+        "annual": {
+          "mortgage": 4.067,
+          "maintenance": 0.081,
+          "crewSalaries": 0.498,
+          "lifeSupport": 0.288,
+          "fixedCosts": 4.935,
+          "variableAt12": 0.098,
+          "variableAt24": 0.195,
+          "variableAt36": 0.293,
+          "totalAt12": 5.032,
+          "totalAt24": 5.13,
+          "totalAt36": 5.228
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 6,
+        "lowPassengers": 16,
+        "passengerRevenue": 0.03,
+        "freightDtons": 48,
+        "freightRevenue": 0.048,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.103
+      },
+      "lifeSupport": {
+        "staterooms": 8,
+        "lowBerths": 16,
+        "standardCapacity": 8,
+        "emergencyCapacity": 16,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1310-tl-9-passenger-ship-200dt",
+    "name": "TL 9 PASSENGER SHIP 200DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.189,
+        "a": 0.075,
+        "p": 0.736
+      },
+      "tons": {
+        "s": 40,
+        "a": 16,
+        "p": 156,
+        "total": 212
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 1,
+        "medic": 1,
+        "gunner": 2,
+        "marine": 0,
+        "steward": 3,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 11
+      },
+      "costs": {
+        "monthlyMortgage": 0.194,
+        "maintenance": 0.046,
+        "crewSalaries": 0.035,
+        "lifeSupport": 0.022,
+        "fuel": 0,
+        "portFees": 0.005,
+        "totalMonthly": 0.259,
+        "annual": {
+          "mortgage": 2.324,
+          "maintenance": 0.046,
+          "crewSalaries": 0.42,
+          "lifeSupport": 0.264,
+          "fixedCosts": 3.054,
+          "variableAt12": 0.056,
+          "variableAt24": 0.112,
+          "variableAt36": 0.167,
+          "totalAt12": 3.11,
+          "totalAt24": 3.166,
+          "totalAt36": 3.221
+        }
+      },
+      "revenue": {
+        "highPassengers": 4,
+        "midPassengers": 16,
+        "lowPassengers": 20,
+        "passengerRevenue": 0.082,
+        "freightDtons": 43,
+        "freightRevenue": 0.043,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.15
+      },
+      "lifeSupport": {
+        "staterooms": 20,
+        "lowBerths": 20,
+        "standardCapacity": 20,
+        "emergencyCapacity": 40,
+        "durationWeeks": 4,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 8,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 32
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-346-tl9-merchant-liner-300dt",
+    "name": "TL9 MERCHANT LINER 300DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.199,
+        "a": 0.047,
+        "p": 0.754
+      },
+      "tons": {
+        "s": 63,
+        "a": 15,
+        "p": 239,
+        "total": 317
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 5,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 11
+      },
+      "costs": {
+        "monthlyMortgage": 0.321,
+        "maintenance": 0.077,
+        "crewSalaries": 0.034,
+        "lifeSupport": 0.022,
+        "fuel": 0,
+        "portFees": 0.008,
+        "totalMonthly": 0.391,
+        "annual": {
+          "mortgage": 3.855,
+          "maintenance": 0.077,
+          "crewSalaries": 0.402,
+          "lifeSupport": 0.264,
+          "fixedCosts": 4.598,
+          "variableAt12": 0.093,
+          "variableAt24": 0.185,
+          "variableAt36": 0.278,
+          "totalAt12": 4.69,
+          "totalAt24": 4.783,
+          "totalAt36": 4.875
+        }
+      },
+      "revenue": {
+        "highPassengers": 7,
+        "midPassengers": 28,
+        "lowPassengers": 20,
+        "passengerRevenue": 0.136,
+        "freightDtons": 59,
+        "freightRevenue": 0.059,
+        "mailContracts": 0,
+        "totalRevenue": 0.195
+      },
+      "lifeSupport": {
+        "staterooms": 35,
+        "lowBerths": 20,
+        "standardCapacity": 35,
+        "emergencyCapacity": 70,
+        "durationWeeks": 0,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 12,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 48
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-397-tl9-frontier-trader-300dt-6-pulse-laser--3-sand-casters-tl9",
+    "name": "TL9 FRONTIER TRADER 300DT 6-Pulse Laser, 3 Sand Casters TL9",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.218,
+        "a": 0.082,
+        "p": 0.701
+      },
+      "tons": {
+        "s": 72,
+        "a": 27,
+        "p": 232,
+        "total": 331
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 3,
+        "medic": 1,
+        "gunner": 3,
+        "marine": 0,
+        "steward": 4,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 16
+      },
+      "costs": {
+        "monthlyMortgage": 0.377,
+        "maintenance": 0.09,
+        "crewSalaries": 0.05,
+        "lifeSupport": 0.032,
+        "fuel": 0,
+        "portFees": 0.009,
+        "totalMonthly": 0.476,
+        "annual": {
+          "mortgage": 4.525,
+          "maintenance": 0.09,
+          "crewSalaries": 0.6,
+          "lifeSupport": 0.384,
+          "fixedCosts": 5.599,
+          "variableAt12": 0.109,
+          "variableAt24": 0.217,
+          "variableAt36": 0.326,
+          "totalAt12": 5.708,
+          "totalAt24": 5.816,
+          "totalAt36": 5.925
+        }
+      },
+      "revenue": {
+        "highPassengers": 5,
+        "midPassengers": 20,
+        "lowPassengers": 12,
+        "passengerRevenue": 0.096,
+        "freightDtons": 90,
+        "freightRevenue": 0.09,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.211
+      },
+      "lifeSupport": {
+        "staterooms": 25,
+        "lowBerths": 12,
+        "standardCapacity": 25,
+        "emergencyCapacity": 50,
+        "durationWeeks": 0,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 11,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 44
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-453-tl-9-tender-100-300dt",
+    "name": "TL 9 TENDER 100+300DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.375,
+        "a": 0.067,
+        "p": 0.558
+      },
+      "tons": {
+        "s": 39,
+        "a": 7,
+        "p": 58,
+        "total": 104
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 1,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 10
+      },
+      "costs": {
+        "monthlyMortgage": 0.212,
+        "maintenance": 0.051,
+        "crewSalaries": 0.035,
+        "lifeSupport": 0.02,
+        "fuel": 0,
+        "portFees": 0.005,
+        "totalMonthly": 0.276,
+        "annual": {
+          "mortgage": 2.539,
+          "maintenance": 0.051,
+          "crewSalaries": 0.426,
+          "lifeSupport": 0.24,
+          "fixedCosts": 3.255,
+          "variableAt12": 0.061,
+          "variableAt24": 0.122,
+          "variableAt36": 0.183,
+          "totalAt12": 3.316,
+          "totalAt24": 3.377,
+          "totalAt36": 3.438
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 2,
+        "lowPassengers": 0,
+        "passengerRevenue": 0.004,
+        "freightDtons": 2,
+        "freightRevenue": 0.002,
+        "mailContracts": 0,
+        "totalRevenue": 0.006
+      },
+      "lifeSupport": {
+        "staterooms": 3,
+        "lowBerths": 0,
+        "standardCapacity": 3,
+        "emergencyCapacity": 6,
+        "durationWeeks": 24,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 4,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 16
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-505-tl9-habitat-ring-300dt",
+    "name": "TL9_HABITAT_RING_300DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.146,
+        "a": 0.195,
+        "p": 0.659
+      },
+      "tons": {
+        "s": 50,
+        "a": 67,
+        "p": 225.8,
+        "total": 342.8
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 6
+      },
+      "costs": {
+        "monthlyMortgage": 0.262,
+        "maintenance": 0.063,
+        "crewSalaries": 0.024,
+        "lifeSupport": 0.012,
+        "fuel": 0,
+        "portFees": 0.006,
+        "totalMonthly": 0.31,
+        "annual": {
+          "mortgage": 3.15,
+          "maintenance": 0.063,
+          "crewSalaries": 0.282,
+          "lifeSupport": 0.144,
+          "fixedCosts": 3.639,
+          "variableAt12": 0.076,
+          "variableAt24": 0.151,
+          "variableAt36": 0.227,
+          "totalAt12": 3.714,
+          "totalAt24": 3.79,
+          "totalAt36": 3.865
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 4,
+        "lowPassengers": 3,
+        "passengerRevenue": 0.019,
+        "freightDtons": 100,
+        "freightRevenue": 0.1,
+        "mailContracts": 0,
+        "totalRevenue": 0.119
+      },
+      "lifeSupport": {
+        "staterooms": 6,
+        "lowBerths": 3,
+        "standardCapacity": 6,
+        "emergencyCapacity": 12,
+        "durationWeeks": 12,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 3,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 12
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-665-tl9-patrol-frigate-300dt-3-bl--6-mr",
+    "name": "TL9 PATROL FRIGATE 300DT 3-BL, 6-MR",
+    "classification": {
+      "role": "Striker",
+      "roleId": "striker",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Torpedo Boat",
+      "ratios": {
+        "s": 0.407,
+        "a": 0.309,
+        "p": 0.284
+      },
+      "tons": {
+        "s": 129,
+        "a": 98,
+        "p": 90,
+        "total": 317
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 6,
+        "medic": 1,
+        "gunner": 3,
+        "marine": 0,
+        "steward": 2,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 17
+      },
+      "costs": {
+        "monthlyMortgage": 0.625,
+        "maintenance": 0.15,
+        "crewSalaries": 0.059,
+        "lifeSupport": 0.034,
+        "fuel": 0,
+        "portFees": 0.015,
+        "totalMonthly": 0.746,
+        "annual": {
+          "mortgage": 7.502,
+          "maintenance": 0.15,
+          "crewSalaries": 0.708,
+          "lifeSupport": 0.408,
+          "fixedCosts": 8.768,
+          "variableAt12": 0.18,
+          "variableAt24": 0.36,
+          "variableAt36": 0.54,
+          "totalAt12": 8.948,
+          "totalAt24": 9.128,
+          "totalAt36": 9.308
+        }
+      },
+      "revenue": {
+        "highPassengers": 2,
+        "midPassengers": 8,
+        "lowPassengers": 2,
+        "passengerRevenue": 0.037,
+        "freightDtons": 14,
+        "freightRevenue": 0.014,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.076
+      },
+      "lifeSupport": {
+        "staterooms": 10,
+        "lowBerths": 2,
+        "standardCapacity": 10,
+        "emergencyCapacity": 20,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 7,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 28
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-724-tl9-corvette-300dt",
+    "name": "TL9 CORVETTE 300DT",
+    "classification": {
+      "role": "Vanguard",
+      "roleId": "vanguard",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Patrol Corvette",
+      "ratios": {
+        "s": 0.434,
+        "a": 0.283,
+        "p": 0.283
+      },
+      "tons": {
+        "s": 147,
+        "a": 96,
+        "p": 96,
+        "total": 339
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 9,
+        "medic": 1,
+        "gunner": 3,
+        "marine": 0,
+        "steward": 2,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 20
+      },
+      "costs": {
+        "monthlyMortgage": 0.704,
+        "maintenance": 0.169,
+        "crewSalaries": 0.071,
+        "lifeSupport": 0.04,
+        "fuel": 0,
+        "portFees": 0.017,
+        "totalMonthly": 0.846,
+        "annual": {
+          "mortgage": 8.446,
+          "maintenance": 0.169,
+          "crewSalaries": 0.852,
+          "lifeSupport": 0.48,
+          "fixedCosts": 9.947,
+          "variableAt12": 0.203,
+          "variableAt24": 0.405,
+          "variableAt36": 0.608,
+          "totalAt12": 10.15,
+          "totalAt24": 10.352,
+          "totalAt36": 10.555
+        }
+      },
+      "revenue": {
+        "highPassengers": 2,
+        "midPassengers": 8,
+        "lowPassengers": 5,
+        "passengerRevenue": 0.038,
+        "freightDtons": 14.5,
+        "freightRevenue": 0.015,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.078
+      },
+      "lifeSupport": {
+        "staterooms": 10,
+        "lowBerths": 5,
+        "standardCapacity": 10,
+        "emergencyCapacity": 20,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 8,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 32
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-781-tl9-exploration-vessel-300dt",
+    "name": "TL9 EXPLORATION VESSEL 300DT",
+    "classification": {
+      "role": "Vanguard",
+      "roleId": "vanguard",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Patrol Corvette",
+      "ratios": {
+        "s": 0.317,
+        "a": 0.258,
+        "p": 0.425
+      },
+      "tons": {
+        "s": 102,
+        "a": 83,
+        "p": 137,
+        "total": 322
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 3,
+        "medic": 1,
+        "gunner": 3,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 13
+      },
+      "costs": {
+        "monthlyMortgage": 0.425,
+        "maintenance": 0.102,
+        "crewSalaries": 0.045,
+        "lifeSupport": 0.026,
+        "fuel": 0,
+        "portFees": 0.01,
+        "totalMonthly": 0.515,
+        "annual": {
+          "mortgage": 5.102,
+          "maintenance": 0.102,
+          "crewSalaries": 0.546,
+          "lifeSupport": 0.312,
+          "fixedCosts": 6.062,
+          "variableAt12": 0.122,
+          "variableAt24": 0.245,
+          "variableAt36": 0.367,
+          "totalAt12": 6.185,
+          "totalAt24": 6.307,
+          "totalAt36": 6.43
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 6,
+        "lowPassengers": 16,
+        "passengerRevenue": 0.03,
+        "freightDtons": 48,
+        "freightRevenue": 0.048,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.103
+      },
+      "lifeSupport": {
+        "staterooms": 8,
+        "lowBerths": 16,
+        "standardCapacity": 8,
+        "emergencyCapacity": 16,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 6,
+        "escapePods": 0,
+        "lifeBoats": 1,
+        "totalCapacity": 34
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1418-tl9-frontier-passenger-300dt",
+    "name": "TL9 FRONTIER PASSENGER 300DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.334,
+        "a": 0.084,
+        "p": 0.581
+      },
+      "tons": {
+        "s": 107,
+        "a": 27,
+        "p": 186,
+        "total": 320
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 3,
+        "medic": 1,
+        "gunner": 3,
+        "marine": 0,
+        "steward": 4,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 15
+      },
+      "costs": {
+        "monthlyMortgage": 0.412,
+        "maintenance": 0.099,
+        "crewSalaries": 0.048,
+        "lifeSupport": 0.03,
+        "fuel": 0,
+        "portFees": 0.01,
+        "totalMonthly": 0.508,
+        "annual": {
+          "mortgage": 4.944,
+          "maintenance": 0.099,
+          "crewSalaries": 0.57,
+          "lifeSupport": 0.36,
+          "fixedCosts": 5.973,
+          "variableAt12": 0.119,
+          "variableAt24": 0.237,
+          "variableAt36": 0.356,
+          "totalAt12": 6.092,
+          "totalAt24": 6.21,
+          "totalAt36": 6.329
+        }
+      },
+      "revenue": {
+        "highPassengers": 5,
+        "midPassengers": 20,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.095,
+        "freightDtons": 56,
+        "freightRevenue": 0.056,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.176
+      },
+      "lifeSupport": {
+        "staterooms": 26,
+        "lowBerths": 10,
+        "standardCapacity": 26,
+        "emergencyCapacity": 52,
+        "durationWeeks": 0,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 11,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 44
+      },
+      "jumpRange": 3,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-557-tl9-merchant-freighter-400dt",
+    "name": "TL9 MERCHANT FREIGHTER 400DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.171,
+        "a": 0.094,
+        "p": 0.735
+      },
+      "tons": {
+        "s": 73,
+        "a": 40,
+        "p": 313,
+        "total": 426
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 4,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 12
+      },
+      "costs": {
+        "monthlyMortgage": 0.308,
+        "maintenance": 0.074,
+        "crewSalaries": 0.042,
+        "lifeSupport": 0.024,
+        "fuel": 0,
+        "portFees": 0.007,
+        "totalMonthly": 0.387,
+        "annual": {
+          "mortgage": 3.692,
+          "maintenance": 0.074,
+          "crewSalaries": 0.504,
+          "lifeSupport": 0.288,
+          "fixedCosts": 4.558,
+          "variableAt12": 0.089,
+          "variableAt24": 0.177,
+          "variableAt36": 0.266,
+          "totalAt12": 4.646,
+          "totalAt24": 4.735,
+          "totalAt36": 4.823
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 5,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.025,
+        "freightDtons": 260,
+        "freightRevenue": 0.26,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.31
+      },
+      "lifeSupport": {
+        "staterooms": 7,
+        "lowBerths": 10,
+        "standardCapacity": 7,
+        "emergencyCapacity": 14,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-609-tl9--bosco--merchant-freighter-400dt",
+    "name": "TL9 \"BOSCO\" MERCHANT FREIGHTER 400DT",
+    "classification": {
+      "role": "Vanguard",
+      "roleId": "vanguard",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Patrol Corvette",
+      "ratios": {
+        "s": 0.304,
+        "a": 0.239,
+        "p": 0.457
+      },
+      "tons": {
+        "s": 127,
+        "a": 100,
+        "p": 191,
+        "total": 418
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 8,
+        "medic": 1,
+        "gunner": 4,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 19
+      },
+      "costs": {
+        "monthlyMortgage": 0.637,
+        "maintenance": 0.153,
+        "crewSalaries": 0.069,
+        "lifeSupport": 0.038,
+        "fuel": 0,
+        "portFees": 0.015,
+        "totalMonthly": 0.772,
+        "annual": {
+          "mortgage": 7.648,
+          "maintenance": 0.153,
+          "crewSalaries": 0.822,
+          "lifeSupport": 0.456,
+          "fixedCosts": 9.079,
+          "variableAt12": 0.184,
+          "variableAt24": 0.367,
+          "variableAt36": 0.551,
+          "totalAt12": 9.263,
+          "totalAt24": 9.446,
+          "totalAt36": 9.63
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 5,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.025,
+        "freightDtons": 141,
+        "freightRevenue": 0.141,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.191
+      },
+      "lifeSupport": {
+        "staterooms": 7,
+        "lowBerths": 10,
+        "standardCapacity": 7,
+        "emergencyCapacity": 14,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 7,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 28
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-909-tl9-system-defense-boat-400dt-6bl--6mr--armor-20",
+    "name": "TL9 SYSTEM DEFENSE BOAT 400DT 6BL, 6MR, Armor-20",
+    "classification": {
+      "role": "Brawler",
+      "roleId": "brawler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "System Defense Boat",
+      "ratios": {
+        "s": 0.246,
+        "a": 0.501,
+        "p": 0.253
+      },
+      "tons": {
+        "s": 108,
+        "a": 220,
+        "p": 111,
+        "total": 439
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 12,
+        "medic": 1,
+        "gunner": 4,
+        "marine": 0,
+        "steward": 2,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 23
+      },
+      "costs": {
+        "monthlyMortgage": 0.766,
+        "maintenance": 0.184,
+        "crewSalaries": 0.082,
+        "lifeSupport": 0.046,
+        "fuel": 0,
+        "portFees": 0.018,
+        "totalMonthly": 0.928,
+        "annual": {
+          "mortgage": 9.191,
+          "maintenance": 0.184,
+          "crewSalaries": 0.984,
+          "lifeSupport": 0.552,
+          "fixedCosts": 10.911,
+          "variableAt12": 0.221,
+          "variableAt24": 0.441,
+          "variableAt36": 0.662,
+          "totalAt12": 11.132,
+          "totalAt24": 11.352,
+          "totalAt36": 11.573
+        }
+      },
+      "revenue": {
+        "highPassengers": 2,
+        "midPassengers": 8,
+        "lowPassengers": 4,
+        "passengerRevenue": 0.038,
+        "freightDtons": 29,
+        "freightRevenue": 0.029,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.092
+      },
+      "lifeSupport": {
+        "staterooms": 10,
+        "lowBerths": 4,
+        "standardCapacity": 10,
+        "emergencyCapacity": 20,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 9,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 36
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-964-tl9-missile-frigate-400dt-4xmb--48ms-",
+    "name": "TL9 MISSILE FRIGATE 400DT 4xMB (48Ms)",
+    "classification": {
+      "role": "Brawler",
+      "roleId": "brawler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "System Defense Boat",
+      "ratios": {
+        "s": 0.089,
+        "a": 0.847,
+        "p": 0.064
+      },
+      "tons": {
+        "s": 109,
+        "a": 1040,
+        "p": 79,
+        "total": 1228
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 6,
+        "medic": 1,
+        "gunner": 4,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 16
+      },
+      "costs": {
+        "monthlyMortgage": 0.679,
+        "maintenance": 0.163,
+        "crewSalaries": 0.058,
+        "lifeSupport": 0.032,
+        "fuel": 0,
+        "portFees": 0.016,
+        "totalMonthly": 0.799,
+        "annual": {
+          "mortgage": 8.154,
+          "maintenance": 0.163,
+          "crewSalaries": 0.696,
+          "lifeSupport": 0.384,
+          "fixedCosts": 9.397,
+          "variableAt12": 0.196,
+          "variableAt24": 0.391,
+          "variableAt36": 0.587,
+          "totalAt12": 9.593,
+          "totalAt24": 9.788,
+          "totalAt36": 9.984
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 5,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.025,
+        "freightDtons": 16,
+        "freightRevenue": 0.016,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.066
+      },
+      "lifeSupport": {
+        "staterooms": 7,
+        "lowBerths": 10,
+        "standardCapacity": 7,
+        "emergencyCapacity": 14,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 6,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 24
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1020-tl9-escort-frigate-400dt-8sc--4bl--4",
+    "name": "TL9 ESCORT FRIGATE 400DT 8SC, 4BL, 4",
+    "classification": {
+      "role": "Brawler",
+      "roleId": "brawler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "System Defense Boat",
+      "ratios": {
+        "s": 0.25,
+        "a": 0.532,
+        "p": 0.218
+      },
+      "tons": {
+        "s": 109,
+        "a": 232,
+        "p": 95,
+        "total": 436
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 6,
+        "medic": 1,
+        "gunner": 4,
+        "marine": 0,
+        "steward": 2,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 18
+      },
+      "costs": {
+        "monthlyMortgage": 0.529,
+        "maintenance": 0.127,
+        "crewSalaries": 0.062,
+        "lifeSupport": 0.036,
+        "fuel": 0,
+        "portFees": 0.013,
+        "totalMonthly": 0.65,
+        "annual": {
+          "mortgage": 6.344,
+          "maintenance": 0.127,
+          "crewSalaries": 0.744,
+          "lifeSupport": 0.432,
+          "fixedCosts": 7.647,
+          "variableAt12": 0.152,
+          "variableAt24": 0.305,
+          "variableAt36": 0.457,
+          "totalAt12": 7.799,
+          "totalAt24": 7.952,
+          "totalAt36": 8.104
+        }
+      },
+      "revenue": {
+        "highPassengers": 2,
+        "midPassengers": 8,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.041,
+        "freightDtons": 16,
+        "freightRevenue": 0.016,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.082
+      },
+      "lifeSupport": {
+        "staterooms": 11,
+        "lowBerths": 10,
+        "standardCapacity": 11,
+        "emergencyCapacity": 22,
+        "durationWeeks": 4,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 8,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 32
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1365-tl9-passenger-400dt",
+    "name": "TL9 PASSENGER 400DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.171,
+        "a": 0.094,
+        "p": 0.735
+      },
+      "tons": {
+        "s": 73,
+        "a": 40,
+        "p": 314,
+        "total": 427
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 4,
+        "marine": 0,
+        "steward": 6,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 17
+      },
+      "costs": {
+        "monthlyMortgage": 0.381,
+        "maintenance": 0.091,
+        "crewSalaries": 0.05,
+        "lifeSupport": 0.034,
+        "fuel": 0,
+        "portFees": 0.009,
+        "totalMonthly": 0.481,
+        "annual": {
+          "mortgage": 4.567,
+          "maintenance": 0.091,
+          "crewSalaries": 0.594,
+          "lifeSupport": 0.408,
+          "fixedCosts": 5.66,
+          "variableAt12": 0.11,
+          "variableAt24": 0.219,
+          "variableAt36": 0.329,
+          "totalAt12": 5.77,
+          "totalAt24": 5.879,
+          "totalAt36": 5.989
+        }
+      },
+      "revenue": {
+        "highPassengers": 8,
+        "midPassengers": 33,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.151,
+        "freightDtons": 120,
+        "freightRevenue": 0.12,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.296
+      },
+      "lifeSupport": {
+        "staterooms": 42,
+        "lowBerths": 10,
+        "standardCapacity": 42,
+        "emergencyCapacity": 84,
+        "durationWeeks": 0,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 15,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 60
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "excel-1079-tl9-raider-600dt-18bl--2f--1sb",
+    "name": "TL9 RAIDER 600DT 18BL, 2F, 1SB",
+    "classification": {
+      "role": "Striker",
+      "roleId": "striker",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Torpedo Boat",
+      "ratios": {
+        "s": 0.368,
+        "a": 0.33,
+        "p": 0.302
+      },
+      "tons": {
+        "s": 253,
+        "a": 227,
+        "p": 208,
+        "total": 688
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 12,
+        "medic": 1,
+        "gunner": 6,
+        "marine": 0,
+        "steward": 2,
+        "maintenance": 0,
+        "deckCrew": 2,
+        "total": 26
+      },
+      "costs": {
+        "monthlyMortgage": 1.281,
+        "maintenance": 0.307,
+        "crewSalaries": 0.092,
+        "lifeSupport": 0.052,
+        "fuel": 0,
+        "portFees": 0.031,
+        "totalMonthly": 1.481,
+        "annual": {
+          "mortgage": 15.371,
+          "maintenance": 0.307,
+          "crewSalaries": 1.104,
+          "lifeSupport": 0.624,
+          "fixedCosts": 17.407,
+          "variableAt12": 0.369,
+          "variableAt24": 0.738,
+          "variableAt36": 1.107,
+          "totalAt12": 17.775,
+          "totalAt24": 18.144,
+          "totalAt36": 18.513
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 7,
+        "lowPassengers": 6,
+        "passengerRevenue": 0.027,
+        "freightDtons": 74,
+        "freightRevenue": 0.074,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.126
+      },
+      "lifeSupport": {
+        "staterooms": 9,
+        "lowBerths": 6,
+        "standardCapacity": 9,
+        "emergencyCapacity": 18,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 9,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 36
+      },
+      "jumpRange": 4,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "srd-tl9-tender-100dt--b-m-drive--a-jdrive",
+    "name": "TL9 TENDER 100DT (B-M DRIVE, A-JDRIVE)",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.327,
+        "a": 0.067,
+        "p": 0.606
+      },
+      "tons": {
+        "s": 34,
+        "a": 7,
+        "p": 63,
+        "total": 104
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 1,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 9
+      },
+      "costs": {
+        "monthlyMortgage": 0.165,
+        "maintenance": 0.04,
+        "crewSalaries": 0.033,
+        "lifeSupport": 0.018,
+        "fuel": 0,
+        "portFees": 0.004,
+        "totalMonthly": 0.224,
+        "annual": {
+          "mortgage": 1.985,
+          "maintenance": 0.04,
+          "crewSalaries": 0.396,
+          "lifeSupport": 0.216,
+          "fixedCosts": 2.637,
+          "variableAt12": 0.048,
+          "variableAt24": 0.095,
+          "variableAt36": 0.143,
+          "totalAt12": 2.685,
+          "totalAt24": 2.732,
+          "totalAt36": 2.78
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 1,
+        "lowPassengers": 0,
+        "passengerRevenue": 0.002,
+        "freightDtons": 31,
+        "freightRevenue": 0.031,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.058
+      },
+      "lifeSupport": {
+        "staterooms": 2,
+        "lowBerths": 0,
+        "standardCapacity": 2,
+        "emergencyCapacity": 4,
+        "durationWeeks": 40,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 3,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 12
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "srd-tl9-yacht-100dt",
+    "name": "TL9 YACHT 100DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.304,
+        "a": 0.054,
+        "p": 0.641
+      },
+      "tons": {
+        "s": 28,
+        "a": 5,
+        "p": 59,
+        "total": 92
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 1,
+        "medic": 1,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 6
+      },
+      "costs": {
+        "monthlyMortgage": 0.136,
+        "maintenance": 0.033,
+        "crewSalaries": 0.024,
+        "lifeSupport": 0.012,
+        "fuel": 0,
+        "portFees": 0.003,
+        "totalMonthly": 0.177,
+        "annual": {
+          "mortgage": 1.628,
+          "maintenance": 0.033,
+          "crewSalaries": 0.282,
+          "lifeSupport": 0.144,
+          "fixedCosts": 2.087,
+          "variableAt12": 0.039,
+          "variableAt24": 0.078,
+          "variableAt36": 0.117,
+          "totalAt12": 2.126,
+          "totalAt24": 2.165,
+          "totalAt36": 2.204
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 3,
+        "lowPassengers": 2,
+        "passengerRevenue": 0.007,
+        "freightDtons": 20,
+        "freightRevenue": 0.02,
+        "mailContracts": 0,
+        "totalRevenue": 0.027
+      },
+      "lifeSupport": {
+        "staterooms": 4,
+        "lowBerths": 2,
+        "standardCapacity": 4,
+        "emergencyCapacity": 8,
+        "durationWeeks": 20,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 3,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 12
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "srd-tl9-research-vessel-200dt",
+    "name": "TL9 RESEARCH VESSEL 200DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.282,
+        "a": 0.064,
+        "p": 0.654
+      },
+      "tons": {
+        "s": 53,
+        "a": 12,
+        "p": 123,
+        "total": 188
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 2,
+        "medic": 1,
+        "gunner": 1,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 9
+      },
+      "costs": {
+        "monthlyMortgage": 0.284,
+        "maintenance": 0.068,
+        "crewSalaries": 0.033,
+        "lifeSupport": 0.018,
+        "fuel": 0,
+        "portFees": 0.007,
+        "totalMonthly": 0.347,
+        "annual": {
+          "mortgage": 3.402,
+          "maintenance": 0.068,
+          "crewSalaries": 0.396,
+          "lifeSupport": 0.216,
+          "fixedCosts": 4.082,
+          "variableAt12": 0.082,
+          "variableAt24": 0.163,
+          "variableAt36": 0.245,
+          "totalAt12": 4.164,
+          "totalAt24": 4.246,
+          "totalAt36": 4.327
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 4,
+        "lowPassengers": 2,
+        "passengerRevenue": 0.019,
+        "freightDtons": 58,
+        "freightRevenue": 0.058,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.102
+      },
+      "lifeSupport": {
+        "staterooms": 6,
+        "lowBerths": 2,
+        "standardCapacity": 6,
+        "emergencyCapacity": 12,
+        "durationWeeks": 12,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 4,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 16
+      },
+      "jumpRange": 2,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "srd-tl9-asteroid-miner-200dt--able-to-move-400dt",
+    "name": "TL9 ASTEROID MINER 200DT (able to move 400DT)",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.278,
+        "a": 0.062,
+        "p": 0.66
+      },
+      "tons": {
+        "s": 54,
+        "a": 12,
+        "p": 128,
+        "total": 194
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 6,
+        "medic": 1,
+        "gunner": 1,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 12
+      },
+      "costs": {
+        "monthlyMortgage": 0.363,
+        "maintenance": 0.087,
+        "crewSalaries": 0.045,
+        "lifeSupport": 0.024,
+        "fuel": 0,
+        "portFees": 0.009,
+        "totalMonthly": 0.448,
+        "annual": {
+          "mortgage": 4.362,
+          "maintenance": 0.087,
+          "crewSalaries": 0.54,
+          "lifeSupport": 0.288,
+          "fixedCosts": 5.277,
+          "variableAt12": 0.105,
+          "variableAt24": 0.209,
+          "variableAt36": 0.314,
+          "totalAt12": 5.382,
+          "totalAt24": 5.487,
+          "totalAt36": 5.591
+        }
+      },
+      "revenue": {
+        "highPassengers": 0,
+        "midPassengers": 3,
+        "lowPassengers": 4,
+        "passengerRevenue": 0.008,
+        "freightDtons": 62,
+        "freightRevenue": 0.062,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.095
+      },
+      "lifeSupport": {
+        "staterooms": 4,
+        "lowBerths": 4,
+        "standardCapacity": 4,
+        "emergencyCapacity": 8,
+        "durationWeeks": 20,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 4,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 16
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "srd-tl9-habitat-ring-200dt",
+    "name": "TL9 HABITAT RING 200DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.065,
+        "a": 0.065,
+        "p": 0.871
+      },
+      "tons": {
+        "s": 10,
+        "a": 10,
+        "p": 135,
+        "total": 155
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 0,
+        "engineer": 1,
+        "medic": 1,
+        "gunner": 0,
+        "marine": 0,
+        "steward": 3,
+        "maintenance": 0,
+        "deckCrew": 0,
+        "total": 7
+      },
+      "costs": {
+        "monthlyMortgage": 0.162,
+        "maintenance": 0.039,
+        "crewSalaries": 0.022,
+        "lifeSupport": 0.014,
+        "fuel": 0,
+        "portFees": 0.004,
+        "totalMonthly": 0.206,
+        "annual": {
+          "mortgage": 1.95,
+          "maintenance": 0.039,
+          "crewSalaries": 0.27,
+          "lifeSupport": 0.168,
+          "fixedCosts": 2.427,
+          "variableAt12": 0.047,
+          "variableAt24": 0.094,
+          "variableAt36": 0.14,
+          "totalAt12": 2.474,
+          "totalAt24": 2.52,
+          "totalAt36": 2.567
+        }
+      },
+      "revenue": {
+        "highPassengers": 4,
+        "midPassengers": 16,
+        "lowPassengers": 10,
+        "passengerRevenue": 0.077,
+        "freightDtons": 8,
+        "freightRevenue": 0.008,
+        "mailContracts": 0,
+        "totalRevenue": 0.085
+      },
+      "lifeSupport": {
+        "staterooms": 20,
+        "lowBerths": 10,
+        "standardCapacity": 20,
+        "emergencyCapacity": 40,
+        "durationWeeks": 4,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 7,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 28
+      },
+      "jumpRange": 1,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  },
+  {
+    "id": "srd-tl9-survey-vessel-300dt",
+    "name": "TL9 SURVEY VESSEL 300DT",
+    "classification": {
+      "role": "Hauler",
+      "roleId": "hauler",
+      "sizeClass": "Escort",
+      "sizeId": "escort",
+      "className": "Freighter",
+      "ratios": {
+        "s": 0.379,
+        "a": 0.06,
+        "p": 0.56
+      },
+      "tons": {
+        "s": 107,
+        "a": 17,
+        "p": 158,
+        "total": 282
+      },
+      "tlShifted": false
+    },
+    "operations": {
+      "crew": {
+        "command": 1,
+        "pilot": 1,
+        "navigator": 1,
+        "engineer": 3,
+        "medic": 1,
+        "gunner": 1,
+        "marine": 0,
+        "steward": 1,
+        "maintenance": 0,
+        "deckCrew": 1,
+        "total": 10
+      },
+      "costs": {
+        "monthlyMortgage": 0.396,
+        "maintenance": 0.095,
+        "crewSalaries": 0.037,
+        "lifeSupport": 0.02,
+        "fuel": 0,
+        "portFees": 0.01,
+        "totalMonthly": 0.471,
+        "annual": {
+          "mortgage": 4.755,
+          "maintenance": 0.095,
+          "crewSalaries": 0.444,
+          "lifeSupport": 0.24,
+          "fixedCosts": 5.535,
+          "variableAt12": 0.114,
+          "variableAt24": 0.228,
+          "variableAt36": 0.342,
+          "totalAt12": 5.649,
+          "totalAt24": 5.763,
+          "totalAt36": 5.877
+        }
+      },
+      "revenue": {
+        "highPassengers": 1,
+        "midPassengers": 6,
+        "lowPassengers": 4,
+        "passengerRevenue": 0.024,
+        "freightDtons": 76,
+        "freightRevenue": 0.076,
+        "mailContracts": 0.025,
+        "totalRevenue": 0.125
+      },
+      "lifeSupport": {
+        "staterooms": 8,
+        "lowBerths": 4,
+        "standardCapacity": 8,
+        "emergencyCapacity": 16,
+        "durationWeeks": 8,
+        "lifeSupportTons": 1
+      },
+      "escapeSystems": {
+        "lifePods": 5,
+        "escapePods": 0,
+        "lifeBoats": 0,
+        "totalCapacity": 20
+      },
+      "jumpRange": 3,
+      "endurance": 0,
+      "annualOverhaul": 2
+    }
+  }
+]
