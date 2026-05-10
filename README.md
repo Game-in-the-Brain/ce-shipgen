@@ -1,12 +1,14 @@
 # CE ShipGen
 
+**Products:** [https://blog.gi7b.org](https://blog.gi7b.org)
+
 **CEpheus Engine Ship Generator** - A Progressive Web App for designing starships
 
 [![License: GPL v3](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)
-[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://game-in-the-brain.github.io/ce-shipgen/)
+[![GitHub Pages](https://img.shields.io/badge/GitHub%20Pages-Live-brightgreen)](https://pages.gi7b.org/gi7b/ce-shipgen/)
 [![Status](https://img.shields.io/badge/Status-M3%20Current-blue)](https://github.com/xunema/ce-shipgen#-milestone-status)
 
-**Live Demo:** https://game-in-the-brain.github.io/ce-shipgen/
+**Live Demo:** https://pages.gi7b.org/gi7b/ce-shipgen/
 https://pages.gi7b.org/gi7b/ce-shipgen/
 
 
@@ -586,7 +588,7 @@ This is an open project following PAD (Procedural-Agentic-Development). The comp
 
 ## 🌐 Links
 
-- **Live App:** https://game-in-the-brain.github.io/ce-shipgen/
+- **Live App:** https://pages.gi7b.org/gi7b/ce-shipgen/
 - **Repository:** https://github.com/xunema/ce-shipgen
 - **Game in the Brain:** https://gi7b.org
 - **Wiki:** https://wiki.gi7b.org
